@@ -6,7 +6,7 @@ import Cal from './components/Cal';
 function App() {
   return (
     <BrowserRouter>
-      <div >
+      <div>
         <Header />
         <Routes>
           
