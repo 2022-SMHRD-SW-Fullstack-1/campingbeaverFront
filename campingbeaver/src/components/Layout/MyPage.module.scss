@@ -1,0 +1,37 @@
+.top {
+    text-align: center;
+    padding: 20px;
+}
+.mypage {   
+    color:darkolivegreen;
+}
+
+.mid {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;  
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    margin-right: 100px;
+    align-items: center;
+}
+.content {
+    
+    display: flex;
+    flex-direction: column;
+    padding:100px;
+    align-items: center;
+}
+a:hover{
+    color: black !important;
+    text-decoration: none;
+}
+
+.menu > a {
+    color: rgb(76, 68, 68) ;
+    text-decoration:none;
+}
+
