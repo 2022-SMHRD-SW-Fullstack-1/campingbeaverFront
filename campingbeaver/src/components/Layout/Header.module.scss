@@ -6,6 +6,7 @@
     width: 100%;
     height: 80px;
     background-color: none;
+    z-index : 2;
 }
 
 .contents{
@@ -31,6 +32,19 @@
 
 .layout{
     padding-top : 80px;
+}
+
+.navbar{
+    position : relative;
+    z-index : 2;
+}
+
+#basic-nav-dropdown{
+    display:none;
+}
+
+#basic-nav-dropdown:hover{
+    display: inline-block;
 }
     
 
