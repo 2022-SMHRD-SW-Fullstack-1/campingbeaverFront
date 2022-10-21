@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import styles from './Layout.module.scss'
-import MyPage from './MyPage'
+import MyPage from '../MyPage/MyPage'
 
 
 const Layout = (props) => {
@@ -10,9 +10,7 @@ const Layout = (props) => {
     <div className={styles.layout}>
         <Header/>
         <MyPage/>
-        <main className={styles.main}>
-            {props.children}
-        </main>
+        
 
         <Footer/>
     </div>
