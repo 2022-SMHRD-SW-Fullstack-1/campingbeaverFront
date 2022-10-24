@@ -1,8 +1,10 @@
 .top {
+    
     text-align: center;
     padding: 20px;
 }
-.mypage {   
+.mypage {  
+    margin-top: 100px;
     color:darkolivegreen;
 }
 
@@ -11,13 +13,7 @@
     flex-direction: row;
     padding: 30px;  
 }
-.menu {
-    display: flex;
-    flex-direction: column;
-    padding: 100px;
-    margin-right: 100px;
-    align-items: center;
-}
+
 .content {
     
     display: flex;
@@ -31,8 +27,4 @@ a:hover{
     text-decoration: none;
 }
 
-.menu > a {
-    color: rgb(76, 68, 68) ;
-    text-decoration:none;
-}
 

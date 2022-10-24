@@ -9,15 +9,14 @@ import Reservation from "./pages/Reservation/Reservation";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Layout/>} />
         <Route path="/Login" element={<Login/>}/>
         <Route path="/MyPage" element={<MyPage/>}/>
         <Route path="/Reservation" element={<Reservation/>}/>
       </Routes>
     </BrowserRouter>
-
-  );
+  )
 }
 
 export default App;

@@ -4,11 +4,16 @@ import React from 'react'
 import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
+import Header from '../../components/Layout/Header';
+import ReservList from './ReservCheck/ReservList';
+import WishList from './WishList';
+import ReservNotEmpty from './ReservCheck/ReservNotEmpty';
 
 
 const Content = () => {
   return (
     <div>
+      <Header/>
       <div className={styles.top}>
           <h1 className={styles.mypage}>
           My Page
@@ -16,6 +21,7 @@ const Content = () => {
           <p>마이페이지</p>
       </div>
 
+          <hr></hr>
       <div className={styles.top}>
           <h4>
             admin님 반가워요!
@@ -23,17 +29,12 @@ const Content = () => {
           <p>admin@gmail.com</p>
       </div>
 
-          <hr></hr>
-      {/* <div className={styles.mid}>
-        <div className={styles.menu}>  
-          <a href='#'>예약/취소 정보</a>
-          <a href='#'>관심상품</a>
-          <a href='#'>회원 정보 수정</a>
-        </div>
+          
+    
+      <div className={styles.mid}>
+      <div><SideNav/></div>
        
-      </div> */}
-      <SideNav/>
-      
+      </div> 
     </div>
   )
 }
