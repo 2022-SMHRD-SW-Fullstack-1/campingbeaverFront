@@ -7,7 +7,7 @@ import styles from './ReservList.module.scss'
 const ReservList = () => {
   return(
     <div>
-       <div className={styles.top}>
+       <div>
           <h1 className={styles.contact}>
           My Reservation
           </h1>
@@ -15,9 +15,9 @@ const ReservList = () => {
         </div>
 
       <div>
-        <div>
+        
            <ReservNotEmpty/>
-        </div>
+        
       </div>
     
     </div>

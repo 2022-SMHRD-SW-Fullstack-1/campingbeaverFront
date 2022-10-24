@@ -1,9 +1,13 @@
 .SideNav {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 100px;
 }
 
-.Nav.link {
-    text-decoration: none;
-}
+// .content {
+//     display: flex;
+//     text-align: center;
+// }
+

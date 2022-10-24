@@ -1,30 +1,20 @@
 .top {
-    
     text-align: center;
     padding: 20px;
 }
-.mypage {  
+.MyPage {  
     margin-top: 100px;
     color:darkolivegreen;
 }
 
-.mid {
-    display: flex;
-    flex-direction: row;
-    padding: 30px;  
-}
-
-.content {
+.MyInfo {
     
     display: flex;
     flex-direction: column;
-    padding:100px;
-    align-items: center;
-    margin: 0 0 150px 300px;
+    padding: 30px;
+    
 }
-a:hover{
-    color: black !important;
-    text-decoration: none;
-}
+
+
 
 

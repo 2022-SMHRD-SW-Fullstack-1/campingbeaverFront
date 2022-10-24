@@ -16,7 +16,7 @@ const TABLE_HEADER = [
 const ReservNotEmpty = () => {
   return (
       <table>
-        <thead>
+        
           <tr>
             <th>
               {TABLE_HEADER.map(row => (
@@ -24,8 +24,8 @@ const ReservNotEmpty = () => {
               ))}
             </th>
           </tr>
-        </thead>
-        <tbody>
+        
+        
           <tr>
             <td>20221024</td>
             <td>20221024</td>
@@ -34,7 +34,7 @@ const ReservNotEmpty = () => {
             <td><button>조회</button></td>
             <td><button>취소</button></td>
           </tr>
-        </tbody>
+        
         {/* <tbody>
         {orderList.map((item, i) => {
           return <OrderItem key={i} item={item} total={total} />;
