@@ -23,11 +23,14 @@ function LoginPage() {
             <div><input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
             <div><input name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
             <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">로그인</button></div>
-            <div>
+            <br></br>
+            <div class='kakaobtn'>
                 <button name="kakaoLogin" class="kakaoLogin" >
                 <img className="kakaobtn" src="kakao_login_medium_narrow.png"/>
                 </button>
             </div>
+            <br></br>
+            <div><a href="/SignUp">회원가입</a></div>
         </form>
       </div>
     );

@@ -19,3 +19,7 @@
     height: 48px;
     margin-top: 10px;
 }
+.kakaobtn {
+    display : flex; 
+    justify-content : center
+}
