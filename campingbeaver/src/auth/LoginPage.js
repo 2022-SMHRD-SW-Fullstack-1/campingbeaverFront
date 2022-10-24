@@ -30,7 +30,7 @@ function LoginPage() {
                 </button>
             </div>
             <br></br>
-            <div><a href="/SignUp">회원가입</a></div>
+            <div><a href="/SignupPage">회원가입</a></div>
         </form>
       </div>
     );

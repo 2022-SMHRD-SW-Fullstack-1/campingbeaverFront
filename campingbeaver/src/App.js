@@ -2,8 +2,8 @@ import './App.css';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Cal from './components/Cal';
-import LoginPage from './auth/LoginPage';
-import SignUp from './auth/SignUp';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <div>
         <Header/>
         <Routes>
-        <Route path="LoginPage" element={<LoginPage />} />
-        <Route path="SignUp" element={<SignUp />} />
+        <Route path="Login" element={<Login/>} />
+        <Route path="Signup" element={<Signup/>} />
         </Routes>
           <Cal/>
         

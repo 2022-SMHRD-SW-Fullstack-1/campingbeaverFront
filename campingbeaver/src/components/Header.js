@@ -20,7 +20,7 @@ const Header = () => {
         Camping beaver
       </Link>
 
-      <Link to='/LoginPage'>
+      <Link to='/Login'>
       <button><KakaoLogin/></button>
       </Link>
     </h1>
