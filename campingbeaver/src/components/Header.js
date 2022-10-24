@@ -1,5 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {BrowserRouter, Route} from 'react'
+import { Link, Routes } from 'react-router-dom'
+import KakaoLogin from '../auth/KakaoLogin'
+import LoginPage from '../auth/LoginPage'
+import { KAKAO_AUTH_URL } from '../auth/OAuth'
+
+
 
 const Header = () => {
 
@@ -9,13 +14,17 @@ const Header = () => {
   }
 
   return (
+    
     <h1 align="center">
       <Link to='/' style={linkStyle}>
         Camping beaver
       </Link>
 
-      <Link to='join'><button>회원가입</button></Link>
+      <Link to='/LoginPage'>
+      <button><KakaoLogin/></button>
+      </Link>
     </h1>
+    
   )
 }
 
