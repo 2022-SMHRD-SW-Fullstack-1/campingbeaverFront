@@ -4,9 +4,13 @@ import './App.css';
 import Layout from './components/Layout/Layout'
 import Login from './pages/Login/Login'
 import MyPage from "./pages/MyPage/MyPage";
-import Reservation from "./pages/Reservation/Reservation";
+import Reservation from "./pages/Reservation/Reservation"; 
+import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
+import axios from 'axios';
+
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes> 
@@ -14,6 +18,7 @@ function App() {
         <Route path="/Login" element={<Login/>}/>
         <Route path="/MyPage" element={<MyPage/>}/>
         <Route path="/Reservation" element={<Reservation/>}/>
+        <Route path="/ReviewForm" element={<ReviewForm/>}/>
       </Routes>
     </BrowserRouter>
   )

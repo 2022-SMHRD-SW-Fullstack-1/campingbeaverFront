@@ -45,22 +45,3 @@ const ReservNotEmpty = ({reservList}) => {
 }
 
 export default ReservNotEmpty
-{/* <tbody>
-        {orderList.map((item, i) => {
-          return <OrderItem key={i} item={item} total={total} />;
-        })}
-      </tbody> */}
-
-      // {reservList.map((reserv) =>(
-      //   <tr key={reserv.id}>
-      //     <td>{reserv.reservNum}</td>
-      //     <td>{reserv.reservDate}</td>
-      //     <td>{reserv.reservName}</td>
-      //     <td>{reserv.reservPrice}</td>
-      //     <td><button>{reserv.review}</button></td>
-      //     <td><button>{reserv.delivery}</button></td>
-      //     <td><button>{reserv.cancel}</button></td>
-      //   </tr>
-      // ))}
-
-      

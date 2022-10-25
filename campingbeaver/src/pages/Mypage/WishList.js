@@ -33,8 +33,7 @@ const WishList = () => {
                     <div>피크닉 패키지</div>
                   </Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    59,000
                   </Card.Text>
                   <div className={styles.buttonContainer}>
 

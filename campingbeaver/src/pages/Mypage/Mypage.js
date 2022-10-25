@@ -6,26 +6,25 @@ import Header from '../../components/Layout/Header';
 
 const MyPage = () => {
 
-
   return (
     <div className={styles.top}>
       <Header/>
       
       <div>
           <h1 className={styles.MyPage}>
-          My Page
+          admin님 반가워요!
           </h1>
-          <p>마이페이지</p>
+          <p>admin@gmail.com</p>
       </div>
-
+      <hr/>
           
-      <div className={styles.MyInfo}>
+      {/* <div className={styles.MyInfo}>
           <h5>
             admin님 반가워요!
           </h5>
           <p>admin@gmail.com</p>
-      </div>
-          <hr></hr>
+      </div> */}
+          
       
       
       <SideNav/>
