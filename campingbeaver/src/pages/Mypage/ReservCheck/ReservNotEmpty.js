@@ -1,4 +1,6 @@
 import React from 'react'
+import ReservItem from './ReservItem';
+import styles from './ReservList.module.scss'
 
 const TABLE_HEADER = [
   '예약번호',
@@ -13,35 +15,52 @@ const TABLE_HEADER = [
 //   const price = orderList.map(item => item.price).reduce((a, b) => a + b, 0);
 //   const shipping = price >= 50000 ? 0 : 3000;
 //   const total = price + shipping;
-const ReservNotEmpty = () => {
+const ReservNotEmpty = ({reservList}) => {
+
   return (
-      <table>
-        
-          <tr>
-            <th>
+      <div className={styles.ListContainer}>
+        <table>
+          <thead>
+            <tr>
               {TABLE_HEADER.map(row => (
                 <th key={row}>{row}</th>
               ))}
-            </th>
-          </tr>
-        
-        
-          <tr>
-            <td>20221024</td>
-            <td>20221024</td>
-            <td>피크닉 패키지</td>
-            <td><button>작성</button></td>
-            <td><button>조회</button></td>
-            <td><button>취소</button></td>
-          </tr>
-        
-        {/* <tbody>
-        {orderList.map((item, i) => {
-          return <OrderItem key={i} item={item} total={total} />;
-        })}
-      </tbody> */}
+            </tr>
+          </thead>
+          
+          <tbody>
+            {reservList.reserv.map((item, i)=> {
+              return <ReservItem key={i} item={item} />;
+            })}
+            
+          </tbody>
       </table>
+      </div>
+      
+        
+        
+        
+      
   )
 }
 
 export default ReservNotEmpty
+{/* <tbody>
+        {orderList.map((item, i) => {
+          return <OrderItem key={i} item={item} total={total} />;
+        })}
+      </tbody> */}
+
+      // {reservList.map((reserv) =>(
+      //   <tr key={reserv.id}>
+      //     <td>{reserv.reservNum}</td>
+      //     <td>{reserv.reservDate}</td>
+      //     <td>{reserv.reservName}</td>
+      //     <td>{reserv.reservPrice}</td>
+      //     <td><button>{reserv.review}</button></td>
+      //     <td><button>{reserv.delivery}</button></td>
+      //     <td><button>{reserv.cancel}</button></td>
+      //   </tr>
+      // ))}
+
+      

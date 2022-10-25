@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import img from '../../components/img/tentcamping.jpg'
-import styles from './WishList.module.scss'
+import styles from './MyPage.module.scss'
 const WishList = () => {
   return (
       <div>
