@@ -36,7 +36,20 @@ li + li{
 }
 }
 
+.container {
+    text-align: left;
+}
 
+.wish  {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+    
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+}
 // #top {
 //     width: 800px;
 //     margin: auto;

@@ -5,6 +5,8 @@ import SideNav from './SideNav';
 import Header from '../../components/Layout/Header';
 
 const MyPage = () => {
+
+
   return (
     <div className={styles.top}>
       <Header/>

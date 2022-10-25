@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './MyPage.module.scss'
-import ConfirmInfo from './ConfirmInfo'
+
 const EditMyInfo = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const EditMyInfo = () => {
         </div>
 
         <div>
-          <ConfirmInfo/>
+          
         </div>
     </div>
   )

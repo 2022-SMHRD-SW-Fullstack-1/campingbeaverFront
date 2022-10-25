@@ -1,8 +1,10 @@
 {
     "login" : [
     {
-        "id" : "admin",
-        "pw" : "1234"
+        "id" : "admin@gmail.com",
+        "pw" : "1234",
+        "name" : "admin"
+
     }
 ]
 }
