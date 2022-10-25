@@ -11,7 +11,8 @@ const WishList = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
+  
 
   return (
       <div>
@@ -39,27 +40,26 @@ const WishList = () => {
 
                   <div>
                   <button className={styles.wish} variant="primary" onClick={handleShow}>
-                  <img src={Fheart} width='40px'/></button>
-          
-                    <Modal
-                      show={show}
-                      onHide={handleClose}
-                      backdrop="static"
-                      keyboard={false}
-                    >
-                      <Modal.Header closeButton>
-                        <Modal.Title>관심 상품 삭제</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        정말로 관심 상품 목록에서 지울까요?
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          아니오
-                        </Button>
-                        <Button variant="primary">네</Button>
-                      </Modal.Footer>
-                    </Modal>
+                  <img src={Fheart} width='40px' /></button>
+                  <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title>관심 상품 삭제</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      정말로 관심 상품 목록에서 지울까요?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        아니오
+                      </Button>
+                      <Button variant="primary">네</Button>
+                    </Modal.Footer>
+                  </Modal>
                   </div>
 
                   <div><Button variant="primary">예약하기</Button></div>

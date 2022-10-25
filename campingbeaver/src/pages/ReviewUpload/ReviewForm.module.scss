@@ -1,8 +1,4 @@
 @import '../../styles/variables.scss';
-.postForm {
-    
-}
-
 .contact {
     width: fit-content;
     margin: auto;
@@ -15,10 +11,14 @@
 }
 
 .postForm {
-//   padding: 10rem 18.75rem 1.6rem 18.75rem;
-    margin-top: 100px;
-    text-align: center;
-    padding: 20px;
+    padding: 10rem 18.75rem 1.6rem 18.75rem;
+
+    .title{
+      
+      text-align: center;
+      padding: 20px;
+    }
+    
   .slideRight {
     display: flex;
     justify-content: center;
@@ -44,6 +44,7 @@
     table {
       width: 100%;
       margin: 50px 0;
+      
 
       tr {
         width: 100%;
@@ -66,9 +67,7 @@
               outline: none;
             }
           }
-          .reviewOption {
-            width: 10%;
-          }
+          
         }
         .textArea {
           textarea {
@@ -103,7 +102,7 @@
     }
 
     .createBtn {
-      background-color: black;
+      background-color:black;
       color: white;
 
       &:hover {
@@ -111,7 +110,7 @@
         color: black;
       }
     }
-    .cancleBtn {
+    .cancelBtn {
       background-color: lightgray;
 
       &:hover {

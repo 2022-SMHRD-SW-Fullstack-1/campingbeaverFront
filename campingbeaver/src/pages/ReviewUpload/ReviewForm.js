@@ -6,7 +6,7 @@ const Review = () => {
     <div className={styles.postForm}>
         <Header/>
 
-        <div>
+        <div className={styles.title}>
           <h1>Review</h1>
           <p>리뷰 작성</p>
         </div>
@@ -17,7 +17,6 @@ const Review = () => {
                 <th>제목</th>
                 <td>
                   <input type="text" name="title"></input>
-                  <select><option>예약번호??</option></select>
                 </td>
               </tr>
             </thead>
@@ -28,14 +27,22 @@ const Review = () => {
                 </td>
               </tr>
               <tr>
-                <th>비밀번호</th>
+                <th>사진첨부</th>
                 <td>
-                  <input type="password" name="password"></input>
+                  <input type="text"></input>
+                  <button>찾아보기</button>
                 </td>
               </tr>
               <tr>
                 <th>별점</th>
                 <td></td>
+              </tr>
+              
+              <tr>
+                <th>비밀번호</th>
+                <td>
+                  <input type="password" name="password"></input>
+                </td>
               </tr>
             </tbody>
           </table>
