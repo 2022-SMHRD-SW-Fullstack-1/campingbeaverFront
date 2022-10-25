@@ -14,7 +14,46 @@
     padding: 30px;
     
 }
+.contact {
+    width: fit-content;
+    margin: auto;
+}
 
+.contact1 {
+    width: fit-content;
+    margin: auto;
+    display: block;
+}
 
+ul{
+    display: flex;
+    list-style: none;
+    margin: 100px;
+    flex-wrap: wrap;
+    
+li + li{
+    margin-left: 100px;
+}
+}
 
+.container {
+    text-align: left;
+}
+
+.wish  {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+    
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+}
+// #top {
+//     width: 800px;
+//     margin: auto;
+//     padding: 20px;
+//     justify-content: center;
+// }
 

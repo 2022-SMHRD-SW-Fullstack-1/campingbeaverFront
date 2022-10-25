@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { TabContent } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import EditMyInfo from './EditMyInfo';
 import ReservList from './ReservCheck/ReservList';
-import ReservNotEmpty from './ReservCheck/ReservNotEmpty';
 import styles from './SideNav.module.scss'
 import WishList from './WishList';
 
@@ -17,7 +17,7 @@ const SideNav = () => {
     }else if(props.tab === 1){
       return <div><WishList/></div>
     }else if(props.tab === 2){
-      return <div> 회원정보수정 </div>
+      return <div><EditMyInfo/></div>
     }
   }
  

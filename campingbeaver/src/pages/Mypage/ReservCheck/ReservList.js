@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReservEmpty from './ReservEmpty'
 import ReservNotEmpty from './ReservNotEmpty'
 import styles from './ReservList.module.scss'
 
 
 const ReservList = () => {
+  const [reservList, setReservList] = useState([])
+  const reservEmpty = reservList.length ===0;  
+  
+  useEffect(() => {
+    fetch('/data/reservList.json', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setReservList(data);
+      });
+  }, []);
+
   return(
+    
     <div>
        <div>
           <h1 className={styles.contact}>
@@ -14,10 +31,16 @@ const ReservList = () => {
           <p className={styles.contact1}>예약 / 취소 내역</p>
         </div>
 
+      
+
       <div>
-        
-           <ReservNotEmpty/>
-        
+        <div>
+          {reservEmpty ? (
+            <ReservEmpty />
+          ) : (
+            <ReservNotEmpty reservList={reservList} />
+          )}
+        </div>
       </div>
     
     </div>
