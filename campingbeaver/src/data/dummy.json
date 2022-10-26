@@ -1,0 +1,19 @@
+{
+    "product":[
+        {
+            "itemName" : "캠핑1",
+            "price" : "25000",
+            "itemThumbnail" : ""
+        },
+    {
+        "itemName" : "캠핑2",
+            "price" : "15000",
+            "itemThumbnail" : ""
+    },
+    {
+        "itemName" : "캠핑3",
+            "price" : "12000",
+            "itemThumbnail" : ""
+    }
+    ]
+}

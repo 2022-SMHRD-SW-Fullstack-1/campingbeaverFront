@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.scss';
+import {KAKAO_AUTH_URL} from './OAuth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -72,6 +73,14 @@ const Login = () => {
         >
           SIGN IN
         </button>
+
+        <a href={KAKAO_AUTH_URL}>
+        <img className="kakaobtn" 
+          src="kakao_login_medium_wide.png"
+        />
+        </a>
+        <br></br>
+        
         <div className="loginFooter">
           <div className="findUser">
             <div className="forgotId">Forgot Your Id?</div>

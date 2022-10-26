@@ -2,7 +2,7 @@ import React, {BrowserRouter, Route} from 'react'
 import { Link, Routes } from 'react-router-dom'
 import KakaoLogin from '../auth/KakaoLogin'
 import LoginPage from '../auth/LoginPage'
-import { KAKAO_AUTH_URL } from '../auth/OAuth'
+
 
 
 
@@ -21,7 +21,7 @@ const Header = () => {
       </Link>
 
       <Link to='/Login'>
-      <button><KakaoLogin/></button>
+      <KakaoLogin/>
       </Link>
     </h1>
     
