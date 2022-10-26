@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import EditMyInfo from './EditMyInfo';
 import ReservList from './ReservCheck/ReservList';
 import styles from './SideNav.module.scss'
-import WishList from './WishList';
+import WishList from './WishList/WishList';
 
 
 const SideNav = () => {

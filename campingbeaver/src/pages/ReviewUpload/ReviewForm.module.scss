@@ -11,12 +11,12 @@
 }
 
 .postForm {
-    padding: 10rem 18.75rem 1.6rem 18.75rem;
+    padding: 8rem 18.75rem 1.6rem 18.75rem;
 
     .title{
       
       text-align: center;
-      padding: 20px;
+      padding: 10px;
     }
     
   .slideRight {
@@ -119,4 +119,30 @@
       }
     }
   }
+}
+
+.myForm fieldset{
+  display: inline-block;
+  direction: rtl;
+  border:0;
+}
+.myForm fieldset legend{
+  text-align: right;
+}
+.myForm input[type=radio]{
+  display: none;
+}
+.myForm label{
+  font-size: 3em;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+}
+.myForm label:hover{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.myForm label:hover ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.myForm input[type=radio]:checked ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }

@@ -18,27 +18,28 @@
     width: fit-content;
     margin: auto;
 }
-
 .contact1 {
     width: fit-content;
     margin: auto;
     display: block;
 }
 
+
 ul{
     display: flex;
     list-style: none;
-    margin: 100px;
+    margin: 30px;
     flex-wrap: wrap;
+    text-align: left;
     
 li + li{
     margin-left: 100px;
 }
 }
 
-.container {
-    text-align: left;
-}
+// .container {
+//     text-align: left;
+// }
 
 .wish  {
     border: 0;
@@ -50,6 +51,10 @@ li + li{
     display: flex;
     justify-content: space-between;
 }
+.ListContainer {
+    display: flex;
+}
+
 // #top {
 //     width: 800px;
 //     margin: auto;
