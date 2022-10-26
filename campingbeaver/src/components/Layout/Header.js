@@ -26,7 +26,7 @@ const Header = () => {
         </div> 
         <Navbar bg="none" expand="lg" className={styles.navbar} >
       <Container>
-        <Navbar.Brand href="#home">HOME</Navbar.Brand>
+        {/* <Navbar.Brand href="#home">HOME</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

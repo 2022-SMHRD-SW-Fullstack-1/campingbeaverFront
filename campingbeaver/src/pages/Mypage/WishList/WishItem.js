@@ -18,8 +18,8 @@ const handleShow = () => setShow(true);
 
   <ul>
     <li>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={item.wishPic} />
+      <Card style={{ width: '18rem', height: '22rem' }}>
+        <Card.Img style={{objectFit:'cover', height:'18rem'}} variant="top" src={item.wishPic} />
         <Card.Body>
           <Card.Title>
             <div>{item.wishName}</div>

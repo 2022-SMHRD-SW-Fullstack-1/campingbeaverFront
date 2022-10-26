@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
+import Score from './Score'
 const Review = () => {
   const navigate = useNavigate();
     const navigateToMyPage = () => {
@@ -19,6 +20,7 @@ const Review = () => {
           <h1>Review</h1>
           <p>리뷰 작성</p>
         </div>
+        <Score/>
         <form className={styles.reviewFormContainer} method="POST">
           <table>
             <thead>
@@ -86,6 +88,8 @@ const Review = () => {
             </div>
           </section>
         </form>  
+
+        
     </div>
   )
 }
