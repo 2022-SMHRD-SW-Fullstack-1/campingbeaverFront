@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
@@ -12,7 +12,7 @@ const Review = () => {
     )
   }
   
-  const RatingBox = styled.div`
+  const Stars = styled.div`
   margin: 0 auto;
 
   & svg {
@@ -52,7 +52,9 @@ const Review = () => {
      setClicked(clickStates);
   }
   // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
-  let score = clicked.filter(Boolean).length;
+  const sendReview = () => {
+    let score = clicked.filter(Boolean).length;
+  }
 
   const getValue = e => {
     const { name, value } = e.target;
@@ -67,6 +69,11 @@ const Review = () => {
     setViewContent(viewContent.concat({...reviewContent}))
   }
 
+  useEffect(()=> {
+    sendReview();
+  }, [clicked]);
+
+  
 
   return (
     <div className={styles.postForm}>
@@ -102,13 +109,18 @@ const Review = () => {
               <tr>
                 <th>별점</th>
                 <td>
-                {starArray.map((el, idx) => (
+                <Stars>
+                {starArray.map((el, idx) => {
+                  return(
                   <GiRoundStar
                     key={idx}
                     onClick={() => handleStarClick(el)}
-                    className={clicked[el] && 'black'}
+                    className={clicked[el] && 'yellowStar'}
                     size="35"
-                  />))}
+                  />
+                  )
+                })}
+                </Stars>
                 </td>
               </tr>
               <tr>
