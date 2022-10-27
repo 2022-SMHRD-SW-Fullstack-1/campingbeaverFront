@@ -12,23 +12,7 @@ const Review = () => {
     )
   }
   
-  const Stars = styled.div`
-  margin: 0 auto;
-
-  & svg {
-    color: #C4C4C4;
-    cursor: pointer;
-  }
-  :hover svg {
-    color: black;
-  }
-  & svg:hover ~ svg {
-    color: #C4C4C4;
-  }
-  .black {
-    color: black;
-  }
-`
+  
 
   const [reviewContent, setReviewContent] = useState({
     title: '',
@@ -72,8 +56,6 @@ const Review = () => {
   useEffect(()=> {
     sendReview();
   }, [clicked]);
-
-  
 
   return (
     <div className={styles.postForm}>
@@ -165,3 +147,21 @@ const Review = () => {
 }
 
 export default Review
+
+const Stars = styled.div`
+  margin: 0 auto;
+
+  & svg {
+    color: #C4C4C4;
+    cursor: pointer;
+  }
+  :hover svg {
+    color: black;
+  }
+  & svg:hover ~ svg {
+    color: #C4C4C4;
+  }
+  .black {
+    color: black;
+  }
+`

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 import {KAKAO_AUTH_URL} from './OAuth';
 import Header from '../../components/Layout/Header';
+import NaverLogin from './NaverLogin';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -81,6 +83,8 @@ const Login = () => {
           src="kakao_login_medium_wide.png"
         />
         </a>
+        <NaverLogin/>
+        
         <br></br>
         
         <div className="loginFooter">
