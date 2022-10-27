@@ -6,7 +6,8 @@ import StoreModal from '../components/StoreModal';
 import PageList from './PageList.js';
 import Items from './Items';
 import './Store.scss';
-import product from '../data/dummy.json'
+import dummy from '../data/dummy.json';
+import Product from './Product'
 
 
 const Store = () => {
@@ -23,6 +24,18 @@ const Store = () => {
   const urlOffset = params.get('offset');
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
+  
+  const Products = () => {
+    console.log(dummy.product)
+    return (
+      <div>
+          {dummy.product.map((item,idx)=>(
+            <Product key={idx + item.itemName} item={item} idx={idx} />
+          ))}
+      </div>
+    )
+  }
+  
 
   useEffect(() => {
     fetch(`http://54.174.216.108:8000/products/list${location.search}`, {
@@ -187,6 +200,7 @@ const Store = () => {
             </div>
           </div>
           <div className="itemList">
+          
             {items.map(({ id, itemThumbnail, itemName, price }) => {
               return (
                 <Items
@@ -201,6 +215,7 @@ const Store = () => {
               );
             })}
           </div>
+
           <PageList
             pageLimit={pageLimit}
             totalCounts={totalCounts}
@@ -215,5 +230,7 @@ const Store = () => {
     </>
   );
 };
+
+
 
 export default Store;
