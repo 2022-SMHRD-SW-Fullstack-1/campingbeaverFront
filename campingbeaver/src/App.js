@@ -11,6 +11,9 @@ import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
 import Cartdetail from "../src/pages/Cart/Cartdetail"
 import Products from "../src/pages/Product/Products"
 import Detail from "../src/pages/Product/Detail"
+import SurveySecond from './components/Layout/SurveySecond'
+import SurveyThird from './components/Layout/SurveyThird'
+import Recommendation from './pages/Recommendation/Recommendation'
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
@@ -41,6 +44,9 @@ function App() {
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/Store" element={<Store/>} />
+        <Route path="/Recommendation" element={<Recommendation/>}/>
+        <Route path='/surveysecond' element={<SurveySecond/>}/>
+        <Route path='/surveythird' element={<SurveyThird/>}/>
 
       </Routes>
     </BrowserRouter>

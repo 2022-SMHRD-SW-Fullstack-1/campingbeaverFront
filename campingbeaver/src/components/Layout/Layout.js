@@ -1,27 +1,29 @@
 import React, { useContext } from 'react'
-
 import Footer from './Footer'
 import Header from './Header'
 import styles from './Layout.module.scss'
 import Content from './Content'
 import Survey from './Survey'
-import SurveySecond from './SurveySecond'
-import SurveyThird from './SurveyThird'
+
 import {Route, Routes, Link} from 'react-router-dom'
 import campsite from '../img/campsite.gif'
 import { Carousel } from "react-bootstrap";
 import campfire from '../img/campfire.gif'
+import tentcamping from '../img/tentcamping.jpg'
+
 
 const Layout = (props) => {
   return (
     <div>
         <Header/>
+        {/* <Nav/> */}
+        <div className={styles.layout}>
         <Carousel fade>
     <Carousel.Item>
       <img
         style={{}}
         className="d-block w-100"
-        src={campsite}
+        src={tentcamping}
         alt="First slide"
       />
     </Carousel.Item>
@@ -34,10 +36,9 @@ const Layout = (props) => {
       />
     </Carousel.Item>
   </Carousel>
+  </div>
         <Routes>
           <Route path='/' element={<Survey/>}/>
-          <Route path='/surveysecond' element={<SurveySecond/>}/>
-          <Route path='/surveythird' element={<SurveyThird/>}/>
         </Routes>
         <main className={styles.main}>
             {props.children}
