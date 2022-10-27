@@ -1,12 +1,10 @@
 import React,{useState} from 'react'
 import styles from './Header.module.scss'
 import logo from '../img/logo.png'
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
 
 import { Link } from 'react-router-dom'
 
@@ -17,7 +15,6 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.contents}>
         <div>
-        
         <img src={logo} width='200px'></img>
         
         <span><Link to='/'> HOME으로 이동 </Link></span>
@@ -34,7 +31,7 @@ const Header = () => {
           <Nav className="me-auto">
             
             <Nav.Link href="/Login">LOGIN</Nav.Link>
-            <Nav.Link href="#link">CART</Nav.Link>
+            <Nav.Link href="/cart">CART</Nav.Link>
             <NavDropdown title="MYPAGE" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
