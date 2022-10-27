@@ -7,5 +7,12 @@
 
 * {
   font-family: 'twayair';
-  background-color: #dfe6e9;
+  background-color: none;
 }
+
+
+a:hover{
+  color: black !important;
+  text-decoration: none;
+}
+
