@@ -36,6 +36,9 @@ const FilterButton = () => {
     console.log(e.target.className)
 
 }
+  
+
+
 
   return (
 
@@ -89,17 +92,20 @@ const FilterButton = () => {
       </Alert>
     ))}
 
+
     {[
       'secondary',
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
         <p align='center'>선택한 태그</p>
+        
+        
         inputText.forEach(element)
         <Button variant="outline-dark">{inputText}</Button>
         
       </Alert>
-    ))}
+      ))}
 
       <div align='center'>
         <Button variant="outline-danger">초기화</Button>{' '}
