@@ -6,7 +6,7 @@
 }
 
 * {
-  font-family: 'twayair';
+  font-family: 'twayair' !important;
   background-color: none;
 }
 

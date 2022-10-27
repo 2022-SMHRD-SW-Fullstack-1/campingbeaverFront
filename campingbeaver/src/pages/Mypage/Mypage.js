@@ -29,10 +29,9 @@ const MyPage = () => {
       
       <SideNav/>
       
-      
-
     </div>
   )
 }
 
 export default MyPage
+

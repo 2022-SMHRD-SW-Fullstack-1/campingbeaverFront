@@ -7,6 +7,7 @@ import styles from '../Layout/Layout.module.scss'
 
 const Content = () => {
   return (
+
     <Carousel fade>
     <Carousel.Item>
       <img
@@ -25,6 +26,7 @@ const Content = () => {
       />
     </Carousel.Item>
   </Carousel>
+
   )
 }
 

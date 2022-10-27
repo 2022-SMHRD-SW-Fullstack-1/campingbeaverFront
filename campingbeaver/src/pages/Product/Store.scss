@@ -1,0 +1,293 @@
+@import '../../styles/variables.scss';
+
+.store {
+  @include flexCenter;
+  position: relative;
+  min-width: 950px;
+  padding: 0 80px;
+  letter-spacing: 1px;
+  z-index: 1;
+
+  h2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    animation: fadeIn 1s;
+  }
+
+  button {
+    background-color: transparent;
+    color: #999;
+    margin: 4px;
+    border: 0;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  section {
+    width: 100vw;
+    margin-top: 150px;
+  }
+
+  button,
+  ul,
+  li {
+    display: inline;
+  }
+
+  .category {
+    @include flexCenter;
+    margin-bottom: 50px;
+
+    button {
+      border: 1px solid #e6e6e6;
+      border-radius: 20px;
+      padding: 10px 30px;
+      color: #333;
+      background-color: #fcfcfc;
+
+      &:hover {
+        background-color: #e6e6e6;
+      }
+    }
+  }
+
+  .itemCategory {
+    @include flexSpaceBetween;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 15px;
+
+    b {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    span {
+      color: #999;
+      margin-left: 5px;
+      font-size: 13px;
+    }
+
+    button {
+      text-align: right;
+      padding: 0;
+      margin: 0 0 0 20px;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+
+    .itemAmount {
+      display: inline;
+    }
+
+    .itemSort {
+      @include flexCenter;
+
+      .icon {
+        @include flexCenter;
+      }
+    }
+  }
+
+  .itemList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .smallItems {
+    @include flexColumn;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 25%;
+
+    span {
+      @include flexCenter;
+      margin: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .description {
+      margin: 10px 15px;
+
+      hr {
+        margin: 20px 0;
+        height: 1px;
+        border: 0;
+        background: linear-gradient(to right,
+            white,
+            #eee,
+            #eee,
+            #eee,
+            #eee,
+            white);
+      }
+
+      .name {
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .price {
+        font-size: 12px;
+        font-weight: 800;
+      }
+    }
+  }
+
+  .bigItems {
+    @include flexColumn;
+    text-align: center;
+    margin-bottom: 50px;
+    width: 50%;
+
+    span {
+      @include flexCenter;
+      margin: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .description {
+      margin: 10px 15px;
+
+      hr {
+        margin: 20px 0;
+        height: 1px;
+        border: 0;
+        background: linear-gradient(to right,
+            white,
+            #eee,
+            #eee,
+            #eee,
+            #eee,
+            white);
+      }
+
+      .name {
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .price {
+        font-size: 12px;
+        font-weight: 800;
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .itemImg {
+    @include flexColumn;
+    position: relative;
+    animation: fadeIn 1s;
+    height: 25rem;
+
+    .itemTag {
+      @include flexCenter;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 4px 8px 2px 8px;
+      letter-spacing: 0;
+      font-size: 12px;
+    }
+
+    .itemButton {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+        transition: 0.8s;
+
+        button {
+          background-color: white;
+          color: #999;
+          margin: 2px;
+          height: 30px;
+        }
+
+        .shopBtn {
+          @include flexCenter;
+          width: 90px;
+        }
+
+        .cartBtn {
+          @include flexCenter;
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          width: 30px;
+        }
+      }
+    }
+  }
+
+  .pageList {
+    text-align: center;
+    margin: 50px 0;
+
+    button {
+      background: transparent;
+      border: 1px solid #eee;
+      color: black;
+      margin: 0;
+      padding: 8px 20px;
+      font-size: 8px;
+
+      .leftBtn {
+        color: #ddd;
+        margin-right: 5px;
+      }
+
+      .rightBtn {
+        color: #ddd;
+        margin-left: 5px;
+      }
+
+      &:hover {
+        background-color: #eee;
+      }
+    }
+
+    li {
+      button {
+        color: #999;
+        padding: 8px 15px;
+        font-weight: 600;
+      }
+
+      .select {
+        background-color: #eee;
+        color: black;
+      }
+    }
+  }
+}
