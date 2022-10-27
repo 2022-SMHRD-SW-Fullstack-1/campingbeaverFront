@@ -1,0 +1,15 @@
+.layout{
+    padding-top : 80px;
+}
+
+.main{
+    min-height: calc(100vh - 180px);
+    max-width: 100%;
+    height: auto;
+}
+
+.box {
+    width: 30%;
+    height: 0;
+    padding-bottom: 30%;
+  }

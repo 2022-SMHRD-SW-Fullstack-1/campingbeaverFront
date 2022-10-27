@@ -1,0 +1,31 @@
+{ "reserv" : [
+    {
+        "reservNum" : 2022102401,
+        "reservDate" : 20221024,
+        "reservName" : "피크닉 패키지",
+        "reservPrice" : 59000,
+        "review" : "작성",
+        "delivery" : "조회",
+        "cancel" : "취소"
+    },
+    {
+        "reservNum" : 2022102402,
+        "reservDate" : 20221024,
+        "reservName" : "풀 패키지",
+        "reservPrice" : 159000,
+        "review" : "작성",
+        "delivery" : "조회",
+        "cancel" : "취소"
+    },
+    {
+        "reservNum" : 2022102501,
+        "reservDate" : 20221025,
+        "reservName" : "피크닉 패키지",
+        "reservPrice" : 59000,
+        "review" : "작성",
+        "delivery" : "조회",
+        "cancel" : "취소"
+    }
+]
+
+}
