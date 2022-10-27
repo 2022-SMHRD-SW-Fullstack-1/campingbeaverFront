@@ -6,6 +6,7 @@ const CartListDetail = () => {
   return (
     <>
     <div>
+      
       <CartItems/>
     </div>
       <div>
