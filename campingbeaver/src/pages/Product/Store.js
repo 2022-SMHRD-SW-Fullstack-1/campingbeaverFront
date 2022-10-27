@@ -2,11 +2,11 @@ import { CgViewSplit } from 'react-icons/cg';
 import { MdCalendarViewMonth } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import StoreModal from '../components/StoreModal';
+import StoreModal from '../../components/StoreModal';
 import PageList from './PageList.js';
 import Items from './Items';
 import './Store.scss';
-import dummy from '../data/dummy.json';
+import dummy from '../../data/dummy.json';
 import Product from './Product'
 
 
