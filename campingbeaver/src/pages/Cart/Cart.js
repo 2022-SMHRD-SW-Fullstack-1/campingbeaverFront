@@ -3,15 +3,16 @@ import axios from "axios";
 import CartList from "./CartList";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import Cartdetail from './Cartdetail';
 
 function Cart() {
-    // if (localStorage.getItem("token") === null) {
-    //   alert("로그인 후 이용해 보세요! 🛒");
-    //   document.location.href = "/login";
-    // }
+  // if (localStorage.getItem("token") === null) {
+  //   alert("로그인 후 이용해 보세요! 🛒");
+  //   document.location.href = "/login";
+  // }
   return (
     <>
-    <DimmedBackground />
+      <DimmedBackground />
       <ContentDiv>
         <CartPage>
           <CartPageHeader>
@@ -37,9 +38,9 @@ function Cart() {
           </CartPageHeader>
 
           <CartList />
-
         </CartPage>
       </ContentDiv>
+      <Cartdetail />
     </>
   )
 }

@@ -5,6 +5,8 @@ import moment from 'moment'
 import './Reservdetail.scss'
 import 'moment/locale/ko'
 import Payment from '../payment/Payment'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const Cal = () => {
 
@@ -40,27 +42,33 @@ const Cal = () => {
   }
 
   const selectList = [
-    {id:0, value:'캠핑장 수령/ 반납 (+10,000원)', text:'캠핑장 수령/ 반납 (+10,000원)'},
-    {id:1, value:'텐트', text:'텐트'},
-    {id:2, value:'타프', text:'타프'},
-    {id:3, value:'체어', text:'체어'},
-    {id:4, value:'테이블', text:'테이블'}
+    { id: 0, value: '캠핑장 수령/ 반납 (+10,000원)', text: '캠핑장 수령/ 반납 (+10,000원)' },
+    { id: 1, value: '텐트', text: '텐트' },
+    { id: 2, value: '타프', text: '타프' },
+    { id: 3, value: '체어', text: '체어' },
+    { id: 4, value: '테이블', text: '테이블' }
   ];
   const [options, setOptions] = useState('');
-  const [selected,setSelectList] = useState([]);
+  const [selected, setSelectList] = useState([]);
 
   const selectOption = (e) => {
-    setSelectList(selected =>[...selected, e.target.value]);
-    setOptions(e.target.value);
+    setSelectList(selected => [...selected, e.target.value]);
+      setOptions(e.target.value);
   }
 
-  const dataAlert = () => {
-    alert(value)
-    console.log(value)
-    console.log(price)
-    console.log(date)
-    console.log(cnt)
-    console.log(wishprod)
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+
+  }
+
+  const dataCon = () => {
+    console.log(value);
+    console.log(date);
+    console.log(price);
+    console.log(selected);
   }
   return (
     <div>
@@ -85,7 +93,7 @@ const Cal = () => {
               </>
             );
           })}
-          
+
           <div className="date-box">
             <span>배송예정일</span><br />
             <span className="text-gray-500 mt-4">
@@ -109,23 +117,48 @@ const Cal = () => {
       </div>
       <div>
         <h2>추가 선택</h2>
-        
+
         <select onChange={selectOption} value={options} >
-            {selectList.map((item)=>(
-              <option value={item.value} key={item.id}>{item.text}</option>
-            ))}
-          </select>
-        {selected.map(sel =>(<div>{sel}<button>-</button>
-        <span>1</span>
-        <button>+</button>
-        <button>X</button></div>))}
-        
-        <h3 align="center">합계액<br/>{price}</h3>
-        
-        <button onClick={dataAlert}>장바구니 담기</button>
-        <Payment/>
+          {selectList.map((item) => (
+            <option value={item.value} key={item.id}>{item.text}</option>
+          ))}
+        </select>
+        {selected.map(sel => (<div>{sel}<button>-</button>
+          <span>1</span>
+          <button>+</button>
+          <button>X</button></div>))}
+
+        <h3 align="center">합계액<br />{price}</h3>
+
+        <button onClick={dataCon}>담기</button>
+
+        <Button variant="primary" onClick={handleShow}>
+        장바구니 담기
+      </Button>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>장바구니</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          장바구니에 추가되었습니다.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => window.location.replace("/cart")}>장바구니로 이동</Button>
+        </Modal.Footer>
+      </Modal>
+
+        <Payment />
       </div>
     </div>
   )
 }
+
 export default Cal
