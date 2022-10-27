@@ -10,14 +10,14 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 
 function App() {
-  // const [hello, setHello] = useState('')
-  // useEffect(() => {
+  const [hello, setHello] = useState('')
+  useEffect(() => {
 
-  //   fetch('/beaver/hello')
-  //   .then(response => response.text())
-  //   .then(hello => {
-  //     setHello(hello)})
-  // }, []);
+    fetch('/beaver/hello')
+    .then(response => response.text())
+    .then(hello => {
+      setHello(hello)})
+  }, []);
 
 
   return (
