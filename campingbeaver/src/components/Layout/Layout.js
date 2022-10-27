@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
 import Footer from './Footer'
 import Header from './Header'
 import styles from './Layout.module.scss'
@@ -6,7 +7,7 @@ import Content from './Content'
 import Survey from './Survey'
 import SurveySecond from './SurveySecond'
 import SurveyThird from './SurveyThird'
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, Link} from 'react-router-dom'
 import campsite from '../img/campsite.gif'
 import { Carousel } from "react-bootstrap";
 import campfire from '../img/campfire.gif'

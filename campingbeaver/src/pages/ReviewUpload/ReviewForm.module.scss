@@ -1,0 +1,148 @@
+@import '../../styles/variables.scss';
+.contact {
+    width: fit-content;
+    margin: auto;
+}
+
+.contact1 {
+    width: fit-content;
+    margin: auto;
+    display: block;
+}
+
+.postForm {
+    padding: 8rem 18.75rem 1.6rem 18.75rem;
+
+    .title{
+      
+      text-align: center;
+      padding: 10px;
+    }
+    
+  .slideRight {
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      font-size: 25px;
+      animation: slide-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+  .reviewFormContainer {
+    table {
+      width: 100%;
+      margin: 50px 0;
+      
+
+      tr {
+        width: 100%;
+        border: 1px solid lightgray;
+
+        th {
+          background-color: #fafafa;
+          width: 10%;
+        }
+
+        td {
+          border: 1px solid lightgray;
+          input {
+            width: 50%;
+            border: 1px solid lightgray;
+            margin: 5px;
+            padding: 5px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+          
+        }
+        .textArea {
+          textarea {
+            width: 100%;
+            height: 60vh;
+            font-size: 25px;
+            border: none;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .btns {
+    @include flexSpaceBetween;
+
+    button {
+      background-color: transparent;
+      border: 1px solid lightgray;
+      padding: 8px 50px;
+      transition: all 0.3s ease-out;
+    }
+
+    .listBtn {
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+
+    .createBtn {
+      background-color:black;
+      color: white;
+
+      &:hover {
+        background-color: lightgray;
+        color: black;
+      }
+    }
+    .cancelBtn {
+      background-color: lightgray;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
+
+.myForm fieldset{
+  display: inline-block;
+  direction: rtl;
+  border:0;
+}
+.myForm fieldset legend{
+  text-align: right;
+}
+.myForm input[type=radio]{
+  display: none;
+}
+.myForm label{
+  font-size: 3em;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+}
+.myForm label:hover{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.myForm label:hover ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.myForm input[type=radio]:checked ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}

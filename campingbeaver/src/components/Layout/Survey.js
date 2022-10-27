@@ -2,7 +2,8 @@ import React from 'react'
 import Alert from 'react-bootstrap/Alert';
 import styles from './Survey.module.scss';
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom'
+import { useState } from 'react';
+import {Route, Routes, Link} from 'react-router-dom'
 
 const Survey = () => {
 
