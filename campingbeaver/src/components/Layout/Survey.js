@@ -8,7 +8,7 @@ import {Route, Routes, Link} from 'react-router-dom'
 const Survey = () => {
 
   return (
-    <div style={{position: 'absolute', zIndex:3 ,margin: '3em', width: '50vw', height: '40vh', top:'30%', left:'20%'}}>
+    <div style={{position: 'absolute', zIndex:3 ,margin: '3em', width: '50vw', height: '40vh', top:'30%', left:'20%', textAlign: 'center'}}>
     <Alert variant="success" className={styles.overlay}>
     <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
     <p>
