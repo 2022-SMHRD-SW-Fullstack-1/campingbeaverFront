@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Layout from './components/Layout/Layout'
@@ -9,17 +10,29 @@ import Products from "./pages/Product/Products"
 import Detail from "./pages/Product/Detail";
 
 function App() {
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    fetch('/beaver/main')
+      .then(response => response.text())
+      .then(message => {
+        setMessage(message);
+      });
+  }, [])
+
   return (
     <BrowserRouter>
-        <Layout />
+      <Layout />
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/Reservation" element={<Reservation />} />
-        <Route path="/cart" element={<Cartdetail/>}/>
-        <Route path='/products' element={<Products />}/>
-        <Route path='/detail:num' element={<Detail />}/>
+        <Route path="/cart" element={<Cartdetail />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/detail:num' element={<Detail />} />
       </Routes>
+      <div>
+        {message}
+      </div>
     </BrowserRouter>
   );
 }
