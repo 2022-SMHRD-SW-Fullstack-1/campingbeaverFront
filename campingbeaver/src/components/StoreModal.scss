@@ -1,0 +1,225 @@
+@import '../auth/variables.scss';
+
+.storeModal {
+  @include flexCenter;
+  position: absolute;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+
+  .modalBackground {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modalComponent {
+    display: flex;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    width: 60rem;
+    height: 45rem;
+    padding: 40px;
+    overflow: scroll;
+
+    button {
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    hr {
+      margin: 10px 0;
+      height: 1px;
+      border: 0;
+      background: #eee;
+    }
+
+    .closeBtn {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 0;
+      right: 0;
+      color: #ccc;
+    }
+
+    .imgSection {
+      display: flex;
+      align-items: flex-start;
+
+      img {
+        background-color: #eee;
+        width: 30rem;
+        height: 30rem;
+      }
+    }
+
+    .infoSection {
+      margin-left: 40px;
+      padding: 20px 0;
+      text-align: left;
+
+      table {
+        border-collapse: separate;
+        border-spacing: 0 1rem;
+        font-size: 12px;
+
+        th {
+          width: 6.5rem;
+        }
+
+        .description {
+          font-size: 12px;
+          font-weight: 300;
+          color: #666;
+          line-height: 20px;
+        }
+
+        .price {
+          font-weight: 800;
+        }
+
+        .snsBtn {
+          color: black;
+          cursor: pointer;
+
+          .facebookBtn {
+            color: #ccc;
+            margin-right: 15px;
+            height: 18px;
+            width: auto;
+          }
+
+          .twitterBtn {
+            color: #ccc;
+            height: 18px;
+            width: auto;
+          }
+        }
+      }
+
+      .amountTab {
+        @include flexSpaceBetween;
+        font-size: 13px;
+        padding: 10px 0;
+        align-items: center;
+
+        .itemName {
+          width: 50%;
+        }
+
+        span {
+          font-weight: 800;
+        }
+
+        .inputAmount {
+          display: flex;
+          align-items: center;
+        }
+
+        .amountInput {
+          @include flexCenter;
+          font-size: 11px;
+          width: 32px;
+          height: 26px;
+          border-radius: 3px 0 0 3px;
+          border: 1px solid #ccc;
+          margin-right: -1px;
+        }
+
+        .amountHandler {
+          display: inline-flex;
+          flex-direction: column;
+
+          .up {
+            border-radius: 0 3px 0 0;
+          }
+
+          .down {
+            border-radius: 0 0 3px 0;
+          }
+
+          button {
+            @include flexCenter;
+            background-color: white;
+            color: #666;
+            border: 1px solid #ccc;
+            height: 13px;
+            width: 20px;
+
+            .arrow {
+              width: 10px;
+              height: 10px;
+            }
+          }
+        }
+
+        .amountPrice {
+          text-align: right;
+          width: 20%;
+        }
+      }
+
+      .totalPrice {
+        font-size: 12px;
+        margin: 20px 0;
+
+        span {
+          font-size: 14px;
+          font-weight: 800;
+        }
+      }
+
+      .totalBuyBtn {
+        padding: 20px 0;
+
+        .buyBtn {
+          font-size: 11px;
+          width: 60%;
+          height: 45px;
+          margin-bottom: 8px;
+          color: white;
+          border: 0;
+          background-color: #333;
+          border: 1px solid #333;
+
+          &:hover {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            color: black;
+            transition: 0.5s;
+          }
+        }
+
+        .cartBtn {
+          font-size: 11px;
+          width: 39%;
+          height: 45px;
+          background-color: white;
+          border: 1px solid #ccc;
+          margin-left: 1%;
+
+          &:hover {
+            background-color: #eee;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+    .wishList {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+}
