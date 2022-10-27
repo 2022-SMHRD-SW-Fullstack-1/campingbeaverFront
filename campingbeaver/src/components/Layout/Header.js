@@ -1,4 +1,4 @@
-import React,{usestate} from 'react'
+import React,{useState} from 'react'
 import styles from './Header.module.scss'
 import logo from '../img/logo.png'
 
@@ -11,6 +11,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom'
 
 const Header = () => {
+  const [session, setSession] = useState(true);
+
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
@@ -30,6 +32,8 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            
+            <Nav.Link href="/Login">LOGIN</Nav.Link>
             <Nav.Link href="#link">CART</Nav.Link>
             <NavDropdown title="MYPAGE" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
