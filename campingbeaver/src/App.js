@@ -16,6 +16,8 @@ import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
 import NaverLogin from './pages/Login/NaverLogin';
 
+import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+
 
 
 
@@ -49,6 +51,7 @@ function App() {
         <Route path='/surveysecond' element={<SurveySecond/>}/>
         <Route path='/surveythird' element={<SurveyThird/>}/>
         <Route path='/Naver' component={NaverLogin} />
+        <Route path="/oauth/callback/kakao" component={<KakaoRedirectHandeler/>} />
       </Routes>
     </BrowserRouter>
   )
