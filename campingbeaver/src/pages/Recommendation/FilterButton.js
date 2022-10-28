@@ -21,22 +21,20 @@ const FilterButton = () => {
 
   const clickHandle = (e) => {
  
-    console.log(e.target.innerText);
-
     let overlap = true
 
     inputText.forEach(element =>{
       element == e.target.innerText && (overlap = false);
     })
+
     if(overlap){
       setInputText(inputText =>  [...inputText, e.target.innerText])
+    }else{
+      const without=inputText.filter((it)=> it !== e.target.innerText);
+      setInputText(without)
     }
-
-    console.log(inputText)
-    console.log(e.target.className)
-
-    
   }
+
   const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
 
 
