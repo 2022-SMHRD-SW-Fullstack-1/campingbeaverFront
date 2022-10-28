@@ -28,11 +28,13 @@ const Store = () => {
   const Products = () => {
     console.log(dummy.product)
     return (
+      <>
       <div>
           {dummy.product.map((item,idx)=>(
             <Product key={idx + item.itemName} item={item} idx={idx} />
-          ))}
+            ))}
       </div>
+      </>
     )
   }
   

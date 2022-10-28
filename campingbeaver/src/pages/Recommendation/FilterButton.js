@@ -21,20 +21,25 @@ const FilterButton = () => {
 
   const clickHandle = (e) => {
  
-    console.log(e.target.innerText);
-
     let overlap = true
 
     inputText.forEach(element =>{
       element == e.target.innerText && (overlap = false);
     })
+
     if(overlap){
       setInputText(inputText =>  [...inputText, e.target.innerText])
+    }else{
+      const without=inputText.filter((it)=> it !== e.target.innerText);
+      setInputText(without)
     }
+  }
 
-    console.log(inputText)
-    console.log(e.target.className)
+  const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
 
+
+const clearBtn = (e) => {
+  setInputText([]);
 }
   
 
@@ -99,16 +104,18 @@ const FilterButton = () => {
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
         <p align='center'>선택한 태그</p>
+
+       {inputTextList}
+
         
         
         inputText.forEach(element)
         <Button variant="outline-dark">{inputText}</Button>
-        
       </Alert>
       ))}
 
       <div align='center'>
-        <Button variant="outline-danger">초기화</Button>{' '}
+        <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
         <Button variant="outline-success">검색하기</Button>{' '}
       </div>
     </div>
