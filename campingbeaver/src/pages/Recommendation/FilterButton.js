@@ -16,29 +16,21 @@ const FilterButton = () => {
 
 
   const [inputText, setInputText] = useState([]);
-  let [btnActive, setBtnActive] = useState('passive');
-
-  const detailTagList = ['장작판매', '운동시설', '온수', '마트/편의점', '산책로', '물놀이장', '전기',' 와이파이']
-  
-  const themeTagList = ['반려견동반','익스트림','커플','아이들 놀기 좋은', '봄', '여름', '가을', '겨울', '문화유적', '축제']
 
   const clickHandle = (e) => {
  
-    console.log(e.target.innerText);
-
     let overlap = true
 
     inputText.forEach(element =>{
       element == e.target.innerText && (overlap = false);
     })
+
     if(overlap){
       setInputText(inputText =>  [...inputText, e.target.innerText])
+    }else{
+      const without=inputText.filter((it)=> it !== e.target.innerText);
+      setInputText(without)
     }
-
-    console.log(inputText)
-    console.log(e.target.className)
-
-    
   }
 
   const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
@@ -113,9 +105,6 @@ const clearBtn = (e) => {
         <p align='center'>선택한 태그</p>
 
        {inputTextList}
-
-        
-        
 
       </Alert>
       ))}

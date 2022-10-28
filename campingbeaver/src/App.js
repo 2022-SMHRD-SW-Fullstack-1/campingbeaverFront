@@ -16,6 +16,7 @@ import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
 import NaverLogin from './pages/Login/NaverLogin';
 import { useEffect, useState } from "react";
+import RecomDetail from './pages/Recommendation/RecomDetail';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/Login" element={<Login/>} />
         <Route path="/Store" element={<Store/>} />
         <Route path="/Recommendation" element={<Recommendation/>}/>
+        <Route path="/Recomdetail" element={<RecomDetail/>}/>
         <Route path='/surveysecond' element={<SurveySecond/>}/>
         <Route path='/surveythird' element={<SurveyThird/>}/>
         <Route path='/Naver' component={NaverLogin} />

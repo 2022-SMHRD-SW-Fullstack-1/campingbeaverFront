@@ -21,11 +21,11 @@ const Header = () => {
         </div> 
         <Navbar bg="none" expand="lg" className={styles.navbar} >
       <Container>
-        {/* <Navbar.Brand href="#home">HOME</Navbar.Brand> */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand href="#home">HOME</Navbar.Brand>
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#link">CART</Nav.Link>
+            <Nav.Link href="/cart">CART</Nav.Link>
             <NavDropdown title="MYPAGE" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
