@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-
+import naverImg from '../../components/img/naverlogin.png'
 const NaverLogin = () => {
 
     
@@ -15,7 +15,7 @@ const NaverLogin = () => {
             // 팝업창으로 로그인 진행할 것인지?
             isPopup: false,
             // 버튼타입 
-            loginButton: { color: 'green', type: 3, height: 58 },
+            loginButton: { color: 'green', type: 3, height: 40 },
 			callbackHandle: true,
         })
         naverLogin.init()
@@ -73,6 +73,11 @@ const NaverLogin = () => {
     <>
         {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
 			<div id="naverIdLogin"></div>
+            
+            
+          
+            
+           
     </>
   )
 }

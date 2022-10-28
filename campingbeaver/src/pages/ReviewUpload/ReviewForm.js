@@ -4,6 +4,7 @@ import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
 import { GiRoundStar }  from 'react-icons/gi'
 import styled from 'styled-components'
+import Button from 'react-bootstrap/esm/Button'
 const Review = () => {
   const navigate = useNavigate();
     const navigateToMyPage = () => {
@@ -38,6 +39,7 @@ const Review = () => {
   // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
   const sendReview = () => {
     let score = clicked.filter(Boolean).length;
+    console.log(score);
   }
 
   const getValue = e => {
@@ -52,6 +54,7 @@ const Review = () => {
   const submitHandle = () => {
     setViewContent(viewContent.concat({...reviewContent}))
   }
+
 
   useEffect(()=> {
     sendReview();
@@ -108,7 +111,12 @@ const Review = () => {
               <tr>
                 <th>사진첨부</th>
                 <td>
-                  <input type="file" multiple={true} id="fileUpload"></input>
+                  <input 
+                    type="file" 
+                    multiple={true} 
+                    id="fileUpload" 
+                    accept='image/*'
+                  />
                 </td>
               </tr>
               
