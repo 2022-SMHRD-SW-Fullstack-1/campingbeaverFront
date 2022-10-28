@@ -16,6 +16,7 @@ import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import Kakao from './pages/Login/Kakao';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/Recommendation" element={<Recommendation/>}/>
         <Route path='/surveysecond' element={<SurveySecond/>}/>
         <Route path='/surveythird' element={<SurveyThird/>}/>
+        <Route path="/OAuth" element={<Kakao/>} />
 
       </Routes>
     </BrowserRouter>
