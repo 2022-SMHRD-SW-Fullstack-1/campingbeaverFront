@@ -7,7 +7,8 @@ import 'moment/locale/ko'
 import Payment from '../payment/Payment'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Header from '../../components/Layout/Header'
+import Header from '../../components/Layout/Header';
+import styles from '../MyPage/MyPage.module.scss'
 
 const Cal = () => {
 
@@ -64,7 +65,6 @@ const Cal = () => {
     setShow(true);
 
   }
-
   const dataCon = () => {
     console.log(value);
     console.log(date);
@@ -72,8 +72,9 @@ const Cal = () => {
     console.log(selected);
   }
   return (
-    <>
-      <div>
+    <div className={styles.top}>
+      <Header />
+      <div className={styles.MyPage}>
         <h1>제품명<button onClick={wishSel}>{wishprod}</button><button>공유</button></h1>
         <h3>1박 2일 89,000원 ~</h3>
         <p>★ 4.8 / 5.0</p>
@@ -160,7 +161,7 @@ const Cal = () => {
           <Payment />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
