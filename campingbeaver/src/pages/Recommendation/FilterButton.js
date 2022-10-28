@@ -48,6 +48,9 @@ const FilterButton = () => {
 const clearBtn = (e) => {
   setInputText([]);
 }
+  
+
+
 
   return (
 
@@ -101,15 +104,21 @@ const clearBtn = (e) => {
       </Alert>
     ))}
 
+
     {[
       'secondary',
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
         <p align='center'>선택한 태그</p>
+
        {inputTextList}
+
+        
+        
+
       </Alert>
-    ))}
+      ))}
 
       <div align='center'>
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
