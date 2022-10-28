@@ -18,6 +18,9 @@ const FilterButton = () => {
   const [inputText, setInputText] = useState([]);
   let [btnActive, setBtnActive] = useState('passive');
 
+  const detailTagList = ['장작판매', '운동시설', '온수', '마트/편의점', '산책로', '물놀이장', '전기',' 와이파이']
+  
+  const themeTagList = ['반려견동반','익스트림','커플','아이들 놀기 좋은', '봄', '여름', '가을', '겨울', '문화유적', '축제']
 
   const clickHandle = (e) => {
  
@@ -37,8 +40,10 @@ const FilterButton = () => {
 
     
   }
+
   const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
 
+  
 
 const clearBtn = (e) => {
   setInputText([]);
@@ -47,7 +52,7 @@ const clearBtn = (e) => {
   return (
 
     <>
-    <div>
+    <div align='center'>
     {[
       'secondary',
     ].map((variant) => (
