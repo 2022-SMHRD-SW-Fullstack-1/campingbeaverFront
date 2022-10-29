@@ -1,13 +1,15 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import styles from '../MyPage.module.scss'
 import WishEmpty from './WishEmpty'
 import WishNotEmpty from './WishNotEmpty'
 
 const WishList = () => {
-  const [wishList, setWishList] = useState([])
+  const [wishList, setWishList] = useState([]);
   const wishEmpty = wishList.length ===0;  
   
-  useEffect(() => {
+  useEffect(()=> {
+
     fetch('/data/wishList.json', {
       method: 'GET',
       headers: {

@@ -4,7 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
 import Header from '../../components/Layout/Header';
 
-const MyPage = () => {
+
+const MyPage = ({ userInfo }) => {
+
+  const { email, name } = userInfo || {};
 
   return (
     <div className={styles.top}>
@@ -12,9 +15,9 @@ const MyPage = () => {
       
       <div>
           <h1 className={styles.MyPage}>
-          admin님 반가워요!
+          {name}님 반가워요!
           </h1>
-          <p>admin@gmail.com</p>
+          <p>{email}</p>
       </div>
       <hr/>
           

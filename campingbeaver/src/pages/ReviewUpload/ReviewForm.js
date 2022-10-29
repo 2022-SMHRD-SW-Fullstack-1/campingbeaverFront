@@ -13,12 +13,11 @@ const Review = () => {
     )
   }
   
-  
 
   const [reviewContent, setReviewContent] = useState({
     title: '',
     context: '',
-    rate: '',
+    score: '',
     img: ''
   })
 

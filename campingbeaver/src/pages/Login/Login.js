@@ -7,6 +7,8 @@ import NaverLogin from './NaverLogin';
 
 
 const Login = () => {
+
+ 
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     id: '',

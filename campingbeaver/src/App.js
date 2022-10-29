@@ -1,6 +1,6 @@
 
 import './App.css';
-import {BrowserRouter,Routes, Route} from 'react-router-dom';
+import {BrowserRouter,Routes, Route, Link} from 'react-router-dom';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
@@ -16,21 +16,13 @@ import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
 import NaverLogin from './pages/Login/NaverLogin';
 import { useEffect, useState } from "react";
+import Header from './components/Layout/Header';
+import axios from 'axios';
 
 
 function App() {
-  // const [hello, setHello] = useState('')
-  // useEffect(() => {
-
-  //   fetch('/beaver/hello')
-  //   .then(response => response.text())
-  //   .then(hello => {
-  //     setHello(hello)})
-  // }, []);
-
-
+  
   return (
-      // <h1>{hello}</h1>
     <BrowserRouter>
       <Routes> 
         <Route path="/" element={<Layout/>} />

@@ -106,11 +106,6 @@ const clearBtn = (e) => {
         <p align='center'>선택한 태그</p>
 
        {inputTextList}
-
-        
-        
-        inputText.forEach(element)
-        <Button variant="outline-dark">{inputText}</Button>
       </Alert>
       ))}
 
