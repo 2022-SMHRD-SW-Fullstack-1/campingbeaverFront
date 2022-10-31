@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Calendar from 'react-calendar'
 import './Calendar.css'
 import moment from 'moment'
@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Header from '../../components/Layout/Header';
 import styles from '../MyPage/MyPage.module.scss'
+import Axios from 'axios'
+import axios from 'axios'
 
 const Cal = () => {
 
@@ -19,6 +21,16 @@ const Cal = () => {
   const [value, onChange] = useState(new Date());
   const [price, setPrice] = useState(89000);
   const [date, setDate] = useState(0);
+
+  const [sendday, setSendday] = useState('');
+  const [receiveday, setReceiveday] = useState('');
+
+  const [reserv_seq, setReserv_seq] = useState(0);
+  const [days, setDays] = useState('');
+  const [reserv_s_date, setReserv_s_date] = useState('');
+  const [reserv_e_date, setReserv_e_date] = useState('');
+
+  const [senddata, setSenddata] = useState([]);
 
   const [cnt, setCnt] = useState(1);
   const onIncrease = () => {
@@ -65,12 +77,40 @@ const Cal = () => {
     setShow(true);
 
   }
+
   const dataCon = () => {
-    console.log(value);
-    console.log(date);
-    console.log(price);
-    console.log(selected);
+    setReserv_seq(reserv_seq+1);
+    setDays(date==0 ? '1박2일': (date==1 ? '2박3일' : (date==2 ? '3박4일' : '4박5일')))
+    setReserv_s_date(moment(value).format("YYYY-MM-DD"));
+    setReserv_e_date(date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD"))));
+    setSendday(moment(value - 86400).format("YYYY-MM-DD"));
+    setReceiveday(date == 3 ? moment(value * 1.00027).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00021).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00017).format("YYYY-MM-DD") : moment(value * 1.00013).format("YYYY-MM-DD"))));
+
+    
+    // alert('user '+reserv_seq+'번째 예약 입니다.\n' + '예약일수 : '+days+'\n배송날짜 : '+sendday+'\n시작날짜 : '+reserv_s_date+'\n종료날짜 : '+reserv_e_date+'\n회수날짜 : '+receiveday)
+
+    setSenddata([reserv_seq, days,reserv_s_date, reserv_e_date])
+    Axios.post('/beaver/main',
+    senddata
+    ).then((res)=>{
+      console.log('error')
+    })
+    console.log(reservation)
+    alert(reservation.reserv_seq+ reservation.user_id+ reservation.reserv_s_date+ reservation.reserv_e_date)
   }
+  
+  const [reservation, setReservation] = useState("")
+
+  useEffect(()=>{
+    Axios.post("/beaver/main").then((response)=>{
+      if(response.data){
+        setReservation(response.data);
+      }else{
+        alert("failed");
+      }
+    })
+  })
+
   return (
     <div className={styles.top}>
       <Header />
