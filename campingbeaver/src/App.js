@@ -50,8 +50,8 @@ function App() {
         <Route path="/Recommendation" element={<Recommendation/>}/>
         <Route path='/surveysecond' element={<SurveySecond/>}/>
         <Route path='/surveythird' element={<SurveyThird/>}/>
-        <Route path='/Naver' component={NaverLogin} />
-        <Route path="/oauth/callback/kakao" component={<KakaoRedirectHandeler/>} />
+        <Route path='/Naver' element={NaverLogin} />
+        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandeler/>} />
       </Routes>
     </BrowserRouter>
   )
