@@ -4,8 +4,8 @@ import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
 import { GiRoundStar }  from 'react-icons/gi'
 import styled from 'styled-components'
-import Button from 'react-bootstrap/esm/Button'
-const Review = () => {
+
+const Review = ({reservNum}) => {
   const navigate = useNavigate();
     const navigateToMyPage = () => {
     return (
@@ -15,7 +15,6 @@ const Review = () => {
   
 
   const [reviewContent, setReviewContent] = useState({
-    title: '',
     context: '',
     score: '',
     img: ''
@@ -38,7 +37,12 @@ const Review = () => {
   // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
   const sendReview = () => {
     let score = clicked.filter(Boolean).length;
+    setReviewContent({
+      ...reviewContent,
+      score: score
+    })
     console.log(score);
+    
   }
 
   const getValue = e => {
@@ -52,6 +56,17 @@ const Review = () => {
 
   const submitHandle = () => {
     setViewContent(viewContent.concat({...reviewContent}))
+  }
+
+  const [fileImage, setFileImage] = useState('');
+
+  const saveFileImage = (e) => {
+    setFileImage(URL.createObjectURL(e.target.files[0]))
+    setReviewContent({
+      ...reviewContent,
+      img: fileImage
+    })
+    console.log(reviewContent)
   }
 
 
@@ -71,13 +86,9 @@ const Review = () => {
           <table>
             <thead>
               <tr>
-                <th>제목</th>
+                <th>예약번호</th>
                 <td>
-                  <input 
-                    type="text"
-                    name="title"
-                    onChange={getValue}
-                    ></input>
+                  {reservNum}
                 </td>
               </tr>
             </thead>
@@ -98,7 +109,7 @@ const Review = () => {
                   return(
                   <GiRoundStar
                     key={idx}
-                    onClick={() => handleStarClick(el)}
+                    onClick={() => handleStarClick(el) && getValue}
                     className={clicked[el] && 'yellowStar'}
                     size="35"
                   />
@@ -110,12 +121,29 @@ const Review = () => {
               <tr>
                 <th>사진첨부</th>
                 <td>
+                <div>
+                {fileImage && (
+                  <img
+                    alt="sample"
+                    src={fileImage}
+                    style={{ margin: "auto" }}
+                  />  
+                )}
+                <div
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+
                   <input 
-                    type="file" 
-                    multiple={true} 
-                    id="fileUpload" 
-                    accept='image/*'
+                    type="file"
+                    accept="image/jpg, image/jpeg, image/png"
+                    onChange={saveFileImage}
+                    id="fileUpload"
                   />
+                    </div>
+                </div>
                 </td>
               </tr>
               

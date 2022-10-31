@@ -3,12 +3,15 @@ import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
 import Header from '../../components/Layout/Header';
-
+import { useParams } from 'react-router-dom';
+import NaverLogin from '../Login/NaverLogin';
 
 const MyPage = ({ userInfo }) => {
 
-  const { email, name } = userInfo || {};
-
+  
+  const params = useParams();
+  const name = userInfo[params.userName]
+  const email = userInfo[params.userEmail]
   return (
     <div className={styles.top}>
       <Header/>

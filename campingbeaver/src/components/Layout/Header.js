@@ -31,7 +31,7 @@ const Header = () => {
               <NavDropdown.Item href="/Wishlist">
                 관심상품
               </NavDropdown.Item>
-              <NavDropdown.Item href="/MyPage">리뷰관리</NavDropdown.Item>
+              <NavDropdown.Item href="/ReviewList">리뷰관리</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 로그인/로그아웃

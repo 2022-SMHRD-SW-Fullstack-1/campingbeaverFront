@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 const NaverLogin = () => {
    
@@ -39,6 +40,7 @@ const NaverLogin = () => {
                 const userId = naverLogin.user.id
                 const userName = naverLogin.user.name
                 setUserInfo({email: userEmail, id: userId, name: userName})
+
             }
         })
 
@@ -63,20 +65,20 @@ const NaverLogin = () => {
 
         // 화면 첫 렌더링 이후 바로 실행하기 위해 useEffect 사용
         useEffect(() => {
-            
             initializeNaverLogin()
             userAccessToken()
-            
+            axios({
+                url:'/beaver/main',
+                method: 'post',
+                data: {userInfo},
+                baseURL: 'http://localhost:8123',
+            }     
+            )      
         },[])
-
-
-        // useEffect(()=>{
-        //     console.log('userinfo enter')
-        //     console.log(userInfo)
-        // },[
-        //     userInfo
-        // ])
-       
+        
+        
+        
+            
   return (
     <>
         {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
