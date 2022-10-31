@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
 import Header from '../../components/Layout/Header';
 import { useParams } from 'react-router-dom';
-import NaverLogin from '../Login/NaverLogin';
+
 
 const MyPage = ({ userInfo }) => {
 
