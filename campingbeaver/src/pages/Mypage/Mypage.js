@@ -3,24 +3,20 @@ import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
 import Header from '../../components/Layout/Header';
-import { useParams } from 'react-router-dom';
 
 
-const MyPage = ({ userInfo }) => {
 
-  
-  const params = useParams();
-  const name = userInfo[params.userName]
-  const email = userInfo[params.userEmail]
+const MyPage = (props) => {
+ 
   return (
     <div className={styles.top}>
       <Header/>
       
       <div>
           <h1 className={styles.MyPage}>
-          {name}님 반가워요!
+          {props.name}님 반가워요!
           </h1>
-          <p>{email}</p>
+          <p>{props.email}</p>
       </div>
       <hr/>
           
