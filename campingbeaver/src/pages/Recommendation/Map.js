@@ -1,21 +1,23 @@
 /* global kakao */
 import React, { useEffect, useState } from "react";
+import RecomDetail from './RecomDetail'
 
 
+const Map = ({latitude,longitude}) => {
 
-const Map = () => {
-    const [map,setMap] = useState(null);
-
+    const lat = {latitude}
+    const lng = {longitude}
     //처음 지도 그리기
     useEffect(()=>{
-        const container = document.getElementById('map');
-        let options = { //지도 생성시 필요한 기본 옵션
-            center: new kakao.maps.LatLng(33.450701, 126.570667), 
+        console.log(lat.latitude)
+        const mapContainer = document.getElementById('map');
+        let mapOption = { //지도 생성시 필요한 기본 옵션
+            center: new kakao.maps.LatLng(lat.latitude, lng.longitude), 
             level : 4   //지도의 레벨(확대, 축소 정도)
         };
-        const Map = new kakao.maps.Map(container, options);
+        const map = new kakao.maps.Map(mapContainer, mapOption);
 
-        let markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+        let markerPosition  = new kakao.maps.LatLng(lat.latitude, lng.longitude); 
 
         const marker = new kakao.maps.Marker({
             position: markerPosition
@@ -24,7 +26,7 @@ const Map = () => {
         marker.setMap(map);
 
 
-    },[])
+    },[latitude,longitude])
 
     return (
         <div

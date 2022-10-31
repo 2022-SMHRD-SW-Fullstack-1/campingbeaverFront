@@ -17,13 +17,13 @@ import Recommendation from './pages/Recommendation/Recommendation'
 import NaverLogin from './pages/Login/NaverLogin';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
-
+import Axios from 'axios';
 
 function App() {
   // const [hello, setHello] = useState('')
   // useEffect(() => {
 
-  //   fetch('/beaver/hello')
+  //   fetch('/beaver/main')
   //   .then(response => response.text())
   //   .then(hello => {
   //     setHello(hello)})
@@ -31,8 +31,8 @@ function App() {
 
 
   return (
-      // <h1>{hello}</h1>
     <BrowserRouter>
+    {/* <h1>{hello}</h1> */}
       <Routes> 
         <Route path="/" element={<Layout/>} />
         <Route path="/Login" element={<Login/>}/>

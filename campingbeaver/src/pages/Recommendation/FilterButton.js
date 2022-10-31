@@ -17,6 +17,8 @@ const FilterButton = () => {
 
   const [inputText, setInputText] = useState([]);
 
+
+
   const clickHandle = (e) => {
  
     let overlap = true
@@ -33,7 +35,7 @@ const FilterButton = () => {
     }
   }
 
-  const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
+  const inputTextList = inputText.map(inputText => <Button variant="outline-dark" onClick={clickHandle}>{inputText}</Button>)
 
   
 
