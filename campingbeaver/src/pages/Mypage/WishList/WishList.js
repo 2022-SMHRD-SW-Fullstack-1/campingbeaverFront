@@ -6,7 +6,9 @@ import WishEmpty from './WishEmpty'
 import WishNotEmpty from './WishNotEmpty'
 
 const WishList = () => {
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState([
+      
+  ]);
   const wishEmpty = wishList.length ===0;  
   
   // useParams 
@@ -24,25 +26,11 @@ const WishList = () => {
     axios.get(`/beaver/wishlist/${userId}`)
     .then((res) => {
         console.log(res.data)
+        
     })
     .catch((error)=>console.log('Network Error: ', error))
-  },[wishList]);
- 
-  // useEffect(()=> {
-  //   axios({
-  //     url:'/beaver/wishlist/admin',
-  //     method: 'post',
-  //     data: {user_id : 'admin'},
-  //     baseURL: 'http://localhost:8123',
-  //     responseType:'json',
-  //     withCredentials: true,
-  // }     
-  // ).then(function(response) {
-  //   setWishList(response.data)
-  //   console.log(response.data)
-  //   console.log(response.status)
-  // })
-  // })    
+    },[wishList]);
+    
 
   return (
     <div>

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import naverImg from '../../components/img/naverLogo.png'
 
 
 const NaverLogin = ({auth,setAuth}) => {
@@ -68,6 +69,11 @@ const NaverLogin = ({auth,setAuth}) => {
             // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!   
             localStorage.setItem('access_token', token)
 		    //setGetToken(token)
+        }
+
+        const handleNaverClick = () => {        
+        const naverLoginButton = document.getElementById("naverIdLogin_loginButton");        
+        if (naverLoginButton) naverLoginButton.click();
         }
 
         // 화면 첫 렌더링 이후 바로 실행하기 위해 useEffect 사용
