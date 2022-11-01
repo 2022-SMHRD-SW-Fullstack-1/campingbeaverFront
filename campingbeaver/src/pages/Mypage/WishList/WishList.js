@@ -6,9 +6,7 @@ import WishEmpty from './WishEmpty'
 import WishNotEmpty from './WishNotEmpty'
 
 const WishList = () => {
-  const [wishList, setWishList] = useState([
-      
-  ]);
+  const [wishList, setWishList] = useState([]);
   const wishEmpty = wishList.length ===0;  
   
   // useParams 
@@ -25,24 +23,22 @@ const WishList = () => {
     const userId = 'admin'
     axios.get(`/beaver/wishlist/${userId}`)
     .then((res) => {
-        console.log(res.data)
-        
-    })
-    .catch((error)=>console.log('Network Error: ', error))
-    },[wishList]);
+        //console.log(res.data)
+        setWishList(res.data)
+      })
+      .catch((error)=>console.log('Network Error: ', error))
+    },[]);
     
+  
 
   return (
     <div>
-            
               <div className={styles.top}>
                 <h1 className={styles.contact}>
                   Wish List
                 </h1>
                 <p className={styles.contact1}>관심상품</p>
               </div>
-            
-
 
             <div className={styles.ListContainer}>
                 {wishEmpty ? (
@@ -53,6 +49,6 @@ const WishList = () => {
             </div>  
     </div>
   )
-                }
+}
 
 export default WishList

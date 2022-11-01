@@ -4,8 +4,12 @@ import styles from '../MyPage.module.scss'
 const WishNotEmpty = ({wishList}) => {
   return (
     <>
-        {wishList.wish.map((item, i)=>{
-            return <WishItem key={i} item={item} />;
+        {wishList && wishList.map(({pkg_name, pkg_price, pkg_photo})=>{
+            return (<WishItem 
+                    wishName={pkg_name}
+                    wishPrice={pkg_price}
+                    wishPic={pkg_photo}
+                   />)
         })}
     </>
   )

@@ -22,6 +22,7 @@ const Header = ({auth, setAuth}) => {
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            <Nav.Link href="/store">STORE</Nav.Link>
             <Nav.Link href="/recommendation">RECOMMENDATION</Nav.Link>
             <Nav.Link href="/cart">CART</Nav.Link>
             <NavDropdown title="MYPAGE" id="basic-nav-dropdown">

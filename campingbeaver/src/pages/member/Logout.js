@@ -8,13 +8,13 @@ function Logout({auth, setAuth}) {
 	
 	const logout = () => {
 		
+		 
+		alert( + "님, 성공적으로 로그아웃 됐습니다 🔒");
+		setAuth(false);
+		
 		localStorage.removeItem("access_token");
 		localStorage.removeItem("userEmail");
 		localStorage.removeItem("userName");
-
-		alert(auth + "님, 성공적으로 로그아웃 됐습니다 🔒");
-		setAuth(false);
-		
 		navigate("/");
 	};
 
