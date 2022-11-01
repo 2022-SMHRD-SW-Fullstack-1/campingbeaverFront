@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Alert } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
-const NaverLogin = () => {
-   
+import { useLocation, useNavigate } from 'react-router-dom';
+
+
+const NaverLogin = ({auth,setAuth}) => {
+    const navigate = useNavigate()
+
     const [userInfo, setUserInfo] = useState(null);
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
@@ -40,7 +42,10 @@ const NaverLogin = () => {
                 const userId = naverLogin.user.id
                 const userName = naverLogin.user.name
                 setUserInfo({email: userEmail, id: userId, name: userName})
-
+                localStorage.setItem('userName', userName)
+                localStorage.setItem('userEmail', userEmail)
+                localStorage.setItem('userId', userId)
+                setAuth(true)
             }
         })
 
@@ -73,7 +78,8 @@ const NaverLogin = () => {
                 data: {userInfo},
                 baseURL: 'http://localhost:8123',
             }     
-            )      
+            )
+            console.log(auth)  
         },[])
         
         

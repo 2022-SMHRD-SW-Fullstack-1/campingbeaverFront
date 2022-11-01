@@ -2,21 +2,22 @@ import React from 'react'
 import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
-import Header from '../../components/Layout/Header';
 
 
+const userName = localStorage.getItem('userName')
+const userEmail = localStorage.getItem('userEmail')
 
-const MyPage = (props) => {
+const MyPage = () => {
  
   return (
     <div className={styles.top}>
-      <Header/>
+      
       
       <div>
           <h1 className={styles.MyPage}>
-          {props.name}님 반가워요!
+          {userName}님 반가워요!
           </h1>
-          <p>{props.email}</p>
+          <p>{userEmail}</p>
       </div>
       <hr/>
           

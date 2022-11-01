@@ -2,13 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthProvider";
+
 
 
 
 function ReviewPage() {
-
-	const { auth, setAuth } = useContext(AuthContext)
 
 	const [bbs, setBbs] = useState({});
 	const { seq } = useParams(); // 파라미터 가져오기
@@ -17,17 +15,17 @@ function ReviewPage() {
 
 	const getBbsDetail = async () => {
 
-		await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: auth ? auth : ""}})
-		.then((resp) => {
-			console.log("[BbsDetail.js] getBbsDetail() success :D");
-			console.log(resp.data);
+		// await axios.get(`http://localhost:3000/bbs/${seq}`, {params: {readerId: auth ? auth : ""}})
+		// .then((resp) => {
+		// 	console.log("[BbsDetail.js] getBbsDetail() success :D");
+		// 	console.log(resp.data);
 
-			setBbs(resp.data.bbs);
-		})
-		.catch((err) => {
-			console.log("[BbsDetail.js] getBbsDetail() error :<");
-			console.log(err);
-		});
+		// 	setBbs(resp.data.bbs);
+		// })
+		// .catch((err) => {
+		// 	console.log("[BbsDetail.js] getBbsDetail() error :<");
+		// 	console.log(err);
+		// });
 
 	}
 
