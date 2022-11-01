@@ -2,13 +2,13 @@ import React from 'react'
 import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
-import Header from '../../components/Layout/Header';
+
 
 const MyPage = () => {
 
   return (
     <div className={styles.top}>
-      <Header/>
+      
       
       <div>
           <h1 className={styles.MyPage}>

@@ -6,9 +6,7 @@ import StoreModal from '../../components/StoreModal';
 import PageList from './PageList.js';
 import Items from './Items';
 import './Store.scss';
-import dummy from '../../data/dummy.json';
-import Product from './Product'
-
+import axios from 'axios';
 
 const Store = () => {
   const [items, setItems] = useState([]);
@@ -24,31 +22,23 @@ const Store = () => {
   const urlOffset = params.get('offset');
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
-  
-  const Products = () => {
-    console.log(dummy.product)
-    return (
-      <>
-      <div>
-          {dummy.product.map((item,idx)=>(
-            <Product key={idx + item.itemName} item={item} idx={idx} />
-            ))}
-      </div>
-      </>
-    )
-  }
-  
 
   useEffect(() => {
-    fetch(`http://54.174.216.108:8000/products/list${location.search}`, {
-      method: 'GET',
+    axios.get("/beaver/pkglist")
+    .then(response=>{
+      console.log(response.data)
+      // console.log(response.data[0].pkg_seq)
+      // console.log(response.data[1].pkg_name)
+      // console.log(response.data[2].pkg_type)
+      // console.log(response.data[3].pkg_cnt)
+      // console.log(response.data[4].pkg_hash)
+      // console.log(response.data[5].pkg_price)
+      // console.log(response.data[6].pkg_photo)
+      setItems(response.data);
+      //   setTotalCounts(response.product_list.total_count);
+      // setPkgitems(response.data)
     })
-      .then(res => res.json())
-      .then(result => {
-        setItems(result.product_list.products);
-        setTotalCounts(result.product_list.total_count);
-      });
-  }, [location.search]);
+  }, []);
 
   const handleURL = name => {
     if (urlMaterial) {
@@ -185,7 +175,7 @@ const Store = () => {
           )}
           <div className="itemCategory">
             <div className="itemAmount">
-              <b>{items.length && totalCounts}</b>
+              <b>{items.length}</b>
               <span>개의 상품이 있습니다.</span>
             </div>
             <div className="itemSort">
@@ -203,16 +193,16 @@ const Store = () => {
           </div>
           <div className="itemList">
           
-            {items.map(({ id, itemThumbnail, itemName, price }) => {
+            {items.map(({ pkg_seq, pkg_photo, pkg_name, pkg_price, pkg_type }) => {
               return (
                 <Items
                   getItemData={getItemData}
-                  id={id}
-                  listType={listType}
-                  key={id}
-                  img={itemThumbnail}
-                  itemName={itemName}
-                  price={price}
+                  id={pkg_seq}
+                  // listType={pkg_type}
+                  key={pkg_seq}
+                  img={pkg_photo}
+                  itemName={pkg_name}
+                  price={pkg_price}
                 />
               );
             })}

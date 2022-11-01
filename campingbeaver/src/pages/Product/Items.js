@@ -24,7 +24,7 @@ const Items = ({ getItemData, id, listType, img, itemName, price }) => {
             <FaShoppingCart />
           </button>
         </span>
-        <img src={img} alt="product thumbnail" />
+        <img src={img} alt="product thumbnail"/>
       </span>
       <div className="description">
         <div onClick={goToDetail} className="name">

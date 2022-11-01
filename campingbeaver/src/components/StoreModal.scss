@@ -20,8 +20,8 @@
     position: absolute;
     background-color: white;
     border: 1px solid black;
-    width: 60rem;
-    height: 45rem;
+    width: 100rem;
+    height: 55rem;
     padding: 40px;
     overflow: scroll;
 
@@ -97,6 +97,14 @@
 
           .twitterBtn {
             color: #ccc;
+            margin-right: 15px;
+            height: 18px;
+            width: auto;
+          }
+
+          .instagramBtn {
+            color: #ccc;
+            margin-right: 15px;
             height: 18px;
             width: auto;
           }

@@ -15,8 +15,8 @@ import SurveySecond from './components/Layout/SurveySecond'
 import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
 import NaverLogin from './pages/Login/NaverLogin';
-import { useEffect, useState } from "react";
-import Axios from "axios"
+import PkgList from './pages/Product/PkgList';
+import Header from './components/Layout/Header';
 
 function App() {
   // const [hello, setHello] = useState('')
@@ -30,6 +30,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header/>
       {/* <h1>{hello}</h1> */}
       <Routes> 
         <Route path="/" element={<Layout/>} />
@@ -43,6 +44,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/Store" element={<Store/>} />
+        <Route path="/pkglist" element={<PkgList/>} />
         <Route path="/Recommendation" element={<Recommendation/>}/>
         <Route path='/surveysecond' element={<SurveySecond/>}/>
         <Route path='/surveythird' element={<SurveyThird/>}/>
