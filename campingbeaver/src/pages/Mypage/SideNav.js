@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { TabContent } from 'react-bootstrap';
+import React, { useState } from 'react'
 import Nav from 'react-bootstrap/Nav';
 import EditMyInfo from './EditMyInfo';
 import ReservList from './ReservCheck/ReservList';
@@ -9,8 +8,8 @@ import WishList from './WishList/WishList';
 
 const SideNav = () => {
 
-  let [tab, setTab] = useState(0);
-  
+  const [tab, setTab] = useState(0);
+
   function TabContent(props) {
     if(props.tab === 0){
       return <div><ReservList/></div>
@@ -21,6 +20,7 @@ const SideNav = () => {
     }
   }
  
+
   return (
     <div className={styles.SideNav}>
 

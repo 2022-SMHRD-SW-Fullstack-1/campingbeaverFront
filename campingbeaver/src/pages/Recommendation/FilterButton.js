@@ -106,7 +106,6 @@ const clearBtn = (e) => {
         <p align='center'>선택한 태그</p>
 
        {inputTextList}
-
       </Alert>
       ))}
 

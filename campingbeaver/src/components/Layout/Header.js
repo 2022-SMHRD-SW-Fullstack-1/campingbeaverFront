@@ -8,15 +8,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({auth, setAuth}) => {
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
         <div>
-        <img src={logo} width='200px'></img>
-        <span><Link to='/'> HOME으로 이동 </Link></span>
+        <Link to='/'><img src={logo} width='200px'/></Link>
         <span><Link to='/Login'> Login으로 이동 </Link></span>
-        <span><Link to='/Mypage'> Mypage으로 이동 </Link></span>
         <span><Link to='/Reservation'> Reservation으로 이동 </Link></span>
         </div> 
         <Navbar bg="none" expand="lg" className={styles.navbar} >
@@ -25,17 +23,25 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/store">STORE</Nav.Link>
+            <Nav.Link href="/recommendation">RECOMMENDATION</Nav.Link>
             <Nav.Link href="/cart">CART</Nav.Link>
             <NavDropdown title="MYPAGE" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+              <NavDropdown.Item href="/MyPage">마이페이지</NavDropdown.Item>
+              <NavDropdown.Item href="/Wishlist">
+                관심상품
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="/ReviewList">리뷰관리</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              {
+                auth ?
+                <NavDropdown.Item href="/Logout" onClick={()=>setAuth(false)}>
+                로그아웃
+                </NavDropdown.Item> :
+                <NavDropdown.Item href="/Login">
+                로그인
+                </NavDropdown.Item>
+              }
+              
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
