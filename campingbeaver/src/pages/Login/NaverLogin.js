@@ -2,9 +2,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import naverImg from '../../components/img/naverLogo.png'
 
 
-const NaverLogin = ({auth,setAuth}) => {
+const NaverLogin = ({ auth, setAuth }) => {
     const navigate = useNavigate()
 
     const [userInfo, setUserInfo] = useState(null);
@@ -22,7 +23,7 @@ const NaverLogin = ({auth,setAuth}) => {
             // 버튼타입 
 
             loginButton: { color: 'green', type: 3, height: 55 },
-			callbackHandle: true,
+            callbackHandle: true,
 
         })
         naverLogin.init();
@@ -39,58 +40,63 @@ const NaverLogin = ({auth,setAuth}) => {
 
         naverLogin.getLoginStatus(async function (status) {
             if (status) {
-                
-                console.log('가져오는값 : ',naverLogin.user)
+
+                console.log('가져오는값 : ', naverLogin.user)
                 const userEmail = naverLogin.user.email
                 const userId = naverLogin.user.id
                 const userName = naverLogin.user.name
-                setUserInfo({email: userEmail, id: userId, name: userName})
+                setUserInfo({ email: userEmail, id: userId, name: userName })
                 localStorage.setItem('userName', userName)
                 localStorage.setItem('userEmail', userEmail)
                 localStorage.setItem('userId', userId)
                 setAuth(true)
             }
         })
-        
+
         // 여기까지!
     }
 
-        const location = useLocation();
-        // 액세스 토큰 추출
-        const userAccessToken = () => {
-            window.location.href.includes('access_token') && getToken()
-        }
+    const location = useLocation();
+    // 액세스 토큰 추출
+    const userAccessToken = () => {
+        window.location.href.includes('access_token') && getToken()
+    }
 
-        const getToken = () => {
-            //const token = window.location.href.split('=')[1].split('&')[0]
-            const token = location.hash.split('=')[1].split('&')[0];
-            console.log('토큰값 : ', token);
-            // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!   
-            localStorage.setItem('access_token', token)
-		    //setGetToken(token)
-        }
+    const getToken = () => {
+        //const token = window.location.href.split('=')[1].split('&')[0]
+        const token = location.hash.split('=')[1].split('&')[0];
+        console.log('토큰값 : ', token);
+        // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!   
+        localStorage.setItem('access_token', token)
+        //setGetToken(token)
+    }
 
-        // 화면 첫 렌더링 이후 바로 실행하기 위해 useEffect 사용
-        useEffect(() => {
-            initializeNaverLogin()
-            userAccessToken()
-            axios({
-                url:'/beaver/main',
-                method: 'post',
-                data: {userInfo},
-                baseURL: 'http://localhost:8123',
-            }     
-            )
-            console.log(auth)  
-        },[])
-        
-        
-        
+    const handleNaverClick = () => {
+        const naverLoginButton = document.getElementById("naverIdLogin_loginButton");
+        if (naverLoginButton) naverLoginButton.click();
+    }
+
+    // 화면 첫 렌더링 이후 바로 실행하기 위해 useEffect 사용
+    useEffect(() => {
+        initializeNaverLogin()
+        userAccessToken()
+        axios({
+            url: '/beaver/main',
+            method: 'post',
+            data: { userInfo },
+            baseURL: 'http://localhost:8123',
+        }
+        )
+        console.log(auth)
+    }, [])
+
+
+
     return (
-        <>  
-            <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px"/><span className='naverSpan'>네이버 로그인 </span><span></span></div>
+        <>
+            <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px" /><span className='naverSpan'>네이버 로그인 </span><span></span></div>
             {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
-            <div id="naverIdLogin" style={{display:"none"}}></div>
+            <div id="naverIdLogin" style={{ display: "none" }}></div>
         </>
     )
 }

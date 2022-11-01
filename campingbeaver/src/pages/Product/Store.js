@@ -27,16 +27,9 @@ const Store = () => {
     axios.get("/beaver/pkglist")
     .then(response=>{
       console.log(response.data)
-      // console.log(response.data[0].pkg_seq)
-      // console.log(response.data[1].pkg_name)
-      // console.log(response.data[2].pkg_type)
-      // console.log(response.data[3].pkg_cnt)
-      // console.log(response.data[4].pkg_hash)
-      // console.log(response.data[5].pkg_price)
-      // console.log(response.data[6].pkg_photo)
+      
       setItems(response.data);
       //   setTotalCounts(response.product_list.total_count);
-      // setPkgitems(response.data)
     })
   }, []);
 
@@ -193,12 +186,12 @@ const Store = () => {
           </div>
           <div className="itemList">
           
-            {items.map(({ pkg_seq, pkg_photo, pkg_name, pkg_price, pkg_type }) => {
+            {items.map(({ pkg_seq, pkg_photo, pkg_name, pkg_price}) => {
               return (
                 <Items
                   getItemData={getItemData}
                   id={pkg_seq}
-                  // listType={pkg_type}
+                  listType={listType}
                   key={pkg_seq}
                   img={pkg_photo}
                   itemName={pkg_name}
