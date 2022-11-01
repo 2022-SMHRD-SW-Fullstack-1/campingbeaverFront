@@ -16,7 +16,7 @@ const FilterButton = () => {
 
 
   const [inputText, setInputText] = useState([]);
-  let [btnActive, setBtnActive] = useState('passive');
+  let [btnActive, setBtnActive] = useState();
 
 
   const clickHandle = (e) => {
@@ -35,7 +35,7 @@ const FilterButton = () => {
     }
   }
 
-  const inputTextList = inputText.map(inputText => <Button variant="outline-dark">{inputText}</Button>)
+  const inputTextList = inputText.map(inputText => <Button variant="outline-dark" onClick={clickHandle}>{inputText}</Button>)
 
 
 const clearBtn = (e) => {

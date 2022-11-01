@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ const NaverLogin = ({auth,setAuth}) => {
     const navigate = useNavigate()
 
     const [userInfo, setUserInfo] = useState(null);
+
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
     const NAVER_CALLBACK_URL = 'http://localhost:3000/Login'
@@ -18,8 +20,10 @@ const NaverLogin = ({auth,setAuth}) => {
             // 팝업창으로 로그인 진행할 것인지?
             isPopup: false,
             // 버튼타입 
+
             loginButton: { color: 'green', type: 3, height: 55 },
 			callbackHandle: true,
+
         })
         naverLogin.init();
 
@@ -29,11 +33,10 @@ const NaverLogin = ({auth,setAuth}) => {
 
         // 아래와 같이 로그인한 유저 ( 사용자 ) 정보를 직접 접근하여 추출가능하다.
         // 이때, 데이터는 첫 연동시 정보 동의한 데이터만 추출 가능하다.
-    
+
         // 백엔드 개발자가 정보를 전달해준다면 아래 요기! 라고 작성된 부분까지는 
         // 코드 생략이 가능하다.  
 
-    
         naverLogin.getLoginStatus(async function (status) {
             if (status) {
                 
@@ -48,7 +51,6 @@ const NaverLogin = ({auth,setAuth}) => {
                 setAuth(true)
             }
         })
-
         
         // 여기까지!
     }
@@ -84,13 +86,12 @@ const NaverLogin = ({auth,setAuth}) => {
         
         
         
-            
-  return (
-    <>
-        {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
-			<div id="naverIdLogin"></div>       
-    </>
-  )
+    return (
+        <>  
+            <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px"/><span className='naverSpan'>네이버 로그인 </span><span></span></div>
+            {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
+            <div id="naverIdLogin" style={{display:"none"}}></div>
+        </>
+    )
 }
-
-export default NaverLogin;
+export default NaverLogin

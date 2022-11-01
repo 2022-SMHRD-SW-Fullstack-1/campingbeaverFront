@@ -8,7 +8,6 @@ const Reservation = () => {
   return (
     <div>
       
-        <Header/>
         <Reservdetail/>
         <Review/>
 

@@ -5,7 +5,6 @@ import {KAKAO_AUTH_URL} from './OAuth';
 import Header from '../../components/Layout/Header';
 import NaverLogin from './NaverLogin';
 
-
 const Login = () => {
 
  
@@ -85,8 +84,9 @@ const Login = () => {
           src="kakao_login_medium_wide.png"
         />
         </a>
+        <br/>
         <NaverLogin/>
-        
+
         <br></br>
         
         <div className="loginFooter">
