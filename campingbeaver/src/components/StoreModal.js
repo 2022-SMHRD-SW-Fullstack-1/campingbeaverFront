@@ -1,6 +1,6 @@
 import { AiFillCloseSquare } from 'react-icons/ai';
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io';
-import { GrFacebook, GrTwitter } from 'react-icons/gr';
+import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './StoreModal.scss';
@@ -78,7 +78,7 @@ const StoreModal = ({ items, closeModal }) => {
           <table>
             <tr className="description">
               <th>상품 간략설명</th>
-              <td>description</td>
+              <td>패키지</td>
             </tr>
             <tr className="price">
               <th>판매가</th>
@@ -90,13 +90,14 @@ const StoreModal = ({ items, closeModal }) => {
             </tr>
             <tr>
               <th>배송비</th>
-              <td>￦3,000 (￦50,000 이상 구매 시 무료)</td>
+              <td>￦5,000 (￦150,000 이상 구매 시 무료)</td>
             </tr>
             <tr>
               <th>SNS 상품홍보</th>
               <td className="snsBtn">
                 <GrFacebook className="facebookBtn" />
                 <GrTwitter className="twitterBtn" />
+                <GrInstagram className="instagram" />
               </td>
             </tr>
           </table>
