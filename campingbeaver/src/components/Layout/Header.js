@@ -19,7 +19,6 @@ const Header = ({auth, setAuth}) => {
         </div> 
         <Navbar bg="none" expand="lg" className={styles.navbar} >
       <Container>
-       
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
