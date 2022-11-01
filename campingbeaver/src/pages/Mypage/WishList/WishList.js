@@ -1,25 +1,53 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styles from '../MyPage.module.scss'
 import WishEmpty from './WishEmpty'
 import WishNotEmpty from './WishNotEmpty'
 
 const WishList = () => {
-  const [wishList, setWishList] = useState([])
+  const [wishList, setWishList] = useState([]);
   const wishEmpty = wishList.length ===0;  
   
-  useEffect(() => {
-    fetch('/data/wishList.json', {
-      method: 'GET',
-      headers: {
-        Authorization: localStorage.getItem('Authorization'),
-      },
+  // useParams 
+  // product 1
+  
+  // BE => /id 
+  // '/beaver/wishlist/admin' 
+  
+  let url = '/beaver/wishlist/admin'
+  const params = useParams();
+  
+  useEffect(()=> {
+    const userId = params.id
+    axios.get(`/beaver/wishlist/${userId}`)
+    .then(function(response) {
+        console.log(response.data)
+        setWishList(response.data)
+        console.log(wishList)
+     })
+    .catch(function(error) {
+      console.log(error);
     })
-      .then(res => res.json())
-      .then(data => {
-        setWishList(data);
-      });
-  }, []);
-      
+    .finally(function() {
+    });
+  },[wishList]);
+ 
+  // useEffect(()=> {
+  //   axios({
+  //     url:'/beaver/wishlist/admin',
+  //     method: 'post',
+  //     data: {user_id : 'admin'},
+  //     baseURL: 'http://localhost:8123',
+  //     responseType:'json',
+  //     withCredentials: true,
+  // }     
+  // ).then(function(response) {
+  //   setWishList(response.data)
+  //   console.log(response.data)
+  //   console.log(response.status)
+  // })
+  // })    
 
   return (
     <div>
@@ -42,6 +70,6 @@ const WishList = () => {
             </div>  
     </div>
   )
-}
+                }
 
 export default WishList
