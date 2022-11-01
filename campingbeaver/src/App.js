@@ -20,21 +20,13 @@ import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
 
 
-
 function App() {
-  // const [hello, setHello] = useState('')
-  // useEffect(() => {
 
-  //   fetch('/beaver/hello')
-  //   .then(response => response.text())
-  //   .then(hello => {
-  //     setHello(hello)})
-  // }, []);
 
 
   return (
-      // <h1>{hello}</h1>
     <BrowserRouter>
+    
       <Routes> 
         <Route path="/" element={<Layout/>} />
         <Route path="/Login" element={<Login/>}/>
