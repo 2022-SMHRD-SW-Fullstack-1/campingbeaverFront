@@ -19,18 +19,13 @@ const WishList = () => {
   const params = useParams();
   
   useEffect(()=> {
-    const userId = params.id
+    // const userId = params.id
+    const userId = 'admin'
     axios.get(`/beaver/wishlist/${userId}`)
-    .then(function(response) {
-        console.log(response.data)
-        setWishList(response.data)
-        console.log(wishList)
-     })
-    .catch(function(error) {
-      console.log(error);
+    .then((res) => {
+        console.log(res.data)
     })
-    .finally(function() {
-    });
+    .catch((error)=>console.log('Network Error: ', error))
   },[wishList]);
  
   // useEffect(()=> {
