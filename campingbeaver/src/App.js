@@ -8,7 +8,7 @@ import Layout from './components/Layout/Layout'
 import MyPage from "./pages/MyPage/MyPage";
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
-import Cartdetail from "../src/pages/Cart/Cartdetail"
+import Cart from "../src/pages/Cart/Cart"
 import Products from "../src/pages/Product/Products"
 import Detail from "../src/pages/Product/Detail"
 import SurveySecond from './components/Layout/SurveySecond'
@@ -37,7 +37,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/Reservation" element={<Reservation />} />
-        <Route path="/cart" element={<Cartdetail />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path='/products' element={<Products />} />
         <Route path='/detail:num' element={<Detail />} />
         <Route path="/SignUp" element={<SignUp />} />

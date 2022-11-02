@@ -1,15 +1,15 @@
 import React from 'react'
 import axios from "axios";
-import CartList from "./CartList";
+import CartList from "./CartListDetail";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import Cartdetail from './Cartdetail';
+import styles from '../MyPage/MyPage.module.scss'
 
 function Cart() {
-  // if (localStorage.getItem("token") === null) {
-  //   alert("로그인 후 이용해 보세요! 🛒");
-  //   document.location.href = "/login";
-  // }
+  if (localStorage.userName == null) {
+    alert("로그인 후 이용해 보세요! 🛒");
+    document.location.href = "/login";
+  }
   return (
     <>
       <DimmedBackground />
@@ -40,7 +40,6 @@ function Cart() {
           <CartList />
         </CartPage>
       </ContentDiv>
-      <Cartdetail />
     </>
   )
 }
@@ -94,6 +93,7 @@ const CartPage = styled.div`
 `;
 
 const ContentDiv = styled.div`
+  margin-top: 100px;
   padding-bottom: 64px;
   background: #fdfdfd;
 `;

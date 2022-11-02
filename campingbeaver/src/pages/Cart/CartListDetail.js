@@ -5,10 +5,12 @@ import CartItems from './CartItems';
 const CartListDetail = () => {
   return (
     <>
-    <div>
-      
-      <CartItems/>
-    </div>
+    {
+      localStorage.userBasket != null?
+      <div>
+        <CartItems />
+      </div>
+      :
       <div>
         <EmptyList>
           <EmptyListLogo>
@@ -22,13 +24,14 @@ const CartListDetail = () => {
             </div>
             <EmptyCartBtn
               type="button"
-              onClick={() => window.location.replace("/products")}
+              onClick={() => window.location.replace("store")}
             >
               상품 구경하러 가기
             </EmptyCartBtn>
           </EmptyListLogo>
         </EmptyList>
       </div>
+      }
     </>
   )
 }

@@ -154,7 +154,7 @@ const Store = () => {
       {openModal && <StoreModal items={itemData} closeModal={setOpenModal} />}
       <div className="store">
         <section>
-          <h2>{location.search ? urlCategory : '전체상품'}</h2>
+          <h2>전체상품</h2>
           {urlCategory && (
             <div className="category">
               {CATEGORY[urlCategory].map(({ id, name }) => {
