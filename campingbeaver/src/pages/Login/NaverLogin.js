@@ -90,8 +90,6 @@ const NaverLogin = ({ auth, setAuth }) => {
         console.log(auth)
     }, [])
 
-
-
     return (
         <>
             <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px" /><span className='naverSpan'>네이버 로그인 </span><span></span></div>

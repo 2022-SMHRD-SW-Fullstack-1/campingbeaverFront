@@ -30,8 +30,16 @@ const ReservNotEmpty = ({reservList}) => {
           </thead>
           
           <tbody>
-            {reservList.reserv.map((item, i)=> {
-              return <ReservItem key={i} item={item} />;
+            {reservList && reservList.map(({reserv_num, reserv_date, reserv_name, reserv_price})=> {
+              return <ReservItem 
+                      reservNum = {reserv_num}
+                      reservDate = {reserv_date}
+                      reservName = {reserv_name}
+                      reservPrice = {reserv_price}
+                      review = "작성"
+                      delivery = "조회"
+                      cancel = "취소"
+                      />;
             })}
             
           </tbody>
