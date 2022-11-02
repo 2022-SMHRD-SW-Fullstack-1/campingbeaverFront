@@ -18,6 +18,7 @@ import NaverLogin from './pages/Login/NaverLogin';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
+import Header from './components/Layout/Header';
 
 function App() {
   // const [hello, setHello] = useState('')
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Header/>
     {/* <h1>{hello}</h1> */}
       <Routes> 
         <Route path="/" element={<Layout/>} />

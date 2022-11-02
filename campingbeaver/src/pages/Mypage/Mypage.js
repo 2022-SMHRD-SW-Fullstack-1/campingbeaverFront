@@ -8,7 +8,6 @@ const MyPage = () => {
 
   return (
     <div className={styles.top}>
-      <Header/>
       
       <div>
           <h1 className={styles.MyPage}>

@@ -26,7 +26,6 @@ const ContentDiv = styled.div`
 const Layout = (props) => {
   return (
     <div>
-        <Header/>
         {/* <Nav/> */}
         <div className={styles.layout}>
         {/* <Carousel fade>

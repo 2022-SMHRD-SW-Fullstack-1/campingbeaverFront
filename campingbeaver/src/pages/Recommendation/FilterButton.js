@@ -44,12 +44,12 @@ const clearBtn = (e) => {
   
 
 const dataCon = (e) => {
-  console.log(inputText);
+  // console.log(inputText);
   const userHashTag = [
     inputText
     // inputText.join(",")
 ]
-  console.log(userHashTag);
+  // console.log(userHashTag);
 
   Axios.post('/beaver/hash',JSON.stringify(userHashTag), {
     headers: {

@@ -7,12 +7,13 @@ const RecomDetail = () => {
   const [recommendation, setRecommendation] = useState("")
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  const [siteName, setSiteName] = useState("");
 
   useEffect(()=>{
     Axios.get("/beaver/main").then((response)=>{
 
       setRecommendation(response.data);
-      console.log(recommendation);
+      
       
       if(response.data){
         // setRecommendation(response.data);
@@ -23,10 +24,11 @@ const RecomDetail = () => {
       }
     })
 },[])
-  
+console.log(recommendation);
   useEffect(()=>{
     setLatitude(recommendation.site_lat);
     setLongitude(recommendation.site_lng);
+    setSiteName(recommendation.site_name);
   })
     
   // console.log(latitude);
@@ -34,10 +36,11 @@ const RecomDetail = () => {
 
   const decimalProps ={
     latitude,
-    longitude
+    longitude,
+    siteName,
   }
   return (
-    <div>RecomDetail
+    <div>
         <Map {...decimalProps}/>
         {/* {recommendation} */}
     </div>

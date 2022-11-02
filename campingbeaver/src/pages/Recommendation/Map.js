@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import RecomDetail from './RecomDetail'
 
 
-const Map = ({latitude,longitude}) => {
+const Map = ({latitude,longitude,siteName}) => {
 
     const lat = {latitude}
     const lng = {longitude}
@@ -36,7 +36,7 @@ const Map = ({latitude,longitude}) => {
                 marginLeft: '5px',
                 marginRight: '5px',
             }}
-        >
+        ><h1>{siteName}</h1>
             <div id="map" style={{ width: '99%', height: '500px' }}></div>
       </div>
       );
