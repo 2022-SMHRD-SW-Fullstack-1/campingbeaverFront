@@ -17,6 +17,7 @@ import ReviewList from './pages/Review/ReviewList';
 import ReviewPage from './pages/Review/ReviewPage';
 import Header from './components/Layout/Header';
 import WishList from './pages/MyPage/WishList/WishList';
+import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path='/surveythird' element={<SurveyThird />} />
         <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
         <Route path='/wishlist:id' element={<WishList />} />
+        <Route path='/reservlist:id' element={<ReservList />} />
 
 
         {/* <Route path="/join" element={<Join />}></Route> */}

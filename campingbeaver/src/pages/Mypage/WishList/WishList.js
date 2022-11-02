@@ -21,7 +21,11 @@ const WishList = () => {
   useEffect(()=> {
     // const userId = params.id
     const userId = 'admin'
-    axios.get(`/beaver/wishlist/${userId}`)
+    axios.get(`/beaver/wishlist/${userId}`,
+      { headers: {
+          Authorization: localStorage.access_token
+      }}
+    )
     .then((res) => {
         //console.log(res.data)
         setWishList(res.data)
