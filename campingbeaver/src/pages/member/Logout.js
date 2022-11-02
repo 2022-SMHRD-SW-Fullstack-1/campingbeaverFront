@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
-//import { AuthContext } from "../context/AuthProvider";
 
 function Logout({auth, setAuth}) {
 
@@ -17,8 +16,6 @@ function Logout({auth, setAuth}) {
 		localStorage.removeItem("com.naver.nid.oauth.state_token");
 
 		setAuth(false);
-		
-		// navigate("/");
 	};
 	
 	useEffect(() => {

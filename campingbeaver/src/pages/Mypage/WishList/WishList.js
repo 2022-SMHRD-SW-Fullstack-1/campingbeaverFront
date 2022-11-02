@@ -19,47 +19,30 @@ const WishList = () => {
   const params = useParams();
   
   useEffect(()=> {
-    const userId = params.id
-    axios.get(`/beaver/wishlist/${userId}`)
-    .then(function(response) {
-        console.log(response.data)
-        setWishList(response.data)
-        console.log(wishList)
-     })
-    .catch(function(error) {
-      console.log(error);
-    })
-    .finally(function() {
-    });
-  },[wishList]);
- 
-  // useEffect(()=> {
-  //   axios({
-  //     url:'/beaver/wishlist/admin',
-  //     method: 'post',
-  //     data: {user_id : 'admin'},
-  //     baseURL: 'http://localhost:8123',
-  //     responseType:'json',
-  //     withCredentials: true,
-  // }     
-  // ).then(function(response) {
-  //   setWishList(response.data)
-  //   console.log(response.data)
-  //   console.log(response.status)
-  // })
-  // })    
+    // const userId = params.id
+    const userId = 'admin'
+    axios.get(`/beaver/wishlist/${userId}`,
+      { headers: {
+          Authorization: localStorage.access_token
+      }}
+    )
+    .then((res) => {
+        //console.log(res.data)
+        setWishList(res.data)
+      })
+      .catch((error)=>console.log('Network Error: ', error))
+    },[]);
+    
+  
 
   return (
     <div>
-            
               <div className={styles.top}>
                 <h1 className={styles.contact}>
                   Wish List
                 </h1>
                 <p className={styles.contact1}>관심상품</p>
               </div>
-            
-
 
             <div className={styles.ListContainer}>
                 {wishEmpty ? (
@@ -70,6 +53,6 @@ const WishList = () => {
             </div>  
     </div>
   )
-                }
+}
 
 export default WishList

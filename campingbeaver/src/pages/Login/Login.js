@@ -4,7 +4,7 @@ import './Login.scss';
 import {KAKAO_AUTH_URL} from './OAuth';
 import Header from '../../components/Layout/Header';
 import NaverLogin from './NaverLogin';
-
+import './Login.css'
 const Login = () => {
 
  
