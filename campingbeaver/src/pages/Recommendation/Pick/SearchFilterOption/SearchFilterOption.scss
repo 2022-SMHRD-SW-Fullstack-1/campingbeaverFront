@@ -1,0 +1,12 @@
+.SearchFilterOption {
+  height: 31px;
+  background-color: white; 
+  text-align: left;
+  padding: 5px 0 0 10px;
+  color: #444444;
+  font-weight: 300;
+
+  &:hover {
+    background-color: #f7f7f7; 
+  }
+}  

@@ -1,0 +1,23 @@
+.PageButton {
+  display: flex;
+
+  .button {
+    width: 35px;
+    height: 37px;
+    margin: 0 5px;
+    padding-top: 11px;
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(100,100,100,.3);
+    text-align: center;
+    color: #333333;
+
+    &:hover {
+      background-color: #dddddd;
+    }
+  }
+
+  .clicked {
+    background-color: black;
+    color: white;
+  }
+}

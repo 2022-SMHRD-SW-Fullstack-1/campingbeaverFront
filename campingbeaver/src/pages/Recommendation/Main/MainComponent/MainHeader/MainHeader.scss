@@ -1,0 +1,48 @@
+@import "../../../../../styles/commonStay.scss";
+
+.MainHeader {
+  .header {
+    max-width: 1140px;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 7px;
+
+    .headerContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mainTitle {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: "Open Sans", sans-serif;
+      letter-spacing: -0.3px;
+      color: $color-title-black;
+      margin-bottom: 4px;
+    }
+
+    .mainDesc {
+      font-size: 14px;
+      font-weight: 500;
+      font-family: "Open Sans", sans-serif;
+      color: #797979;
+    }
+    .mainBtn {
+      background: none;
+      border: 1px solid #222;
+      padding: 10px 15px;
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      color: #666666;
+      text-align: left;
+      line-height: 13.3px;
+      cursor: pointer;
+      &:hover {
+        color: #333333;
+      }
+    }
+  }
+}

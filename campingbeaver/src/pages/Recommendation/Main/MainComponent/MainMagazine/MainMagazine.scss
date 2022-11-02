@@ -1,0 +1,190 @@
+@import "../../../../../styles/commonStay.scss";
+
+
+@media (min-width: 768px) {
+  .magazineContainer {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .magazineContainer {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .magazineContainer {
+    width: 1170px;
+  }
+}
+
+.MainMagazine {
+  .magazineContainer {
+    background-color: white;
+    max-width: 1140px;
+    height: 415px;
+    display: flex;
+    margin-bottom: 33px;
+
+    .magazineLeft {
+      width: 760px;
+      height: 415px;
+      overflow: hidden;
+      position: relative;
+
+      .imgLabel {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 96px;
+        height: 36px;
+        position: absolute;
+        z-index: 2;
+
+        .labelTxt {
+          width: 96px;
+          font-family: "Open Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 36px;
+          text-align: center;
+          color: #666666;
+          position: absolute;
+          z-index: 3;
+
+          .labelSpan {
+            color: #96aee1;
+          }
+        }
+      }
+
+      .magazineImg {
+        width: 100%;
+        min-width: 750px;
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        cursor: pointer;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.15);
+          -webkit-filter: brightness(65%);
+          filter: brightness(65%);
+        }
+
+        &:hover + .hoverView {
+          display: flex;
+        }
+      }
+      .hoverView {
+        width: 80px;
+        height: 30px;
+        border: 2px solid white;
+        border-radius: 4.5px;
+        background: none;
+        position: absolute;
+        top: 47%;
+        left: 46%;
+        z-index: 10;
+        @include flex;
+        display: none;
+        cursor: pointer;
+        pointer-events: none;
+
+        .fa-search {
+          width: 11px;
+          height: 11px;
+          color: white;
+          margin-right: 3px;
+        }
+
+        .viewTxt {
+          color: white;
+          font-size: 11.5px;
+          font-family: "Open Sans", sans-serif;
+          font-weight: 600;
+          letter-spacing: -0.1px;
+        }
+        &:hover {
+          display: flex;
+        }
+      }
+    }
+
+    .magazineRight {
+      width: 380px;
+      height: 415px;
+      padding: 30px;
+      @include flex;
+
+      .magazineTextContainer {
+        width: 320px;
+        height: 334px;
+
+        .textTop {
+          height: 89px;
+          border-top: 3px solid #222;
+          padding: 20px 0;
+
+          .magHotelName {
+            font-size: 21px;
+            font-weight: 600;
+            line-height: 23.1px;
+            color: $color-title-black;
+          }
+
+          .magTopTxt {
+            margin: 5px 0 0;
+            padding: 2px 0;
+            font-size: 13px;
+            color: $color-title-black;
+          }
+
+          .magLocation {
+            color: $color-content-gray;
+          }
+        }
+
+        .textBottom {
+          height: 245px;
+          border-top: 1px solid #d3d3d3;
+          border-bottom: 1px solid #d3d3d3;
+
+          .descTitle {
+            font-size: 16px;
+            color: $color-title-black;
+            font-weight: 600;
+            line-height: 17.6px;
+            margin: 25px 0 10px;
+          }
+
+          .desc {
+            font-size: 14px;
+            color: #717171;
+            line-height: 21px;
+            margin: 15px 0;
+            padding-right: 3px;
+            height: 130px;
+            overflow: hidden;
+            white-space: normal;
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+          }
+
+          .magBtn {
+            font-family: "Open Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #5a5a5a;
+            line-height: 21px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
