@@ -94,7 +94,7 @@ const CartItems = () => {
     <>
       <div style={cartItems}>
         <div>
-          <input style={checkboxStyle} type="checkbox"></input>
+          <input style={checkboxStyle} type="checkbox"></input>2
         </div>
         <div style={cartItemSection}>
           <div style={cartItemLab}>상품가격</div>

@@ -29,7 +29,6 @@ const Store = () => {
       console.log(response.data)
       
       setItems(response.data);
-      //   setTotalCounts(response.product_list.total_count);
     })
   }, []);
 
