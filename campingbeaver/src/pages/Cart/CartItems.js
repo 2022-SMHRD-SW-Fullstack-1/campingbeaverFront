@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import styled, { css } from "styled-components";
 
 const CartItems = () => {

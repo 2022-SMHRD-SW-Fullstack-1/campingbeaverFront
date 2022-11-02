@@ -1,16 +1,27 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import styled, { css } from "styled-components";
 import CartItems from './CartItems';
+import axios from 'axios'
 
 const CartListDetail = () => {
+  const [cartList, setCartList] = useState([]);
+
+  useEffect(() => {
+    axios.get("/beaver/basketlist")
+    .then(response=>{
+      console.log(response.data)
+      
+      setCartList(response.data);
+    })
+  }, []);
   return (
     <>
-    {
-      localStorage.userBasket != null?
+      {cartList.length !=0 ? 
       <div>
         <CartItems />
       </div>
       :
+      
       <div>
         <EmptyList>
           <EmptyListLogo>
@@ -31,6 +42,7 @@ const CartListDetail = () => {
           </EmptyListLogo>
         </EmptyList>
       </div>
+      
       }
     </>
   )

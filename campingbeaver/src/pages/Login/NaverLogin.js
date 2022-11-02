@@ -50,7 +50,7 @@ const NaverLogin = ({ auth, setAuth }) => {
                 localStorage.setItem('userEmail', userEmail)
                 localStorage.setItem('userId', userId)
                 setAuth(true)
-                window.location.replace('/')
+                
             }
         })
 

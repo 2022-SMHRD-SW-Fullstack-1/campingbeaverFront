@@ -1,9 +1,7 @@
 import React from 'react'
-import axios from "axios";
 import CartList from "./CartListDetail";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import styles from '../MyPage/MyPage.module.scss'
 
 function Cart() {
   if (localStorage.userName == null) {
