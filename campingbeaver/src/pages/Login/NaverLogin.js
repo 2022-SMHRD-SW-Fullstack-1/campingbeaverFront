@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
-import './Login.css';
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import naverImg from '../../components/img/naverLogo.png'
 
-const NaverLogin = () => {
 
+const NaverLogin = ({ auth, setAuth }) => {
+    const navigate = useNavigate()
 
-    //const [userInfo, setUserInfo] = useState();
+    const [userInfo, setUserInfo] = useState(null);
+
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
     const NAVER_CALLBACK_URL = 'http://localhost:3000/Login'
@@ -17,10 +21,12 @@ const NaverLogin = () => {
             // 팝업창으로 로그인 진행할 것인지?
             isPopup: false,
             // 버튼타입 
-            loginButton: { color: 'green', type: 3, height: 45 },
+
+            loginButton: { color: 'green', type: 3, height: 55 },
             callbackHandle: true,
+
         })
-        naverLogin.init()
+        naverLogin.init();
 
         // 선언된 naverLogin 을 이용하여 유저 (사용자) 정보를 불러오는데  
         // 함수 내부에서 naverLogin을 선언하였기에 지역변수처리가 되어  
@@ -32,36 +38,37 @@ const NaverLogin = () => {
         // 백엔드 개발자가 정보를 전달해준다면 아래 요기! 라고 작성된 부분까지는 
         // 코드 생략이 가능하다.  
 
-
         naverLogin.getLoginStatus(async function (status) {
             if (status) {
-                // 아래처럼 선택하여 추출이 가능하고,
-                const userid = naverLogin.user.getEmail()
-                const username = naverLogin.user.getName()
-                // 정보 전체를 아래처럼 state 에 저장하여 추출하여 사용가능하다. 
-                //setUserInfo(naverLogin.user)
-                console.log(userid)
-                console.log(username)
-                console.log(naverLogin.user)
+
+                console.log('가져오는값 : ', naverLogin.user)
+                const userEmail = naverLogin.user.email
+                const userId = naverLogin.user.id
+                const userName = naverLogin.user.name
+                setUserInfo({ email: userEmail, id: userId, name: userName })
+                localStorage.setItem('userName', userName)
+                localStorage.setItem('userEmail', userEmail)
+                localStorage.setItem('userId', userId)
+                setAuth(true)
             }
         })
 
         // 여기까지!
     }
 
-    // 네이버 소셜 로그인은 URL에 엑세스 토큰이 붙어서 전달됨
-    // 아래와 같이 토큰 추출 가능
+    const location = useLocation();
+    // 액세스 토큰 추출
     const userAccessToken = () => {
         window.location.href.includes('access_token') && getToken()
     }
 
     const getToken = () => {
-        const token = window.location.href.split('=')[1].split('&')[0]
-        console.log(token);
-
+        //const token = window.location.href.split('=')[1].split('&')[0]
+        const token = location.hash.split('=')[1].split('&')[0];
+        console.log('토큰값 : ', token);
         // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!   
-        // localStorage.setItem('access_token', token)
-        // setGetToken(token)
+        localStorage.setItem('access_token', token)
+        //setGetToken(token)
     }
 
     const handleNaverClick = () => {
@@ -73,13 +80,21 @@ const NaverLogin = () => {
     useEffect(() => {
         initializeNaverLogin()
         userAccessToken()
+        axios({
+            url: '/beaver/main',
+            method: 'post',
+            data: { userInfo },
+            baseURL: 'http://localhost:8123',
+        }
+        )
+        console.log(auth)
     }, [])
 
     return (
-        <>  
-            <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px"/><span className='naverSpan'>네이버 로그인 </span><span></span></div>
+        <>
+            <div className='naverBtn' onClick={handleNaverClick}><img src={naverImg} width="40px" /><span className='naverSpan'>네이버 로그인 </span><span></span></div>
             {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
-            <div id="naverIdLogin" style={{display:"none"}}></div>
+            <div id="naverIdLogin" style={{ display: "none" }}></div>
         </>
     )
 }

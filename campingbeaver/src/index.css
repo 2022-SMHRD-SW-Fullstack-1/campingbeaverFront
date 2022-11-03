@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+#root {
+    min-height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    color: inherit ;
+    text-decoration: none;
+}
+*{
+    box-sizing: inherit;
+}
+
+
+@font-face {
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+code {
+    font-family: 'twayair' !important;
+    background-color: none;
+}
+
