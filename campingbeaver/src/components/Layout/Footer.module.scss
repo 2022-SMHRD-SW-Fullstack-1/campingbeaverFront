@@ -1,7 +1,12 @@
 .footer{
     height: 150px;
-    margin-top : auto;
+    width: 100%;
+    display: flex;
+    bottom : 0;
     background-color : #dde0ea;
+    position : fixed;
+    
+
 }
 
 .contents{

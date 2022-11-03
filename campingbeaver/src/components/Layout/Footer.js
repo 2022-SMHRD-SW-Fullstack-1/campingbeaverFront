@@ -3,7 +3,7 @@ import styles from './Footer.module.scss'
 
 const Footer = () => {
   return (
-      <div>
+      <>
         <footer className={styles.footer}>
       <div className={styles.contents}>
       <div>
@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         </div>
     </footer>
-    </div>
+    </>
   )
 }
 
