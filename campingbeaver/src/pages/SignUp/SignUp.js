@@ -48,17 +48,20 @@ const Signup = () => {
   };
 
   const goToMain = () => {
-    fetch('http://10.58.2.129:8000/users/signup', {
+    let now = new Date();
+    fetch('/beaver/sign', {
       method: 'POST',
       body: JSON.stringify({
-        username: id,
-        password: pw2,
-        name: name,
-        address: address + address2,
-        email: email,
-        birth_date: birthday,
-        phone_number: '010' + phone,
-        optional_agreement: checked,
+        user_id: id,
+        user_pw: pw2,
+        user_name: name,
+        user_phone: '010' + phone,
+        user_addr: address + address2,
+        user_type: 'N',
+        user_joindate: now,
+        user_email: email,
+        //birth_date: birthday,
+        //optional_agreement: checked,
       }),
     })
       .then(response => {
