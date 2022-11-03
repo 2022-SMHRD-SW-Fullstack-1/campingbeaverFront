@@ -3,11 +3,24 @@ import styles from './Footer.module.scss'
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+      <div>
+        <footer className={styles.footer}>
       <div className={styles.contents}>
-        <h2 className={styles.title}>Footer in your Area</h2>
+      <div>
+        <h3> Camping Beaver</h3>
+        <p>대표자명 : 고연주, 마준호, 임아해, 주상민<br/>
+          운영시간: 10:00 ~ 18:00<br/>
+          (점심시간: 12:30 ~ 13:30)</p>
+        </div>
+        <div>
+          <h5>스마트인재개발원</h5>
+          <p>광주본점 : 광주 동구 예술길 31-15 3~5, 7층<br/>
+          광주남구점 : 광주 남구 송암로 60 2층
+          </p>
+        </div>
         </div>
     </footer>
+    </div>
   )
 }
 

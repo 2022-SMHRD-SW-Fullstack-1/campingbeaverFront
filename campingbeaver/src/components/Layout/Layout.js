@@ -61,7 +61,7 @@ const Layout = (props) => {
         </main>
         <h1 align='center'>Our Recommendation</h1>
         <Content/>
-        <Footer/>
+
     </div>
   )
 }

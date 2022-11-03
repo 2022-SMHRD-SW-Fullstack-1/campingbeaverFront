@@ -3,6 +3,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     min-height: 100%;
+    background-color: rgba(255, 255, 255, 0.767);
+    
 }
 #root {
     min-height: 100%;

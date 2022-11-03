@@ -45,11 +45,10 @@ const clearBtn = (e) => {
 
 const dataCon = (e) => {
   // console.log(inputText);
-  const userHashTag = [
-    inputText
+  const userHashTag = inputText
     // inputText.join(",")
-]
-  // console.log(userHashTag);
+
+  console.log(userHashTag);
 
   Axios.post('/beaver/hash',JSON.stringify(userHashTag), {
     headers: {
@@ -61,7 +60,6 @@ const dataCon = (e) => {
   })
   .catch(()=>{alert('failed!')})
 }
-
 
   return (
 
@@ -75,7 +73,7 @@ const dataCon = (e) => {
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={bonfire} width='50px'/></p>장작판매</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={court} width='50px'/></p>운동시설</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={hotwater} width='50px'/></p>온수</Button>
-        <Button variant="outline-dark" onClick={clickHandle}><p><img src={mart} width='50px'/></p>마트/편의점</Button>
+        <Button variant="outline-dark" onClick={clickHandle}><p><img src={mart} width='50px'/></p>매점</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={park} width='50px'/></p>산책로</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={pool} width='50px'/></p>물놀이장</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={storm} width='50px'/></p>전기</Button>
@@ -96,8 +94,6 @@ const dataCon = (e) => {
         <Button variant="outline-dark" onClick={clickHandle}>여름</Button>
         <Button variant="outline-dark" onClick={clickHandle}>가을</Button>
         <Button variant="outline-dark" onClick={clickHandle}>겨울</Button>
-        <Button variant="outline-dark" onClick={clickHandle}>문화유적</Button>
-        <Button variant="outline-dark" onClick={clickHandle}>축제</Button>
         <Button variant="outline-dark" onClick={clickHandle}>별 보기 좋은</Button>
         <Button variant="outline-dark" onClick={clickHandle}>물놀이 하기 좋은</Button>
         <Button variant="outline-dark" onClick={clickHandle}>자전거 타기 좋은</Button>

@@ -2,12 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "react-scroll/modules"
 import headimg from '../img/headimg.jpg'
+import style from "./Side.scss"
+import { useMediaQuery } from 'react-responsive'
 
 const SideDiv = styled.div`
   width: 120%;
   position: relative;
   right: 5rem;
-  margin-top: 10px;
+  margin-top: -119px;
   div {
     display: flex;
     flex-direction: column;

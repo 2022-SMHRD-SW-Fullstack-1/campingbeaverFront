@@ -1,5 +1,5 @@
 .footer{
-    height: 100px;
+    height: 150px;
     margin-top : auto;
     background-color : #dde0ea;
 }
@@ -10,11 +10,19 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:space-between;
     margin: 0 auto;
 }
 
 .title{
     font-weight: 600;
     font-size: 20px;
+}
+
+div {
+    // border: black solid 1px;
+}
+
+p {
+    font-size: 12px;
 }

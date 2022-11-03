@@ -1,136 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import Map from './Map'
-import Axios from 'axios'
-import Slider from "react-slick";
-import stylesheet from './RecomDetail.css'
+import React from 'react'
 import surveyimg from './campimg/surveyimg.jpg'
-const RecomDetail = () => {
+import stylesheet from './RecomDetail.css'
 
-  const [recommendation, setRecommendation] = useState("")
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
-  const [siteName, setSiteName] = useState("");
-
-  useEffect(()=>{
-    Axios.get("/beaver/main").then((response)=>{
-
-      setRecommendation(response.data);
-      
-      
-      if(response.data){
-        // setRecommendation(response.data);
-        // console.log(recommendation);
-        
-      }else{
-        alert("failed");
-      }
-    })
-},[])
-console.log(recommendation);
-  useEffect(()=>{
-    setLatitude(recommendation.site_lat);
-    setLongitude(recommendation.site_lng);
-    setSiteName(recommendation.site_name);
-  })
-    
-  // console.log(latitude);
-  // console.log(longitude);
-
-  const decimalProps ={
-    latitude,
-    longitude,
-    siteName,
-  }
-
-
-
+const Pick = () => {
   return (
     <div>
-              <Map {...decimalProps}/>
-
-
-              
-<div class="con list-1">
-	<div class="title">
-		<div class="main-title">MAGAZINE</div>
-		<div class="sub-title">매주 한번 스테이폴리오가 이야기하는 유니크한 공간!</div>
-		<div class="read-more">read more magazine</div>
-	</div>
-	<div class="row">
-		<div class="cell">
-			<div class="img-box">
-				<div class="date">
-					18 /<span> 06W1</span>	
-				</div>
-				<img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">낙원장</h1>
-                        <div class="sub-name">부티끄호텔</div>
-                        <div class="location">서울/종로</div>
-                    </div>
-                    
-                    <div class="body">
-                        <div class="des_title">
-                            전통에 품격을 더한 고택의 재해석
-                        </div>
-                        <div class="des">
-                            안동 구름에 리조트는 전통 고택 리조트라는 새로운 개념의 스테이다. 고택과 리조트라는 상반된 단어는 전통과 현대를 적절하게 공존시키고자 하는 안동 구름에 리조트의 목표를 잘 보여주고 있다. ‘한국 정신문화의 수도’로 칭해지는 안동에서 고택의 가치와 장점은 지키고 불편함은 보완하며 안동 구름에 리조트는 그들만의 중심을 지키며 조용하게 안동에서 자리를 잡으며 운영되고 있다.
-                        </div>
-                    </div>
-                </div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-<div class="con list-1">
-	<div class="row">
-		<div class="cell">
-			<div class="img-box">
-				<div class="date">
-					18 /<span> 03W3</span>	
-				</div>
-				<img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">이꼬이&스테이</h1>
-                        <div class="sub-name">게스트하우스</div>
-                        <div class="location">제주/구제주</div>
-                    </div>
-                    
-                    <div class="body">
-                        <div class="des_title">
-                            셰프의 식사와 매력적인 스테이가 함께하는 곳
-                        </div>
-                        <div class="des">
-                            쉼, 휴식이라는 뜻처럼 "이꼬이&Stay"는 휴식을 하면서 머무는 곳이다. 게스트하우스와 호텔의 장점을 살린 이꼬이&STAY는 20년 넘은 4층 건물을 대폭 개조하여 식당과 게스트하우스, 주인집이 공존하는 유니크한 스테이이다. 한 끼의 정성스러운 식사만큼이나 세심한 배려가 돋보이는 특별한 디자인이다.
-                        </div>
-                    </div>
-                </div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="con list-2">
+        <div class="con list-2">
 	<div class="title"> 
 		<div class="main-title">PICK</div>
-		<div class="sub-title">캠핑비버가 추천합니다!</div>
+		<div class="sub-title">매일 하루 한번! 스테이폴리오가 추천합니다!</div>
 		<div class="read-more">read more pick</div>
 	</div>
 	<div class="row">
@@ -395,10 +273,8 @@ console.log(recommendation);
 	</div>
 </div>
 		
-       </div>
- 
-    
+    </div>
   )
 }
 
-export default RecomDetail
+export default Pick

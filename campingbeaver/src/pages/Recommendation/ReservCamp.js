@@ -1,6 +1,9 @@
 import React from 'react'
 import CampCard from './CampCard'
 import style from './Reservation.module.scss'
+import surveyimg from './campimg/surveyimg.jpg'
+import stylesheet from './RecomDetail.css'
+import Pick from './Pick'
 
 const Reservcamp = () => {
 
@@ -19,7 +22,10 @@ const Reservcamp = () => {
 
   return (
   <div className={style.reserv}>
-    {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))}
+    {/* {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))} */}
+    <Pick/>
+
+  
   </div>
   )
 }

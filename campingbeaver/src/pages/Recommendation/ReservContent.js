@@ -38,6 +38,7 @@ const ReservContent = () => {
                     
                     <div className={Styles.imgbox}>
                     <ReservCamp />
+                    
                     </div>
                 </div>
 
