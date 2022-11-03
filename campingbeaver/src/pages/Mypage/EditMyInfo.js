@@ -5,7 +5,7 @@ const EditMyInfo = () => {
   return (
     <div>
         <div>
-          <h1 className={styles.contact}>
+          <h1>
           Edit Member Info
           </h1>
           <p className={styles.contact1}>회원 정보 수정</p>

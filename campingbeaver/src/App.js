@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
@@ -8,7 +8,7 @@ import Layout from './components/Layout/Layout'
 import MyPage from "./pages/MyPage/MyPage";
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
-import Cartdetail from "../src/pages/Cart/Cartdetail"
+import Cart from "../src/pages/Cart/Cart"
 import SurveySecond from './components/Layout/SurveySecond'
 import SurveyThird from './components/Layout/SurveyThird'
 import Recommendation from './pages/Recommendation/Recommendation'
@@ -21,7 +21,6 @@ import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
-import Header from './components/Layout/Header';
 
 
 function App() {
@@ -40,7 +39,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/Reservation" element={<Reservation />} />
-        <Route path="/cart" element={<Cartdetail />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Store" element={<Store />} />
