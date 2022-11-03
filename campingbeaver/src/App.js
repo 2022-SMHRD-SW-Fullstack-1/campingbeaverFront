@@ -25,46 +25,13 @@ import Header from './components/Layout/Header';
 
 
 function App() {
-<<<<<<< HEAD
-  // const [hello, setHello] = useState('')
-  // useEffect(() => {
-
-  //   fetch('/beaver/main')
-  //   .then(response => response.text())
-  //   .then(hello => {
-  //     setHello(hello)})
-  // }, []);
-
-=======
   const [auth, setAuth] = useState(false);
->>>>>>> 80977c75c3076a450a91269951ee4d7a226fdb68
+
 
   useEffect(() => {
     console.log('로그인 인증값 : ', auth);
   }, [auth])
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-    <Header/>
-    {/* <h1>{hello}</h1> */}
-      <Routes> 
-        <Route path="/" element={<Layout/>} />
-        <Route path="/Login" element={<Login/>}/>
-        <Route path="/MyPage" element={<MyPage/>}/>
-        <Route path="/Reservation" element={<Reservation/>}/>
-        <Route path="/ReviewForm" element={<ReviewForm/>}/>
-        <Route path="/cart" element={<Cartdetail />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/detail:num' element={<Detail />} />
-        <Route path="/SignUp" element={<SignUp/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/Store" element={<Store/>} />
-        <Route path="/Recommendation" element={<Recommendation/>}/>
-        <Route path="/Recomdetail" element={<RecomDetail/>}/>
-        <Route path='/surveysecond' element={<SurveySecond/>}/>
-        <Route path='/surveythird' element={<SurveyThird/>}/>
-        <Route path='/Naver' component={NaverLogin} />
-=======
     <div className='App'>
       <Header auth={auth} setAuth={setAuth} />
       <Routes>
@@ -94,7 +61,7 @@ function App() {
           <Route index element={<ReviewList />} />
           <Route path=":reviewID" element={<ReviewPage />} />
         </Route>
->>>>>>> 80977c75c3076a450a91269951ee4d7a226fdb68
+
       </Routes>
     </div>
   )
