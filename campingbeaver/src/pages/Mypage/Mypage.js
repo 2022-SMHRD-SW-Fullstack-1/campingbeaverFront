@@ -12,7 +12,10 @@ const MyPage = () => {
  
   return (
     <div className={styles.top}>
+<<<<<<< HEAD
+=======
       
+>>>>>>> 80977c75c3076a450a91269951ee4d7a226fdb68
       
       <div>
           <h1 className={styles.MyPage}>
