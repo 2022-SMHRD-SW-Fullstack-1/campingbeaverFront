@@ -6,7 +6,9 @@ import Header from '../../components/Layout/Header';
 import NaverLogin from './NaverLogin';
 import './Login.css'
 const Login = () => {
-
+  if (localStorage.userName != null) {
+    document.location.href = "/";
+  }
  
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({

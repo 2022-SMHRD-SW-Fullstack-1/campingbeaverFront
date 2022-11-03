@@ -90,11 +90,12 @@ const CartItems = () => {
     transition : 'border-color cubic-bezier(0.075, 0.82, 0.165, 1)',
     verticalAlign : 'middle'
   }
+  
   return (
     <>
       <div style={cartItems}>
         <div>
-          <input style={checkboxStyle} type="checkbox"></input>2
+          <input style={checkboxStyle} type="checkbox"></input>
         </div>
         <div style={cartItemSection}>
           <div style={cartItemLab}>상품가격</div>

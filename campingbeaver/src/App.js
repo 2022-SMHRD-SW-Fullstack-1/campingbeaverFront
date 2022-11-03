@@ -19,10 +19,13 @@ import Header from './components/Layout/Header';
 import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
+import RecomDetail from './pages/Recommendation/RecomDetail';
+import Axios from 'axios';
 
 
 function App() {
   const [auth, setAuth] = useState(false);
+
 
   useEffect(() => {
     console.log('로그인 인증값 : ', auth);
@@ -57,6 +60,7 @@ function App() {
           <Route index element={<ReviewList />} />
           <Route path=":reviewID" element={<ReviewPage />} />
         </Route>
+
       </Routes>
     </div>
   )

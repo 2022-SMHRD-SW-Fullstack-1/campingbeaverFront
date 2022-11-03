@@ -17,6 +17,10 @@ const WishList = () => {
   
   let url = '/beaver/wishlist/admin'
   const params = useParams();
+
+  const Con = {
+    marginLeft : '-180px'
+  }
   
   useEffect(()=> {
     // const userId = params.id

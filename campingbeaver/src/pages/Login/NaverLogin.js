@@ -89,6 +89,7 @@ const NaverLogin = ({ auth, setAuth }) => {
         }
         )
         console.log(auth)
+          
     }, [])
 
     return (

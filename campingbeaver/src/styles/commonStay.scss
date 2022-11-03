@@ -1,0 +1,45 @@
+// main
+$color-background: rgb(238, 238, 238);
+$color-black: rgb(34, 34, 34);
+$color-white: rgb(255, 255, 255);
+// content font-color
+$color-title-black: rgb(51, 51, 51);
+$color-content-gray: rgb(119, 119, 119);
+$color-info-gray: rgb(149, 149, 160);
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex (
+  $justify-content: center,
+  $align-item: center,
+  $flex-direction: row
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-item;
+  flex-direction: $flex-direction;
+}
+
+@mixin mQ {
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    } 
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+}

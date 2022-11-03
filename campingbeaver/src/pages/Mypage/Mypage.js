@@ -12,8 +12,7 @@ const MyPage = () => {
  
   return (
     <div className={styles.top}>
-      
-      
+
       <div>
           <h1 className={styles.MyPage}>
           {userName}님 반가워요!
