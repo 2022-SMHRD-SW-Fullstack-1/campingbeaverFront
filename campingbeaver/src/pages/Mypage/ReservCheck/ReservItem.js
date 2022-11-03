@@ -1,17 +1,16 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-
-
+import React, { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const ReservItem = ({ reservNum, reservDate, reservName, reservPrice,
    review, delivery, cancel }) => {
 
+  const params = useParams();
   const navigate = useNavigate();
   const navigateToReview = () => {
     return (
-      navigate("/ReviewForm")
-    )
-  } 
+      navigate(`/ReviewForm:${reservNum}`)
+      )
+    } 
 
   return (
     <tr className="cartItem">

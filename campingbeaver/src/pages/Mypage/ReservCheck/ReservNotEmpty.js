@@ -11,10 +11,7 @@ const TABLE_HEADER = [
   '배송현황',
   '예약취소'
 ];
-// const OrderNotEmpty = ({ orderList }) => {
-//   const price = orderList.map(item => item.price).reduce((a, b) => a + b, 0);
-//   const shipping = price >= 50000 ? 0 : 3000;
-//   const total = price + shipping;
+
 const ReservNotEmpty = ({reservList}) => {
 
   return (

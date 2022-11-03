@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
 import { GiRoundStar }  from 'react-icons/gi'
 import styled from 'styled-components'
+import axios from 'axios'
 
-const Review = ({reservNum}) => {
+const ReviewForm = () => {
+  const params = useParams();
+  const [numParams, setNumParams] = useState(params.resnum.replace(":",""));
+  
+
   const navigate = useNavigate();
     const navigateToMyPage = () => {
     return (
@@ -15,9 +20,11 @@ const Review = ({reservNum}) => {
   
 
   const [reviewContent, setReviewContent] = useState({
+    userId: '',
+    resNum: numParams,
     context: '',
     score: '',
-    img: ''
+    img: '',
   })
 
   const [viewContent, setViewContent] = useState([]);
@@ -36,10 +43,11 @@ const Review = ({reservNum}) => {
   }
   // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
   const sendReview = () => {
+    
     let score = clicked.filter(Boolean).length;
     setReviewContent({
       ...reviewContent,
-      score: score
+      score: score,
     })
     console.log(score);
     
@@ -51,11 +59,19 @@ const Review = ({reservNum}) => {
       ...reviewContent,
       [name]: value
     })
-    console.log(reviewContent);
+    //console.log(reviewContent);
   }
 
-  const submitHandle = () => {
+  const submitHandle = (e) => {
+    e.preventDefault()
     setViewContent(viewContent.concat({...reviewContent}))
+    
+    axios.post(`/beaver/write/${numParams}`, reviewContent)
+    .then((res)=>{
+      console.log(reviewContent)
+    }).catch((error)=>console.log('Network Error: ', error))
+
+
   }
 
   const [fileImage, setFileImage] = useState('');
@@ -68,7 +84,6 @@ const Review = ({reservNum}) => {
     })
     console.log(reviewContent)
   }
-
 
   useEffect(()=> {
     sendReview();
@@ -88,7 +103,7 @@ const Review = ({reservNum}) => {
               <tr>
                 <th>예약번호</th>
                 <td>
-                  {reservNum}
+                  {numParams}
                 </td>
               </tr>
             </thead>
@@ -161,11 +176,11 @@ const Review = ({reservNum}) => {
               <button className={styles.listBtn}>목록</button>
             </div>
             <div>
-              <button 
+            <button 
                 className={styles.createBtn}
                 onClick={submitHandle}
-                
-                >등록</button>
+            >등록
+            </button>
             </div>
             <div>
               <button 
@@ -181,7 +196,7 @@ const Review = ({reservNum}) => {
   )
 }
 
-export default Review
+export default ReviewForm
 
 const Stars = styled.div`
   margin: 0 auto;

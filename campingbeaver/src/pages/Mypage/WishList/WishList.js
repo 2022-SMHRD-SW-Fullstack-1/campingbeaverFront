@@ -19,7 +19,7 @@ const WishList = () => {
   const params = useParams();
   
   useEffect(()=> {
-    // const userId = params.id
+    // const {userId} = params.id
     const userId = 'admin'
     axios.get(`/beaver/wishlist/${userId}`,
       { headers: {

@@ -51,7 +51,7 @@ function App() {
         {/* <Route path="/join" element={<Join />}></Route> */}
         <Route path="/logout" element={<Logout />}></Route>
 
-        <Route path="/ReviewForm" element={<ReviewForm />} />
+        <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
         <Route path='/ReviewList' element={<ReviewList />} />
         <Route path="/@username">
           <Route index element={<ReviewList />} />

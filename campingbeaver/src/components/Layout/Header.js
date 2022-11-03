@@ -14,7 +14,7 @@ const Header = ({auth, setAuth}) => {
       <div className={styles.contents}>
         <div>
         <Link to='/'><img src={logo} width='200px'/></Link>
-        <span><Link to='/Login'> Login으로 이동 </Link></span>
+        
         <span><Link to='/Reservation'> Reservation으로 이동 </Link></span>
         </div> 
         <Navbar bg="none" expand="lg" className={styles.navbar} >
