@@ -21,9 +21,9 @@ const Review = () => {
                 </div>
             </div>
             <div style={cont2}>
-                <img src={image2} width="300px"></img>
                 <div>
-                    <span>★5.0 / 5.0</span><br />
+                <img src={image2} width="300px"></img>
+                    <span>★5.0 / 5.0</span>
                     <span>로고가 예쁘네요.</span>
                 </div>
             </div>

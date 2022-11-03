@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import styled, { css } from "styled-components";
 
 const CartItems = () => {
@@ -90,6 +90,7 @@ const CartItems = () => {
     transition : 'border-color cubic-bezier(0.075, 0.82, 0.165, 1)',
     verticalAlign : 'middle'
   }
+  
   return (
     <>
       <div style={cartItems}>

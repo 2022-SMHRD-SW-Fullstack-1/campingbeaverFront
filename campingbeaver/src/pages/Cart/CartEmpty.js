@@ -1,29 +1,10 @@
-import React,{useState, useEffect} from 'react'
-import styled, { css } from "styled-components";
-import CartItems from './CartItems';
-import axios from 'axios'
+import React from 'react'
+import styled from "styled-components";
 
-const CartListDetail = () => {
-  const [cartList, setCartList] = useState([]);
-
-  useEffect(() => {
-    axios.get("/beaver/basketlist")
-    .then(response=>{
-      console.log(response.data)
-      
-      setCartList(response.data);
-    })
-  }, []);
+const CartEmpty = () => {
   return (
-    <>
-      {cartList.length !=0 ?
-      <div>
-        <CartItems />
-      </div>
-      :
-      
-      <div>
-        <EmptyList>
+    <div>
+       <EmptyList>
           <EmptyListLogo>
             <LogoEmpty className="fa-solid fa-empty-set"></LogoEmpty>
             <div>
@@ -41,12 +22,10 @@ const CartListDetail = () => {
             </EmptyCartBtn>
           </EmptyListLogo>
         </EmptyList>
-      </div>
-      
-      }
-    </>
+    </div>
   )
 }
+
 
 const EmptyCartBtn = styled.button`
   width: 246px;
@@ -95,4 +74,4 @@ const EmptyList = styled.div`
   text-align: center;
 `;
 
-export default CartListDetail
+export default CartEmpty

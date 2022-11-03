@@ -12,6 +12,7 @@ const CampCard = (props) => {
         </div>
         <div className={style.campcard}>
         <h3>{props.item.name}</h3>
+        
         </div>     
     </div>
   )

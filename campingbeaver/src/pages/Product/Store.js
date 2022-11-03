@@ -29,7 +29,6 @@ const Store = () => {
       console.log(response.data)
       
       setItems(response.data);
-      //   setTotalCounts(response.product_list.total_count);
     })
   }, []);
 
@@ -127,26 +126,7 @@ const Store = () => {
   };
 
   const CATEGORY = {
-    컵: [
-      { id: 1, name: '마블' },
-      { id: 2, name: '스틴슨' },
-      { id: 3, name: '클래식' },
-    ],
-    플레이트: [
-      { id: 1, name: '마블' },
-      { id: 2, name: '스틴슨' },
-      { id: 3, name: '클래식' },
-    ],
-    보울: [
-      { id: 1, name: '마블' },
-      { id: 3, name: '클래식' },
-    ],
-    키친웨어: [{ id: 1, name: '마블' }],
-    굿즈: [
-      { id: 1, name: '휴대폰케이스' },
-      { id: 2, name: '에어팟케이스' },
-      { id: 3, name: '신발' },
-    ],
+    
   };
 
   return (
@@ -154,7 +134,7 @@ const Store = () => {
       {openModal && <StoreModal items={itemData} closeModal={setOpenModal} />}
       <div className="store">
         <section>
-          <h2>{location.search ? urlCategory : '전체상품'}</h2>
+          <h2>전체상품</h2>
           {urlCategory && (
             <div className="category">
               {CATEGORY[urlCategory].map(({ id, name }) => {

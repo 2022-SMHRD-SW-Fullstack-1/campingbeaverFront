@@ -26,10 +26,10 @@
     overflow: scroll;
 
     button {
-      background-color: transparent;
-      border: 0;
-      padding: 0;
-      cursor: pointer;
+      // background-color: transparent;
+      // border: 0;
+      padding: 1;
+      // cursor: pointer;
     }
 
     hr {
@@ -230,4 +230,19 @@
       }
     }
   }
+}
+.reservBtn{
+  flex-direction: column;
+  align-items: flex-start;
+  width: 8em;
+}
+.reservCalCon{
+  display: flex;  
+}
+.Cal{
+  
+}
+.reservDays{
+  border: solid 1px gray;
+  text-align: center;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import naverImg from '../../components/img/naverLogo.png'
-
+import './Login.css'
 
 const NaverLogin = ({ auth, setAuth }) => {
     const navigate = useNavigate()
@@ -50,6 +50,7 @@ const NaverLogin = ({ auth, setAuth }) => {
                 localStorage.setItem('userEmail', userEmail)
                 localStorage.setItem('userId', userId)
                 setAuth(true)
+                
             }
         })
 
@@ -88,9 +89,8 @@ const NaverLogin = ({ auth, setAuth }) => {
         }
         )
         console.log(auth)
+          
     }, [])
-
-
 
     return (
         <>

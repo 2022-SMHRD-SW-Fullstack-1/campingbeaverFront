@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import ReviewForm from '../../ReviewUpload/ReviewForm'
 
 
-const ReservItem = ({item}) => {
+
+const ReservItem = ({ reservNum, reservDate, reservName, reservPrice,
+   review, delivery, cancel }) => {
 
   const navigate = useNavigate();
   const navigateToReview = () => {
@@ -14,16 +15,16 @@ const ReservItem = ({item}) => {
 
   return (
     <tr className="cartItem">
-      <td>{item.reservNum}</td>
+      <td>{reservNum}</td>
       {/* <td>
         <img className="productImg" src={img} alt='iteminfo' />
       </td> */}
-      <td>{item.reservDate}</td>
-      <td>{item.reservName}</td>
-      <td>￦{item.reservPrice}</td>
-      <td><button onClick={navigateToReview}>{item.review}</button></td>
-      <td><button>{item.delivery}</button></td>
-      <td><button>{item.cancel}</button></td>
+      <td>{reservDate}</td>
+      <td>{reservName}</td>
+      <td>￦{reservPrice}</td>
+      <td><button onClick={navigateToReview}>{review}</button></td>
+      <td><button>{delivery}</button></td>
+      <td><button>{cancel}</button></td>
     </tr>
   )
 }

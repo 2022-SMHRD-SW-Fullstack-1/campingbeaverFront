@@ -1,10 +1,27 @@
 .overlay{
     background-color: #d1e7dd81;
     border-color : #d1e7dd81;
+    top : 800px;
 }
 
 
 .imgcard{
         height : 200px;
         object-fit : cover;
+}
+
+// #search {
+
+//     background-color: #d1e7dd81;
+//     border-color : #d1e7dd81;
+// }
+.mount1{ animation: 0.9s ease-in-out loadEffect1; }
+
+@keyframes loadEffect1 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

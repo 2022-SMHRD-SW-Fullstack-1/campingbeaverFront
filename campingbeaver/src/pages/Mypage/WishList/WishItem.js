@@ -6,7 +6,7 @@ import styles from '../MyPage.module.scss'
 import Fheart from '../../../components/img/Fheart.png'
 import Modal from 'react-bootstrap/Modal';
 
-const WishItem = ({item}) => {
+const WishItem = ({wishName, wishPrice, wishPic}) => {
 
 const [show, setShow] = useState(false);
 
@@ -19,13 +19,13 @@ const handleShow = () => setShow(true);
   <ul>
     <li>
       <Card style={{ width: '18rem', height: '22rem' }}>
-        <Card.Img style={{objectFit:'cover', height:'18rem'}} variant="top" src={item.wishPic} />
+        <Card.Img style={{objectFit:'cover', height:'18rem'}} variant="top" src={wishPic} />
         <Card.Body>
           <Card.Title>
-            <div>{item.wishName}</div>
+            <div>{wishName}</div>
           </Card.Title>
           <Card.Text>
-            {item.wishPrice}
+            {wishPrice}
           </Card.Text>
           <div className={styles.buttonContainer}>
 
