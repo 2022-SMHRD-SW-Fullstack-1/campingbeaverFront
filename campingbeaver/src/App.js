@@ -19,12 +19,7 @@ import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
 import Header from './components/Layout/Header';
-import BookingDetail from './pages/Recommendation/BookingDetail/BookingDetail';
-import RoomsSlider from './pages/Recommendation/BookingDetail/BookingDetailComponent/RoomsSlider/RoomsSlider';
-import RoomImgSlider from './pages/Recommendation/BookingDetail/BookingDetailComponent/RoomsImgSlider/RoomsImgSlider';
-import Main from './pages/Recommendation/Main/Main'
-import Booking from './pages/Recommendation/Booking/Booking';
-import Pick from './pages/Recommendation/Pick/Pick'
+
 
 function App() {
   // const [hello, setHello] = useState('')
@@ -51,10 +46,6 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/detail:num' element={<Detail />} />
         <Route path="/SignUp" element={<SignUp/>} />
-        <Route path="/test" element={<Main/>}/>
-        <Route path="/testdetail" element={<BookingDetail/>}/>
-        <Route path="/pick" element={<Pick/>}/>
-        <Route path="/booking"element={<Booking/>}/>
         <Route path="/Login" element={<Login/>} />
         <Route path="/Store" element={<Store/>} />
         <Route path="/Recommendation" element={<Recommendation/>}/>
