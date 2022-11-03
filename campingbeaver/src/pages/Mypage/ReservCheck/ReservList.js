@@ -24,6 +24,7 @@ const ReservList = () => {
     .then((res) => {
       //console.log(res.data)
       setReservList(res.data)
+      
     })
     .catch((error)=>console.log('Network Error: ', error))
   }, []);

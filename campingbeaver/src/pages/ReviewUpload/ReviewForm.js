@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
 import { GiRoundStar }  from 'react-icons/gi'
 import styled from 'styled-components'
 import axios from 'axios'
 
+
 const ReviewForm = () => {
   const params = useParams();
+   
   const [numParams, setNumParams] = useState(params.resnum.replace(":",""));
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pkgSeq = searchParams.get('pkg_seq')
+
+  const [id, setId] = useState(localStorage.userId);
 
   const navigate = useNavigate();
     const navigateToMyPage = () => {
@@ -17,14 +22,20 @@ const ReviewForm = () => {
       navigate("/MyPage")
     )
   }
+
   
+  // useEffect(() =>{
+  //   console.log(pkgSeq)
+  // },[])
 
   const [reviewContent, setReviewContent] = useState({
-    userId: '',
-    resNum: numParams,
-    context: '',
-    score: '',
-    img: '',
+    // user_id: id,
+    user_id: 'admin',
+    reserv_num: numParams,
+    pkg_seq: parseInt(pkgSeq),
+    rv_content: '',
+    rv_rating: '',
+    rv_photo: '',
   })
 
   const [viewContent, setViewContent] = useState([]);
@@ -47,7 +58,7 @@ const ReviewForm = () => {
     let score = clicked.filter(Boolean).length;
     setReviewContent({
       ...reviewContent,
-      score: score,
+      rv_rating: score,
     })
     console.log(score);
     
@@ -69,6 +80,8 @@ const ReviewForm = () => {
     axios.post(`/beaver/write/${numParams}`, reviewContent)
     .then((res)=>{
       console.log(reviewContent)
+      
+      navigateToMyPage();
     }).catch((error)=>console.log('Network Error: ', error))
 
 
@@ -80,7 +93,7 @@ const ReviewForm = () => {
     setFileImage(URL.createObjectURL(e.target.files[0]))
     setReviewContent({
       ...reviewContent,
-      img: fileImage
+      rv_photo: fileImage
     })
     console.log(reviewContent)
   }
@@ -111,7 +124,7 @@ const ReviewForm = () => {
               <tr>
                 <td className={styles.textArea} colSpan="2">
                   <textarea
-                    name="context"
+                    name="rv_content"
                     onChange={getValue}
                    ></textarea>
                 </td>

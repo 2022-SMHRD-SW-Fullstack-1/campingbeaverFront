@@ -43,7 +43,7 @@ const SideNav = () => {
         </Nav>
       </div>
 
-      <div>
+      <div className={styles.myReservation}>
         <TabContent tab={tab}/>
       </div>
       <div></div>
