@@ -1,0 +1,50 @@
+
+{
+    "campsite":[
+        {
+            "site_seq" : "2",
+            "imgsrcfirst" : "/shindo1.jpeg",
+            "imgsrcsecond" : "/shindo2.jpg",
+            "imgsrcthird" : "/shindo3.jpeg"
+        },
+        {
+            "site_seq" : "3",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        },
+        {
+            "site_seq" : "4",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        },
+        {
+            "site_seq" : "5",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        },
+        {
+            "site_seq" : "6",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        },
+        {
+            "site_seq" : "7",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        },
+        {
+            "site_seq" : "8",
+            "imgsrcfirst" : "",
+            "imgsrcsecond" : "",
+            "imgsrcthird" : ""
+        }
+    ]
+
+
+
+}

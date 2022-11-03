@@ -10,8 +10,10 @@ import pool from './iconimg/pool.png'
 import storm from './iconimg/storm.png'
 import wifi from './iconimg/wifi.png'
 import { useAsyncValue } from 'react-router-dom';
-import style from './Reservation.module.scss'
+import Styles from './Reservation.module.scss'
 import Axios from 'axios';
+import ReservCamp from './ReservCamp';
+
 
 const FilterButton = () => {
 
@@ -59,6 +61,9 @@ const dataCon = (e) => {
 
   })
   .catch(()=>{alert('failed!')})
+
+
+
 }
 
   return (
@@ -127,6 +132,18 @@ const dataCon = (e) => {
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
         <Button variant="outline-success" onClick={dataCon} type="button">검색하기</Button>{' '}
       </div>
+      <div>
+                    <div className={Styles.reservtitle}>
+                    {/* <h1>Recommendation</h1>
+                    <p>camping beaver가 추천하는 캠핑 레시피</p> */}
+                    </div>
+                    
+                    <div className={Styles.imgbox}>
+                    <ReservCamp {...inputText}/>
+                    
+                    </div>
+                </div>
+
     </div>
     </>
   )

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Link } from "react-scroll/modules"
 import headimg from '../img/headimg.jpg'
 import style from "./Side.scss"
-import { useMediaQuery } from 'react-responsive'
+
 
 const SideDiv = styled.div`
   width: 120%;

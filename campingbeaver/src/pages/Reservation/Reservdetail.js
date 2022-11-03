@@ -9,7 +9,7 @@ import Payment from '../payment/Payment'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Header from '../../components/Layout/Header';
-import styles from '../MyPage/MyPage.module.scss'
+import styles from '../Mypage/MyPage.module.scss'
 import Axios from 'axios'
 
 const Cal = () => {

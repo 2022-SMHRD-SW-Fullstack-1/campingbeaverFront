@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
 import Layout from './components/Layout/Layout'
-import Mypage from './pages/MyPage/Mypage'
+import Mypage from './pages/Mypage/Mypage'
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
 import Cartdetail from "../src/pages/Cart/Cartdetail"
@@ -16,8 +16,8 @@ import NaverLogin from './pages/Login/NaverLogin'; import Logout from './pages/m
 import ReviewList from './pages/Review/ReviewList';
 import ReviewPage from './pages/Review/ReviewPage';
 import Header from './components/Layout/Header';
-import WishList from './pages/MyPage/WishList/WishList';
-import ReservList from './pages/MyPage/ReservCheck/ReservList';
+import WishList from './pages/Mypage/WishList/WishList';
+import ReservList from './pages/Mypage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
@@ -62,7 +62,7 @@ function App() {
         </Route>
       
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }
