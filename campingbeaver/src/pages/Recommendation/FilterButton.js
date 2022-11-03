@@ -11,12 +11,12 @@ import storm from './iconimg/storm.png'
 import wifi from './iconimg/wifi.png'
 import { useAsyncValue } from 'react-router-dom';
 import style from './Reservation.module.scss'
+import Axios from 'axios';
 
 const FilterButton = () => {
 
 
   const [inputText, setInputText] = useState([]);
-  let [btnActive, setBtnActive] = useState();
 
 
   const clickHandle = (e) => {
@@ -36,19 +36,37 @@ const FilterButton = () => {
   }
 
   const inputTextList = inputText.map(inputText => <Button variant="outline-dark" onClick={clickHandle}>{inputText}</Button>)
-
+  
 
 const clearBtn = (e) => {
   setInputText([]);
 }
   
 
+const dataCon = (e) => {
+  // console.log(inputText);
+  const userHashTag = [
+    inputText
+    // inputText.join(",")
+]
+  // console.log(userHashTag);
+
+  Axios.post('/beaver/hash',JSON.stringify(userHashTag), {
+    headers: {
+      "Content-Type": "application/json",
+      },
+}).then((response)=>{
+      alert('success!');
+
+  })
+  .catch(()=>{alert('failed!')})
+}
 
 
   return (
 
     <>
-    <div>
+    <div align='center'>
     {[
       'secondary',
     ].map((variant) => (
@@ -111,7 +129,7 @@ const clearBtn = (e) => {
 
       <div align='center'>
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
-        <Button variant="outline-success">검색하기</Button>{' '}
+        <Button variant="outline-success" onClick={dataCon} type="button">검색하기</Button>{' '}
       </div>
     </div>
     </>

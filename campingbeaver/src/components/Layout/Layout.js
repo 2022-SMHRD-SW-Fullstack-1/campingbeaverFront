@@ -4,21 +4,31 @@ import Header from './Header'
 import styles from './Layout.module.scss'
 import Content from './Content'
 import Survey from './Survey'
-
 import {Route, Routes, Link} from 'react-router-dom'
 import campsite from '../img/campsite.gif'
 import { Carousel } from "react-bootstrap";
 import campfire from '../img/campfire.gif'
 import tentcamping from '../img/tentcamping.jpg'
+import styled from "styled-components"
+import Middle from "./Middle"
+import Side from "./Side"
+import SurveyContent from './SurveyContent'
 
+const MainDiv = styled.div`
+  margin: 3rem 5rem;
+`
+
+const ContentDiv = styled.div`
+  width: 100%;
+  display: flex;
+`
 
 const Layout = (props) => {
   return (
     <div>
-        <Header/>
         {/* <Nav/> */}
         <div className={styles.layout}>
-        <Carousel fade>
+        {/* <Carousel fade>
     <Carousel.Item>
       <img
         style={{}}
@@ -35,11 +45,17 @@ const Layout = (props) => {
         alt="First slide"
       />
     </Carousel.Item>
-  </Carousel>
+  </Carousel> */}
+  <MainDiv>
+    <ContentDiv>
+  <Side/>
+  <SurveyContent/>
+  </ContentDiv>
+  </MainDiv>
   </div>
-        <Routes>
+        {/* <Routes>
           <Route path='/' element={<Survey/>}/>
-        </Routes>
+        </Routes> */}
         <main className={styles.main}>
             {props.children}
         </main>
