@@ -5,7 +5,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-const SurveySecond = () => {
+const SurveySecond = (props) => {
+
+  const backHandle = () => {
+    props.setAnswer(null)
+  }
+
   return (
     <div style={{
       position: 'absolute', 
@@ -135,7 +140,8 @@ const SurveySecond = () => {
         </div>
 
       ))}
-      <Button variant="success">Search!</Button>
+      <Button className={styles.svBtn} variant="secondary" onClick={backHandle}>뒤로가기</Button>
+      <Button className={styles.svBtn} variant="success">Search!</Button>
     </Form>
     </div>
     </p>

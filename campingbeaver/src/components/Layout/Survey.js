@@ -19,10 +19,10 @@ const Survey = () => {
 
   return (
     <>
-      <div>
-          <img className={styles.mainpic} src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'/>
-          </div>
-          { answer == null && (
+      <div className='picContainer'>
+        <img className={styles.mainpic} src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'/>
+      </div>
+        { answer == null && (
       <div className={styles.surveyWrap} >
         <Alert variant="light" className={styles.overlay}>
         <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
@@ -42,9 +42,9 @@ const Survey = () => {
             </p>
             </Alert>
         </div>)}
-          { answer == null }        
-          { answer == true ? (<SurveySecond/>) : (null)}
-          { answer == false ? (<SurveyThird/>) : (null)}
+                
+          { answer == true && (<SurveySecond setAnswer={setAnswer}/>)}
+          { answer == false && (<SurveyThird setAnswer={setAnswer}/>)}
       </>
   )
 }

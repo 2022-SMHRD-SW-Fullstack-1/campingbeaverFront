@@ -1,3 +1,29 @@
+import React, { useState } from 'react'
+import styles from './Layout.module.scss'
+import Survey from './Survey'
+import {Route, Routes, Link} from 'react-router-dom'
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import { MdTranslate } from 'react-icons/md';
+import SurveySecond from './SurveySecond';
+import SurveyThird from './SurveyThird';
+
+
+const Layout = () => {
+  
+ 
+
+  return (
+    <div className={styles.wrap}>
+          <Survey/>
+    </div>
+  )
+}
+
+export default Layout
+
+
+
 // import React, { useContext } from 'react'
 // import Footer from './Footer'
 // import Header from './Header'
@@ -13,36 +39,6 @@
 // import Middle from "./Middle"
 // import Side from "./Side"
 // import SurveyContent from './SurveyContent'
-
-
-import React, { useState } from 'react'
-import styles from './Layout.module.scss'
-import Survey from './Survey'
-import {Route, Routes, Link} from 'react-router-dom'
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import { MdTranslate } from 'react-icons/md';
-import SurveySecond from './SurveySecond';
-import SurveyThird from './SurveyThird';
-
-
-const Layout = () => {
-
-
-
-  return (
-    <div className={styles.wrap}>
-        <Survey/>
-         
-    </div>
-  )
-}
-
-export default Layout;
-
-
-
-
 
 // const MainDiv = styled.div`
 //   margin: 3rem 5rem;
