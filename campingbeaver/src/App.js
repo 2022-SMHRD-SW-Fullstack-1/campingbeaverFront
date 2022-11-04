@@ -20,7 +20,7 @@ import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
-import Axios from 'axios';
+import axios from 'axios';
 
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 

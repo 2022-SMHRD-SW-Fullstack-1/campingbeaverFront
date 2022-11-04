@@ -48,7 +48,8 @@ const Signup = () => {
   };
 
   const goToMain = () => {
-    let now = new Date();
+    const time = new Date();
+    let now = time.toTimeString();
     fetch('/beaver/sign', {
       method: 'POST',
       body: JSON.stringify({
