@@ -1,46 +1,63 @@
-import React from 'react'
-import axios from "axios";
-import CartList from "./CartList";
+import React,{useState, useEffect} from 'react'
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import Cartdetail from './Cartdetail';
+import CartEmpty from './CartEmpty';
+import CartNotEmpty from './CartNotEmpty'
+import axios from 'axios'
 
 function Cart() {
-  // if (localStorage.getItem("token") === null) {
-  //   alert("로그인 후 이용해 보세요! 🛒");
-  //   document.location.href = "/login";
-  // }
+  if (localStorage.userName == null) {
+    alert("로그인 후 이용해 보세요! 🛒");
+    document.location.href = "/login";
+  }
+  const [cartList, setCartList] = useState([]);
+  useEffect(() => {
+    axios.get("/beaver/basketlist")
+    .then(response=>{
+      console.log(response.data)
+      
+      setCartList(response.data);
+    })
+  }, []);
   return (
     <>
-      <DimmedBackground />
-      <ContentDiv>
-        <CartPage>
-          <CartPageHeader>
-            <PageHeaderTitle>장바구니</PageHeaderTitle>
-            <PageHeaderSteps>
-              <PageHeaderStepsLi className="active">
-                <em>1.</em>
-                <span>장바구니</span>
-                <Icon className="fas fa-chevron-right"></Icon>
-              </PageHeaderStepsLi>
+      {
+        cartList.length == 0 ?
+          <div>
+            <CartEmpty />
+          </div>
+          :
+          <div>
 
-              <PageHeaderStepsLi>
-                <em>2.</em>
-                <span>주문결제</span>
-                <Icon className="fas fa-chevron-right"></Icon>
-              </PageHeaderStepsLi>
+            <DimmedBackground />
+            <ContentDiv>
+              <CartPage>
+                <CartPageHeader>
+                  <PageHeaderTitle>장바구니</PageHeaderTitle>
+                  <PageHeaderSteps>
+                    <PageHeaderStepsLi className="active">
+                      <em>1.</em>
+                      <span>장바구니</span>
+                      <Icon className="fas fa-chevron-right"></Icon>
+                    </PageHeaderStepsLi>
 
-              <PageHeaderStepsLi>
-                <em>3.</em>
-                <span>주문완료</span>
-              </PageHeaderStepsLi>
-            </PageHeaderSteps>
-          </CartPageHeader>
+                    <PageHeaderStepsLi>
+                      <em>2.</em>
+                      <span>주문결제</span>
+                      <Icon className="fas fa-chevron-right"></Icon>
+                    </PageHeaderStepsLi>
 
-          <CartList />
-        </CartPage>
-      </ContentDiv>
-      <Cartdetail />
+                    <PageHeaderStepsLi>
+                      <em>3.</em>
+                      <span>주문완료</span>
+                    </PageHeaderStepsLi>
+                  </PageHeaderSteps>
+                </CartPageHeader>
+
+                <CartNotEmpty cartList={cartList} />
+              </CartPage>
+            </ContentDiv>
+          </div>
+      }
     </>
   )
 }
@@ -94,6 +111,7 @@ const CartPage = styled.div`
 `;
 
 const ContentDiv = styled.div`
+  margin-top: 100px;
   padding-bottom: 64px;
   background: #fdfdfd;
 `;
