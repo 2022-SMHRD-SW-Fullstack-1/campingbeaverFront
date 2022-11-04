@@ -4,12 +4,13 @@ import EditMyInfo from './EditMyInfo';
 import ReservList from './ReservCheck/ReservList';
 import styles from './SideNav.module.scss'
 import WishList from './WishList/WishList';
+import './SideNav.css'
 
 
 const SideNav = () => {
 
   const [tab, setTab] = useState(0);
-
+  
   function TabContent(props) {
     if(props.tab === 0){
       return <div><ReservList/></div>
@@ -21,7 +22,7 @@ const SideNav = () => {
   }
  
 
-  return (
+  return (  
     <div className={styles.SideNav}>
 
       <div>

@@ -11,8 +11,16 @@ import sea from '../img/sea.jpg'
 
 const SurveyThird = () => {
   return (
-    <div style={{position: 'absolute', zIndex:3 ,margin: '3em', width: '50vw', height: '40vh', top:'30%', left:'20%', textAlign:'center'}}>
-    <Alert variant="success" className={styles.overlay}>
+    <div style={{
+      position: 'absolute', 
+      zIndex:3 ,
+      margin: '3em', 
+      width: '50vw', 
+      height: '40vh', 
+      top:'10%', 
+      left:'20%', 
+      textAlign:'center'}}>
+    <Alert variant="light" className={styles.overlay}>
     <Alert.Heading>어떤 테마의 캠핑을 원하시나요?</Alert.Heading>
     <p>
      테마에 맞춰 CampingBeaver가 추천하는 패키지를 만나보세요!
@@ -59,12 +67,10 @@ const SurveyThird = () => {
         </Card.Footer>
       </Card>
     </CardGroup>
-
     </div>
     </p>
   </Alert>
   </div>
   )
 }
-
 export default SurveyThird

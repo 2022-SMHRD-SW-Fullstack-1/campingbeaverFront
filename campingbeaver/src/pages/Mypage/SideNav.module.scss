@@ -5,8 +5,14 @@
     justify-content: space-between;
     margin-top: 50px;
     margin-left: 50px;
+    
 }
-
+.nav-link.active{
+    color: black;
+}
+.nav-link{
+    color: black;
+}
 // .content {
 //     display: flex;
 //     text-align: center;
