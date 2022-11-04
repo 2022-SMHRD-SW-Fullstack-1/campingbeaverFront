@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import Calendar from 'react-calendar'
 import './Calendar.css'
@@ -35,7 +36,6 @@ const Reservdetail= () => {
 
   const [sendday, setSendday] = useState('');
   const [receiveday, setReceiveday] = useState('');
-
   const [reserv_seq, setReserv_seq] = useState('null');
   const [days, setDays] = useState('');
   const [reserv_s_date, setReserv_s_date] = useState('');
@@ -90,6 +90,7 @@ const Reservdetail= () => {
   }
 
   const dataCon = () => {
+
     setReserv_seq(reserv_seq);
     setDays(date == 0 ? '1박2일' : (date == 1 ? '2박3일' : (date == 2 ? '3박4일' : '4박5일')))
     setReserv_s_date(moment(value).format("YYYY-MM-DD"));
@@ -111,6 +112,7 @@ const Reservdetail= () => {
           "Content-Type": "application/json",
         },
       })
+
 
     console.log(senddata)
     // alert(reservation.reserv_seq+ reservation.user_id+ reservation.reserv_s_date+ reservation.reserv_e_date)

@@ -5,10 +5,23 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-const SurveySecond = () => {
+const SurveySecond = (props) => {
+
+  const backHandle = () => {
+    props.setAnswer(null)
+  }
+
   return (
-    <div style={{position: 'absolute', zIndex:3 ,margin: '3em', width: '50vw', height: '30vh', top:'25%', left:'20%', textAlign:'center'}}>
-    <Alert variant="success" className={styles.overlay}>
+    <div style={{
+      position: 'absolute', 
+      zIndex:3 ,
+      margin: '3em', 
+      width: '40vw', 
+      height: '30vh', 
+      top:'25%', 
+      left:'30%', 
+      textAlign:'center'}}>
+    <Alert variant="light" className={styles.overlay}>
     <Alert.Heading>필요한 장비를 체크하세요</Alert.Heading>
     <p>
      원하는 장비가 포함된 패키지를 알려드립니다!
@@ -127,7 +140,8 @@ const SurveySecond = () => {
         </div>
         
       ))}
-      <Button variant="success">Search!</Button>{' '}
+      <Button className={styles.svBtn} variant="secondary" onClick={backHandle}>뒤로가기</Button>
+      <Button className={styles.svBtn} variant="success">Search!</Button>
     </Form>
     </div>
     </p>
