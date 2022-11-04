@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -75,14 +74,12 @@ const NaverLogin = ({ auth, setAuth }) => {
     const handleNaverClick = () => {
         const naverLoginButton = document.getElementById("naverIdLogin_loginButton");
         if (naverLoginButton) naverLoginButton.click();
-        
     }
 
     // 화면 첫 렌더링 이후 바로 실행하기 위해 useEffect 사용
     useEffect(() => {
         initializeNaverLogin()
         userAccessToken()
-        
         // axios({
         //     url: '/beaver/main',
         //     method: 'post',

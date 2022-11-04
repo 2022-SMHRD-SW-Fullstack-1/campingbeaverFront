@@ -20,14 +20,15 @@ const Survey = () => {
 
   return (
     <>
-      <div>
-          <img className={styles.mainpic} src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'/>
-          </div>
-          <div className={styles.surveyWrap} >
-            <Alert variant="light" className={styles.overlay}>
-            <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
+      <div className='picContainer'>
+        <img className={styles.mainpic} src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'/>
+      </div>
+        { answer == null && (
+      <div className={styles.surveyWrap} >
+        <Alert variant="light" className={styles.overlay}>
+        <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
             <p>
-            장비를 직접 선택하시려면 '예'를 선택하세요
+            필요한 장비를 직접 선택하시려면 '예'를 선택하세요
             </p>
             <hr />
             <p className="mb-0">
@@ -41,10 +42,10 @@ const Survey = () => {
             </div>
             </p>
             </Alert>
-        </div>
-          { answer == null }        
-          { answer == true ? (<SurveySecond/>) : (null)}
-          { answer == false ? (<SurveyThird/>) : (null)}
+        </div>)}
+                
+          { answer == true && (<SurveySecond setAnswer={setAnswer}/>)}
+          { answer == false && (<SurveyThird setAnswer={setAnswer}/>)}
       </>
   )
 }
