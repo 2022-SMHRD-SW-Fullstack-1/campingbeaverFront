@@ -103,6 +103,10 @@ const StoreModal = ({ items, closeModal }) => {
     })
   }
 
+  const  checkBtn = () => {
+    console.log(inputValue)
+  }
+
   useEffect(() => {
 
   })
@@ -216,14 +220,14 @@ const StoreModal = ({ items, closeModal }) => {
                 <div className="inputTitle">예약시작날짜</div>
                 <input
                   type="text"
-                  Value={moment(value).format("YYYY-MM-DD")}
+                  value={moment(value).format("YYYY-MM-DD")}
                   className="userInput"
                   name="reserv_s_date"
                 />
                 <div className="inputTitle">예약종료날짜</div>
                 <input
                   type="text"
-                  Value={date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD")))}
+                  value={date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD")))}
                   className="userInput"
                   name="reserv_e_date"
                 />
@@ -259,23 +263,18 @@ const StoreModal = ({ items, closeModal }) => {
                 />
               </form>
 
-
-
               <form className="phoneLine">
                 <div className="phone">Mobile Phone</div>
                 <input
                   type="text"
                   className="phoneSecond"
                   onChange={handleInput}
-                  name="phone"
+                  name="reserv_phone"
                 />
               </form>
-
-
-
-
             </main>
           </div>
+          <button onClick={checkBtn}>체크 버튼</button>
           <div className="totalBuyBtn">
             <button onClick={reserv} className="buyBtn">
               BUY NOW

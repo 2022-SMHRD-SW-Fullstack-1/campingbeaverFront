@@ -17,6 +17,7 @@
     "http-proxy-middleware": "^2.0.6",
     "immer": "^9.0.16",
     "install": "^0.13.0",
+    "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
     "next": "^12.3.1",

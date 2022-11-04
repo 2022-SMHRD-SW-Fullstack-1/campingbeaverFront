@@ -19,6 +19,7 @@ const CartItem = ({basket_seq, CartName, CartPrice, CartPic}) => {
             basket_seq : basket_seq
           }
         }).then(()=>{
+          alert('장바구니에서 삭제완료!')
           window.location.replace('cart')
         })
   

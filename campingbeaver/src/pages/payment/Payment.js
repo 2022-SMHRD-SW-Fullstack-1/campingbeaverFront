@@ -28,7 +28,7 @@ function Payment() {
       buyer_tel: "01041832735", // 구매자 전화번호 (필수항목)
       buyer_email: "artomes11@gmail.com", // 구매자 이메일
       buyer_addr: "주소",
-      buyer_postcode: "우편번호", // ....
+      buyer_postalcode: "우편번호", // ....
     };
     IMP.request_pay(data, callback);
   };
@@ -51,7 +51,7 @@ function Payment() {
   };
   return (
     <>
-      <button onClick={onClickPayment}>예약하기</button>{" "}
+      <button onClick={onClickPayment}>결제하기</button>{" "}
     </>
   );
 }
