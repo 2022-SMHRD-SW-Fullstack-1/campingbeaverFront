@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
 import Layout from './components/Layout/Layout'
-import Mypage from './pages/Mypage/Mypage'
+import Mypage from './pages/MyPage/Mypage'
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
 import Cartdetail from "../src/pages/Cart/Cartdetail"
@@ -16,8 +16,8 @@ import NaverLogin from './pages/Login/NaverLogin'; import Logout from './pages/m
 import ReviewList from './pages/Review/ReviewList';
 import ReviewPage from './pages/Review/ReviewPage';
 import Header from './components/Layout/Header';
-import WishList from './pages/Mypage/WishList/WishList';
-import ReservList from './pages/Mypage/ReservCheck/ReservList';
+import WishList from './pages/MyPage/WishList/WishList';
+import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
@@ -44,12 +44,13 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Store" element={<Store />} />
         <Route path="/Recommendation" element={<Recommendation />} />
+        <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
         <Route path='/surveysecond' element={<SurveySecond />} />
         <Route path='/surveythird' element={<SurveyThird />} />
         <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
         <Route path='/wishlist:id' element={<WishList />} />
         <Route path='/reservlist:id' element={<ReservList />} />
-        <Route path='/RecomDetail' element={<RecomDetail/>}/>
+        
 
         {/* <Route path="/join" element={<Join />}></Route> */}
         <Route path="/logout" element={<Logout />}></Route>

@@ -6,6 +6,7 @@ import stylesheet from './RecomDetail.css'
 import surveyimg from './campimg/surveyimg.jpg'
 import { Carousel } from "react-bootstrap";
 import sitelist from '../../data/sitelist.json'
+import { useParams } from 'react-router-dom';
 
 const RecomDetail = () => {
 
@@ -13,9 +14,16 @@ const RecomDetail = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [siteName, setSiteName] = useState("");
-
+  let { site_seq } = useParams();
+  console.log(site_seq)
+  const imgSeq = site_seq-2
+  console.log(imgSeq)
   useEffect(()=>{
-    Axios.get("/beaver/main").then((response)=>{
+    Axios.get("/beaver/recomdetail", {
+      params :{
+        site_seq : site_seq
+      }
+    }).then((response)=>{
 
       setRecommendation(response.data);
       
@@ -50,17 +58,17 @@ console.log(recommendation);
 	word.site_seq == seq
 	
 	))
-	console.log(siteList[0].imgsrcfirst)
+	// console.log(siteList[site_seq].imgsrcfirst)
   return (
     <div>
-              <Map {...decimalProps}/>
+             
 
-
+    
               
 <div class="con list-1">
 	<div class="title">
-		<div class="main-title">캠핑장 이름 DB에서</div>
-		<div class="sub-title">캠핑장 주소 DB에서</div>
+		<div class="main-title">{recommendation.site_name}</div>
+		<div class="sub-title">{recommendation.site_addr}</div>
 		<div class="read-more">패키지 추천 바로가기!</div>
 	</div>
 	<Carousel fade>
@@ -121,7 +129,7 @@ console.log(recommendation);
 	</div>
 
 </div>
-
+<Map {...decimalProps}/>
 </div>
 
     

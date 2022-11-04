@@ -19,7 +19,7 @@ const FilterButton = () => {
 
 
   const [inputText, setInputText] = useState([]);
-
+  const [tagHandler, setTagHandler] = useState(new Map());
 
   const clickHandle = (e) => {
  
@@ -62,7 +62,7 @@ const dataCon = (e) => {
   })
   .catch(()=>{alert('failed!')})
 
-
+  setTagHandler(inputText)
 
 }
 
@@ -74,7 +74,7 @@ const dataCon = (e) => {
       'secondary',
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
-        <p align='center'>원하시는 시설 상세 태그를 검색하시면 캠핑장을 추천해드립니다!</p>
+        <h6 align='center'>원하시는 시설 상세 태그를 검색하시면 캠핑장을 추천해드립니다!</h6>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={bonfire} width='50px'/></p>장작판매</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={court} width='50px'/></p>운동시설</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={hotwater} width='50px'/></p>온수</Button>
@@ -90,7 +90,7 @@ const dataCon = (e) => {
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
-        <p align='center'>테마별 태그를 검색하시면 캠핑장을 추천해드립니다!</p>
+        <h6 align='center'>테마별 태그를 검색하시면 캠핑장을 추천해드립니다!</h6>
         <Button variant="outline-dark"  onClick={clickHandle}>반려견동반</Button>
         <Button variant="outline-dark"  onClick={clickHandle}>익스트림</Button>
         <Button variant="outline-dark"  onClick={clickHandle}>커플</Button>
@@ -122,7 +122,7 @@ const dataCon = (e) => {
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
-        <p align='center'>선택한 태그</p>
+        <h6 align='center'>선택한 태그</h6>
 
        {inputTextList}
       </Alert>
@@ -139,7 +139,7 @@ const dataCon = (e) => {
                     </div>
                     
                     <div className={Styles.imgbox}>
-                    <ReservCamp {...inputText}/>
+                    <ReservCamp tagHandler={tagHandler} setTagHandler={setTagHandler} {...inputText}/>
                     
                     </div>
                 </div>

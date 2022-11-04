@@ -3,310 +3,177 @@ import CampCard from './CampCard'
 import style from './Reservation.module.scss'
 import surveyimg from './campimg/surveyimg.jpg'
 import stylesheet from './RecomDetail.css'
+import { Link, useParams } from 'react-router-dom';
+import Axios from 'axios'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
-const Reservcamp = (props) => {
+const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
 
-    let photo = [{
-        name : '블라블라 캠핑장',
-        url : 'https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_10_17_11_38_57_fad16366d0.png'
-    },{
-        name : '어쩌구저쩌구 캠핑장',
-        url : 'https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_12_26_12_15_24_34875d31d7.png'
-    }, {
-        name : '캠핑탈트 붕괴왔음',
-        url : 'http://cdnimage.ebn.co.kr/news/202006/news_1592895124_1439525_m_1.jpeg'
-    }]
+  let photo = [{
+    name: '블라블라 캠핑장',
+    url: 'https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_10_17_11_38_57_fad16366d0.png'
+  }, {
+    name: '어쩌구저쩌구 캠핑장',
+    url: 'https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_12_26_12_15_24_34875d31d7.png'
+  }, {
+    name: '캠핑탈트 붕괴왔음',
+    url: 'http://cdnimage.ebn.co.kr/news/202006/news_1592895124_1439525_m_1.jpeg'
+  }]
 
-const site_hash = ['값을받아오자','내일','스프링'];
-const checkfilter = true;
-var arr = new Set();
-  for(const i=0;i<site_hash.length;i++){
-    for(const j=0;j<props.length;j++){
-    checkfilter=site_hash[i].includes(props[j])
-      if(!checkfilter){
-          arr.add(i+2) //site_seq와 일치시킴
+  const [recomList, setRecomList] = useState([])
+
+
+  useEffect(() => {
+    Axios.get("/beaver/hash").then((response) => {
+
+      setRecomList(response.data);
+      // console.log(recomList[0].site_seq)
+      // console.log(recomList);
+      if (response.data) {
+        // setRecommendation(response.data);
+        // console.log(recommendation);
+
+      } else {
+        alert("failed");
       }
+    })
+  }, [])
+
+
+  // console.log(params)
+  let recomViewList = [];
+  for (let i = 0; i < recomList.length; i++) {
+
+    // console.log(recomList[i].site_seq)
+    recomViewList.push(
+      <div class="cell" key={recomList[i].site_seq}>
+        <div class="img-box">
+          <img src={surveyimg} alt="" />
+          <Link to={`/recommendation${recomList[i].site_seq}`}><div class="view">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span>view</span>
+          </div></Link>
+        </div>
+        <div class="txt-box">
+          <div class="txt1">
+            <div class="head">
+              <h1 class="name">{recomList[i].site_name}</h1>
+              <div class="sub-name"></div>
+              <div class="sub-name2">{recomList[i].site_addr}</div>
+            </div>
+
+            <div class="body">
+              <div class="first-line">
+
+
+                <i class="fab fa-houzz" aria-hidden="true"></i>
+                <div><span>태그</span></div>
+
+              </div>
+              <p>{recomList[i].site_hash}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
-}
 
+  let hashList = [];
+  for (let i = 0; i < recomList.length; i++) {
+    hashList.push(recomList[i].site_hash)
+  }
+  console.log("hashList:", hashList)
+
+  let checkfilter = false;
+  console.log("props:", props)
+  const arr = new Map();
+  // for문이 실행되는데 랜더링 될 때 실행됨.
+  // 처음에 값이 아무것도 없으니까 안나옴.
+  // 버튼 선택할 시점에는 이미 실행되었으니까 실행 안 됨
+  // 함수에 담아서 onClick이벤트나 useEffect에서 값이 바뀔때마다 실행되도록 하면 됨
+
+
+  // for(let i=0;i<hashList.length;i++){
+  //   for(let j=0;j<Object.keys(props).length;j++){
+  //     checkfilter=hashList[i].includes(props[j])
+  //     console.log("useeffect 안")
+  //     if(checkfilter){
+  //       console.log("true")        
+  //       arr.set(j,i) //site_seq와 일치시킴
+  //       setTagHandler(tagHandler)
+  //     }else{
+  //       console.log("false")
+  //     }
+  //   }
+  // }
+
+  //   let str = "가족 힐링 바다가 보이는 겨울";
+
+  // if(str.includes("바다가 보이는")){
+  //  alert("34 텍스트가 포함됨");
+  // }else{
+  //  alert("34 텍스트가 포함되지 않음");
+  // }
+
+  const arrBtn = () => {
+    for(let i=0;i<hashList.length;i++){
+      for(let j=0;j<Object.keys(props).length;j++){
+        checkfilter=hashList[i].includes(props[j])
+        console.log("useeffect 안")
+        if(checkfilter){
+          console.log("true")        
+          arr.set(j,i) //site_seq와 일치시킴
+          setTagHandler(tagHandler)
+        }else{
+          console.log("false")
+        }
+      }
+    }
+    
+  }
+
+
+
+  console.log("상태가 변했는지 감지하는 값", tagHandler)
+  console.log("checkfilter 값:", checkfilter)
+  console.log("Map : ", arr)
+  console.log("리셋")
   return (
-  <div className={style.reserv}>
-    {/* {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))} */}
-    <div>
+
+    <div className={style.reserv}>
+      <button onClick={arrBtn}>배열찾기</button>
+      {/* {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))} */}
+      <div>
         <div class="con list-2">
-		<div class="title"> 
-		<div class="main-title">PICK</div>
-		<div class="sub-title">캠핑 비버가 추천하는 캠핑장 리스트</div>
-			{/* <div class="read-more">read more pick</div> */}
-			</div>
-		<div class="row">
-			<div class="cell">
-			<div class="img-box">
-				<img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">신두57 캠핑장</h1>
-                        <div class="sub-name">owall hotel</div>
-                        <div class="sub-name2">좋은 계절, 오월의 공간</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>서울/강남구</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>부티끄호텔</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>250,000~350,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>URBAN STAY, 도심여행</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="img-box">
-				<img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">캠프더포레</h1>
-                        <div class="sub-name">VILLA GREYS</div>
-                        <div class="sub-name2">목가적 삶을 지향하는 건축가의 집</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>경상북도/경주시</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>디자인펜션</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>180,000~320,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>가족여행, 경주여행</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="img-box">
-				<img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">캠프627</h1>
-                        <div class="sub-name">HOSTEL HARU</div>
-                        <div class="sub-name2">하루를 쉬는 곳</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>서울/종로</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>디자인호스텔</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>35,000~220,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>문화, 예술, 서울여행</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="img-box">
-      <img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">연곡해변 솔향기캠핑장</h1>
-                        <div class="sub-name">Nature trail</div>
-                        <div class="sub-name2">싱그러운 자연 속 제주의 낮과 밤</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>제주/제주시</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>디자인펜션</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>110,000~150,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>태교여행, 힐링, 휴식</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
-		<div class="cell">
-			<div class="img-box">
-      <img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">나로힐링캠핑장</h1>
-                        <div class="sub-name">STAY LENTO</div>
-                        <div class="sub-name2">포구 옆 시골마을의 작은 집</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>제주/제주시</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>렌탈하우스</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>200,000~350,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>사색, 힐링, 휴식</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
+          <div class="title">
+            <div class="main-title">PICK</div>
+            <div class="sub-title">캠핑 비버가 추천하는 캠핑장 리스트</div>
+            {/* <div class="read-more">read more pick</div> */}
+          </div>
+          <div class="row">
+            {recomViewList}
+          </div>
+        </div>
+        <div class="con">
+          <div class="footer">
+            <div class="footer-box">
+              <div class="footer-txt">
+                <h1>편안한 머무름과 좋은 추억을 만들어 준 캠핑장이 있다면
+                  캠핑 비버에 소개해주세요.</h1>
+                <span>알려주신 캠핑장에 대해 캠핑비버에서는 4가지 관점을 통해 장소의 가치를 탐구하여 소개해드리고자 합니다.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-		
-		<div class="cell">
-			<div class="img-box">
-      <img src={surveyimg} alt=""/>
-				<div class="view">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span>view</span>
-				</div>
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">석양마을 주포캠핑장</h1>
-                        <div class="sub-name">지금</div>
-                        <div class="sub-name2">서울성곽길 아래 모던한옥</div>
-                    </div>
-                    
-                    <div class="body">
-						<div class="first-line">
-							<div class="location">
-								<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-								<span>서울/종로</span>
-							</div>
-							<div class="kind-of">
-								<i class="fab fa-houzz" aria-hidden="true"></i>
-								<span>한옥스테이</span>
-							</div>
-						</div>
-						<div class="second-line">
-							<div class="price">
-								<i class="fas fa-coins" aria-hidden="true"></i>
-								<span>250,000~350,000</span>
-							</div>
-							<div class="keyword">
-								<i class="fas fa-star" aria-hidden="true"></i>
-								<span>휴식, 가족여행</span>
-							</div>
-						</div>
-					</div>
-                </div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="con">
-	<div class="footer">
-		<div class="footer-box">
-			<div class="footer-txt">
-				<h1>편안한 머무름과 좋은 추억을 만들어 준 캠핑장이 있다면
-캠핑 비버에 소개해주세요.</h1>
-				<span>알려주신 캠핑장에 대해 캠핑비버에서는 4가지 관점을 통해 장소의 가치를 탐구하여 소개해드리고자 합니다.
-</span>
-			</div>
-		</div>
-	</div>
-</div>
-		
+      </div>
+
+
+
+
     </div>
-
-  
-  </div>
   )
 }
 
