@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.contents}>
       <div>
         <h3> Camping Beaver</h3>
-        <p>대표자명 : 고연주, 마준호, 임아해, 주상민<br/>
+        <p>대표자명 : 주상민<br/>
           운영시간: 10:00 ~ 18:00<br/>
           (점심시간: 12:30 ~ 13:30)</p>
         </div>
