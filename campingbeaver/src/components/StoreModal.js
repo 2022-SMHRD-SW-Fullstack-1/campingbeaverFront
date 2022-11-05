@@ -40,6 +40,8 @@ const StoreModal = ({ items, closeModal }) => {
     new Date()
   );
 
+  const [reserv_s_date, setReserv_s_date] = useState('2022-11-25')
+  const [reserv_e_date, setReserv_e_date] = useState('2022-11-27')
 
   const [date, setDate] = useState(0);
 
@@ -61,8 +63,8 @@ const StoreModal = ({ items, closeModal }) => {
     reserv_phone: '',
     reserv_price: calculateTotalPrice,
     reserv_pay: 'Y',
-    reserv_s_date: '2022-11-05',
-    reserv_e_date: '2022-11-08',
+    reserv_s_date: reserv_s_date,
+    reserv_e_date: reserv_e_date,
   });
 
   const [cartlist, setCartlist] = useState({
@@ -102,13 +104,9 @@ const StoreModal = ({ items, closeModal }) => {
     },
     })
   }
-
-  const  checkBtn = () => {
-    console.log(inputValue)
-  }
-
+  
   useEffect(() => {
-
+    
   })
 
   return (
@@ -184,7 +182,8 @@ const StoreModal = ({ items, closeModal }) => {
                 </div>
               </div>
               <div className='Cal'>
-                <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" 
+                />
               </div>
             </div>
           </div>
@@ -222,6 +221,7 @@ const StoreModal = ({ items, closeModal }) => {
                   type="text"
                   value={moment(value).format("YYYY-MM-DD")}
                   className="userInput"
+                  onChange={handleInput}
                   name="reserv_s_date"
                 />
                 <div className="inputTitle">예약종료날짜</div>
@@ -229,6 +229,7 @@ const StoreModal = ({ items, closeModal }) => {
                   type="text"
                   value={date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD")))}
                   className="userInput"
+                  onChange={handleInput}
                   name="reserv_e_date"
                 />
               </form>
@@ -274,7 +275,6 @@ const StoreModal = ({ items, closeModal }) => {
               </form>
             </main>
           </div>
-          <button onClick={checkBtn}>체크 버튼</button>
           <div className="totalBuyBtn">
             <button onClick={reserv} className="buyBtn">
               BUY NOW
