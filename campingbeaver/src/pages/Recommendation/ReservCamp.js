@@ -8,7 +8,7 @@ import Axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
+const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
   let photo = [{
     name: '블라블라 캠핑장',
@@ -40,11 +40,11 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
     })
   }, [])
 
-
+  let searchViewList = [];
   // console.log(params)
   let recomViewList = [];
   for (let i = 0; i < recomList.length; i++) {
-
+   
     // console.log(recomList[i].site_seq)
     recomViewList.push(
       <div class="cell" key={recomList[i].site_seq}>
@@ -88,62 +88,65 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
   let checkfilter = false;
   console.log("props:", props)
   const arr = new Map();
+  let finalArr = [];
+  let reArr = [];
   // for문이 실행되는데 랜더링 될 때 실행됨.
   // 처음에 값이 아무것도 없으니까 안나옴.
   // 버튼 선택할 시점에는 이미 실행되었으니까 실행 안 됨
   // 함수에 담아서 onClick이벤트나 useEffect에서 값이 바뀔때마다 실행되도록 하면 됨
 
 
-  // for(let i=0;i<hashList.length;i++){
-  //   for(let j=0;j<Object.keys(props).length;j++){
-  //     checkfilter=hashList[i].includes(props[j])
-  //     console.log("useeffect 안")
-  //     if(checkfilter){
-  //       console.log("true")        
-  //       arr.set(j,i) //site_seq와 일치시킴
-  //       setTagHandler(tagHandler)
-  //     }else{
-  //       console.log("false")
-  //     }
-  //   }
-  // }
-
-  //   let str = "가족 힐링 바다가 보이는 겨울";
-
-  // if(str.includes("바다가 보이는")){
-  //  alert("34 텍스트가 포함됨");
-  // }else{
-  //  alert("34 텍스트가 포함되지 않음");
-  // }
-
   const arrBtn = () => {
     for(let i=0;i<hashList.length;i++){
       for(let j=0;j<Object.keys(props).length;j++){
         checkfilter=hashList[i].includes(props[j])
-        console.log("useeffect 안")
+        // console.log("useeffect 안")
         if(checkfilter){
           console.log("true")        
-          arr.set(j,i) //site_seq와 일치시킴
+          arr.set(i*7+j*17-j-i+j*i+j*i-j+i*i,i) //site_seq와 일치시킴
           setTagHandler(tagHandler)
         }else{
           console.log("false")
         }
       }
     }
+    console.log(arr)
+    let resultArr = Array.from(arr.values());
+    console.log(resultArr)
+    const result = {};
+    resultArr.forEach((x) => { 
+    result[x] = (result[x] || 0)+1; 
+    });
+    // console.log(result)
+    // console.log(resultArr.length)
     
+    // console.log(result[1])
+    // console.log(Object.keys(props).length)
+    for(let k=0;k<resultArr.length;k++){
+      if(result[k]==Object.keys(props).length){
+        finalArr.push(k)
+      }
+    }
+    console.log(finalArr)
+     
+      for(let m=0;m<finalArr.length;m++){
+        console.log(recomList[finalArr[m]].site_name)
+      }
+
+      
+      
+
   }
 
 
-
-  console.log("상태가 변했는지 감지하는 값", tagHandler)
-  console.log("checkfilter 값:", checkfilter)
-  console.log("Map : ", arr)
-  console.log("리셋")
   return (
 
     <div className={style.reserv}>
       <button onClick={arrBtn}>배열찾기</button>
+      
+      {reArr}
       {/* {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))} */}
+      {searchViewList}
       <div>
         <div class="con list-2">
           <div class="title">

@@ -15,7 +15,7 @@ const RecomDetail = () => {
   const [longitude, setLongitude] = useState(0);
   const [siteName, setSiteName] = useState("");
   let { site_seq } = useParams();
-  console.log(site_seq)
+  console.log("useparams : ",site_seq)
   const imgSeq = site_seq-2
   console.log(imgSeq)
   useEffect(()=>{
@@ -53,12 +53,14 @@ console.log(recommendation);
     siteName,
   }
 
-  const seq = 2
+  const seq = site_seq
   const siteList = sitelist.campsite.filter(word => (
 	word.site_seq == seq
 	
 	))
 	// console.log(siteList[site_seq].imgsrcfirst)
+  
+  
   return (
     <div>
              
