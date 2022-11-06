@@ -15,11 +15,11 @@ const SurveySecond = (props) => {
     <div style={{
       position: 'absolute', 
       zIndex:3 ,
-      margin: '3em', 
-      width: '40vw', 
-      height: '30vh', 
-      top:'25%', 
-      left:'30%', 
+      // margin: '3em', 
+      width: '400px', 
+      height: '300px', 
+      top: '30%',
+      left: '40%',
       textAlign:'center'}}>
     <Alert variant="light" className={styles.overlay}>
     <Alert.Heading>필요한 장비를 체크하세요</Alert.Heading>
@@ -27,7 +27,7 @@ const SurveySecond = (props) => {
      원하는 장비가 포함된 패키지를 알려드립니다!
     </p>
     <hr />
-    <p className="mb-0">
+    <div className="mb-0">
     <div className="d-grid gap-2">
     <Form>
       {['checkbox'].map((type) => (
@@ -144,7 +144,7 @@ const SurveySecond = (props) => {
       <Button className={styles.svBtn} variant="success">Search!</Button>
     </Form>
     </div>
-    </p>
+    </div>
   </Alert>
   </div>
   )

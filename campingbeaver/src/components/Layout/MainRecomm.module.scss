@@ -1,4 +1,60 @@
-.recommContainer {
-    margin: 100px;
-    text-align: center;
+.slider{
+  position: relative;
+  background: coral;
+  width: 1100px;
+  height: 800px;
+  margin: 100px;
+  
+  overflow: hidden;
+
+  &:hover {
+    .leftArrow {
+      opacity: 1;
+      margin-left: 0;
+    }
+    .rightArrow {
+      opacity: 1;
+      margin-right: 0;
+    }
+  }
+
+  .leftArrow {
+    position: absolute;
+    width: 80px;
+    left: 0;
+    top: 40%;
+    // margin-left: -80px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+  }
+  .rightArrow {
+    position: absolute;
+    width: 80px;
+    right: 0;
+    top: 40%;
+    // margin-right: -80px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+  }
+}
+
+.carousel {
+  display: flex;
+  position:absolute;
+  transition: 0.5s;
+
+  .imgBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    img {
+      width: 389px;
+      height: 400px;
+      margin-top: 50px;
+    }
+  }
 }
