@@ -7,6 +7,8 @@ import { Link, useParams } from 'react-router-dom';
 import Axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import sitelist from '../../data/sitelist.json'
+import Alert from 'react-bootstrap/Alert';
 
 const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
@@ -22,7 +24,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
   }]
 
   const [recomList, setRecomList] = useState([])
-
+  const [finalResult, setFinalResult] = useState([])
 
   useEffect(() => {
     Axios.get("/beaver/hash").then((response) => {
@@ -40,7 +42,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
     })
   }, [])
 
-  let searchViewList = [];
+
   // console.log(params)
   let recomViewList = [];
   for (let i = 0; i < recomList.length; i++) {
@@ -49,7 +51,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
     recomViewList.push(
       <div class="cell" key={recomList[i].site_seq}>
         <div class="img-box">
-          <img src={surveyimg} alt="" />
+          <img src={sitelist.campsite[i].imgsrcfirst} height='220px' alt="" />
           <Link to={`/recommendation${recomList[i].site_seq}`}><div class="view">
             <i class="fa fa-search" aria-hidden="true"></i>
             <span>view</span>
@@ -95,6 +97,11 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
   // 버튼 선택할 시점에는 이미 실행되었으니까 실행 안 됨
   // 함수에 담아서 onClick이벤트나 useEffect에서 값이 바뀔때마다 실행되도록 하면 됨
 
+  const seq = recomList.site_seq
+  const siteList = sitelist.campsite.filter(word => (
+	word.site_seq == seq
+	
+	))
 
   const arrBtn = () => {
     for(let i=0;i<hashList.length;i++){
@@ -127,14 +134,16 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
         finalArr.push(k)
       }
     }
-    console.log(finalArr)
+    console.log('finalArr:',finalArr)
      
       for(let m=0;m<finalArr.length;m++){
-        console.log(recomList[finalArr[m]].site_name)
+        // console.log(recomList[finalArr[m]].site_name)
+        reArr.push(recomList[finalArr[m]].site_name)
+        
       }
+     console.log('reArr:',reArr)
+    
 
-      
-      
 
   }
 
@@ -144,15 +153,16 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
     <div className={style.reserv}>
       <button onClick={arrBtn}>배열찾기</button>
       
-      {reArr}
-      {/* {photo.map(item => (<CampCard key={item.name} item={item}></CampCard>))} */}
-      {searchViewList}
+     {/* <CampCard {...finalArr}></CampCard> */}
+      {/* {reArr.map(
+        value => (<CampCard value={value}/>)
+      )} */}
       <div>
         <div class="con list-2">
           <div class="title">
             <div class="main-title">PICK</div>
             <div class="sub-title">캠핑 비버가 추천하는 캠핑장 리스트</div>
-            {/* <div class="read-more">read more pick</div> */}
+            <div class="read-more">read more pick</div>
           </div>
           <div class="row">
             {recomViewList}

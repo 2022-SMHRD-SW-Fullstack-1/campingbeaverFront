@@ -252,6 +252,7 @@ body {
 /* list-2 시작 */
 .list-2 .title {
 	position:relative;
+	
 }
 .list-2 .title::before {
 	content:'';

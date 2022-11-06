@@ -1,18 +1,21 @@
 import React from 'react'
 import style from './Reservation.module.scss'
+import sitelist from '../../data/sitelist.json'
+import surveyimg from './campimg/surveyimg.jpg'
+
+const CampCard = ({value}) => {
 
 
-const CampCard = (props) => {
-
+    console.log(value)
 
 
   return (
     <div className={style.reservcamp}>
         <div>
-        <img src={props.item.url} className={style.imgcard}></img>
+        <img src={surveyimg} className={style.imgcard}></img>
         </div>
         <div className={style.campcard}>
-        <h3>{props.item.name}</h3>
+        <h3>{value}</h3>
         
         </div>     
     </div>
