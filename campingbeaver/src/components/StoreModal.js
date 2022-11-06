@@ -36,9 +36,22 @@ const StoreModal = ({ items, closeModal }) => {
   const calculateTotalPrice = price * count;
   const totalPriceToString = calculateTotalPrice.toLocaleString('ko-KR');
 
-  const [value, onChange] = useState(
-    new Date()
+  const [value, onChange] = useState([
+    new Date(2022,10,moment(new Date()).add(1,'day').format("DD")),
+    new Date(2022,10,moment(new Date()).add(2,'day').format("DD")),
+  ]
   );
+
+  const [value1, onChange1] = useState([
+    new Date(2022,10,moment(new Date()).add(1,'day').format("DD")),
+    new Date(2022,10,moment(new Date()).add(3,'day').format("DD")),
+  ]
+  );
+  
+  const [value2, onChange2] = useState([
+    new Date(2022,10,25),
+    new Date(2022,10,27),
+  ]);
 
   const [reserv_s_date, setReserv_s_date] = useState('2022-11-25')
   const [reserv_e_date, setReserv_e_date] = useState('2022-11-27')
@@ -104,9 +117,16 @@ const StoreModal = ({ items, closeModal }) => {
     },
     })
   }
-  
+
+  const check =() => {
+    console.log(new Date(2022,10,moment(new Date()).format("D")))
+    console.log(moment(new Date()).add(1,'day').format("D"))
+    console.log(new Date())
+  }
+
   useEffect(() => {
-    
+    setReserv_s_date(moment(value).format("YYYY-MM-DD"))
+    setReserv_e_date(date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD"))))
   })
 
   return (
@@ -168,22 +188,38 @@ const StoreModal = ({ items, closeModal }) => {
                     </>
                   );
                 })}
+                    <button onClick={check}>체크버튼</button>
                 <div className='reservDays'>
                   <div className="date-box">
                     <span>배송예정일</span><br />
                     <span className="text-gray-500 mt-4">
-                      {moment(value - 86400).format("MM / DD (ddd)")}
+                      {
+                      moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
+                      moment(new Date()).format("MM / DD (ddd)") :
+                      moment(value1-86400).format("MM / DD (ddd)") 
+                      // (date==1&&moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
+                      //   moment(value1).format("MM / DD (ddd)") :
+                      //   moment(value - 86400).format("MM / DD (ddd)")
+                      
+                      }
                     </span><br />
                     <span>회수예정일</span><br />
                     <span className="text-gray-500 mt-4">
-                      {date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)")))}
+                      {
+                      date==0&&value.length ==2 ? moment(new Date()*1.00014).format("MM / DD (ddd)") :(moment(value1).format("YYYY-MM-DD") !="2022-11-25" ? moment(new Date()*1.0002).format("MM / DD (ddd)") : moment(new Date(value1)).add(3,'day').format("MM / DD (ddd)"))
+                      //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
+                      }
                     </span><br />
                   </div>
                 </div>
               </div>
               <div className='Cal'>
-                <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" 
-                />
+                { 
+                date==0 ?
+                  <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date(2022,10,moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                  :(moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?<Calendar onChange={onChange1} value={value1} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                  : <Calendar onChange={onChange2} value={value2} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />)
+                }
               </div>
             </div>
           </div>
@@ -219,7 +255,10 @@ const StoreModal = ({ items, closeModal }) => {
                 <div className="inputTitle">예약시작날짜</div>
                 <input
                   type="text"
-                  value={moment(value).format("YYYY-MM-DD")}
+                  // value={reserv_s_date}
+                  value={moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
+                  moment(new Date()).format("YYYY-MM-DD") :
+                  moment(value1).format("YYYY-MM-DD") }
                   className="userInput"
                   onChange={handleInput}
                   name="reserv_s_date"
@@ -227,7 +266,8 @@ const StoreModal = ({ items, closeModal }) => {
                 <div className="inputTitle">예약종료날짜</div>
                 <input
                   type="text"
-                  value={date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD")))}
+                  // value={reserv_e_date}
+                  value={date==0&&value.length ==2 ? moment(new Date()*1.00014).format("YYYY-MM-DD") :(moment(value1).format("YYYY-MM-DD") !="2022-11-25" ? moment(new Date()*1.0002).format("YYYY-MM-DD") : moment(new Date(value1)).add(3,'day').format("YYYY-MM-DD"))}
                   className="userInput"
                   onChange={handleInput}
                   name="reserv_e_date"
