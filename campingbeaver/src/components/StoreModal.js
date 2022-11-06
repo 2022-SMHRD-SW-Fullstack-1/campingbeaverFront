@@ -125,8 +125,8 @@ const StoreModal = ({ items, closeModal }) => {
   }
 
   useEffect(() => {
-    setReserv_s_date(moment(value).format("YYYY-MM-DD"))
-    setReserv_e_date(date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD"))))
+    // setReserv_s_date(moment(value).format("YYYY-MM-DD"))
+    // setReserv_e_date(date == 3 ? moment(value * 1.00024).format("YYYY-MM-DD") : (date == 2 ? moment(value * 1.00017).format("YYYY-MM-DD") : (date == 1 ? moment(value * 1.00014).format("YYYY-MM-DD") : moment(value * 1.00007).format("YYYY-MM-DD"))))
   })
 
   return (
