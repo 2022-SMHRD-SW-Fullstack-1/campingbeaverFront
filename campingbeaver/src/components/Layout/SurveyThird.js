@@ -30,7 +30,7 @@ const SurveyThird = (props) => {
       테마에 맞춰 CampingBeaver가 추천하는 패키지를 만나보세요!
       </p>
       <hr />
-      <p className="mb-0">
+      <div className="mb-0">
       <div className="d-grid gap-2">  
       <CardGroup>
         <Card>
@@ -72,7 +72,7 @@ const SurveyThird = (props) => {
       </CardGroup>
       </div>
         <Button className={styles.sv3Btn} variant="secondary" onClick={backHandle}>뒤로가기</Button>
-    </p>
+    </div>
   </Alert>
   </div>
   )

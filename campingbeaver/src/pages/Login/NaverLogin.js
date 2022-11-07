@@ -11,7 +11,8 @@ const NaverLogin = ({ auth, setAuth }) => {
 
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
-    const NAVER_CALLBACK_URL = 'http://localhost:3000'
+    const NAVER_CALLBACK_URL = 'http://localhost:3000/Login'
+
 
     const initializeNaverLogin = () => {
         const naverLogin = new naver.LoginWithNaverId({

@@ -1,0 +1,77 @@
+.slider{
+  position: relative;
+  text-align: center;
+  width: 1200px;
+  height: 450px;
+  margin: 0 auto;
+  margin-top: 100px;
+  
+  overflow: hidden;
+
+  &:hover {
+    .leftArrow {
+      opacity: 1;
+      margin-left: 0;
+    }
+    .rightArrow {
+      opacity: 1;
+      margin-right: 0;
+    }
+  }
+
+  .leftArrow {
+    position: absolute;
+    width: 80px;
+    left: 0;
+    top: 40%;
+    // margin-left: -80px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+  }
+  .rightArrow {
+    position: absolute;
+    width: 80px;
+    right: 0;
+    top: 40%;
+    // margin-right: -80px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+  }
+}
+
+.carousel {
+  display: flex;
+  position:absolute;
+  transition: 0.5s;
+
+  .imgBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    img {
+      width: 300px;
+      height: 200px;
+      margin: 50px;
+    }
+    .img:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      cursor: pointer;
+    }
+
+  }
+  .recommendTitleBox {
+    width: 300px;
+    height: 200px;
+    
+    p {
+      font-size: 30px;
+      color: #333333;
+      font-weight: 400;
+    }
+  }
+}

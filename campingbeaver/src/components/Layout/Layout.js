@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { MdTranslate } from 'react-icons/md';
 import SurveySecond from './SurveySecond';
 import SurveyThird from './SurveyThird';
+import MainRecomm from './MainRecomm';
 
 
 const Layout = () => {
@@ -16,6 +17,7 @@ const Layout = () => {
   return (
     <div className={styles.wrap}>
           <Survey/>
+          <MainRecomm/>
     </div>
   )
 }

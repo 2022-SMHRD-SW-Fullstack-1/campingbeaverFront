@@ -1,4 +1,4 @@
-.wrap img {
+.mainpic {
     width: 100%;
     max-height: 800px;
 }
@@ -6,10 +6,10 @@
 .surveyWrap {
 position: absolute;
 transform: translate(-50%, -50%);
-width: 30vw;
-height: 30vh;
-top: 50%;
-left: 50%;
+width: 400px;
+height: 300px;
+top: 50vh;
+left: 50vw;
 text-align: center;
 }
 
