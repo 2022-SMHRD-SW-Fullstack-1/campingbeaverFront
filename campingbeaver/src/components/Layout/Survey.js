@@ -21,7 +21,11 @@ const Survey = () => {
   return (
     <>
       <div className='picContainer'>
-        <img className={styles.mainpic} src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'/>
+        <img 
+            className={styles.mainpic} 
+            src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'
+            alt='main'    
+        />
       </div>
         { answer == null && (
       <div className={styles.surveyWrap} >
@@ -31,7 +35,7 @@ const Survey = () => {
             필요한 장비를 직접 선택하시려면 '예'를 선택하세요
             </p>
             <hr />
-            <p className="mb-0">
+            <div className="mb-0">
             <div className="d-grid gap-2">
               <Button variant="success" size="lg" onClick={yesHandle}>
                 예
@@ -40,7 +44,7 @@ const Survey = () => {
                 아니오
               </Button>
             </div>
-            </p>
+            </div>
             </Alert>
         </div>)}
                 
