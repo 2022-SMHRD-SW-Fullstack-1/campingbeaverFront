@@ -53,8 +53,7 @@ function App() {
           <Route path="/logout" element={<Logout />}></Route>
 
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
-          <Route path='/ReviewList' element={<ReviewList />} />
-          <Route path="/@username">
+          <Route path='/ReviewList/:id' >
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>

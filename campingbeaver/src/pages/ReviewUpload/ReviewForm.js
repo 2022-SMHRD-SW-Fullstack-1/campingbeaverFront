@@ -82,7 +82,7 @@ const ReviewForm = () => {
       console.log(reviewContent)
       
       navigateToMyPage();
-    }).catch((error)=>console.log('Network Error: ', error))
+    }).catch((error)=>console.log('Network Error: ', error,reviewContent))
 
 
   }
