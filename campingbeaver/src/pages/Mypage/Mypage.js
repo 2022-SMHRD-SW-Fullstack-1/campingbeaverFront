@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
-import './EditMyInfo.scss';
+// import './EditMyInfo.scss';
 
 
 const userName = localStorage.getItem('userName')
@@ -12,7 +12,7 @@ const MyPage = () => {
  
   return (
     <div className={styles.top}>
-      
+
       <div>
           <h1 className={styles.MyPage}>
           {userName}님 반가워요!
