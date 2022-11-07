@@ -41,7 +41,9 @@ const Login = () => {
       console.log("백엔드 응답 메세지 :", response);
 
       if (response.user_id.length > 0) {
-        localStorage.setItem("userName", response.user_id);
+        localStorage.setItem("userName", response.user_name);
+        localStorage.setItem("userEmail", response.user_email);
+        localStorage.setItem("userId", response.user_id);
         //localStorage.setItem('userName', response.user_name);
         window.location.href = '/'
         //this.props.history.push("/");

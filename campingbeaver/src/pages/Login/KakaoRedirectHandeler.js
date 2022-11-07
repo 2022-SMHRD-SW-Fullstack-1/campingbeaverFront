@@ -61,7 +61,8 @@ const KakaoRedirectHandler = () => {
 
   }, [token])
 
-  return <div>사실 이페이지는 크게 의미 없다. 첫화면으로 로직이 끝나면 이동시켜주면 된다.</div>;
+  return <div>사실 이페이지는 크게 의미 없다. 첫화면으로 로직이 끝나면 이동시켜주면 된다.</div>
+  document.location.href = "/";
 };
 
 export default KakaoRedirectHandler;
