@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './MainRecomm.module.scss'
 import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'
@@ -11,7 +11,7 @@ const MainRecomm = () => {
   
   const IMG_WIDTH = 300;
   const moveRight = () => {
-    if (move >= -(ITEM_CARD_DATA.length * IMG_WIDTH) + IMG_WIDTH * 3) {
+    if (move >= -(ITEM_CARD_DATA.wish.length * IMG_WIDTH) + IMG_WIDTH * 3) {
       setMove(move => move - IMG_WIDTH);
     }
   };
@@ -21,6 +21,7 @@ const MainRecomm = () => {
       setMove(move => move + IMG_WIDTH);
     }
   };
+
 
   return (
     <div className={styles.slider}>
