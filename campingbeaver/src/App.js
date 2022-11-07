@@ -21,6 +21,7 @@ import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
 import Ordercom from './pages/Cart/Ordercom';
+import EditMyInfo from './pages/MyPage/EditMyInfo';
 
 
 
@@ -40,7 +41,7 @@ function App() {
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/Mypage" element={<Mypage />} />
+          <Route path="/Mypage/:tab" element={<Mypage />} />
           <Route path="/Reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/ordercom" element={<Ordercom />} />
@@ -53,8 +54,9 @@ function App() {
           <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
           <Route path='/wishlist:id' element={<WishList />} />
           <Route path='/reservlist:id' element={<ReservList />} />
-          <Route path="/logout" element={<Logout />}></Route>
+          <Route path="/logout" element={<Logout />}/>
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
+          <Route path="/editmyinfo" element={<EditMyInfo/>}/>
           <Route path='/ReviewList/:id' >
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />

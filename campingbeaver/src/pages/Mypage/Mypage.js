@@ -8,15 +8,17 @@ import SideNav from './SideNav';
 const userName = localStorage.getItem('userName')
 const userEmail = localStorage.getItem('userEmail')
 
+
 const MyPage = () => {
  
   return (
     <div className={styles.top}>
 
       <div className={styles.myInfoContainer}>
-          <h1 className={styles.MyPage}>
+         
+          <p className={styles.MyPage}>
           {userName}님 반가워요!
-          </h1>
+          </p>
           <p>{userEmail}</p>
       </div>
       

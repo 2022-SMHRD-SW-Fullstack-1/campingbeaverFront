@@ -5,6 +5,7 @@
 .MyPage {  
     margin-top: 100px;
     color:darkolivegreen;
+    font-size: 50px;
 }
 
 .MyInfo {
@@ -53,6 +54,9 @@ li + li{
 }
 .ListContainer {
     display: flex;
+    width:1200px;
+    flex-wrap: wrap;
+    margin-left: 7%;
 }
 
 // #top {
@@ -67,6 +71,7 @@ li + li{
     top : 0;
     right : 0;
 }
+
 
 // .myInfoContainer {
 //     align-items: center;

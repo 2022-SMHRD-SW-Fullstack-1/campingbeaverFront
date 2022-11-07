@@ -52,7 +52,6 @@ function Cart() {
                     </PageHeaderStepsLi>
                   </PageHeaderSteps>
                 </CartPageHeader>
-
                 <CartNotEmpty cartList={cartList} />
               </CartPage>
             </ContentDiv>
