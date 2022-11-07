@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 import {KAKAO_AUTH_URL} from './OAuth';
@@ -47,7 +47,6 @@ const Login = () => {
   const goToSignup = () => {
     navigate('../signup');
   };
-
   return (
     <div>
       <Header/>
