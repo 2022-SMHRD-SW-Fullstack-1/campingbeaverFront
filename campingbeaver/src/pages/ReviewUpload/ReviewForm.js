@@ -82,7 +82,7 @@ const ReviewForm = () => {
       console.log(reviewContent)
       
       navigateToMyPage();
-    }).catch((error)=>console.log('Network Error: ', error))
+    }).catch((error)=>console.log('Network Error: ', error,reviewContent))
 
 
   }
@@ -93,7 +93,7 @@ const ReviewForm = () => {
     setFileImage(URL.createObjectURL(e.target.files[0]))
     setReviewContent({
       ...reviewContent,
-      rv_photo: fileImage
+      rv_photo: e.target.value
     })
     console.log(reviewContent)
   }
@@ -138,7 +138,7 @@ const ReviewForm = () => {
                   <GiRoundStar
                     key={idx}
                     onClick={() => handleStarClick(el) && getValue}
-                    className={clicked[el] && 'yellowStar'}
+                    className={clicked[el] && 'star'}
                     size="35"
                   />
                   )
@@ -224,7 +224,7 @@ const Stars = styled.div`
   & svg:hover ~ svg {
     color: #C4C4C4;
   }
-  .black {
+  .star {
     color: black;
   }
 `
