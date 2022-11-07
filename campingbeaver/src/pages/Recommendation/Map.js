@@ -36,7 +36,7 @@ const Map = ({latitude,longitude,siteName}) => {
                 marginLeft: '5px',
                 marginRight: '5px',
             }}
-        ><h1>{siteName}</h1>
+        >
             <div id="map" style={{ width: '99%', height: '500px' }}></div>
       </div>
       );

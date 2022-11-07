@@ -15,9 +15,11 @@ const Layout = () => {
  
 
   return (
+
     <div className={styles.wrap}>
           <Survey/>
           <MainRecomm/>
+
     </div>
   )
 }

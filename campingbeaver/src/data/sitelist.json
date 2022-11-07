@@ -1,0 +1,64 @@
+
+{
+    "campsite":[
+        {
+            "site_seq" : "2",
+            "site_name" : "신두57 캠핑장",
+            "imgsrcfirst" : "/shindo1.jpeg",
+            "imgsrcsecond" : "/shindo2.jpg",
+            "imgsrcthird" : "/shindo3.jpeg"
+        },
+        {
+            "site_seq" : "3",
+            "site_name" : "캠프더포레",
+            "imgsrcfirst" : "/campthefore1.jpg",
+            "imgsrcsecond" : "/campthefore2.jpg",
+            "imgsrcthird" : "/campthefore3.jpg"
+        },
+        {
+            "site_seq" : "4",
+            "site_name" : "캠프627",
+            "imgsrcfirst" : "/627camp1.jpg",
+            "imgsrcsecond" : "/627camp2.jpg",
+            "imgsrcthird" : "/627camp3.jpg"
+        },
+        {
+            "site_seq" : "5",
+            "site_name" : "연곡해변 솔향기캠핑장",
+            "imgsrcfirst" : "/solhang1.jpg",
+            "imgsrcsecond" : "/solhang2.jpg",
+            "imgsrcthird" : "/solhang3.jpg"
+        },
+        {
+            "site_seq" : "6",
+            "site_name" : "나로힐링캠핑장",
+            "imgsrcfirst" : "/naro1.jpg",
+            "imgsrcsecond" : "/naro2.jpg",
+            "imgsrcthird" : "/naro3.jpg"
+        },
+        {
+            "site_seq" : "7",
+            "site_name" : "석양마을 주포캠핑장",
+            "imgsrcfirst" : "/jupo1.png",
+            "imgsrcsecond" : "/jupo2.jpg",
+            "imgsrcthird" : "/jupo3.jpeg"
+        },
+        {
+            "site_seq" : "8",
+            "site_name" : "스타밸리 캠핑장",
+            "imgsrcfirst" : "/star1.jpg",
+            "imgsrcsecond" : "/star2.jpg",
+            "imgsrcthird" : "/star3.jpeg"
+        },
+        {
+            "site_seq" : "9",
+            "site_name" : "땅에미소 캠핑장",
+            "imgsrcfirst" : "/ddang1.jpg",
+            "imgsrcsecond" : "/ddang2.jpg",
+            "imgsrcthird" : "/ddang3.jpg"
+        }
+    ]
+
+
+
+}
