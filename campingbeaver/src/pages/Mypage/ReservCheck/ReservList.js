@@ -32,12 +32,12 @@ const ReservList = () => {
   return(
     
     <div>
-       <div>
+       {/* <div>
           <h1 className={styles.contact}>
           My Reservation
           </h1>
           <p className={styles.contact1}>예약 / 취소 내역</p>
-        </div>
+        </div> */}
 
 
       <div>

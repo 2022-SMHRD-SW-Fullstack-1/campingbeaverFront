@@ -13,13 +13,13 @@ const MyPage = () => {
   return (
     <div className={styles.top}>
 
-      <div>
+      <div className={styles.myInfoContainer}>
           <h1 className={styles.MyPage}>
           {userName}님 반가워요!
           </h1>
           <p>{userEmail}</p>
       </div>
-      <hr/>
+      
       <SideNav/>
       
     </div>
