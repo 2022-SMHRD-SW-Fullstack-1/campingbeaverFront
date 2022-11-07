@@ -20,7 +20,8 @@ import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
-import axios from 'axios';
+
+
 
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
@@ -51,6 +52,7 @@ function App() {
         <Route path='/wishlist:id' element={<WishList />} />
         <Route path='/reservlist:id' element={<ReservList />} />
         <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandeler/>} />
+        
 
         {/* <Route path="/join" element={<Join />}></Route> */}
         <Route path="/logout" element={<Logout />}></Route>
