@@ -1,17 +1,36 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import img from '../../../components/img/tentcamping.jpg'
 import styles from '../MyPage.module.scss'
 import Fheart from '../../../components/img/Fheart.png'
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
-const WishItem = ({wishName, wishPrice, wishPic}) => {
+const WishItem = ({wishName, wishPrice, wishPic,pkg_seq}) => {
 
 const [show, setShow] = useState(false);
+const [id, setId] = useState(localStorage.userId)
+const [deleteItem, setDeleteItem] = useState({
+  // user_id : id,
+  user_id :'admin',
+  pkg_seq :parseInt(pkg_seq)
+});
 
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
+const handleDelete = () => {
+    console.log(deleteItem)
+    
+    axios.post(`/beaver/wishlist/delete`, deleteItem)
+    .then((res)=>{
+        console.log(deleteItem)
+        
+    }).catch((error)=>console.log('Network Error: ', error))
+      
+    setShow(false)
+    
+}
+
 
   return (
 
@@ -48,7 +67,7 @@ const handleShow = () => setShow(true);
               <Button variant="secondary" onClick={handleClose}>
                 아니오
               </Button>
-              <Button variant="primary">네</Button>
+              <Button variant="primary" onClick={handleDelete}>네</Button>
             </Modal.Footer>
           </Modal>
           </div>

@@ -13,7 +13,6 @@ const MyPage = () => {
  
   return (
     <div className={styles.top}>
-
       <div>
           <h1 className={styles.MyPage}>
           {userName}님 반가워요!
@@ -21,16 +20,6 @@ const MyPage = () => {
           <p>{userEmail}</p>
       </div>
       <hr/>
-          
-      {/* <div className={styles.MyInfo}>
-          <h5>
-            admin님 반가워요!
-          </h5>
-          <p>admin@gmail.com</p>
-      </div> */}
-          
-      
-      
       <SideNav/>
       
     </div>

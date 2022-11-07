@@ -1,33 +1,55 @@
-import React from 'react'
 import Alert from 'react-bootstrap/Alert';
 import styles from './Survey.module.scss';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
-import {Route, Routes, Link} from 'react-router-dom'
-
+import SurveySecond from './SurveySecond';
+import SurveyThird from './SurveyThird';
 const Survey = () => {
 
+  const [answer,setAnswer] = useState(null);
+
+  const yesHandle = () => {
+    setAnswer(true)
+  }
+
+  const noHandle = () => {
+    setAnswer(false)
+  }
+
+
   return (
-    <div style={{position: 'absolute', zIndex:3 ,margin: '3em', width: '50vw', height: '40vh', top:'30%', left:'20%', textAlign: 'center'}}>
-    <Alert variant="success" className={styles.overlay}>
-    <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
-    <p>
-     장비를 직접 선택하시려면 '예'를 선택하세요
-    </p>
-    <hr />
-    <p className="mb-0">
-    <div className="d-grid gap-2">
-      <Button variant="primary" size="lg"><Link to="/surveysecond" style={{ textDecoration: "none", color: 'white' }}>
-        예</Link>
-      </Button>
-      <Button variant="secondary" size="lg"><Link to="/surveythird" style={{ textDecoration: "none", color: 'white' }}>
-        아니오</Link>
-      </Button>
-    </div>
-    </p>
-  </Alert>
- </div>
+    <>
+      <div className='picContainer'>
+        <img 
+            className={styles.mainpic} 
+            src='https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg'
+            alt='main'    
+        />
+      </div>
+        { answer == null && (
+      <div className={styles.surveyWrap} >
+        <Alert variant="light" className={styles.overlay}>
+        <Alert.Heading>캠핑 장비가 있으신가요?</Alert.Heading>
+            <p>
+            필요한 장비를 직접 선택하시려면 '예'를 선택하세요
+            </p>
+            <hr />
+            <div className="mb-0">
+            <div className="d-grid gap-2">
+              <Button variant="success" size="lg" onClick={yesHandle}>
+                예
+              </Button>
+              <Button variant="secondary" size="lg" onClick={noHandle}>
+                아니오
+              </Button>
+            </div>
+            </div>
+            </Alert>
+        </div>)}
+                
+          { answer == true && (<SurveySecond setAnswer={setAnswer}/>)}
+          { answer == false && (<SurveyThird setAnswer={setAnswer}/>)}
+      </>
   )
 }
-
 export default Survey

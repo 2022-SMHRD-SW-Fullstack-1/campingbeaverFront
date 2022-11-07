@@ -1,15 +1,13 @@
-.layout{
-    padding-top : 150px;
+
+.surveyWrap {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    width: 400px;
+    height: 150px;
+    top: 30%;
+    left: 50%;
+    
+    //margin-top : -600px;
+    text-align: center;
 }
 
-.main{
-    min-height: calc(100vh - 180px);
-    max-width: 100%;
-    height: auto;
-}
-
-.box {
-    width: 30%;
-    height: 0;
-    padding-bottom: 30%;
-  }

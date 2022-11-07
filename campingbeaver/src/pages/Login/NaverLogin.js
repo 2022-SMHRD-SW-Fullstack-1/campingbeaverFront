@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -13,6 +12,7 @@ const NaverLogin = ({ auth, setAuth }) => {
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
     const NAVER_CALLBACK_URL = 'http://localhost:3000/Login'
+
 
     const initializeNaverLogin = () => {
         const naverLogin = new naver.LoginWithNaverId({
@@ -81,13 +81,13 @@ const NaverLogin = ({ auth, setAuth }) => {
     useEffect(() => {
         initializeNaverLogin()
         userAccessToken()
-        axios({
-            url: '/beaver/main',
-            method: 'post',
-            data: { userInfo },
-            baseURL: 'http://localhost:8123',
-        }
-        )
+        // axios({
+        //     url: '/beaver/main',
+        //     method: 'post',
+        //     data: { userInfo },
+        //     baseURL: 'http://localhost:8123',
+        // }
+        // )
         console.log(auth)
           
     }, [])

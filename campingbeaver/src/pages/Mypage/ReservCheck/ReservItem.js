@@ -1,27 +1,30 @@
-import React from 'react'
+
 import { useNavigate } from 'react-router-dom'
 
 
-
-const ReservItem = ({ reservNum, reservDate, reservName, reservPrice,
+const ReservItem = ({ pkg_seq, reserv_num, reserv_date, reserv_name, reserv_price,
    review, delivery, cancel }) => {
 
   const navigate = useNavigate();
   const navigateToReview = () => {
     return (
-      navigate("/ReviewForm")
-    )
-  } 
+      
+      //console.log(pkg_seq)
+      
+      navigate(`/ReviewForm:${reserv_num}?pkg_seq=${pkg_seq}`)
+      )
+
+    } 
 
   return (
     <tr className="cartItem">
-      <td>{reservNum}</td>
+      <td>{reserv_num}</td>
       {/* <td>
         <img className="productImg" src={img} alt='iteminfo' />
       </td> */}
-      <td>{reservDate}</td>
-      <td>{reservName}</td>
-      <td>￦{reservPrice}</td>
+      <td>{reserv_date}</td>
+      <td>{reserv_name}</td>
+      <td>￦{reserv_price}</td>
       <td><button onClick={navigateToReview}>{review}</button></td>
       <td><button>{delivery}</button></td>
       <td><button>{cancel}</button></td>
