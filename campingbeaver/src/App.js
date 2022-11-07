@@ -21,9 +21,11 @@ import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
-import Axios from 'axios';
-import CartOrder from './pages/Cart/CartOrder';
 import Ordercom from './pages/Cart/Ordercom';
+
+
+
+import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -35,6 +37,7 @@ function App() {
   return (
     <div className='App'>
       <Header auth={auth} setAuth={setAuth} />
+
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />

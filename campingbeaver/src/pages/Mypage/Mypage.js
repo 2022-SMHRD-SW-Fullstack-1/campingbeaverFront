@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './MyPage.module.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 import SideNav from './SideNav';
+import './EditMyInfo.scss';
 
 
 
