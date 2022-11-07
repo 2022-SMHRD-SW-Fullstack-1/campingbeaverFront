@@ -7,7 +7,11 @@ import './Login.css'
 const NaverLogin = ({ auth, setAuth }) => {
     const navigate = useNavigate()
 
-    const [userInfo, setUserInfo] = useState(null);
+    const [userInfo, setUserInfo] = useState({
+        user_id : '',
+        user_email : '',
+        user_name : '',
+    });
 
     const { naver } = window
     const NAVER_CLIENT_ID = 'ouUd18EIec7BAaiUuI6P'
@@ -41,15 +45,17 @@ const NaverLogin = ({ auth, setAuth }) => {
         naverLogin.getLoginStatus(async function (status) {
             if (status) {
 
+                
                 console.log('가져오는값 : ', naverLogin.user)
                 const userEmail = naverLogin.user.email
                 const userId = naverLogin.user.id
                 const userName = naverLogin.user.name
-                setUserInfo({ email: userEmail, id: userId, name: userName })
                 localStorage.setItem('userName', userName)
                 localStorage.setItem('userEmail', userEmail)
                 localStorage.setItem('userId', userId)
+                setUserInfo({ user_email: {userEmail}, user_id: {userId}, user_name: {userName} })
                 setAuth(true)
+                
                 
             }
         })
@@ -81,14 +87,14 @@ const NaverLogin = ({ auth, setAuth }) => {
     useEffect(() => {
         initializeNaverLogin()
         userAccessToken()
-        // axios({
-        //     url: '/beaver/main',
-        //     method: 'post',
-        //     data: { userInfo },
-        //     baseURL: 'http://localhost:8123',
-        // }
-        // )
-        console.log(auth)
+        axios.post(`/beaver/naverlogin`, userInfo)
+        .then((res)=>{
+        
+      
+        
+    }).catch((error)=>console.log('Network Error: ', error))
+       
+        
           
     }, [])
 

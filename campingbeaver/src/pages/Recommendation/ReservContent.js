@@ -26,23 +26,12 @@ const ReservContent = () => {
     // },[])
 
     return (
-        <div>
+        
 
             <div className={Styles.reservbutton}>
                 <FilterButton />
-                <div>
-                    <div className={Styles.reservtitle}>
-                    <h1>Recommendation</h1>
-                    <p>camping beaver가 추천하는 캠핑 레시피</p>
-                    </div>
-                    
-                    <div className={Styles.imgbox}>
-                    <ReservCamp />
-                    </div>
-                </div>
-
+                
             </div>
-        </div>
 
 
     )
