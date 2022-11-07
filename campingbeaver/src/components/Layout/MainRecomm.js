@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './MainRecomm.module.scss'
 import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'

@@ -35,6 +35,7 @@ const WishList = () => {
         setWishList(res.data)
       })
       .catch((error)=>console.log('Network Error: ', error))
+
     },[]);
     
   
