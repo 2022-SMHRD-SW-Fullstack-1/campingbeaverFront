@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
     min-height: 100%;
+
 } */
+
 #root {
     min-height: 100%;
 }

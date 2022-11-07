@@ -10,14 +10,16 @@ import pool from './iconimg/pool.png'
 import storm from './iconimg/storm.png'
 import wifi from './iconimg/wifi.png'
 import { useAsyncValue } from 'react-router-dom';
-import style from './Reservation.module.scss'
+import Styles from './Reservation.module.scss'
 import Axios from 'axios';
+import ReservCamp from './ReservCamp';
+
 
 const FilterButton = () => {
 
 
   const [inputText, setInputText] = useState([]);
-
+  const [tagHandler, setTagHandler] = useState(new Map());
 
   const clickHandle = (e) => {
  
@@ -45,11 +47,10 @@ const clearBtn = (e) => {
 
 const dataCon = (e) => {
   // console.log(inputText);
-  const userHashTag = [
-    inputText
+  const userHashTag = inputText
     // inputText.join(",")
-]
-  // console.log(userHashTag);
+
+  console.log(userHashTag);
 
   Axios.post('/beaver/hash',JSON.stringify(userHashTag), {
     headers: {
@@ -60,8 +61,10 @@ const dataCon = (e) => {
 
   })
   .catch(()=>{alert('failed!')})
-}
 
+  setTagHandler(inputText)
+
+}
 
   return (
 
@@ -71,11 +74,11 @@ const dataCon = (e) => {
       'secondary',
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
-        <p align='center'>원하시는 시설 상세 태그를 검색하시면 캠핑장을 추천해드립니다!</p>
+        <h6 align='center'>원하시는 시설 상세 태그를 검색하시면 캠핑장을 추천해드립니다!</h6>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={bonfire} width='50px'/></p>장작판매</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={court} width='50px'/></p>운동시설</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={hotwater} width='50px'/></p>온수</Button>
-        <Button variant="outline-dark" onClick={clickHandle}><p><img src={mart} width='50px'/></p>마트/편의점</Button>
+        <Button variant="outline-dark" onClick={clickHandle}><p><img src={mart} width='50px'/></p>매점</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={park} width='50px'/></p>산책로</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={pool} width='50px'/></p>물놀이장</Button>
         <Button variant="outline-dark" onClick={clickHandle}><p><img src={storm} width='50px'/></p>전기</Button>
@@ -87,7 +90,7 @@ const dataCon = (e) => {
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
-        <p align='center'>테마별 태그를 검색하시면 캠핑장을 추천해드립니다!</p>
+        <h6 align='center'>테마별 태그를 검색하시면 캠핑장을 추천해드립니다!</h6>
         <Button variant="outline-dark"  onClick={clickHandle}>반려견동반</Button>
         <Button variant="outline-dark"  onClick={clickHandle}>익스트림</Button>
         <Button variant="outline-dark"  onClick={clickHandle}>커플</Button>
@@ -96,8 +99,6 @@ const dataCon = (e) => {
         <Button variant="outline-dark" onClick={clickHandle}>여름</Button>
         <Button variant="outline-dark" onClick={clickHandle}>가을</Button>
         <Button variant="outline-dark" onClick={clickHandle}>겨울</Button>
-        <Button variant="outline-dark" onClick={clickHandle}>문화유적</Button>
-        <Button variant="outline-dark" onClick={clickHandle}>축제</Button>
         <Button variant="outline-dark" onClick={clickHandle}>별 보기 좋은</Button>
         <Button variant="outline-dark" onClick={clickHandle}>물놀이 하기 좋은</Button>
         <Button variant="outline-dark" onClick={clickHandle}>자전거 타기 좋은</Button>
@@ -121,7 +122,7 @@ const dataCon = (e) => {
     ].map((variant) => (
       <Alert key={variant} variant={variant}>
         {/* This is a {variant} check! */}
-        <p align='center'>선택한 태그</p>
+        <h6 align='center'>선택한 태그</h6>
 
        {inputTextList}
       </Alert>
@@ -129,8 +130,20 @@ const dataCon = (e) => {
 
       <div align='center'>
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
-        <Button variant="outline-success" onClick={dataCon} type="button">검색하기</Button>{' '}
+        {/* <Button variant="outline-success" onClick={arrBtn} type="button">검색하기</Button>{' '} */}
       </div>
+      <div>
+                    <div>
+                    {/* <h1>Recommendation</h1>
+                    <p>camping beaver가 추천하는 캠핑 레시피</p> */}
+                    </div>
+                    <div>
+                    <div>
+                    <ReservCamp tagHandler={tagHandler} setTagHandler={setTagHandler} {...inputText}/>
+                    </div>
+                    </div>
+                </div>
+
     </div>
     </>
   )
