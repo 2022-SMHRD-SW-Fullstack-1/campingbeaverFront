@@ -17,9 +17,13 @@ const WishList = () => {
   
   let url = '/beaver/wishlist/admin'
   const params = useParams();
+
+  const Con = {
+    marginLeft : '-180px'
+  }
   
   useEffect(()=> {
-    // const userId = params.id
+    // const {userId} = params.id
     const userId = 'admin'
     axios.get(`/beaver/wishlist/${userId}`,
       { headers: {
@@ -31,6 +35,7 @@ const WishList = () => {
         setWishList(res.data)
       })
       .catch((error)=>console.log('Network Error: ', error))
+
     },[]);
     
   

@@ -1,23 +1,41 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import Header from '../../components/Layout/Header'
 import styles from './ReviewForm.module.scss'
 import { GiRoundStar }  from 'react-icons/gi'
 import styled from 'styled-components'
+import axios from 'axios'
 
-const Review = ({reservNum}) => {
+
+const ReviewForm = () => {
+  const params = useParams();
+   
+  const [numParams, setNumParams] = useState(params.resnum.replace(":",""));
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pkgSeq = searchParams.get('pkg_seq')
+
+  const [id, setId] = useState(localStorage.userId);
+
   const navigate = useNavigate();
     const navigateToMyPage = () => {
     return (
       navigate("/MyPage")
     )
   }
+
   
+  // useEffect(() =>{
+  //   console.log(pkgSeq)
+  // },[])
 
   const [reviewContent, setReviewContent] = useState({
-    context: '',
-    score: '',
-    img: ''
+    // user_id: id,
+    user_id: 'admin',
+    reserv_num: numParams,
+    pkg_seq: parseInt(pkgSeq),
+    rv_content: '',
+    rv_rating: '',
+    rv_photo: '',
   })
 
   const [viewContent, setViewContent] = useState([]);
@@ -36,10 +54,11 @@ const Review = ({reservNum}) => {
   }
   // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
   const sendReview = () => {
+    
     let score = clicked.filter(Boolean).length;
     setReviewContent({
       ...reviewContent,
-      score: score
+      rv_rating: score,
     })
     console.log(score);
     
@@ -51,11 +70,21 @@ const Review = ({reservNum}) => {
       ...reviewContent,
       [name]: value
     })
-    console.log(reviewContent);
+    //console.log(reviewContent);
   }
 
-  const submitHandle = () => {
+  const submitHandle = (e) => {
+    e.preventDefault()
     setViewContent(viewContent.concat({...reviewContent}))
+    
+    axios.post(`/beaver/write/${numParams}`, reviewContent)
+    .then((res)=>{
+      console.log(reviewContent)
+      
+      navigateToMyPage();
+    }).catch((error)=>console.log('Network Error: ', error,reviewContent))
+
+
   }
 
   const [fileImage, setFileImage] = useState('');
@@ -64,11 +93,10 @@ const Review = ({reservNum}) => {
     setFileImage(URL.createObjectURL(e.target.files[0]))
     setReviewContent({
       ...reviewContent,
-      img: fileImage
+      rv_photo: e.target.value
     })
     console.log(reviewContent)
   }
-
 
   useEffect(()=> {
     sendReview();
@@ -88,7 +116,7 @@ const Review = ({reservNum}) => {
               <tr>
                 <th>예약번호</th>
                 <td>
-                  {reservNum}
+                  {numParams}
                 </td>
               </tr>
             </thead>
@@ -96,7 +124,7 @@ const Review = ({reservNum}) => {
               <tr>
                 <td className={styles.textArea} colSpan="2">
                   <textarea
-                    name="context"
+                    name="rv_content"
                     onChange={getValue}
                    ></textarea>
                 </td>
@@ -110,7 +138,7 @@ const Review = ({reservNum}) => {
                   <GiRoundStar
                     key={idx}
                     onClick={() => handleStarClick(el) && getValue}
-                    className={clicked[el] && 'yellowStar'}
+                    className={clicked[el] && 'star'}
                     size="35"
                   />
                   )
@@ -161,11 +189,11 @@ const Review = ({reservNum}) => {
               <button className={styles.listBtn}>목록</button>
             </div>
             <div>
-              <button 
+            <button 
                 className={styles.createBtn}
                 onClick={submitHandle}
-                
-                >등록</button>
+            >등록
+            </button>
             </div>
             <div>
               <button 
@@ -181,7 +209,7 @@ const Review = ({reservNum}) => {
   )
 }
 
-export default Review
+export default ReviewForm
 
 const Stars = styled.div`
   margin: 0 auto;
@@ -196,7 +224,7 @@ const Stars = styled.div`
   & svg:hover ~ svg {
     color: #C4C4C4;
   }
-  .black {
+  .star {
     color: black;
   }
 `

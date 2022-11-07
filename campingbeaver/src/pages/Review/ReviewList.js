@@ -25,20 +25,20 @@ const ReviewList = () => {
 	/* [GET /bbs]: 게시글 목록 */
 	const getBbsList = async (choice, search, page) => {
 
-		await axios.get("http://localhost:3000/bbs", { 
-      params: { "choice": choice, "search": search, "page": page } })
-			.then((resp) => {
-				console.log("[BbsList.js] useEffect() success :D");
-				console.log(resp.data);
+	// 	await axios.get(`/beaver/reviewlist/:${user_id}`, { 
+    //   params: { "choice": choice, "search": search, "page": page } })
+	// 		.then((res) => {
+	// 			console.log("[BbsList.js] useEffect() success :D");
+	// 			console.log(res.data);
 
-				setBbsList(resp.data.bbsList);
-				setTotalCnt(resp.data.pageCnt);
-			})
-			.catch((err) => {
-				console.log("[BbsList.js] useEffect() error :<");
-				console.log(err);
+	// 			// setBbsList(res.data.bbsList);
+	// 			// setTotalCnt(res.data.pageCnt);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log("[BbsList.js] useEffect() error :<");
+	// 			console.log(err);
 
-			});
+	// 		});
 	}
 
 	useEffect(() => {

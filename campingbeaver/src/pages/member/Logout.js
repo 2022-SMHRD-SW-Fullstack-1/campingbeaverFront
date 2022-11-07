@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
-//import { AuthContext } from "../context/AuthProvider";
 
 function Logout({auth, setAuth}) {
 
@@ -8,17 +7,19 @@ function Logout({auth, setAuth}) {
 	
 	const logout = () => {
 		
-		 
-		alert( + "님, 성공적으로 로그아웃 됐습니다 🔒");
-		setAuth(false);
-		
+		alert(localStorage.userName + "님, 성공적으로 로그아웃 됐습니다 🔒");
 		localStorage.removeItem("access_token");
 		localStorage.removeItem("userEmail");
 		localStorage.removeItem("userName");
-		navigate("/");
-	};
+		localStorage.removeItem("com.naver.nid.access_token");
+		localStorage.removeItem("userId");
+		localStorage.removeItem("com.naver.nid.oauth.state_token");
 
+		setAuth(false);
+	};
+	
 	useEffect(() => {
+		window.location.replace("/login")
 		logout();
 	}, []);
 

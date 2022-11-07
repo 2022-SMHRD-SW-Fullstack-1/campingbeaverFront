@@ -9,7 +9,9 @@ const SideDiv = styled.div`
   width: 120%;
   position: relative;
   right: 5rem;
-  margin-top: -119px;
+
+  margin-top: -124px;
+
   div {
     display: flex;
     flex-direction: column;

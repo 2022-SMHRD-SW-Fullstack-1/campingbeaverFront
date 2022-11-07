@@ -1,0 +1,25 @@
+{ "wish" : [
+    {
+        "wishName" : "가을 패키지",
+        "wishPrice" : "89000",
+        "wishPic" : "https://www.snowpeak.co.kr/resources/images/main/snowpeak_left.jpg"
+    },
+    {
+        "wishName" : "텐트 패키지",
+        "wishPrice" : "79000",
+        "wishPic" : "https://www.snowpeak.co.kr/updata/2022newproduct/new_main_02.jpg"
+    },
+    {
+        "wishName" : "패키지",
+        "wishPrice" : "109000",
+        "wishPic" : "https://www.snowpeak.co.kr/updata/2022newproduct/zekka_full2x.jpg"
+    },
+    {
+        "wishName" : "다른패키지",
+        "wishPrice" : "109000",
+        "wishPic" : "https://www.snowpeak.co.kr/updata/2022newproduct/new_main_02.jpg"
+    }
+    
+]
+
+}

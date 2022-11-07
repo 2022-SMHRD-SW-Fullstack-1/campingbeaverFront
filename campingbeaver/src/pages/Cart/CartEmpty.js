@@ -1,16 +1,10 @@
 import React from 'react'
-import styled, { css } from "styled-components";
-import CartItems from './CartItems';
+import styled from "styled-components";
 
-const CartListDetail = () => {
+const CartEmpty = () => {
   return (
-    <>
     <div>
-      
-      <CartItems/>
-    </div>
-      <div>
-        <EmptyList>
+       <EmptyList>
           <EmptyListLogo>
             <LogoEmpty className="fa-solid fa-empty-set"></LogoEmpty>
             <div>
@@ -22,16 +16,16 @@ const CartListDetail = () => {
             </div>
             <EmptyCartBtn
               type="button"
-              onClick={() => window.location.replace("/products")}
+              onClick={() => window.location.replace("store")}
             >
               상품 구경하러 가기
             </EmptyCartBtn>
           </EmptyListLogo>
         </EmptyList>
-      </div>
-    </>
+    </div>
   )
 }
+
 
 const EmptyCartBtn = styled.button`
   width: 246px;
@@ -80,4 +74,4 @@ const EmptyList = styled.div`
   text-align: center;
 `;
 
-export default CartListDetail
+export default CartEmpty

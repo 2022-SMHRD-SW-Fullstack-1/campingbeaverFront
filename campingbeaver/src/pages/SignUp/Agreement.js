@@ -16,7 +16,7 @@ const Agreement = ({ item, checkedList, i, setCheckedLists }) => {
       <ul className="agreementPage">
         <li className="agreementTitle">{item.description}</li>
         <li className="agreementContent">
-          제1조(목적) 이 약관은 스코프서울이 운영하는 크로우세븐홈
+          제1조(목적) 이 약관은 스마트인재개발원이 운영하는 CampingBeaver
           온라인스토어(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하
           “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리?의무 및
           책임사항을 규정함을 목적으로 합니다. ※「PC통신, 무선 등을 이용하는
