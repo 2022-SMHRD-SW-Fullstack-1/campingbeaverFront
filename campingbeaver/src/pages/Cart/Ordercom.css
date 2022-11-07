@@ -1,0 +1,26 @@
+.ordercon{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.ordercon1{
+    text-align: start;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    margin-left: 400px;
+
+}
+.ordercon2{
+    text-align: start;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+}
+.ordermenu{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

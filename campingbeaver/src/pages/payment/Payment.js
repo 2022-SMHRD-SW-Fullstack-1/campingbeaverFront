@@ -45,14 +45,13 @@ function Payment() {
     } = response;
     if (success) {
       alert("결제 성공");
+      window.location.replace("/ordercom")
     } else {
       alert(`결제 실패 : ${error_msg}`);
     }
   };
   return (
-    <>
-      <button onClick={onClickPayment}>결제하기</button>{" "}
-    </>
+      <button className="buyBtn" onClick={onClickPayment}>결제하기</button>
   );
 }
 
