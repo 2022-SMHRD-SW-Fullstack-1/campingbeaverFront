@@ -20,7 +20,6 @@ import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
-import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 
 
@@ -45,7 +44,6 @@ function App() {
           <Route path="/Mypage" element={<Mypage />} />
           <Route path="/Reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/cartorder" element={<CartOrder />} />
           <Route path="/ordercom" element={<Ordercom />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
