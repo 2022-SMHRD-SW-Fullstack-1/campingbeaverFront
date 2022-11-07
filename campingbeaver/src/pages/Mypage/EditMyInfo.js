@@ -82,9 +82,11 @@ const EditMyInfo = () => {
           <p className={styles.contact1}>회원 정보 수정</p>
         </div>
 
+        
         <div>
-        <main className="update">
-        <h1 className="title">UPDATE</h1>
+        
+        {/* <main className="update"> */}
+        <h1 className="title"></h1>
         <title className="information">
           <h2>기본정보</h2>
           <div>*필수입력사항</div>
@@ -192,7 +194,7 @@ const EditMyInfo = () => {
         >
           정보 수정하기
         </button>
-      </main>
+      {/* </main> */}
         </div>
     </div>
   )

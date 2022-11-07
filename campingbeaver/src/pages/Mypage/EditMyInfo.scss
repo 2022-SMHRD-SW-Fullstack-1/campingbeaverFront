@@ -1,29 +1,7 @@
-@import '../../styles/reset.scss';
-@import '../../styles/variables.scss';
+// @import '../../styles/reset.scss';
+// @import '../../styles/variables.scss';
 
-.update {
-  //@include flexCenter;
-  flex-direction: column;
-  width: 100%;
-  margin: auto;
-  padding: 150px 0;
 
-  .title {
-    margin-bottom: 40px;
-    font-size: 30px;
-    font-weight: 600;
-  }
-
-  .information {
-    @include flexSpaceBetween;
-    width: 100%;
-    margin-bottom: 20px;
-    font-weight: 600;
-
-    div {
-      font-size: 12px;
-    }
-  }
 
   .memberLine {
     display: flex;
@@ -119,102 +97,6 @@
     }
   }
 
-  .addInformation {
-    @include flexSpaceBetween;
-    width: 100%;
-    margin-top: 80px;
-    font-weight: 600;
-  }
-
-  .birthdayLine {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 20px;
-
-    .birthday {
-      width: 140px;
-    }
-
-    .birthdayInput {
-      border: none;
-      border-bottom: 1px solid black;
-      width: 80px;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .birthdayDescription {
-      margin-left: 20px;
-      margin-top: 5px;
-      font-size: 12px;
-    }
-
-    .birthdayRadio {
-      margin-left: 20px;
-    }
-  }
-  .agreement {
-    @include flexSpaceBetween;
-    width: 100%;
-    margin: 80px 0 20px 0;
-    font-weight: 600;
-
-    div {
-      font-size: 12px;
-    }
-  }
-
-  .agreementBox {
-    width: 100%;
-    border: 1px solid lightgray;
-    background-color: rgb(246, 246, 246);
-
-    .allAgreement {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid lightgray;
-
-      input {
-        width: 20px;
-        height: 20px;
-        border-radius: 0;
-      }
-
-      div {
-        font-size: 14px;
-      }
-    }
-
-    .agreementPage {
-      padding: 15px;
-      border-bottom: 1px solid lightgray;
-
-      .agreementTitle {
-        font-weight: 600;
-      }
-
-      .agreementContent {
-        height: 110px;
-        margin: 20px 0;
-        padding: 10px;
-        background-color: white;
-        border: 1px solid lightgray;
-        overflow-y: scroll;
-      }
-
-      .checkAgree {
-        display: flex;
-
-        input {
-          margin-left: 30px;
-        }
-      }
-    }
-  }
 
   .editBtn {
     width: 130px;
@@ -231,4 +113,4 @@
       cursor: default;
     }
   }
-}
+// }
