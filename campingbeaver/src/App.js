@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Axios from 'axios';
 import Footer from './components/Layout/Footer';
+import kakao from './pages/Login/kakao';
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/oauth/callback/kakao" component={kakao}></Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/Reservation" element={<Reservation />} />
