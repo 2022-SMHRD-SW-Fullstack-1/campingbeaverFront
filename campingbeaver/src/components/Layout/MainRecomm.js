@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './MainRecomm.module.scss'
 import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'
 import right from '../img/next.png'
+import axios from 'axios'
 
 
 const MainRecomm = () => {
   
+  const [items,setItems] = useState([]);
   const [move, setMove] = useState(0);
   
   const IMG_WIDTH = 300;
   const moveRight = () => {
-    if (move >= -(ITEM_CARD_DATA.wish.length * IMG_WIDTH) + IMG_WIDTH * 3) {
+    if (move >= -(items.length * IMG_WIDTH) + IMG_WIDTH * 3) {
       setMove(move => move - IMG_WIDTH);
     }
   };
@@ -22,6 +24,14 @@ const MainRecomm = () => {
     }
   };
 
+
+  useEffect(() => {
+    axios.get("/beaver/pkglist")
+    .then(response=>{
+      console.log(response.data)
+      setItems(response.data);
+    })
+  }, []);
 
   return (
     <div className={styles.slider}>
@@ -45,12 +55,12 @@ const MainRecomm = () => {
         className={styles.carousel}
         style={{ transform: `translateX(${move}px)` }}
       >
-        {ITEM_CARD_DATA.wish.map(({wishName, wishPic}) => {
+        {items.map(({pkg_seq, pkg_name, pkg_photo}) => {
       return (
         <RecommItem
-          key={wishName}
-          name={wishName}
-          img={wishPic}
+          key={pkg_seq}
+          name={pkg_name}
+          img={pkg_photo}
         />
       );
     })}
