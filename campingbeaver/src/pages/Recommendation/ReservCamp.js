@@ -3,12 +3,12 @@ import CampCard from './CampCard'
 import style from './Reservation.module.scss'
 import surveyimg from './campimg/surveyimg.jpg'
 import stylesheet from './RecomDetail.css'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import sitelist from '../../data/sitelist.json'
-import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
@@ -25,7 +25,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
   const [recomList, setRecomList] = useState([])
   const [finalResult, setFinalResult] = useState([])
-
+  const [searchCheck, setSearchCheck] = useState(true)
   useEffect(() => {
     Axios.get("/beaver/hash").then((response) => {
 
@@ -41,7 +41,6 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
       }
     })
   }, [])
-
 
   // console.log(params)
   let recomViewList = [];
@@ -92,6 +91,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
   const arr = new Map();
   let finalArr = [];
   let reArr = [];
+
   // for문이 실행되는데 랜더링 될 때 실행됨.
   // 처음에 값이 아무것도 없으니까 안나옴.
   // 버튼 선택할 시점에는 이미 실행되었으니까 실행 안 됨
@@ -104,6 +104,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 	))
 
   const arrBtn = () => {
+    setSearchCheck(false)
     for(let i=0;i<hashList.length;i++){
       for(let j=0;j<Object.keys(props).length;j++){
         checkfilter=hashList[i].includes(props[j])
@@ -139,35 +140,43 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
       for(let m=0;m<finalArr.length;m++){
         // console.log(recomList[finalArr[m]].site_name)
         reArr.push(recomList[finalArr[m]].site_name)
-        
+      
       }
      console.log('reArr:',reArr)
-    
-
-
+     setFinalResult(finalResult=>[...finalArr])
+      console.log('final',finalResult)
+      
   }
-
+  const readMorePick = () => {
+    window.location.replace("/recommendation")
+  }
 
   return (
 
     <div className={style.reserv}>
-      <button onClick={arrBtn}>배열찾기</button>
-      
+      {/* <button onClick={arrBtn} className={style.clickbutton}>배열찾기</button> */}
+      <Button variant="outline-success" onClick={arrBtn} type="button">검색하기</Button>{' '}
      {/* <CampCard {...finalArr}></CampCard> */}
-      {/* {reArr.map(
-        value => (<CampCard value={value}/>)
-      )} */}
+      
+      <div className={style.pick}>
+      <div className={style.reservtitle}>
+      <div>
       <div>
         <div class="con list-2">
           <div class="title">
             <div class="main-title">PICK</div>
             <div class="sub-title">캠핑 비버가 추천하는 캠핑장 리스트</div>
-            <div class="read-more">read more pick</div>
+            <div class="read-more" onClick={readMorePick}>read more pick</div>
           </div>
           <div class="row">
-            {recomViewList}
+          {finalResult.map(
+        value => (<CampCard value={value}/>)
+      )}
+            {searchCheck&&recomViewList}
           </div>
         </div>
+
+        
         <div class="con">
           <div class="footer">
             <div class="footer-box">
@@ -180,12 +189,13 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
             </div>
           </div>
         </div>
-
+        </div>
+      </div>
       </div>
 
 
 
-
+    </div>
     </div>
   )
 }

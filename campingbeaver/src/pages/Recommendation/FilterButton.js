@@ -130,17 +130,17 @@ const dataCon = (e) => {
 
       <div align='center'>
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
-        <Button variant="outline-success" onClick={dataCon} type="button">검색하기</Button>{' '}
+        {/* <Button variant="outline-success" onClick={arrBtn} type="button">검색하기</Button>{' '} */}
       </div>
       <div>
-                    <div className={Styles.reservtitle}>
+                    <div>
                     {/* <h1>Recommendation</h1>
                     <p>camping beaver가 추천하는 캠핑 레시피</p> */}
                     </div>
-                    
-                    <div className={Styles.imgbox}>
+                    <div>
+                    <div>
                     <ReservCamp tagHandler={tagHandler} setTagHandler={setTagHandler} {...inputText}/>
-                    
+                    </div>
                     </div>
                 </div>
 
