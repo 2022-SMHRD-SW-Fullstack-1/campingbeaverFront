@@ -25,7 +25,7 @@ const SurveySecond = (props) => {
     <Alert.Heading>필요한 장비를 체크하세요</Alert.Heading>
     <p>
      원하는 장비가 포함된 패키지를 알려드립니다!
-    </p>
+     </p>
     <hr />
     <div className="mb-0">
     <div className="d-grid gap-2">
@@ -138,7 +138,7 @@ const SurveySecond = (props) => {
             id={`inline-${type}-3`}
           /> */}
         </div>
-        
+
       ))}
       <Button className={styles.svBtn} variant="secondary" onClick={backHandle}>뒤로가기</Button>
       <Button className={styles.svBtn} variant="success">Search!</Button>
@@ -149,5 +149,4 @@ const SurveySecond = (props) => {
   </div>
   )
 }
-
 export default SurveySecond

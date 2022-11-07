@@ -1,4 +1,3 @@
-import React from 'react'
 import Alert from 'react-bootstrap/Alert';
 import styles from './Survey.module.scss';
 import Button from 'react-bootstrap/Button';
@@ -53,5 +52,4 @@ const Survey = () => {
       </>
   )
 }
-
 export default Survey

@@ -77,5 +77,4 @@ const SurveyThird = (props) => {
   </div>
   )
 }
-
 export default SurveyThird
