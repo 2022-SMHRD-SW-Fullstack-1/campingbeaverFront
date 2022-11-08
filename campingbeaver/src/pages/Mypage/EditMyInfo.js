@@ -84,7 +84,6 @@ const EditMyInfo = () => {
 
         <div>
         <main className="update">
-        <h1 className="title">UPDATE</h1>
         <title className="information">
           <h2>기본정보</h2>
           <div>*필수입력사항</div>

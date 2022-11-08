@@ -5,8 +5,7 @@
     display: flex;
     bottom : 0;
     background-color : #dde0ea;
-    position : fixed;
-    
+    flex: 1;
 
 }
 
@@ -29,6 +28,6 @@ div {
     // border: black solid 1px;
 }
 
-p {
+.footerp {
     font-size: 12px;
 }

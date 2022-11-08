@@ -1,6 +1,5 @@
-const REST_API_KEY = "e13441a8a1244faf2d8348e11ed6cd46";
+const REST_API_KEY = "cf7a78d941b5d9b2470ad035a2afacc9";
 const REDIRECT_URI =  "http://localhost:3000/oauth/callback/kakao";
 
-console.log('kakao OAuth')
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 

@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import sitelist from '../../data/sitelist.json'
 import Button from 'react-bootstrap/Button';
+import Footer from '../../components/Layout/Footer'
 
 const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
@@ -191,6 +192,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
         </div>
         </div>
       </div>
+        <Footer/>
       </div>
 
 
