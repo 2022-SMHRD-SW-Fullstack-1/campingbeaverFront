@@ -32,7 +32,6 @@ const CartItem = ({basket_seq, CartName, CartPrice, CartPic}) => {
 
     
       return (
-        <div>
           <ul>
             <li>
             <Card style={{ width: '18rem', height: '22rem' }}>
@@ -76,7 +75,6 @@ const CartItem = ({basket_seq, CartName, CartPrice, CartPic}) => {
             </Card>
             </li>
           </ul>
-        </div>
       )
     }
     

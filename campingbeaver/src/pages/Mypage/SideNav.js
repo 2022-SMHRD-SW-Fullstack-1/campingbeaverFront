@@ -61,11 +61,11 @@ const SideNav = () => {
           관심 상품
         </Nav.Link>
 
-        <Nav.Link className='2' eventKey="link-1" onClick={()=>{setTab(2)}}>
+        <Nav.Link className='2' eventKey="link-2" onClick={()=>{setTab(2)}}>
           리뷰 관리
         </Nav.Link>
 
-        <Nav.Link className='3' eventKey="link-2" onClick={()=>{setTab(3)}}>
+        <Nav.Link className='3' eventKey="link-3" onClick={()=>{setTab(3)}}>
           회원 정보 수정
         </Nav.Link>
         </Nav>

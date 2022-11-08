@@ -19,7 +19,7 @@ const ReviewForm = () => {
   const navigate = useNavigate();
     const navigateToMyPage = () => {
     return (
-      navigate("/MyPage")
+      navigate("/Mypage/0")
     )
   }
 

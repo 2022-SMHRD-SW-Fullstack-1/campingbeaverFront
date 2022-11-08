@@ -1,14 +1,17 @@
 import React from 'react'
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
 import "./page.css";
 
 
 const ReviewList = () => {
-  const [bbsList, setBbsList] = useState([]);
+
+	const params = useParams();
+
+  	const [reviewList, setReviewList] = useState([]);
 
 	// 검색용 Hook
 	const [choiceVal, setChoiceVal] = useState("");
@@ -21,28 +24,30 @@ const ReviewList = () => {
 	// Link 용 (함수) 
 	let navigate = useNavigate();
 
+	// const user_id = params.id
+	const user_id = 'admin'
 
 	/* [GET /bbs]: 게시글 목록 */
-	const getBbsList = async (choice, search, page) => {
+	const getReviewList = async (choice, search, page) => {
 
-	// 	await axios.get(`/beaver/reviewlist/:${user_id}`, { 
-    //   params: { "choice": choice, "search": search, "page": page } })
-	// 		.then((res) => {
-	// 			console.log("[BbsList.js] useEffect() success :D");
-	// 			console.log(res.data);
+		await axios.get(`/beaver/reviewlist/${user_id}`)
+			.then((res) => {
+				
+				console.log('가져오는 리뷰리스트',res.data);
 
-	// 			// setBbsList(res.data.bbsList);
-	// 			// setTotalCnt(res.data.pageCnt);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log("[BbsList.js] useEffect() error :<");
-	// 			console.log(err);
+				setReviewList(res.data);
+				setTotalCnt(reviewList.length)
+				// setTotalCnt(res.data.pageCnt);
+			})
+			.catch((err) => {
+				console.log("[BbsList.js] useEffect() error :<");
+				console.log(err);
 
-	// 		});
+			});
 	}
 
 	useEffect(() => {
-		getBbsList("", "", 1);
+		getReviewList();
 	}, []);
 
 
@@ -52,12 +57,12 @@ const ReviewList = () => {
 		console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
 		navigate("/ReviewList");
-		getBbsList(choiceVal, searchVal, 1);
+		getReviewList(choiceVal, searchVal, 1);
 	}
 
 	const changePage = (page) => {
 		setPage(page);
-		getBbsList(choiceVal, searchVal, page);
+		getReviewList(choiceVal, searchVal, page);
 	}
 
 	return (
@@ -88,7 +93,7 @@ const ReviewList = () => {
 			<table className="table table-hover">
 				<thead>
 					<tr>
-						<th className="col-1">번호</th>
+						<th className="col-1">리뷰번호</th>
 						<th className="col-8">제목</th>
 						<th className="col-3">작성자</th>
 					</tr>
@@ -96,12 +101,14 @@ const ReviewList = () => {
 
 				<tbody>
 					{
-						bbsList.map(function (bbs, idx) {
-							return (
-								<TableRow obj={bbs} key={idx} cnt={idx + 1} />
-							)
-						})
-					}
+						reviewList && reviewList.map(({rv_seq, rv_content, user_id})=> {
+							return <TableRow
+									key = {rv_seq}
+									rv_seq = {rv_seq}
+									rv_content = {rv_content}
+									user_id = {user_id}
+									/>
+						})}
 				</tbody>
 			</table>
 
@@ -124,37 +131,24 @@ const ReviewList = () => {
 
 /* 글 목록 테이블 행 컴포넌트 */
 function TableRow(props) {
-	const bbs = props.obj;
 
 	return (
    
     
 			<tr>
-				
-					<th>{props.cnt}</th>
-					{
-						(bbs.del == 0) ?
-						// 삭제되지 않은 게시글
-						<>
+					<th>{props.rv_seq}</th>
+					
+						
 							<td >
-								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
+								{/* <Arrow depth={bbs.depth}></Arrow> &nbsp;  */}
+								{ /* 답글 화살표 */}
 
-								<Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}> { /* 게시글 상세 링크 */}
-									<span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
-								</Link>
+								{ /* 게시글 상세 링크 */}
+								{/* <Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}>  */}
+									<span className="underline bbs-title" >{props.rv_content} </span> { /* 게시글 제목 */}
+								{/* </Link> */}
 							</td>
-							<td>{bbs.id}</td>
-						</>
-						:
-						// 삭제된 게시글
-						<>
-							<td>
-								<Arrow depth={bbs.depth}></Arrow> &nbsp; { /* 답글 화살표 */}
-
-								<span className="del-span">⚠️ 이 글은 작성자에 의해 삭제됐습니다.</span>
-							</td>
-						</>	
-					}
+							<td>{props.user_id}</td>
 					
 				
 			</tr>

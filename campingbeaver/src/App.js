@@ -22,8 +22,7 @@ import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
-
-
+import RecomDetail from './pages/Recommendation/RecomDetail'
 
 
 function App() {
@@ -49,6 +48,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Store" element={<Store />} />
           <Route path="/Recommendation" element={<Recommendation />} />
+          <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
           <Route path='/surveysecond' element={<SurveySecond />} />
           <Route path='/surveythird' element={<SurveyThird />} />
           <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
