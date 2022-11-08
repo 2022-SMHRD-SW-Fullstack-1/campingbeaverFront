@@ -61,7 +61,7 @@ const Ordercom = () => {
                                 </div>
                                 <div className="ordercon2">
                                     <div className='ordernum'>
-                                        {resdata[0].reserv_seq}
+                                        {moment(resdata[0].reserv_date).add(9,'hour').format("YYYYMMDD")}{resdata[0].reserv_seq}
                                     </div>
                                     <div className='ordertime'>
                                         {moment(resdata[0].reserv_date).add(9, 'hour').format("YYYY-MM-DD hh:mm:ss")}

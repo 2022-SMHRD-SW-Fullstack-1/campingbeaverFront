@@ -1,5 +1,7 @@
-import { React, useState } from 'react';
+
+import { React, useEffect, useState } from 'react';
 import { json, useNavigate } from 'react-router-dom';
+
 import './Login.scss';
 import {KAKAO_AUTH_URL} from './OAuth';
 import Header from '../../components/Layout/Header';
@@ -25,6 +27,10 @@ const Login = () => {
       [name]: value,
     });
   };
+
+
+
+
 
   const goToMain = () => {
     fetch('beaver/login', {
@@ -65,7 +71,6 @@ const Login = () => {
   const goToSignup = () => {
     navigate('../signup');
   };
-
   return (
     <div>
       <Header/>

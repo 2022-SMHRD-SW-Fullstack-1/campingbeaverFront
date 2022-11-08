@@ -11,10 +11,10 @@ const ReservList = () => {
   const [reservList, setReservList] = useState([])
   const reservEmpty = reservList.length ===0;  
   
-  const params = useParams();
+  const {params} = useParams();
 
   useEffect(() => {
-    // const userId = params.id
+    // const {userId} = params.id
     const userId = 'admin'
     axios.get(`/beaver/reservlist/${userId}`,
       { headers: {
@@ -22,7 +22,7 @@ const ReservList = () => {
       }}
     )
     .then((res) => {
-      //console.log(res.data)
+      // console.log(res.data)
       setReservList(res.data)
       
     })

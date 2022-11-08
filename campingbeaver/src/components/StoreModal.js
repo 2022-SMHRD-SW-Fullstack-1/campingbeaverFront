@@ -9,8 +9,48 @@ import Calendar from 'react-calendar'
 import '../pages/Reservation/Calendar.css'
 import moment from 'moment'
 import axios from 'axios'
+import DaumPostcode from 'react-daum-postcode';
 
 const StoreModal = ({ items, closeModal }) => {
+
+  const [postshow, setPostshow] = useState(false);
+  const [addr, setAddr] = useState('')
+  const [post, setPost] = useState('')
+
+  const [addrshow, setAddrshow] = useState('')
+  const [postS, setPostS] = useState('')
+
+
+  const handleComplete = (data) => {
+    let fullAddress = data.address;
+    let extraAddress = "";
+    if (data.addressType === "R") {
+      if (data.bname !== "") {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== "") {
+        extraAddress +=
+          extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+    }
+
+    console.log(fullAddress);
+    setAddr(fullAddress)
+    setAddrshow(fullAddress)
+    console.log(data.zonecode);
+    setPost(data.zonecode)
+    setPostS(data.zonecode)
+    setPostshow(false)
+  };
+
+  const handleSearch = (data) => {
+    console.log(data);
+  };
+
+  const postmodal = () => {
+    setPostshow(true)
+  }
 
   const [count, setCount] = useState(1);
   const { id, img, itemName, price, } = items;
@@ -47,6 +87,16 @@ const StoreModal = ({ items, closeModal }) => {
     new Date(2022, 10, moment(new Date()).add(3, 'day').format("DD")),
   ]
   );
+  const [value3, onChange3] = useState([
+    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
+    new Date(2022, 10, moment(new Date()).add(4, 'day').format("DD")),
+  ]
+  );
+  const [value4, onChange4] = useState([
+    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
+    new Date(2022, 10, moment(new Date()).add(5, 'day').format("DD")),
+  ]
+  );
 
   const [value2, onChange2] = useState([
     new Date(2022, 10, 25),
@@ -71,14 +121,27 @@ const StoreModal = ({ items, closeModal }) => {
     user_id: 'admin',
     pkg_seq: id,
     reserv_name: '',
-    reserv_post: '',
-    reserv_addr: '',
+    reserv_post: post,
+    reserv_addr: addr,
     reserv_phone: '',
     reserv_price: calculateTotalPrice,
     reserv_pay: 'Y',
     reserv_s_date: reserv_s_date,
     reserv_e_date: reserv_e_date,
   });
+
+  let backdata = ({
+    user_id: 'admin',
+    pkg_seq: id,
+    reserv_name: inputValue.reserv_name,
+    reserv_post: post,
+    reserv_addr: addr,
+    reserv_phone: inputValue.reserv_phone,
+    reserv_price: calculateTotalPrice,
+    reserv_pay: 'Y',
+    reserv_s_date: reserv_s_date,
+    reserv_e_date: reserv_e_date,
+  })
 
   const [cartlist, setCartlist] = useState({
     user_id: 'admin',
@@ -109,20 +172,18 @@ const StoreModal = ({ items, closeModal }) => {
     window.location.replace('cart')
   }
 
-  const reserv = () => {
-    // console.log(inputValue)
-    axios.post("/beaver/reserv", JSON.stringify(inputValue), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-  }
+  // const reserv = () => {
+  //   // console.log(inputValue)
+  //   axios.post("/beaver/reserv", JSON.stringify(inputValue), {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  // }
 
-  const check = () => {
-    console.log(new Date(2022, 10, moment(new Date()).format("D")))
-    console.log(moment(new Date()).add(1, 'day').format("D"))
-    console.log(new Date())
-  }
+  // const check = () => {
+  //   console.log(reserv_s_date)
+  // }
 
   useEffect(() => {
     const jquery = document.createElement("script");
@@ -168,7 +229,7 @@ const StoreModal = ({ items, closeModal }) => {
     } = response;
     if (success) {
       alert("결제 성공");
-      axios.post("/beaver/reserv", JSON.stringify(inputValue), {
+      axios.post("/beaver/reserv", JSON.stringify(backdata), {
         headers: {
           "Content-Type": "application/json",
         },
@@ -256,7 +317,11 @@ const StoreModal = ({ items, closeModal }) => {
                     <span>회수예정일</span><br />
                     <span className="text-gray-500 mt-4">
                       {
-                        date == 0 && value.length == 2 ? moment(new Date() * 1.00014).format("MM / DD (ddd)") : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.0002).format("MM / DD (ddd)") : moment(new Date(value1)).add(3, 'day').format("MM / DD (ddd)"))
+                        date == 0 ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
+                          : (date == 2 ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
+                            : (date == 3 ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
+                              : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
+                                : (moment(new Date(value1)).add(3, 'day').format("MM / DD (ddd)")))))
                         //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
                       }
                     </span><br />
@@ -267,8 +332,10 @@ const StoreModal = ({ items, closeModal }) => {
                 {
                   date == 0 ?
                     <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                    : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? <Calendar onChange={onChange1} value={value1} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                      : <Calendar onChange={onChange2} value={value2} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />)
+                    : (date == 2 ? <Calendar onChange={onChange3} value={value3} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                      : (date == 3 ? <Calendar onChange={onChange4} value={value4} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                        : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? <Calendar onChange={onChange1} value={value1} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
+                          : <Calendar onChange={onChange2} value={value2} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />)))
                 }
               </div>
             </div>
@@ -317,7 +384,12 @@ const StoreModal = ({ items, closeModal }) => {
                 <input
                   type="text"
                   // value={reserv_e_date}
-                  value={date == 0 && value.length == 2 ? moment(new Date() * 1.00014).format("YYYY-MM-DD") : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.0002).format("YYYY-MM-DD") : moment(new Date(value1)).add(3, 'day').format("YYYY-MM-DD"))}
+                  value={
+                    date == 0 ? moment(new Date() * 1.00014).format("YYYY-MM-DD")
+                      : (date == 2 ? moment(new Date() * 1.00024).format("YYYY-MM-DD")
+                        : (date == 3 ? moment(new Date() * 1.00028).format("YYYY-MM-DD")
+                          : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.00020).format("YYYY-MM-DD")
+                            : moment(new Date(value1)).add(3, 'day').format("YYYY-MM-DD"))))}
                   className="userInput"
                   onChange={handleInput}
                   name="reserv_e_date"
@@ -334,20 +406,35 @@ const StoreModal = ({ items, closeModal }) => {
                 />
               </form>
 
-              <form className="addressLine">
+              {
+                postshow == true ?
+                  <Modal
+                    show={postshow}
+                  >
+                    <DaumPostcode
+                      className='postmodal'
+                      onComplete={handleComplete}
+                      onSearch={handleSearch}
+                    /></Modal>
+                  : <></>
+              }
+              <button onClick={postmodal}>주소검색</button>
+              <form className="addressLine1">
                 <div className="address">예약자우편번호</div>
                 <input
                   type="text"
+                  value={postS}
                   className="addressInput"
                   onChange={handleInput}
                   name="reserv_post"
                 />
               </form>
 
-              <form className="addressLine">
+              <form className="addressLine2">
                 <div className="address">예약자주소</div>
                 <input
                   type="text"
+                  value={addrshow}
                   className="addressInput"
                   onChange={handleInput}
                   name="reserv_addr"

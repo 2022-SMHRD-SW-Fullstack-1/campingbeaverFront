@@ -83,6 +83,56 @@
       font-size: 11px;
     }
   }
+  .addressLine1 {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 30px;
+
+    .address {
+      width: 140px;
+    }
+
+    .addressInput {
+      width: 50px;
+      border: none;
+      border-bottom: 1px solid black;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .addressDescription {
+      margin-left: 10px;
+      font-size: 11px;
+    }
+  }
+  .addressLine2 {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 30px;
+
+    .address {
+      width: 140px;
+    }
+
+    .addressInput {
+      width: 500px;
+      border: none;
+      border-bottom: 1px solid black;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .addressDescription {
+      margin-left: 10px;
+      font-size: 11px;
+    }
+  }
 
   .phoneLine {
     display: flex;
@@ -104,7 +154,7 @@
     }
 
     input {
-      width: 100px;
+      width: 150px;
       border: none;
       border-bottom: 1px solid black;
 

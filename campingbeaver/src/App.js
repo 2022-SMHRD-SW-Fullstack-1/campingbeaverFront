@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
 import Layout from './components/Layout/Layout'
-import Mypage from "./pages/MyPage/Mypage";
+import Mypage from './pages/MyPage/Mypage'
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
 import Cart from "../src/pages/Cart/Cart"
@@ -19,12 +19,10 @@ import Header from './components/Layout/Header';
 import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
-import Footer from './components/Layout/Footer'
+import Footer from './components/Layout/Footer';
+import kakao from './pages/Login/kakao';
 import Ordercom from './pages/Cart/Ordercom';
-
-
-
-import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+import RecomDetail from './pages/Recommendation/RecomDetail'
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -40,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/oauth/callback/kakao" component={kakao}></Route>
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage" element={<Mypage />} />
           <Route path="/Reservation" element={<Reservation />} />
@@ -54,18 +53,19 @@ function App() {
           <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
           <Route path='/wishlist:id' element={<WishList />} />
           <Route path='/reservlist:id' element={<ReservList />} />
-          
+          <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
           <Route path="/logout" element={<Logout />}></Route>
 
+
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
-          <Route path='/ReviewList' element={<ReviewList />} />
-          <Route path="/@username">
+          <Route path='/ReviewList/:id' >
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
 
         </Routes>
-      <Footer/>
+      {window.location.pathname!='/recommendation'?<Footer/>:<></>}
+
     </div>
   )
 }

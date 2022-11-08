@@ -4,5 +4,5 @@
     border-color: var(--bs-nav-tabs-link-active-border-color);
 }
 a.nav-link{
-    color: black;
+    color: gray;
 }
