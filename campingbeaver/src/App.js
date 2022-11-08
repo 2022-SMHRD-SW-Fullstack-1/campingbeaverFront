@@ -22,13 +22,13 @@ import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
-
+import RecomDetail from './pages/Recommendation/RecomDetail';
 
 import kakao from './pages/Login/kakao';
 
 import Ordercom from './pages/Cart/Ordercom';
 
-
+import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
 
 
@@ -48,7 +48,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/oauth/callback/kakao" component={kakao}></Route>
+          
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage" element={<Mypage />} />
           <Route path="/Reservation" element={<Reservation />} />
@@ -58,14 +58,16 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Store" element={<Store />} />
           <Route path="/Recommendation" element={<Recommendation />} />
+          <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
+
           <Route path='/surveysecond' element={<SurveySecond />} />
           <Route path='/surveythird' element={<SurveyThird />} />
           <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
           <Route path='/wishlist:id' element={<WishList />} />
           <Route path='/reservlist:id' element={<ReservList />} />
-          
           <Route path="/logout" element={<Logout />}></Route>
-
+          
+          <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandeler setAuth={setAuth} auth={auth}/>}  />
 
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
           <Route path='/ReviewList/:id' >
@@ -74,7 +76,7 @@ function App() {
           </Route>
 
         </Routes>
-      <Footer/>
+        {/* {window.location.pathname!='/recommendation'?<Footer/>:<></>} */}
 
     </div>
   )
