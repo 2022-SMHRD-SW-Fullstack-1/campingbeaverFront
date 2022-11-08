@@ -1,10 +1,10 @@
 .ListContainer {
     //margin-top: 80px;
     width: 80rem;
-    // margin-top: 3rem;
+    margin-top: 3rem;
     // margin-bottom: 3rem;
-    margin-left: 23rem;
-    font-size: 14px;
+    margin-left: 10rem;
+    font-size: 15px;
 
 }
 
@@ -18,8 +18,11 @@ table {
       padding: 0.8rem 0;
       text-align: center;
       vertical-align: middle;
+    
     }
-
+    th {
+      font-weight: 1000;
+    }
 }
 
 button {

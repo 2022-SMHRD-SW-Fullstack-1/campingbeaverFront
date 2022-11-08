@@ -3,13 +3,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import "../MyPage/MyPage.module.scss"
 import "./page.css";
-
 
 const ReviewList = () => {
 
 	const params = useParams();
+
 
   	const [reviewList, setReviewList] = useState([]);
 
@@ -18,9 +21,14 @@ const ReviewList = () => {
 	const [searchVal, setSearchVal] = useState("");
 
 	// Paging
-	const [page, setPage] = useState(1);
-	const [totalCnt, setTotalCnt] = useState(0);
+	const [page, setPage] = useState(1); // 현재 페이지
+	const [totalCnt, setTotalCnt] = useState(0); // 아이템 총 개수
+	const [postPerPage] = useState(5); // 페이지당 아이템 개수
 
+	const [indexOfLastPost, setIndexOfLastPost] = useState(0);
+	const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
+	const [currentPosts, setCurrentPosts] = useState(0);
+ 
 	// Link 용 (함수) 
 	let navigate = useNavigate();
 
@@ -28,15 +36,23 @@ const ReviewList = () => {
 	const user_id = 'admin'
 
 	/* [GET /bbs]: 게시글 목록 */
-	const getReviewList = async (choice, search, page) => {
+	const getReviewList = () => {
 
-		await axios.get(`/beaver/reviewlist/${user_id}`)
+		axios.get(`/beaver/reviewlist/${user_id}`)
 			.then((res) => {
 				
-				console.log('가져오는 리뷰리스트',res.data);
+				//console.log('가져오는 리뷰리스트',res.data);
 
-				setReviewList(res.data);
-				setTotalCnt(reviewList.length)
+				setReviewList(reviewList => {
+					return res.data
+				});
+				setTotalCnt(res.data.length)
+				setCurrentPosts(reviewList.slice(indexOfFirstPost, indexOfLastPost));
+				setIndexOfLastPost(page * postPerPage)
+				setIndexOfFirstPost(indexOfLastPost - postPerPage)
+		
+				
+				
 				// setTotalCnt(res.data.pageCnt);
 			})
 			.catch((err) => {
@@ -48,7 +64,9 @@ const ReviewList = () => {
 
 	useEffect(() => {
 		getReviewList();
-	}, []);
+		// setTotalCnt(reviewList.length)
+		
+	}, [reviewList, totalCnt, indexOfFirstPost,indexOfLastPost,currentPosts]);
 
 
 	const changeChoice = (event) => { setChoiceVal(event.target.value); }
@@ -62,12 +80,19 @@ const ReviewList = () => {
 
 	const changePage = (page) => {
 		setPage(page);
-		getReviewList(choiceVal, searchVal, page);
+		console.log('페이지 : ', page)
+		
 	}
+
+	// const changePage = (page) => {
+	// 	setPage(page);
+	// 	getReviewList(page);
+	// }
+	
 
 	return (
 
-		<div>
+		<div className="ListContainer">
 			{ /* 검색 */}
 			<table className="search">
 				<tbody>
@@ -94,43 +119,83 @@ const ReviewList = () => {
 				<thead>
 					<tr>
 						<th className="col-1">리뷰번호</th>
-						<th className="col-8">제목</th>
-						<th className="col-3">작성자</th>
+						<th className="col-2">상품</th>
+						<th className="col-5">내용</th>
+						<th className="col-1">별점</th>
+						<th className="col-2">작성자</th>
+						<th className="col-3"></th>
+						
+						
 					</tr>
 				</thead>
 
 				<tbody>
 					{
-						reviewList && reviewList.map(({rv_seq, rv_content, user_id})=> {
+						currentPosts && currentPosts.map(({rv_seq, rv_content, user_id, rv_photo, rv_rating})=> {
 							return <TableRow
 									key = {rv_seq}
 									rv_seq = {rv_seq}
 									rv_content = {rv_content}
 									user_id = {user_id}
+									rv_photo = {rv_photo}
+									rv_rating = {rv_rating}
 									/>
+									
 						})}
 				</tbody>
 			</table>
 
 			<Pagination className="pagination"
 				activePage={page}
-				itemsCountPerPage={10}
+				itemsCountPerPage={5}
 				totalItemsCount={totalCnt}
 				pageRangeDisplayed={5}
-				prevPageText={"‹"}
-				nextPageText={"›"}
+				prevPageText={"<"}
+				nextPageText={">"}
 				onChange={changePage} />
-				
-			<div className="my-5 d-flex justify-content-center">
-				<Link className="btn btn-outline-secondary" to="/ReviewForm"><i className="fas fa-pen"></i> &nbsp; 글쓰기</Link>
-			</div>
-
 		</div>
 	);
 }
 
+
+
+
+
 /* 글 목록 테이블 행 컴포넌트 */
-function TableRow(props) {
+const TableRow = (props) => {
+
+		const [show, setShow] = useState(false);
+		const [dlt, setDlt] = useState(false);
+		const [id, setId] = useState(localStorage.userId)
+		const [deleteItem, setDeleteItem] = useState({
+		// user_id : id,
+		user_id :'admin',
+		rv_seq : props.rv_seq,
+
+		});
+
+
+		const handleClose = () => setShow(false);
+		const handleShow = () => setShow(true);
+		const handleUpdate = () => {
+			
+		}
+
+		const handleClose2 = () => setDlt(false);
+		const handleDlt = () => setDlt(true);
+		const handleDelete = () => {
+		console.log(deleteItem)
+		
+		axios.post(`/beaver/reviewlist/delete`, deleteItem)
+		.then((res)=>{
+
+			window.location.replace("/Mypage/2")
+		}).catch((error)=>console.log('Network Error: ', error))
+		
+		setShow(false)
+		}
+
+		
 
 	return (
    
@@ -139,6 +204,18 @@ function TableRow(props) {
 					<th>{props.rv_seq}</th>
 					
 						
+							<td>
+								{ props.rv_photo != '' ?
+								<img 
+									src={props.rv_photo}
+									alt="review photo"
+									width="120px"
+									height="100px"
+								>		
+								</img>
+								: <></>
+								}
+							</td>
 							<td >
 								{/* <Arrow depth={bbs.depth}></Arrow> &nbsp;  */}
 								{ /* 답글 화살표 */}
@@ -148,11 +225,55 @@ function TableRow(props) {
 									<span className="underline bbs-title" >{props.rv_content} </span> { /* 게시글 제목 */}
 								{/* </Link> */}
 							</td>
+							<td>★{props.rv_rating}.0</td>
 							<td>{props.user_id}</td>
-					
-				
+							<td className='ListBtnContainer'>
+								
+								<button onClick={handleShow}>수정</button>
+								<Modal
+									show={show}
+									onHide={handleClose}
+									backdrop="static"
+									keyboard={false}
+									centered
+								>
+									<Modal.Header closeButton>
+									<Modal.Title>리뷰 수정</Modal.Title>
+									</Modal.Header>
+									<Modal.Body>
+									리뷰를 수정하시겠어요?
+									</Modal.Body>
+									<Modal.Footer>
+									<Button variant="secondary" onClick={handleClose}>
+										아니오
+									</Button>
+									<Button variant="success" onClick={handleUpdate}>네</Button>
+									</Modal.Footer>
+								</Modal>
+
+								<button onClick={handleDlt}>삭제</button>
+								<Modal
+									show={dlt}
+									onHide={handleClose2}
+									backdrop="static"
+									keyboard={false}
+									centered
+								>
+									<Modal.Header closeButton>
+									<Modal.Title>리뷰 삭제</Modal.Title>
+									</Modal.Header>
+									<Modal.Body>
+									정말로 리뷰를 지우시겠어요?
+									</Modal.Body>
+									<Modal.Footer>
+									<Button variant="secondary" onClick={handleClose2}>
+										아니오
+									</Button>
+									<Button variant="success" onClick={handleDelete}>네</Button>
+									</Modal.Footer>
+								</Modal>
+							</td>
 			</tr>
-	
 	);
 }
 

@@ -40,15 +40,15 @@ const ReservList = () => {
         </div> */}
 
 
-      <div>
-        <div>
+      
+        
           {reservEmpty ? (
             <ReservEmpty />
           ) : (
             <ReservNotEmpty reservList={reservList} />
           )}
-        </div>
-      </div>
+        
+      
     
     </div>
   )

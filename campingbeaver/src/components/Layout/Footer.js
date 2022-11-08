@@ -4,8 +4,8 @@ import styles from './Footer.module.scss'
 const Footer = () => {
   return (
 
-      <>
-        <footer className={styles.footer}>
+
+    <footer className={styles.footer}>
       <div className={styles.contents}>
       <div>
         <h3> Camping Beaver</h3>
@@ -21,7 +21,7 @@ const Footer = () => {
         </div>
         </div>
     </footer>
-    </>
+
   )
 }
 

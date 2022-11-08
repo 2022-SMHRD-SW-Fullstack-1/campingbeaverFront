@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom';
 
 
 const SideNav = () => {
-
   const params = useParams();
   const [tab, setTab] = useState(params.tab);
 
@@ -22,12 +21,12 @@ const SideNav = () => {
     }else if(props.tab === 1){
       return <div><WishList/></div>
     }else if(props.tab === 2){
-      return <dib><ReviewList/></dib>
+      return <div><ReviewList/></div>
     }else if(props.tab === 3){
       return <div><EditMyInfo/></div>
     }
-  }
-
+  } 
+    
   const clickHandle = () => {
     if(tab == 0) {
       document.getElementsByClassName('0')[0].click()
@@ -40,10 +39,10 @@ const SideNav = () => {
     }
   }
   
-  
+
   useEffect(()=>{
     clickHandle()
-  },[])
+  })
 
   return (  
     <div className={styles.SideNav}>
@@ -71,6 +70,7 @@ const SideNav = () => {
         </Nav>
       </div>
 
+        
       <div className={styles.myReservation}>
         <TabContent tab={tab}/>
       </div>
@@ -78,6 +78,7 @@ const SideNav = () => {
 
     </div>
   )
+  
 }
 
 

@@ -28,10 +28,6 @@ import RecomDetail from './pages/Recommendation/RecomDetail'
 function App() {
   const [auth, setAuth] = useState(false);
 
-
-  useEffect(() => {
-    console.log('로그인 인증값 : ', auth);
-  }, [auth])
   return (
     <div className='App'>
       <Header auth={auth} setAuth={setAuth} />
@@ -51,7 +47,7 @@ function App() {
           <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
           <Route path='/surveysecond' element={<SurveySecond />} />
           <Route path='/surveythird' element={<SurveyThird />} />
-          <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
+          <Route path='/Naver' element={<NaverLogin auth={auth} setAuth={setAuth}/>} />
           <Route path='/wishlist:id' element={<WishList />} />
           <Route path='/reservlist:id' element={<ReservList />} />
           <Route path="/logout" element={<Logout />}/>
@@ -62,7 +58,7 @@ function App() {
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
         </Routes>
-      <Footer/>
+        {window.location.pathname!='/recommendation'?<Footer/>:<></>}
 
     </div>
   )

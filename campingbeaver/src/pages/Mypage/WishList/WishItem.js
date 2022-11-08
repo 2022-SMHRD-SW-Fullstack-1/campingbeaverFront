@@ -6,7 +6,10 @@ import Fheart from '../../../components/img/Fheart.png'
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 
+
 const WishItem = ({wishName, wishPrice, wishPic,pkg_seq}) => {
+
+
 
 const [show, setShow] = useState(false);
 const [id, setId] = useState(localStorage.userId)
@@ -28,6 +31,7 @@ const handleDelete = () => {
     }).catch((error)=>console.log('Network Error: ', error))
       
     setShow(false)
+    window.location.replace("/Mypage/1")
     
 }
 
@@ -56,6 +60,7 @@ const handleDelete = () => {
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
+            centered
           >
             <Modal.Header closeButton>
               <Modal.Title>관심 상품 삭제</Modal.Title>
@@ -67,12 +72,12 @@ const handleDelete = () => {
               <Button variant="secondary" onClick={handleClose}>
                 아니오
               </Button>
-              <Button variant="primary" onClick={handleDelete}>네</Button>
+              <Button variant="success" onClick={handleDelete}>네</Button>
             </Modal.Footer>
           </Modal>
           </div>
 
-          <div><Button variant="primary">예약하기</Button></div>
+          <div><Button variant="success">예약하기</Button></div>
           </div>
         </Card.Body>
       </Card>

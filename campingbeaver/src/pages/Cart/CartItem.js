@@ -53,6 +53,7 @@ const CartItem = ({basket_seq, CartName, CartPrice, CartPic}) => {
                   onHide={handleClose}
                   backdrop="static"
                   keyboard={false}
+                  centered
                 >
                   <Modal.Header closeButton>
                     <Modal.Title>장바구니 상품 삭제</Modal.Title>
@@ -64,12 +65,12 @@ const CartItem = ({basket_seq, CartName, CartPrice, CartPic}) => {
                     <Button variant="secondary" onClick={handleClose}>
                       아니오
                     </Button>
-                    <Button variant="primary" onClick={deleteBtn}>네</Button>
+                    <Button variant="success" onClick={deleteBtn}>네</Button>
                   </Modal.Footer>
                 </Modal>
                 </div>
       
-                <div><Button variant="primary">예약하기</Button></div>
+                <div><Button variant="success">예약하기</Button></div>
                 </div>
               </Card.Body>
             </Card>

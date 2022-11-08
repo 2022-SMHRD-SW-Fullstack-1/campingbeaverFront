@@ -77,7 +77,7 @@ const ReviewForm = () => {
     e.preventDefault()
     setViewContent(viewContent.concat({...reviewContent}))
     
-    axios.post(`/beaver/write/${numParams}`, reviewContent)
+    axios.post(`/beaver/rvwrite/${numParams}`, reviewContent)
     .then((res)=>{
       console.log(reviewContent)
       
