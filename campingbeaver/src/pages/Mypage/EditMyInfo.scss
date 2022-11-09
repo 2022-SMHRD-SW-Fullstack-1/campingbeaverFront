@@ -1,4 +1,9 @@
-.memberLine {
+// @import '../../styles/reset.scss';
+// @import '../../styles/variables.scss';
+
+
+
+  .memberLine {
     display: flex;
     width: 100%;
 
@@ -108,3 +113,4 @@
       cursor: default;
     }
   }
+// }

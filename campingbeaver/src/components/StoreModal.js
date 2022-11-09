@@ -271,7 +271,7 @@ const StoreModal = ({ items, closeModal }) => {
             </tr>
             <tr>
               <th>배송비</th>
-              <td>￦5,000 (￦50,000 이상 구매 시 무료)</td>
+              <td>￦10,000 (￦100,000 이상 구매 시 무료)</td>
             </tr>
             <tr>
               <th>SNS 상품홍보</th>
