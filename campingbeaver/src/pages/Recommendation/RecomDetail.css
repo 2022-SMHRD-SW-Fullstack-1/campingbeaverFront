@@ -24,7 +24,7 @@ body {
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 20px;
-	padding-top: 30px;
+	padding-top: 70px;
 }
 .list-1 .title {
 	position:relative;
@@ -565,3 +565,18 @@ body {
 }
 /* 미디어쿼리 끝 */
 /* list-2 끝 */
+.Footer_footer__VC1F3{
+    display: flex;
+	flex: 1;
+    height: 150px;
+    width: 2000px !important;
+    bottom : 0;
+    background-color : #dde0ea;
+}
+
+.con list-2{
+	margin-top: 100px;
+}
+.pickCon{
+	padding-bottom: 300px;
+}

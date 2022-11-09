@@ -10,12 +10,13 @@
 }
 .reservbutton{
     width: 850px;
-    height: 1000px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+
 }
 
 .pick{
@@ -83,3 +84,17 @@
     background-color: e2e3e5;
     color : black;
 }
+
+.weather{
+    width : 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // align-items: center;
+}
+
+// td{
+//     max-width: 100%;
+//     table-layout: fixed;
+// }
+

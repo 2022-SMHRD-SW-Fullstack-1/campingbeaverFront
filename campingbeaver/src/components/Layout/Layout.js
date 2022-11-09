@@ -8,7 +8,7 @@ import { MdTranslate } from 'react-icons/md';
 import SurveySecond from './SurveySecond';
 import SurveyThird from './SurveyThird';
 import MainRecomm from './MainRecomm';
-
+import SubRecomm from './SubRecomm';
 
 const Layout = () => {
   
@@ -19,6 +19,7 @@ const Layout = () => {
     <div className={styles.wrap}>
           <Survey/>
           <MainRecomm/>
+          <SubRecomm/>
 
     </div>
   )

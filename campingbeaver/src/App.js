@@ -21,7 +21,6 @@ import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
-import kakao from './pages/Login/kakao';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
 import RecomDetail from './pages/Recommendation/RecomDetail'
@@ -34,8 +33,9 @@ function App() {
 
   return (
     <div className='App'>
+     
       <Header auth={auth} setAuth={setAuth} />
-
+        <div>
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
@@ -63,6 +63,9 @@ function App() {
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
         </Routes>
+
+        </div>
+
         {window.location.pathname!='/recommendation'?<Footer/>:<></>}
 
     </div>

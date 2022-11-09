@@ -42,6 +42,7 @@ const FilterButton = () => {
 
 const clearBtn = (e) => {
   setInputText([]);
+  window.location.replace("/recommendation")
 }
   
 
@@ -69,6 +70,7 @@ const dataCon = (e) => {
   return (
 
     <>
+    <h1>💘Choose your preference !💘</h1>
     <div align='center'>
     {[
       'secondary',
