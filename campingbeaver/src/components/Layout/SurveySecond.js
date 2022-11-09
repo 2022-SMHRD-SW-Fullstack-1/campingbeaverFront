@@ -3,6 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import styles from './Survey.module.scss';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 
 const SurveySecond = (props) => {
@@ -141,7 +142,7 @@ const SurveySecond = (props) => {
 
       ))}
       <Button className={styles.svBtn} variant="secondary" onClick={backHandle}>뒤로가기</Button>
-      <Button className={styles.svBtn} variant="success">Search!</Button>
+      <Link to={`/store`}><Button className={styles.svBtn} variant="success">Search!</Button></Link>
     </Form>
     </div>
     </div>

@@ -59,6 +59,45 @@ console.log(recommendation);
 	// console.log(siteList[site_seq].imgsrcfirst)
   
   
+    useEffect(() => {
+      // 카카오톡 sdk 추가
+      const script = document.createElement("script");
+      script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+      script.async = true;
+      document.body.appendChild(script);
+      return () => document.body.removeChild(script);
+    }, [seq]);
+
+    const shareToKatalk = () => {
+      // kakao sdk script 부른 후 window.Kakao로 접근
+      if(window.Kakao){
+        const kakao = window.Kakao;
+
+        // 중복 initialization 방지
+        // 카카오에서 제공하는 javascript key를 이용하여 initialize
+        if(!kakao.isInitialized()){
+          kakao.init("fc4721f013e6b878b7b516e4e662b043");
+        }
+
+        kakao.Link.sendDefault({
+          objectType: "feed",
+          content:{
+            title: "Camping Beaver",
+            description:"캠핑 비버가 추천하는 캠핑장을 만나보세요",
+            imageUrl:
+              "https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg",
+            link:{
+              mobileWebUrl:
+              `https://localhost:3000/recommendation${site_seq}`,
+              webUrl:
+              `https://localhost:3000/recommendation${site_seq}`,
+            },
+          },
+        });
+      }
+    };
+
+  
   return (
     <div>
              
@@ -69,7 +108,7 @@ console.log(recommendation);
 	<div class="title">
 		<div class="main-title">{recommendation.site_name}</div>
 		<div class="sub-title">{recommendation.site_addr}</div>
-		<div class="read-more">패키지 추천 바로가기!</div>
+		<div class="read-more" onClick={shareToKatalk}>카카오톡으로 공유하기!</div>
 	</div>
 	<Carousel fade>
     <Carousel.Item>
