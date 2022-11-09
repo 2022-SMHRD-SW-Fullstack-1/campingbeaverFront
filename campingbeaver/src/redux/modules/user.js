@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const kakaoLogin = (code) => {
-    return function (dispatch, getState) {
+    return function (dispatch, getStat,{history}) {
         axios({
             method: "GET",
-            url: `http://localhost:3000/?code=${code}`,
+            url: `http://localhost:3000/oauth/callback/kakao?code=${code}`,
         })
         .then((res) => {
             //get token
@@ -15,14 +15,16 @@ const kakaoLogin = (code) => {
             //local store (temp)
             localStorage.setItem("token", ACCESS_TOKEN);
 
+            // history.replace("/main")
+
             window.alert("Login success...");
             //get token -> change page to HOME
-            //history.replace("/home"); 
+            //history.replace("/"); 
         
         }).catch((err) => {
             console.log("Login error", err);
             window.alert("Login failed...");
-            //history.replace("/home");
+            history.replace("/login")
         });
     }
 };

@@ -1,6 +1,7 @@
 /* global kakao */
 import React, { useEffect, useState } from "react";
 import RecomDetail from './RecomDetail'
+import WeatherView from "./WeatherView";
 
 
 const Map = ({latitude,longitude,siteName}) => {
@@ -28,7 +29,13 @@ const Map = ({latitude,longitude,siteName}) => {
 
     },[latitude,longitude])
 
+    const decimalProps = {
+        latitude,
+        longitude
+    }
     return (
+        <div>
+        <WeatherView {...decimalProps}/>
         <div
             style={{
                 width: '100%',
@@ -38,6 +45,7 @@ const Map = ({latitude,longitude,siteName}) => {
             }}
         >
             <div id="map" style={{ width: '99%', height: '500px' }}></div>
+      </div>
       </div>
       );
     };

@@ -2,6 +2,7 @@ import React from 'react'
 import style from './Reservation.module.scss'
 import sitelist from '../../data/sitelist.json'
 import { Link, useParams } from 'react-router-dom';
+import Footer from '../../components/Layout/Footer';
 
 const CampCard = ({value}) => {
 
@@ -16,7 +17,6 @@ const CampCard = ({value}) => {
         
     //     </div>     
     // </div>
-    
     <div class="cell" key={sitelist.campsite[value].site_seq}>
     <div class="img-box">
           <img src={sitelist.campsite[value].imgsrcfirst} height='220px' alt="" />
@@ -45,7 +45,6 @@ const CampCard = ({value}) => {
           </div>
         </div>
         </div>
-        
   )
 }
 

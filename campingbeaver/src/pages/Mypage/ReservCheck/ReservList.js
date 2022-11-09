@@ -22,7 +22,7 @@ const ReservList = () => {
       }}
     )
     .then((res) => {
-      //console.log(res.data)
+      // console.log(res.data)
       setReservList(res.data)
       
     })
@@ -32,23 +32,23 @@ const ReservList = () => {
   return(
     
     <div>
-       <div>
+       {/* <div>
           <h1 className={styles.contact}>
           My Reservation
           </h1>
           <p className={styles.contact1}>예약 / 취소 내역</p>
-        </div>
+        </div> */}
 
 
-      <div>
-        <div>
+      
+        
           {reservEmpty ? (
             <ReservEmpty />
           ) : (
             <ReservNotEmpty reservList={reservList} />
           )}
-        </div>
-      </div>
+        
+      
     
     </div>
   )
