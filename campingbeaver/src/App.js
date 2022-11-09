@@ -23,8 +23,6 @@ import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
-import RecomDetail from './pages/Recommendation/RecomDetail'
-
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
 
