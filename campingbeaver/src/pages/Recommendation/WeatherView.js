@@ -66,15 +66,15 @@ const WeatherView = ({latitude, longitude}) => {
     
     useEffect(()=>{
         getWeatherData()
-    },[latitude,longitude])
-    
-
+      },[latitude,longitude])
+      
+      console.log(weatherList)
   return (
     <div className={style.weather}>
         
-        <table>
+      <table>
         {/* {selectIcon()} */}
-       
+       {/* response.data.filter(value=>value.pkg_hash.includes(selectParams())) */}
         {weatherList.map(
             value => (<WeatherCard value={value}/>)
         )}

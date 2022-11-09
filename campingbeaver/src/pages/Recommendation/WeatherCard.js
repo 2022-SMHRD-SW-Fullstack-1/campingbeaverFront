@@ -33,13 +33,15 @@ const WeatherCard = ({value}) => {
         }
   return (
     <>
-        <td>
-        {value.dt_txt}
-        {selectIcon()}
+    {value.dt/60/60%6 ==0 ?
+      <td>
+        <tr>{value.dt_txt}</tr>
+        <tr>{selectIcon()}</tr>
         {/* <p>{value.weather[0].id}</p> */}
         {/* <p>{(parseInt(value.weather[0].id) / 100).toFixed(0)}</p> */}
-        {value.main.temp}도
-        </td>
+        <tr>{value.main.temp}도</tr>
+        </td>:<></>
+        }
     </>
   )
 }
