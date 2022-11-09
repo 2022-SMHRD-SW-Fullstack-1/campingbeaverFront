@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './MainRecomm.module.scss'
-import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'
 import right from '../img/next.png'
-import axios from 'axios'
 import sitelist from '../../data/sitelist.json'
+import { Link } from 'react-router-dom'
 
 const SubRecomm = () => {
   
-  const [items,setItems] = useState([]);
+  const [items,setItems] = useState(sitelist.campsite);
   const [move, setMove] = useState(0);
   
   const IMG_WIDTH = 300;
@@ -52,6 +51,7 @@ const SubRecomm = () => {
       return (
         <RecommItem
           key={site_seq}
+          num={site_seq}
           name={site_name}
           img={imgsrcthird}
         />
@@ -64,10 +64,10 @@ const SubRecomm = () => {
     
 
 }
-const RecommItem = ({name, img}) => {
+const RecommItem = ({num,name,img}) => {
   return(
     <div className={styles.imgBox}>
-      <img src={img} alt="제품 사진"/>
+      <Link to={`/recommendation${num}`}><img src={img} alt="제품 사진"/></Link>
       <div className={styles.text}>
         <p className={styles.recommendItemName}>{name}</p>
       </div>

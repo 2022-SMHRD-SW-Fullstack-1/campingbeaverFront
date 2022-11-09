@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Map from './Map'
 import Axios from 'axios'
 import stylesheet from './RecomDetail.css'
-import surveyimg from './campimg/surveyimg.jpg'
 import { Carousel } from "react-bootstrap";
 import sitelist from '../../data/sitelist.json'
 import { useParams } from 'react-router-dom';

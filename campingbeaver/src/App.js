@@ -23,9 +23,8 @@ import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
-
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
-
+import StoreSurvey from './pages/Product/StoreSurvey'
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -46,6 +45,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Store" element={<Store />} />
+          <Route path="/Store:surveyParams" element={<StoreSurvey/>}/>
           <Route path="/Recommendation" element={<Recommendation />} />
           <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
           <Route path='/surveysecond' element={<SurveySecond />} />
