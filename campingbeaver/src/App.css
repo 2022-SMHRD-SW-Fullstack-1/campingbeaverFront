@@ -16,4 +16,7 @@ a:hover{
   color: black !important;
   text-decoration: none;
 }
+.app{
+  display: flex;
+}
 

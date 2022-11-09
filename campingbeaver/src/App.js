@@ -23,8 +23,8 @@ import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
-
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+import StoreDetail from './pages/Product/StoreDetail';
 
 
 function App() {
@@ -32,8 +32,9 @@ function App() {
 
   return (
     <div className='App'>
+     
       <Header auth={auth} setAuth={setAuth} />
-
+        <div>
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
@@ -60,7 +61,13 @@ function App() {
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
+
+          <Route path='/storedetail:pkg_seq' element={<StoreDetail/>}/>
+
         </Routes>
+
+        </div>
+
         {window.location.pathname!='/recommendation'?<Footer/>:<></>}
 
     </div>

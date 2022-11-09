@@ -5,10 +5,12 @@ import Header from '../../components/Layout/Header'
 
 const Reservation = () => {
   return (
+    <>
     <div>
         {/* <Nav/> */}
         <ReservContent/>
     </div>
+    </>
   )
 }
 

@@ -4,5 +4,7 @@
     border-color: var(--bs-nav-tabs-link-active-border-color);
 }
 a.nav-link{
+
     color: rgb(170, 170, 170);
+
 }
