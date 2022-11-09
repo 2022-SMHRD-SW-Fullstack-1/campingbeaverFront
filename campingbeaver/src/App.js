@@ -5,9 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Store from './pages/Product/Store';
 import Layout from './components/Layout/Layout'
-
 import Mypage from './pages/MyPage/Mypage'
-
 import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "../src/pages/ReviewUpload/ReviewForm"
 import Cart from "../src/pages/Cart/Cart"
@@ -24,19 +22,15 @@ import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
-
-
-
+import EditMyInfo from './pages/MyPage/EditMyInfo';
+import RecomDetail from './pages/Recommendation/RecomDetail'
 
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+
 
 function App() {
   const [auth, setAuth] = useState(false);
 
-
-  useEffect(() => {
-    console.log('로그인 인증값 : ', auth);
-  }, [auth])
   return (
     <div className='App'>
      
@@ -46,7 +40,7 @@ function App() {
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/Mypage" element={<Mypage />} />
+          <Route path="/Mypage/:tab" element={<Mypage />} />
           <Route path="/Reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/ordercom" element={<Ordercom />} />
@@ -57,21 +51,21 @@ function App() {
           <Route path='/Recommendation:site_seq' element={<RecomDetail/>}/>
           <Route path='/surveysecond' element={<SurveySecond />} />
           <Route path='/surveythird' element={<SurveyThird />} />
-          <Route path='/Naver' element={<NaverLogin setAuth={setAuth} auth={auth} />} />
+          <Route path='/Naver' element={<NaverLogin auth={auth} setAuth={setAuth}/>} />
           <Route path='/wishlist:id' element={<WishList />} />
           <Route path='/reservlist:id' element={<ReservList />} />
-          
-          <Route path="/logout" element={<Logout />}></Route>
-
-
+          <Route path="/logout" element={<Logout />}/>
+          <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandeler setAuth={setAuth} auth={auth}/>}  />
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
+          <Route path="/editmyinfo" element={<EditMyInfo/>}/>
           <Route path='/ReviewList/:id' >
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
-
         </Routes>
+
         </div>
+
         {window.location.pathname!='/recommendation'?<Footer/>:<></>}
 
     </div>

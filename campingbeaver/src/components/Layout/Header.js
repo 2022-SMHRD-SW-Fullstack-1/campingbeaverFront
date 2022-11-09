@@ -9,6 +9,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom'
 
 const Header = ({ auth, setAuth }) => {
+
+  const clickHandler = () => {
+
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
@@ -26,11 +31,19 @@ const Header = ({ auth, setAuth }) => {
                 {
                   localStorage.userName != null ?
                     <NavDropdown title="MYPAGE" id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/MyPage">마이페이지</NavDropdown.Item>
-                      <NavDropdown.Item href="/Wishlist">
+                      <NavDropdown.Item href="/MyPage/0">
+                        예약내역
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/MyPage/1" >
                         관심상품
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/ReviewList">리뷰관리</NavDropdown.Item>
+                      <NavDropdown.Item href="/MyPage/2">
+                        리뷰관리
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/MyPage/3">
+                        회원 정보 수정
+                      </NavDropdown.Item>
+
                       <NavDropdown.Divider />
 
                       <NavDropdown.Item href="/Logout" onClick={() => setAuth(false)}>

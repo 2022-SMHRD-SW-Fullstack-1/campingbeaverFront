@@ -19,7 +19,7 @@ const ReviewForm = () => {
   const navigate = useNavigate();
     const navigateToMyPage = () => {
     return (
-      navigate("/MyPage")
+      navigate("/Mypage/0")
     )
   }
 
@@ -77,7 +77,7 @@ const ReviewForm = () => {
     e.preventDefault()
     setViewContent(viewContent.concat({...reviewContent}))
     
-    axios.post(`/beaver/write/${numParams}`, reviewContent)
+    axios.post(`/beaver/rvwrite/${numParams}`, reviewContent)
     .then((res)=>{
       console.log(reviewContent)
       
