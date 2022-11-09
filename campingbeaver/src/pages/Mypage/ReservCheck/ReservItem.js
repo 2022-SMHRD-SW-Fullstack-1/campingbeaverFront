@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import './ReservList.module.scss'
 
 
 const ReservItem = ({ pkg_seq, reserv_num, reserv_date, reserv_name, reserv_price,

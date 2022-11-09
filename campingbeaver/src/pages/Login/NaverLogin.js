@@ -4,7 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import naverImg from '../../components/img/naverLogo.png'
 import './Login.css'
 
-const NaverLogin = ({ auth, setAuth }) => {
+const NaverLogin = () => {
+
+    const [auth, setAuth] = useState(false);
+
     const navigate = useNavigate()
 
     const [userInfo, setUserInfo] = useState({
@@ -78,6 +81,8 @@ const NaverLogin = ({ auth, setAuth }) => {
         //setGetToken(token)
     }
 
+
+
     const handleNaverClick = () => {
         const naverLoginButton = document.getElementById("naverIdLogin_loginButton");
         if (naverLoginButton) naverLoginButton.click();
@@ -87,13 +92,12 @@ const NaverLogin = ({ auth, setAuth }) => {
     useEffect(() => {
         initializeNaverLogin()
         userAccessToken()
-        axios.post(`/beaver/naverlogin`, userInfo)
-        .then((res)=>{
+    //     axios.post(`/beaver/naverlogin`, userInfo)
+    //     .then((res)=>{
         
-      
-        
-    }).catch((error)=>console.log('Network Error: ', error))
-       
+    // }).catch((error)=>console.log('Network Error: ', error))
+
+        console.log(auth)
         
           
     }, [])
