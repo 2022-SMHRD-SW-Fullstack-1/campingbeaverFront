@@ -52,3 +52,7 @@
     height: 30px;
     color: #337ab7;
   }
+
+  .ListBtnContainer button {
+    margin: 10px;
+  }

@@ -1,26 +1,33 @@
 .ListContainer {
     //margin-top: 80px;
-    width: 60rem;
+    width: 80rem;
     margin-top: 3rem;
-    margin-bottom: 3rem;
-    font-size: 13px;
+    // margin-bottom: 3rem;
+    margin-left: 10rem;
+    font-size: 15px;
+
 }
 
 table {
     text-align: center;
     border-collapse: collapse;
-    width: 60rem;
-
+    width: 70rem;
     th,
     td {
-      border-bottom: 1px solid #444444;
+      border-bottom: 0.1px solid #444444;
       padding: 0.8rem 0;
       text-align: center;
       vertical-align: middle;
+    
     }
-
+    th {
+      font-weight: 1000;
+    }
 }
 
+button {
+  border: none;
+}
 
 // .top {
 //     width: 800px;

@@ -34,6 +34,7 @@ const ReservNotEmpty = ({reservList}) => {
       <tbody>
         {reservList && reservList.map(({pkg_seq, reserv_num, reserv_date, reserv_name, reserv_price})=> {
           return <ReservItem 
+                  key = {reserv_num}
                   reserv_num = {reserv_num}
                   reserv_date = {reserv_date}
                   reserv_name = {reserv_name}

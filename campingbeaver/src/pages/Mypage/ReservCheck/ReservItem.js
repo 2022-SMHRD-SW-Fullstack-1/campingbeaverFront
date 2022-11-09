@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom'
-
+import './ReservList.module.scss'
 
 const ReservItem = ({ pkg_seq, reserv_num, reserv_date, reserv_name, reserv_price,
    review, delivery, cancel }) => {
