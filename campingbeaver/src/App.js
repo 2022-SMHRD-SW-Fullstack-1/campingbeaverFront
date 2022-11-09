@@ -20,11 +20,9 @@ import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
 import { useEffect, useState } from "react";
 import Footer from './components/Layout/Footer'
-import kakao from './pages/Login/kakao';
+import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
-import RecomDetail from './pages/Recommendation/RecomDetail'
-
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
 
 
@@ -33,8 +31,9 @@ function App() {
 
   return (
     <div className='App'>
+     
       <Header auth={auth} setAuth={setAuth} />
-
+        <div>
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/Login" element={<Login />} />
@@ -62,6 +61,9 @@ function App() {
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
         </Routes>
+
+        </div>
+
         {window.location.pathname!='/recommendation'?<Footer/>:<></>}
 
     </div>

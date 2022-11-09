@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Map from './Map'
 import Axios from 'axios'
-import Slider from "react-slick";
 import stylesheet from './RecomDetail.css'
 import surveyimg from './campimg/surveyimg.jpg'
 import { Carousel } from "react-bootstrap";
@@ -76,7 +75,7 @@ console.log(recommendation);
 	<Carousel fade>
     <Carousel.Item>
       <img
-        style={{}}
+        style={{height:'700px'}}
         className="d-block w-100"
         src={siteList[0].imgsrcfirst}
         alt="First slide"
@@ -84,7 +83,7 @@ console.log(recommendation);
     </Carousel.Item>
     <Carousel.Item>
       <img
-        style={{}}
+        style={{height:'700px'}}
         className="d-block w-100"
         src={siteList[0].imgsrcsecond}
         alt="Second slide"
@@ -92,7 +91,7 @@ console.log(recommendation);
     </Carousel.Item>
 	<Carousel.Item>
       <img
-        style={{}}
+        style={{height:'700px'}}
         className="d-block w-100"
         src={siteList[0].imgsrcthird}
         alt="Third slide"
