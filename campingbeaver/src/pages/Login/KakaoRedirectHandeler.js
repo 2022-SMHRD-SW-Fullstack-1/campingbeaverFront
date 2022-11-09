@@ -11,6 +11,8 @@ const KakaoRedirectHandler = ({auth, setAuth}) => {
   const [token, setToken] = useState('')
   const [user, setUser] = useState('')
 
+
+
   useEffect(() => {
 
     // 화면이 갱신이 되면 
@@ -66,19 +68,23 @@ const KakaoRedirectHandler = ({auth, setAuth}) => {
         console.log(res.data.kakao_account.email)
         console.log(res.data.kakao_account.profile.nickname)
         localStorage.setItem("userName", res.data.kakao_account.profile.nickname);
-          localStorage.setItem("userEmail", res.data.kakao_account.email);
-          localStorage.setItem("userId", res.data.id);
-        setUser({
-          user_name: res.data.kakao_account.profile.nickname,
-          user_email: res.data.kakao_account.email,
-          user_id: res.data.id,
-        })
+        localStorage.setItem("userEmail", res.data.kakao_account.email);
+        localStorage.setItem("userId", res.data.id);
+        
+        setUser(
+          // user_id = res.data.id,
+          // user_email = res.data.kakao_account.email,
+          // user_name = res.data.kakao_account.nickname,
+          res.data
+        )
         setAuth(true)
+
+        console.log(user)
 
         if (res.data.id != null) {
           
           
-          //window.location.href = '/'
+          window.location.href = '/'
           
         } else {
           alert('아이디와 비밀번호를 확인해주세요')
@@ -87,6 +93,22 @@ const KakaoRedirectHandler = ({auth, setAuth}) => {
       .catch(() => { console.log('catch') })
 
   }, [token])
+
+  // useEffect(() => {
+  //   fetch('/beaver/kakaologin',{
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       user_id: user.id,
+  //       user_name: user.kakao_account.profile.nickname,
+  //       user_email: user.kakao_account.email,
+  //     }),
+  //   })
+  //   .then((response)=>response.json())
+  //   .then((response)=>{
+  //     console.log("백엔드감", response)
+  //   })
+  //   .catch(()=>{console.log('백엔드못감')})
+  // }, [])
 
   return <div>사실 이페이지는 크게 의미 없다. 첫화면으로 로직이 끝나면 이동시켜주면 된다.</div>
   //document.location.href = "/";
