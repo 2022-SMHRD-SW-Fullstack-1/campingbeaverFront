@@ -1,30 +1,14 @@
-@import '../styles/variables.scss';
+@import '../../styles/variables.scss';
 
-.storeModal {
-  @include flexCenter;
-  position: absolute;
-  position: fixed;
-  padding: 0;
-  margin: 0;
-  z-index: 2;
-
-  .modalBackground {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100vw;
-    height: 100vh;
-  }
 
   .modalComponent {
     display: flex;
     position: absolute;
     background-color: white;
-    border: 1px solid black;
+    margin-left: 18%;
     width: 80rem;
     height: 55rem;
     padding: 40px;
-    overflow: scroll;
-    margin-left: -20px;
 
     button {
       // background-color: transparent;
@@ -38,15 +22,6 @@
       height: 1px;
       border: 0;
       background: #eee;
-    }
-
-    .closeBtn {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      top: 0;
-      right: 0;
-      color: #ccc;
     }
 
     .imgSection {
@@ -77,15 +52,16 @@
       table {
         border-collapse: separate;
         border-spacing: 0 1rem;
-        font-size: 12px;
+        font-size: 15px;
+        width: 90%;
 
         th {
           width: 6.5rem;
         }
 
         .description {
-          font-size: 12px;
-          font-weight: 300;
+          font-size: 15px;
+          font-weight: 100;
           color: #666;
           line-height: 20px;
         }
@@ -123,7 +99,7 @@
 
       .amountTab {
         @include flexSpaceBetween;
-        font-size: 13px;
+        font-size: 20px;
         padding: 10px 0;
         align-items: center;
 
@@ -132,7 +108,7 @@
         }
 
         span {
-          font-weight: 800;
+          font-weight: 500;
         }
 
         .inputAmount {
@@ -142,7 +118,7 @@
 
         .amountInput {
           @include flexCenter;
-          font-size: 11px;
+          font-size: 20px;
           width: 32px;
           height: 26px;
           border-radius: 3px 0 0 3px;
@@ -184,11 +160,11 @@
       }
 
       .totalPrice {
-        font-size: 12px;
+        font-size: 25px;
         margin: 20px 0;
 
         span {
-          font-size: 14px;
+          font-size: 25px;
           font-weight: 800;
         }
       }
@@ -197,25 +173,25 @@
         padding: 20px 0;
 
         .buyBtn {
-          font-size: 11px;
-          width: 60%;
+          font-size: 20px;
+          width: 40%;
           height: 45px;
           margin-bottom: 8px;
           color: white;
           border: 0;
-          background-color: #333;
-          border: 1px solid #333;
+          background-color: #157347;
+          border: 1px solid #157347;
 
           &:hover {
             background-color: #eee;
-            border: 1px solid #ccc;
+            border: 1px solid #eee;
             color: black;
             transition: 0.5s;
           }
         }
 
         .cartBtn {
-          font-size: 11px;
+          font-size: 20px;
           width: 39%;
           height: 45px;
           background-color: white;
@@ -240,7 +216,7 @@
       }
     }
   }
-}
+
 .reservBtn{
   flex-direction: column;
   align-items: flex-start;

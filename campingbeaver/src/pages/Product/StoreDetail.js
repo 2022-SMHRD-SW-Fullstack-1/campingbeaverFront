@@ -4,13 +4,14 @@ import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React, { useState, useEffect } from 'react'
-import '../../components/StoreModal.scss';
+import './StoreDetail.scss';
 import Calendar from 'react-calendar'
 import '../../pages/Reservation/Calendar.css'
 import moment from 'moment'
 import axios from 'axios'
 import DaumPostcode from 'react-daum-postcode';
 import { useParams } from 'react-router-dom';
+import Review from '../Reservation/Review';
 
 
 
@@ -257,7 +258,8 @@ const StoreDetail = () => {
     return (
         <div className="modalComponent">
           <section className="imgSection">
-            <img src={items.pkg_photo} alt="Product Thumbnail" />
+            <img src={items.pkg_photo} className="thumbnail" alt="Product Thumbnail" />
+          <Review/>
           </section>
           <section className="infoSection">
             <h2 className="itemName">{items.pkg_name}</h2>
