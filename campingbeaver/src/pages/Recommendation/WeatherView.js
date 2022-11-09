@@ -71,13 +71,16 @@ const WeatherView = ({latitude, longitude}) => {
 
   return (
     <div className={style.weather}>
-        <p>
+        
+        <table>
         {/* {selectIcon()} */}
+       
         {weatherList.map(
             value => (<WeatherCard value={value}/>)
         )}
-        </p>
-        <p>현재 {temp}도</p>
+      </table>
+        
+        
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Map from './Map'
 import Axios from 'axios'
-import Slider from "react-slick";
 import stylesheet from './RecomDetail.css'
 import surveyimg from './campimg/surveyimg.jpg'
 import { Carousel } from "react-bootstrap";
