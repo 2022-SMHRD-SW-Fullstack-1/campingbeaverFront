@@ -30,7 +30,7 @@
   
   ul.pagination li a {
     text-decoration: none;
-    color: #337ab7;
+    color: black;
     font-size: 1rem;
   }
   
@@ -39,7 +39,7 @@
   }
 
   ul.pagination li.active {
-    background-color: #337ab7;
+    background-color: darkolivegreen;
   }
   
   ul.pagination li a:hover,

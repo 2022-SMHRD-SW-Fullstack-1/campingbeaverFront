@@ -64,9 +64,9 @@ const ReviewList = () => {
 
 	useEffect(() => {
 		getReviewList();
-		// setTotalCnt(reviewList.length)
+
 		
-	}, [reviewList, totalCnt, indexOfFirstPost,indexOfLastPost,currentPosts]);
+	}, [ totalCnt, indexOfFirstPost,indexOfLastPost,currentPosts]);
 
 
 	const changeChoice = (event) => { setChoiceVal(event.target.value); }
@@ -83,12 +83,6 @@ const ReviewList = () => {
 		console.log('페이지 : ', page)
 		
 	}
-
-	// const changePage = (page) => {
-	// 	setPage(page);
-	// 	getReviewList(page);
-	// }
-	
 
 	return (
 
