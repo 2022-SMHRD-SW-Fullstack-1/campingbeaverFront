@@ -12,18 +12,28 @@ import axios from 'axios'
 import DaumPostcode from 'react-daum-postcode';
 import { useParams } from 'react-router-dom';
 
-const StoreDetail = ({items}) => {
 
+
+const StoreDetail = () => {
     const params = useParams();
-    
-
+    const [seq, setSeq] = useState(params.pkg_seq)
     const [postshow, setPostshow] = useState(false);
     const [addr, setAddr] = useState('')
     const [post, setPost] = useState('')
-  
+    const [items, setItems] = useState({});
     const [addrshow, setAddrshow] = useState('')
     const [postS, setPostS] = useState('')
-  
+
+
+    useEffect(() => {
+        axios.get("/beaver/pkglist")
+        .then(response=>{
+          setItems(response.data[seq-1]);
+        })
+      }, []);
+
+    console.log('items',items.pkg_name)
+
   
     const handleComplete = (data) => {
       let fullAddress = data.address;
@@ -57,7 +67,7 @@ const StoreDetail = ({items}) => {
     }
   
     const [count, setCount] = useState(1);
-    const { id, img, itemName, price, } = items;
+    // const { id, price, img, itemName } = items;
   
     const currentCount = e => {
       const count = e.target;
@@ -76,8 +86,8 @@ const StoreDetail = ({items}) => {
       }
     };
   
-    const priceToString = Number(price).toLocaleString('ko-KR');
-    const calculateTotalPrice = price * count;
+    const priceToString = Number(items.pkg_price).toLocaleString('ko-KR');
+    const calculateTotalPrice = items.pkg_price * count;
     const totalPriceToString = calculateTotalPrice.toLocaleString('ko-KR');
   
     const [value, onChange] = useState([
@@ -123,7 +133,7 @@ const StoreDetail = ({items}) => {
   
     const [inputValue, setInputValue] = useState({
       user_id: 'admin',
-      pkg_seq: id,
+      pkg_seq: items.pkg_seq,
       reserv_name: '',
       reserv_post: post,
       reserv_addr: addr,
@@ -136,7 +146,7 @@ const StoreDetail = ({items}) => {
   
     let backdata = ({
       user_id: 'admin',
-      pkg_seq: id,
+      pkg_seq: items.pkg_seq,
       reserv_name: inputValue.reserv_name,
       reserv_post: post,
       reserv_addr: addr,
@@ -149,7 +159,7 @@ const StoreDetail = ({items}) => {
   
     const [cartlist, setCartlist] = useState({
       user_id: 'admin',
-      pkg_seq: id,
+      pkg_seq: items.pkg_seq,
     })
   
     const handleInput = e => {
@@ -209,7 +219,7 @@ const StoreDetail = ({items}) => {
         pg: "html5_inicis", // PG사 (필수항목)
         pay_method: "card", // 결제수단 (필수항목)
         merchant_uid: `mid_${new Date().getTime()}`, // 결제금액 (필수항목)
-        name: itemName, // 주문명 (필수항목)
+        name: items.pkg_name, // 주문명 (필수항목)
         amount: calculateTotalPrice, // 금액 (필수항목) 
         custom_data: { name: "부가정보", desc: "세부 부가정보" },
         buyer_name: "비버", // 구매자 이름
@@ -245,14 +255,12 @@ const StoreDetail = ({items}) => {
     };
   
     return (
-      <div className="storeModal">
-        <div className="modalBackground" />
         <div className="modalComponent">
           <section className="imgSection">
-            <img src={img} alt="Product Thumbnail" />
+            <img src={items.pkg_photo} alt="Product Thumbnail" />
           </section>
           <section className="infoSection">
-            <h2 className="itemName">{itemName}</h2>
+            <h2 className="itemName">{items.pkg_name}</h2>
             <hr />
             <table>
               <tr className="description">
@@ -340,7 +348,7 @@ const StoreDetail = ({items}) => {
             </div>
             <div className="amountTab">
   
-              <span className="itemName">{itemName}</span>
+              <span className="itemName">{items.pkg_name}</span>
               <div className="inputAmount">
                 <div
                   className="amountInput"
@@ -480,9 +488,6 @@ const StoreDetail = ({items}) => {
           </section>
   
         </div>
-      </div>
     );
   };
-  
-
 export default StoreDetail

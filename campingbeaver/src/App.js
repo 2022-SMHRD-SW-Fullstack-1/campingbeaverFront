@@ -63,7 +63,7 @@ function App() {
           </Route>
 
           <Route path='/storedetail:pkg_seq' element={<StoreDetail/>}/>
-
+          
         </Routes>
 
         </div>
