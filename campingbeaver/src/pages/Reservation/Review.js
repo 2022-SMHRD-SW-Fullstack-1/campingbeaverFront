@@ -25,6 +25,8 @@ const Review = () => {
       });
   };
 
+  const getRatingAvg = () => {};
+
   useEffect(() => {
     getReviewList();
     // console.log(reviewList);
@@ -63,12 +65,3 @@ const ReviewBox = ({ rv_photo, rv_rating, rv_content }) => {
   );
 };
 export default Review;
-{
-  /* <div style={cont2}>
-    <div>
-    <img src={image2} width="300px"></img>
-        <span>★5.0 / 5.0</span>
-        <span>로고가 예쁘네요.</span>
-    </div>
-</div> */
-}

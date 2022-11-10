@@ -1,234 +1,235 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
+.modalComponent {
+  display: flex;
+  position: absolute;
+  background-color: white;
+  margin-left: 18%;
+  width: 80rem;
+  height: 55rem;
+  padding: 40px;
 
-  .modalComponent {
+  button {
+    // background-color: transparent;
+    // border: 0;
+    padding: 1;
+    // cursor: pointer;
+  }
+
+  hr {
+    margin: 10px 0;
+    height: 1px;
+    border: 0;
+    background: #eee;
+  }
+
+  .imgSection {
     display: flex;
-    position: absolute;
-    background-color: white;
-    margin-left: 18%;
-    width: 80rem;
-    height: 55rem;
-    padding: 40px;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 50px;
 
-    button {
-      // background-color: transparent;
-      // border: 0;
-      padding: 1;
-      // cursor: pointer;
+    img {
+      background-color: #eee;
+      width: 30rem;
+      height: 30rem;
     }
 
-    hr {
-      margin: 10px 0;
-      height: 1px;
-      border: 0;
-      background: #eee;
-    }
-
-    .imgSection {
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      margin-top: 50px;
-
-      img {
-        background-color: #eee;
-        width: 30rem;
-        height: 30rem;
-      }
-
-      .reviewImg {
-        width: 400px;
-        height: 300px;
-      }
-
-
-    }
-
-    .infoSection {
-      margin-left: 40px;
-      padding: 20px 0;
-      text-align: left;
-
-      table {
-        border-collapse: separate;
-        border-spacing: 0 1rem;
-        font-size: 15px;
-        width: 90%;
-
-        th {
-          width: 6.5rem;
-        }
-
-        .description {
-          font-size: 15px;
-          font-weight: 100;
-          color: #666;
-          line-height: 20px;
-        }
-
-        .price {
-          font-weight: 800;
-        }
-
-        .snsBtn {
-          color: black;
-          cursor: pointer;
-
-          .facebookBtn {
-            color: #ccc;
-            margin-right: 15px;
-            height: 18px;
-            width: auto;
-          }
-
-          .twitterBtn {
-            color: #ccc;
-            margin-right: 15px;
-            height: 18px;
-            width: auto;
-          }
-
-          .instagramBtn {
-            color: #ccc;
-            margin-right: 15px;
-            height: 18px;
-            width: auto;
-          }
-        }
-      }
-
-      .amountTab {
-        @include flexSpaceBetween;
-        font-size: 20px;
-        padding: 10px 0;
-        align-items: center;
-
-        .itemName {
-          width: 50%;
-        }
-
-        span {
-          font-weight: 500;
-        }
-
-        .inputAmount {
-          display: flex;
-          align-items: center;
-        }
-
-        .amountInput {
-          @include flexCenter;
-          font-size: 20px;
-          width: 32px;
-          height: 26px;
-          border-radius: 3px 0 0 3px;
-          border: 1px solid #ccc;
-          margin-right: -1px;
-        }
-
-        .amountHandler {
-          display: inline-flex;
-          flex-direction: column;
-
-          .up {
-            border-radius: 0 3px 0 0;
-          }
-
-          .down {
-            border-radius: 0 0 3px 0;
-          }
-
-          button {
-            @include flexCenter;
-            background-color: white;
-            color: #666;
-            border: 1px solid #ccc;
-            height: 13px;
-            width: 20px;
-
-            .arrow {
-              width: 10px;
-              height: 10px;
-            }
-          }
-        }
-
-        .amountPrice {
-          text-align: right;
-          width: 20%;
-        }
-      }
-
-      .totalPrice {
-        font-size: 25px;
-        margin: 20px 0;
-
-        span {
-          font-size: 25px;
-          font-weight: 800;
-        }
-      }
-
-      .totalBuyBtn {
-        padding: 20px 0;
-
-        .buyBtn {
-          font-size: 20px;
-          width: 40%;
-          height: 45px;
-          margin-bottom: 8px;
-          color: white;
-          border: 0;
-          background-color: #157347;
-          border: 1px solid #157347;
-
-          &:hover {
-            background-color: #eee;
-            border: 1px solid #eee;
-            color: black;
-            transition: 0.5s;
-          }
-        }
-
-        .cartBtn {
-          font-size: 20px;
-          width: 39%;
-          height: 45px;
-          background-color: white;
-          border: 1px solid #ccc;
-          margin-left: 1%;
-
-          &:hover {
-            background-color: #eee;
-            transition: 0.5s;
-          }
-        }
-      }
-    }
-    .wishList {
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      margin: 0;
-
-      &:hover {
-        color: #ccc;
-      }
+    .reviewImg {
+      width: 400px;
+      height: 300px;
     }
   }
 
-.reservBtn{
+  .infoSection {
+    margin-left: 40px;
+    padding: 20px 0;
+    text-align: left;
+
+    .nameContainer {
+      display: flex;
+      flex-direction: row;
+    }
+
+    table {
+      border-collapse: separate;
+      border-spacing: 0 1rem;
+      font-size: 15px;
+      width: 90%;
+
+      th {
+        width: 6.5rem;
+      }
+
+      .description {
+        font-size: 15px;
+        font-weight: 100;
+        color: #666;
+        line-height: 20px;
+      }
+
+      .price {
+        font-weight: 800;
+      }
+
+      .snsBtn {
+        color: black;
+        cursor: pointer;
+
+        .facebookBtn {
+          color: #ccc;
+          margin-right: 15px;
+          height: 18px;
+          width: auto;
+        }
+
+        .twitterBtn {
+          color: #ccc;
+          margin-right: 15px;
+          height: 18px;
+          width: auto;
+        }
+
+        .instagramBtn {
+          color: #ccc;
+          margin-right: 15px;
+          height: 18px;
+          width: auto;
+        }
+      }
+    }
+
+    .amountTab {
+      @include flexSpaceBetween;
+      font-size: 20px;
+      padding: 10px 0;
+      align-items: center;
+
+      .itemName {
+        width: 50%;
+      }
+
+      span {
+        font-weight: 500;
+      }
+
+      .inputAmount {
+        display: flex;
+        align-items: center;
+      }
+
+      .amountInput {
+        @include flexCenter;
+        font-size: 20px;
+        width: 32px;
+        height: 26px;
+        border-radius: 3px 0 0 3px;
+        border: 1px solid #ccc;
+        margin-right: -1px;
+      }
+
+      .amountHandler {
+        display: inline-flex;
+        flex-direction: column;
+
+        .up {
+          border-radius: 0 3px 0 0;
+        }
+
+        .down {
+          border-radius: 0 0 3px 0;
+        }
+
+        button {
+          @include flexCenter;
+          background-color: white;
+          color: #666;
+          border: 1px solid #ccc;
+          height: 13px;
+          width: 20px;
+
+          .arrow {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+
+      .amountPrice {
+        text-align: right;
+        width: 20%;
+      }
+    }
+
+    .totalPrice {
+      font-size: 25px;
+      margin: 20px 0;
+
+      span {
+        font-size: 25px;
+        font-weight: 800;
+      }
+    }
+
+    .totalBuyBtn {
+      padding: 20px 0;
+
+      .buyBtn {
+        font-size: 20px;
+        width: 40%;
+        height: 45px;
+        margin-bottom: 8px;
+        color: white;
+        border: 0;
+        background-color: #157347;
+        border: 1px solid #157347;
+
+        &:hover {
+          background-color: #eee;
+          border: 1px solid #eee;
+          color: black;
+          transition: 0.5s;
+        }
+      }
+
+      .cartBtn {
+        font-size: 20px;
+        width: 39%;
+        height: 45px;
+        background-color: white;
+        border: 1px solid #ccc;
+        margin-left: 1%;
+
+        &:hover {
+          background-color: #eee;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  .wishList {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+}
+
+.reservBtn {
   flex-direction: column;
   align-items: flex-start;
   width: 8em;
 }
-.reservCalCon{
-  display: flex;  
+.reservCalCon {
+  display: flex;
 }
-.Cal{
-  
+.Cal {
 }
-.reservDays{
+.reservDays {
   border: solid 1px gray;
   text-align: center;
 }
@@ -465,10 +466,9 @@
   }
 }
 
-.postmodal{
-  background : rgba(0,0,0,0.25);
+.postmodal {
+  background: rgba(0, 0, 0, 0.25);
   // position : fixed;
   top: 0;
   left: 0;
-  
 }
