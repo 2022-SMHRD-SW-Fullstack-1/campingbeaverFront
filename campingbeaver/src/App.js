@@ -24,6 +24,7 @@ import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+import SearchBar from './pages/SearchBar/SearchBar';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
+          <Route path="/searchbar" element={<SearchBar/>}/>
         </Routes>
 
         </div>

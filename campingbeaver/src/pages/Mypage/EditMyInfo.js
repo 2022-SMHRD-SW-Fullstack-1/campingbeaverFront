@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './MyPage.module.scss'
 import './EditMyInfo.scss';
+import axios from 'axios';
 
 const EditMyInfo = () => {
   const userId = localStorage.getItem('userId')
   const userName = localStorage.getItem('userName')
+  
+  
 
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -72,6 +75,43 @@ const EditMyInfo = () => {
       });
   };
 
+  const handleDeleteProfile = () => {
+    const time = new Date();
+    let now = time.toTimeString();
+    console.log(userId)
+    //e.preventDefault();
+    if (window.confirm('확인을 누르면 회원 정보가 삭제됩니다.')) {
+      fetch('/beaver/userdelete', {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: userId,
+          user_pw: pw2,
+          user_name: userName,
+          user_phone: '010' + phone,
+          user_addr: address + address2,
+          user_type: 'N',
+          user_joindate: now,
+          user_email: email,
+        }),
+      })
+      // axios
+      //   .post(`/beaver/userdelete`,
+      //     {
+      //       headers: {
+      //         Authorization: 'Bearer ' + userId,
+      //       },
+      //     }
+      //   )
+        .then(() => {
+          localStorage.clear();
+          alert('그동안 이용해주셔서 감사합니다.');
+          navigate('/');
+        })
+        .catch((err) => alert(err.response.data.message));
+    } else {
+      return;
+    }
+  };
 
   return (
     <div>
@@ -193,9 +233,15 @@ const EditMyInfo = () => {
         <button
           onClick={goToMain}
           className="editBtn"
-          
         >
           정보 수정하기
+        </button>
+
+        <button
+          onClick={handleDeleteProfile}
+          className="editBtn"
+        >
+          회원 탈퇴하기
         </button>
       {/* </main> */}
         </div>

@@ -50,6 +50,7 @@ const MainRecomm = () => {
     <div className={styles.carouselWrapper}>
         <div className={styles.recommendTitleBox}>
           <h1>New Package</h1>
+          <p>새롭게 출시된 패키지를 만나보세요</p>
         </div>
       <div
         className={styles.carousel}
