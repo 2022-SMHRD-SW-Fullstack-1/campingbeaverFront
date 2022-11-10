@@ -252,7 +252,6 @@ body {
 /* list-2 시작 */
 .list-2 .title {
 	position:relative;
-	
 }
 .list-2 .title::before {
 	content:'';
@@ -574,9 +573,13 @@ body {
     background-color : #dde0ea;
 }
 
-.con list-2{
-	margin-top: 100px;
+.con.list-2{
+	position:relative;
+	top: -300px;
+	left: 0;
 }
+
 .pickCon{
-	padding-bottom: 300px;
+	position: relative;
+	top: 0px;
 }

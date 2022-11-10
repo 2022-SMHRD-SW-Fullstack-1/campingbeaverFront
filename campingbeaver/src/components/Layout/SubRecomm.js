@@ -8,7 +8,7 @@ import sitelist from '../../data/sitelist.json'
 
 const SubRecomm = () => {
   
-  const [items,setItems] = useState([]);
+  const [items,setItems] = useState(sitelist.campsite);
   const [move, setMove] = useState(0);
   
   const IMG_WIDTH = 300;

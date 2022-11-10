@@ -7,7 +7,8 @@
 
 * {
   font-family: 'twayair' !important;
-  
+  animation-name: fadeIn;
+	animation-duration: 1s;
 }
 
 
@@ -20,3 +21,12 @@ a:hover{
   display: flex;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

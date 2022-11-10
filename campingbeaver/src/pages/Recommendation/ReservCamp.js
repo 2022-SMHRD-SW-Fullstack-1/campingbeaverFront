@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import sitelist from '../../data/sitelist.json'
 import Button from 'react-bootstrap/Button';
 import Footer from '../../components/Layout/Footer'
+import hashtag from './iconimg/hashtag.png'
 
 const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
@@ -70,7 +71,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
 
 
                 <i class="fab fa-houzz" aria-hidden="true"></i>
-                <div><span>태그</span></div>
+                <div><span><img src={hashtag} height='30px'/></span></div>
 
               </div>
               <p>{recomList[i].site_hash}</p>
@@ -153,7 +154,7 @@ const Reservcamp = ({tagHandler, setTagHandler, ...props}) => {
   }
 
   return (
-
+    
     <div className={style.reserv}>
       {/* <button onClick={arrBtn} className={style.clickbutton}>배열찾기</button> */}
       <Button variant="outline-success" onClick={arrBtn} type="button">검색하기</Button>{' '}

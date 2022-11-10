@@ -70,7 +70,7 @@ const dataCon = (e) => {
   return (
 
     <>
-    <h1>💘Choose your preference !💘</h1>
+    <h1>💘Choose Your Preference !💘</h1>
     <div align='center'>
     {[
       'secondary',

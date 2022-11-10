@@ -5,7 +5,7 @@ import styles from '../MyPage.module.scss'
 import Fheart from '../../../components/img/Fheart.png'
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'
 
 const WishItem = ({wishName, wishPrice, wishPic,pkg_seq}) => {
 
@@ -34,7 +34,6 @@ const handleDelete = () => {
     window.location.replace("/Mypage/1")
     
 }
-
 
   return (
 
@@ -76,8 +75,7 @@ const handleDelete = () => {
             </Modal.Footer>
           </Modal>
           </div>
-
-          <div><Button variant="success">예약하기</Button></div>
+          <Link to = {`/storedetail${pkg_seq}`}><Button variant="success">예약하기</Button></Link>
           </div>
         </Card.Body>
       </Card>
