@@ -18,12 +18,13 @@ import ReviewPage from './pages/Review/ReviewPage';
 import Header from './components/Layout/Header';
 import WishList from './pages/MyPage/WishList/WishList';
 import ReservList from './pages/MyPage/ReservCheck/ReservList';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from './components/Layout/Footer'
 import RecomDetail from './pages/Recommendation/RecomDetail';
 import Ordercom from './pages/Cart/Ordercom';
 import EditMyInfo from './pages/MyPage/EditMyInfo';
 import KakaoRedirectHandeler from './pages/Login/KakaoRedirectHandeler';
+import StoreDetail from './pages/Product/StoreDetail';
 
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
+
+          <Route path='/storedetail:pkg_seq' element={<StoreDetail/>}/>
+          
         </Routes>
 
         </div>

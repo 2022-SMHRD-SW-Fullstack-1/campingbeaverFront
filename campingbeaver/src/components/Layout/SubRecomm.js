@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styles from './MainRecomm.module.scss'
-import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'
 import right from '../img/next.png'
-import axios from 'axios'
 import sitelist from '../../data/sitelist.json'
 
 const SubRecomm = () => {
   
-  const [items,setItems] = useState([]);
+  const [items,setItems] = useState(sitelist.campsite);
   const [move, setMove] = useState(0);
   
   const IMG_WIDTH = 300;

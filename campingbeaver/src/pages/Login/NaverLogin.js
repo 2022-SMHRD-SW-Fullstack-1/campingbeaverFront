@@ -97,7 +97,7 @@ const NaverLogin = () => {
         
     // }).catch((error)=>console.log('Network Error: ', error))
 
-        console.log(auth)
+        console.log(userInfo)
         
           
     }, [])
