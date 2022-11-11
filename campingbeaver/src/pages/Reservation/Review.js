@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import image1 from "../../components/img/image1.jpg";
 import image2 from "../../components/img/image2.png";
 import "./Review.scss";
-const Review = () => {
+const Review = (props) => {
   const params = useParams();
 
   const [pkg_seq, setPkg_seq] = useState(params.pkg_seq);
@@ -24,12 +24,17 @@ const Review = () => {
         console.log("err : ", err);
       });
   };
-
-  const getRatingAvg = () => {};
+  let sumRating = 0;
+  const getSumRating = () => {
+    const pkgRating = reviewList.map(({ rv_rating }) => {
+      return {};
+    });
+  };
 
   useEffect(() => {
     getReviewList();
-    // console.log(reviewList);
+    getSumRating();
+    props.setAvgRating((sumRating / reviewList.length).toFixed(1));
   }, []);
 
   return (
