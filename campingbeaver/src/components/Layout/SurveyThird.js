@@ -7,6 +7,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import gamsung from '../img/gamsung.jpg';
 import nature from '../img/nature.jpg';
 import sea from '../img/sea.jpg'
+import { Link } from 'react-router-dom';
 
 
 const SurveyThird = (props) => {
@@ -38,35 +39,35 @@ const SurveyThird = (props) => {
           <Card.Body>
             <Card.Title>감성 충만 패키지</Card.Title>
             <Card.Text>
-              노을이 다했음
+              인생 사진과 함께하는 캠핑
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted"><Button variant="success">더보기</Button>{' '}</small>
+            <small className="text-muted"><Link to={`/store1`}><Button variant="success">더보기</Button></Link>{' '}</small>
           </Card.Footer>
         </Card>
         <Card>
           <Card.Img variant="top" src={nature}  className={styles.imgcard} />
           <Card.Body>
-            <Card.Title>숲속 힐링 패키지</Card.Title>
+            <Card.Title>가족 힐링 패키지</Card.Title>
             <Card.Text>
-              과연 힐링일까?
+              가족들과 함께 즐길 수 있는 4인용 이상의 패키지
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted"><Button variant="success">더보기</Button>{' '}</small>
+            <small className="text-muted"><Link to={`/store2`}><Button variant="success">더보기</Button></Link>{' '}</small>
           </Card.Footer>
         </Card>
         <Card>
           <Card.Img variant="top" src={sea} className={styles.imgcard} />
           <Card.Body>
-            <Card.Title>바다 패키지</Card.Title>
+            <Card.Title>커플 무드 패키지</Card.Title>
             <Card.Text>
-              짠바람과 함께하세요!
+              연인, 친구와 오붓하게 즐기는 2인용 패키지
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted"><Button variant="success">더보기</Button>{' '}</small>
+            <small className="text-muted"><Link to={`/store3`}><Button variant="success">더보기</Button></Link>{' '}</small>
           </Card.Footer>
         </Card>
       </CardGroup>
