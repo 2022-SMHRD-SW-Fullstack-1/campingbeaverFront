@@ -4,6 +4,7 @@
   display: flex;
   position: absolute;
   background-color: white;
+  z-index: 1;
   margin-left: 18%;
   width: 80rem;
   height: 55rem;
@@ -28,16 +29,29 @@
     align-items: flex-start;
     flex-direction: column;
     margin-top: 50px;
+    height: 1000px;
 
     img {
       background-color: #eee;
       width: 30rem;
       height: 30rem;
     }
+    .contentContainer {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+      border-top: black solid 0.5px;
+      border-bottom: black solid 0.5px;
+    }
+
+    .contentBox {
+      padding-top: 20px;
+    }
 
     .reviewImg {
-      width: 400px;
-      height: 300px;
+      width: 200px;
+      height: 150px;
+      margin-right: 10px;
     }
   }
 
@@ -471,4 +485,17 @@
   // position : fixed;
   top: 0;
   left: 0;
+}
+
+.addrBtn {
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-top: 1%;
+  margin-left: 1%;
+
+  &:hover {
+    background-color: #eee;
+    transition: 0.5s;
+  }
 }

@@ -1,178 +1,179 @@
-import React, { useEffect, useState } from 'react'
-import Map from './Map'
-import Axios from 'axios'
-import stylesheet from './RecomDetail.css'
+import React, { useEffect, useState } from "react";
+import Map from "./Map";
+import Axios from "axios";
+import stylesheet from "./RecomDetail.css";
 import { Carousel } from "react-bootstrap";
-import sitelist from '../../data/sitelist.json'
-import { useParams } from 'react-router-dom';
+import sitelist from "../../data/sitelist.json";
+import { useParams } from "react-router-dom";
+import WeatherView from "./WeatherView";
+import Footer from "../../components/Layout/Footer";
 
 const RecomDetail = () => {
-
-  const [recommendation, setRecommendation] = useState("")
+  let now = new Date();
+  let todayMonth = now.getMonth() + 1;
+  let todayDate = now.getDate();
+  const [weatherAddr, setWeatherAddr] = useState([]);
+  const [recommendation, setRecommendation] = useState("");
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [siteName, setSiteName] = useState("");
   let { site_seq } = useParams();
-  console.log("useparams : ",site_seq)
-  const imgSeq = site_seq-2
-  console.log(imgSeq)
-  useEffect(()=>{
-    Axios.get("/beaver/recomdetail", {
-      params :{
-        site_seq : site_seq
-      }
-    }).then((response)=>{
 
+  console.log("useparams : ", site_seq);
+  const imgSeq = site_seq - 2;
+  console.log(imgSeq);
+  useEffect(() => {
+    Axios.get("/beaver/recomdetail", {
+      params: {
+        site_seq: site_seq,
+      },
+    }).then((response) => {
       setRecommendation(response.data);
-      
-      
-      if(response.data){
+      setWeatherAddr(recommendation.site_addr.split(" "));
+
+      if (response.data) {
         // setRecommendation(response.data);
         // console.log(recommendation);
-        
-      }else{
+      } else {
         alert("failed");
       }
-    })
-},[])
-console.log(recommendation);
-  useEffect(()=>{
+    });
+  }, [recommendation.site_addr]);
+  console.log(recommendation);
+  console.log(weatherAddr);
+  useEffect(() => {
     setLatitude(recommendation.site_lat);
     setLongitude(recommendation.site_lng);
     setSiteName(recommendation.site_name);
-  })
-    
-  // console.log(latitude);
-  // console.log(longitude);
+  });
 
-  const decimalProps ={
+  const decimalProps = {
     latitude,
     longitude,
     siteName,
-  }
+  };
 
-  const seq = site_seq
-  const siteList = sitelist.campsite.filter(word => (
-	word.site_seq == seq
-	
-	))
-	// console.log(siteList[site_seq].imgsrcfirst)
-  
-  
-    useEffect(() => {
-      // 카카오톡 sdk 추가
-      const script = document.createElement("script");
-      script.src = "https://developers.kakao.com/sdk/js/kakao.js";
-      script.async = true;
-      document.body.appendChild(script);
-      return () => document.body.removeChild(script);
-    }, [seq]);
+  const seq = site_seq;
+  const siteList = sitelist.campsite.filter((word) => word.site_seq == seq);
+  // console.log(siteList[site_seq].imgsrcfirst)
 
-    const shareToKatalk = () => {
-      // kakao sdk script 부른 후 window.Kakao로 접근
-      if(window.Kakao){
-        const kakao = window.Kakao;
+  useEffect(() => {
+    // 카카오톡 sdk 추가
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, [seq]);
 
-        // 중복 initialization 방지
-        // 카카오에서 제공하는 javascript key를 이용하여 initialize
-        if(!kakao.isInitialized()){
-          kakao.init("fc4721f013e6b878b7b516e4e662b043");
-        }
+  const shareToKatalk = () => {
+    // kakao sdk script 부른 후 window.Kakao로 접근
+    if (window.Kakao) {
+      const kakao = window.Kakao;
 
-        kakao.Link.sendDefault({
-          objectType: "feed",
-          content:{
-            title: "Camping Beaver",
-            description:"캠핑 비버가 추천하는 캠핑장을 만나보세요",
-            imageUrl:
-              "https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg",
-            link:{
-              mobileWebUrl:
-              `https://localhost:3000/recommendation${site_seq}`,
-              webUrl:
-              `https://localhost:3000/recommendation${site_seq}`,
-            },
-          },
-        });
+      // 중복 initialization 방지
+      // 카카오에서 제공하는 javascript key를 이용하여 initialize
+      if (!kakao.isInitialized()) {
+        kakao.init("fc4721f013e6b878b7b516e4e662b043");
       }
-    };
 
-  
+      kakao.Link.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "Camping Beaver",
+          description: "캠핑 비버가 추천하는 캠핑장을 만나보세요",
+          imageUrl:
+            "https://www.snowpeak.co.kr/upload_files/main_brand/220225_Brand_main.jpg",
+          link: {
+            mobileWebUrl: `https://localhost:3000/recommendation${site_seq}`,
+            webUrl: `https://localhost:3000/recommendation${site_seq}`,
+          },
+        },
+      });
+    }
+  };
+
   return (
     <div>
-             
-
-    
-              
-<div class="con list-1">
-	<div class="title">
-		<div class="main-title">{recommendation.site_name}</div>
-		<div class="sub-title">{recommendation.site_addr}</div>
-		<div class="read-more" onClick={shareToKatalk}>카카오톡으로 공유하기!</div>
-	</div>
-	<Carousel fade>
-    <Carousel.Item>
-      <img
-        style={{height:'700px'}}
-        className="d-block w-100"
-        src={siteList[0].imgsrcfirst}
-        alt="First slide"
-      />
-    </Carousel.Item>
-    <Carousel.Item>
-      <img
-        style={{height:'700px'}}
-        className="d-block w-100"
-        src={siteList[0].imgsrcsecond}
-        alt="Second slide"
-      />
-    </Carousel.Item>
-	<Carousel.Item>
-      <img
-        style={{height:'700px'}}
-        className="d-block w-100"
-        src={siteList[0].imgsrcthird}
-        alt="Third slide"
-      />
-    </Carousel.Item>
-  </Carousel>
-	<div class="row">
-		<div class="cell">
-			<div class="img-box">
-				<div class="date">
-					HOT<span> NEW</span>	
-				</div>
-				{/* <img src={siteList[0].imgsrcfirst}/> */}
-				
-			</div>
-			<div class="txt-box">
-				<div class="txt1">
-                    <div class="head">
-                        <h1 class="name">낙원장</h1>
-                        <div class="sub-name">부티끄호텔</div>
-                        <div class="location">서울/종로</div>
-                    </div>
-                    
-                    <div class="body">
-                        <div class="des_title">
-                            전통에 품격을 더한 고택의 재해석
-                        </div>
-	
-                        <div class="des">
-                            안동 구름에 리조트는 전통 고택 리조트라는 새로운 개념의 스테이다. 고택과 리조트라는 상반된 단어는 전통과 현대를 적절하게 공존시키고자 하는 안동 구름에 리조트의 목표를 잘 보여주고 있다. ‘한국 정신문화의 수도’로 칭해지는 안동에서 고택의 가치와 장점은 지키고 불편함은 보완하며 안동 구름에 리조트는 그들만의 중심을 지키며 조용하게 안동에서 자리를 잡으며 운영되고 있다.
-                        </div>
-                    </div>
+      <div class="con list-1">
+        <div class="title">
+          <div class="main-title">{recommendation.site_name}</div>
+          <div class="sub-title">{recommendation.site_addr}</div>
+          <div class="read-more" onClick={shareToKatalk}>
+            카카오톡으로 공유하기!
+          </div>
+        </div>
+        <Carousel slide interval="3000">
+          <Carousel.Item>
+            <img
+              style={{ height: "700px" }}
+              className="d-block w-100"
+              src={siteList[0].imgsrcfirst}
+              alt="First slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              style={{ height: "700px" }}
+              className="d-block w-100"
+              src={siteList[0].imgsrcsecond}
+              alt="Second slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              style={{ height: "700px" }}
+              className="d-block w-100"
+              src={siteList[0].imgsrcthird}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+        </Carousel>
+        <div class="row">
+          <div class="cell">
+            <div class="img-box">
+              <div class="date">
+                HOT<span> NEW</span>
+              </div>
+              {/* <img src={siteList[0].imgsrcfirst}/> */}
+            </div>
+            <div class="txt-box">
+              <div class="txt1">
+                <div class="head">
+                  {/* <h1 class="name">Information</h1> */}
+                  <div class="sub-name">입실</div>
+                  <div class="location">
+                    {sitelist.campsite[site_seq].intime}
+                  </div>
+                  <div class="sub-name">퇴실</div>
+                  <div class="location">
+                    {sitelist.campsite[site_seq].outtime}
+                  </div>
+                  <div class="sub-name">매너타임</div>
+                  <div class="location">
+                    {sitelist.campsite[site_seq].mannertime}
+                  </div>
                 </div>
-			</div>
-		</div>
-	</div>
 
-</div>
-<Map {...decimalProps}/>
-</div>
+                <div class="body">
+                  <div class="des_title">{recommendation.site_addr}</div>
+                  <Map {...decimalProps} />
+                  <div class="des">
+                    {weatherAddr[0]} {weatherAddr[1]}의 {todayMonth}월{" "}
+                    {todayDate}
+                    일부터 5일간의 날씨를 알려드립니다!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    
-  )
-}
+      <WeatherView {...decimalProps} />
+      <Footer />
+    </div>
+  );
+};
 
-export default RecomDetail
+export default RecomDetail;

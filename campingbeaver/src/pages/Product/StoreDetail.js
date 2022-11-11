@@ -16,26 +16,20 @@ import Review from "../Reservation/Review";
 const StoreDetail = () => {
   const params = useParams();
   const [seq, setSeq] = useState(params.pkg_seq);
-  const [sumRating, setSumRating] = useState(0);
-
+  const [avgRating, setAvgRating] = useState(0);
   const [postshow, setPostshow] = useState(false);
   const [addr, setAddr] = useState("");
   const [post, setPost] = useState("");
   const [items, setItems] = useState({});
   const [addrshow, setAddrshow] = useState("");
   const [postS, setPostS] = useState("");
+  const [user_id, setUser_id] = useState(localStorage.getItem("userId"));
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
       setItems(response.data[seq - 1]);
     });
   }, []);
-
-  // const getAvgRating = () => {
-  //   const pkgRating = reviewList.map((list) => {
-  //     return;
-  //   });
-  // };
 
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -130,7 +124,7 @@ const StoreDetail = () => {
   };
 
   const [inputValue, setInputValue] = useState({
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
     reserv_name: "",
     reserv_post: post,
@@ -143,7 +137,7 @@ const StoreDetail = () => {
   });
 
   let backdata = {
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
     reserv_name: inputValue.reserv_name,
     reserv_post: post,
@@ -156,7 +150,7 @@ const StoreDetail = () => {
   };
 
   const [cartlist, setCartlist] = useState({
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
   });
 
@@ -260,13 +254,13 @@ const StoreDetail = () => {
           className="thumbnail"
           alt="Product Thumbnail"
         />
-        <Review />
+        <Review setAvgRating={setAvgRating} avgRating={avgRating} />
       </section>
       <section className="infoSection">
         <div className="nameContainer">
           <h2 className="itemName">{items.pkg_name}</h2>
           <div>　　</div>
-          <h2>별점</h2>
+          <h2>★{avgRating}/5.0</h2>
         </div>
         <hr />
         <table>

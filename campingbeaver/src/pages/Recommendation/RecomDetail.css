@@ -1,582 +1,611 @@
-노말라이즈 시작  */
-body, ul, li, h1 {
-	margin:0;
-	padding: 0;
-	list-style:none;
+노말라이즈 시작 */ body,
+ul,
+li,
+h1 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 a {
-	color: inherit;
-	text-decoration:none;
+  color: inherit;
+  text-decoration: none;
 }
-/* 노말라이즈 끝 */ 
+/* 노말라이즈 끝 */
 body > h1 {
-	text-align: center;
-	color: gray;
+  text-align: center;
+  color: gray;
 }
 /* 커스텀 시작 */
 body {
-    overflow-x:hidden;
-   
+  overflow-x: hidden;
 }
 /* 커스텀 끝 */
-/* 라이브러리 시작 */ 
+/* 라이브러리 시작 */
 .con {
-	max-width: 1000px;
-	margin: 0 auto;
-	padding: 20px;
-	padding-top: 70px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 70px;
 }
 .list-1 .title {
-	position:relative;
+  position: relative;
 }
 .list-1 .title::before {
-	content:'';
-	display:block;
-	width:100%;
-	height:8px;
-	background-color: black;
-	margin-top: 20px;
-	margin-bottom: 20px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 8px;
+  background-color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .list-1 .main-title {
-	font-size: 2rem;
-	font-weight:bold;
+  font-size: 2rem;
+  font-weight: bold;
 }
 .list-1 .sub-title {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .list-1 .read-more {
-	position:absolute;
-	right:0;
-	top: 40%;
-	border: 1px solid black;
-	padding: 10px 15px;
-	text-transform: uppercase;
-	font-size:0.8rem;
-	cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  border: 1px solid black;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 .list-1 .read-more:hover {
-	background-color: black;
-	color: white;
+  background-color: black;
+  color: white;
 }
 .list-1 > .row > .cell {
-	width:100%;
-	position:relative;
-	
+  width: 100%;
+  position: relative;
 }
 .list-1 > .row > .cell > .img-box > div {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 10px;
-	background-color: rgba(0,0,0,0.5);
-	color: rgba(255,255,255,0.5);
-	z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
 }
 .list-1 > .row > .cell > .img-box > .date span {
-	color: #96aee1;
+  color: #96aee1;
 }
 .list-1 > .row > .cell > .img-box img {
-	width: 100%;
-	display:block;
+  width: 100%;
+  display: block;
 }
 .list-1 > .row > .cell > .img-box {
-	position:relative;
-	overflow:hidden;
-	float:left;
-	cursor:pointer;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  cursor: pointer;
 }
 .list-1 > .row > .cell > .img-box::before {
-	content:'';
-	position: absolute;
-	top:0;
-	left: 0;
-	display:block;
-	width: 100%;
-	height:100%;
-	background-color:black;
-	opacity: 0;
-	transition: opacity 0.3s;
-	z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
 }
 .list-1 > .row > .cell > .img-box:hover::before {
-	opacity:0.5;
+  opacity: 0.5;
 }
 .list-1 > .row > .cell > .img-box img {
-	transform: scale(1);
-	transition: transform 0.3s;
+  transform: scale(1);
+  transition: transform 0.3s;
 }
 .list-1 > .row > .cell > .img-box:hover img {
-	transform: scale(1.1);
+  transform: scale(1.1);
 }
 .list-1 > .row > .cell > .img-box .view {
-	text-transform: uppercase;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: white;
-	border: 1px solid white;
-	padding: 5px 10px;
-	border-radius: 5px;
-	z-index:2;
-	opacity:0;
-	transition: opacity 0.3s;
-	font-size:0.8rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
 }
 .list-1 > .row > .cell > .img-box:hover .view {
-	opacity: 1;
+  opacity: 1;
 }
 
 .list-1 > .row > .cell > .txt-box {
-	float:left;
-	height:466.6px;
-	background-color: white;
+  float: left;
+  height: 466.6px;
+  background-color: white;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 {
-	position:relative;
-	margin: 40px;
+  position: relative;
+  margin: 40px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1::before {
-	content:'';
-	display:block;
-	height:3px;
-	width:100%;
-	background-color:black;
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: black;
 }
 
 .list-1 > .row > .cell > .txt-box > .txt1 .head .name {
-	font-size: 1.5rem;
-	font-weight: 100;
-	margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin-bottom: 5px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .head .sub-name {
-	float:left;
-	font-size: 0.9rem;
+  float: left;
+  font-size: 0.9rem;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .head .sub-name::after {
-	content:'|';
-	padding: 0 5px;
-	color: gray;
+  content: "|";
+  padding: 0 5px;
+  color: gray;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .head .location {
-	font-size: 0.9rem;
-	color: gray;
-	margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 15px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .head::after {
-	content:'';
-	display:block;
-	border-bottom: 1px solid #dfdfdf;
-	margin-bottom: 15px;
+  content: "";
+  display: block;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 15px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .body {
-	height: 250px;
-	overflow:hidden;
+  height: 250px;
+  overflow: hidden;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .body .des_title {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .body .des {
-	/* 한 줄 자르기 */
-	font-size:0.9rem;
-	color: gray;
-	white-space:nowrap;
-	text-overflow:ellipsis;
-	overflow:hidden;
-	
-	/* 여러 줄 자르기 추가 스타일 */
-	white-space:normal;				
-	line-height: 1.2;				
-	height:13.2em;					
-	word-wrap:break word;			
-	text-align: left;				
-	display:-webkit-box;			
-	-webkit-line-clamp: 11;			
-	-webkit-box-orient: vertical;	
+  /* 한 줄 자르기 */
+  font-size: 0.9rem;
+  color: gray;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  /* 여러 줄 자르기 추가 스타일 */
+  white-space: normal;
+  line-height: 1.2;
+  height: 13.2em;
+  word-wrap: break word;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 11;
+  -webkit-box-orient: vertical;
 }
 .list-1 > .row > .cell > .txt-box > .txt1::after {
-	content:'';
-	display: block;
-	color: gray;
-	text-transform: uppercase;
-	font-size:0.8rem;
-	font-weight:bold;
-	margin-top: 5px;
-	padding-bottom:12px;
-	border-bottom:1px solid #dfdfdf;
+  content: "";
+  display: block;
+  color: gray;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 5px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .list-1 .row > .cell > *:first-child {
-    width:70%;
+  width: 70%;
 }
 
 .list-1 .row > .cell > *:last-child {
-    width:30%;
+  width: 30%;
 }
 .list-1::after {
-	content:'';
-	position:relative;
-	display:block;
-	clear:both;
-	width:100%;
-	height:30px;
-	background-color:inherit;
+  content: "";
+  position: relative;
+  display: block;
+  clear: both;
+  width: 100%;
+  height: 30px;
+  background-color: inherit;
 }
-@media ( max-width:1920px ) {
-    .list-1 .row > .cell > * {
-        width:100% !important;
-    }
-    
-    .list-1 .row > .cell > .txt-box {
-        height:auto;
-    }
-    
-    .list-1 .row > .cell > .txt-box > .txt1 .body {
-        height:auto;
-    }
-	
-	.list-1 > .row > .cell > .txt-box > .txt1 .body .des {
-		height: auto;
-	}
+@media (max-width: 1920px) {
+  .list-1 .row > .cell > * {
+    width: 100% !important;
+  }
+
+  .list-1 .row > .cell > .txt-box {
+    height: auto;
+  }
+
+  .list-1 .row > .cell > .txt-box > .txt1 .body {
+    height: auto;
+  }
+
+  .list-1 > .row > .cell > .txt-box > .txt1 .body .des {
+    height: auto;
+  }
 }
-@media ( max-width:1000px ) {
-	.list-1 .read-more {
-		position:relative;
-		margin: 10px;
-	}
+@media (max-width: 1000px) {
+  .list-1 .read-more {
+    position: relative;
+    margin: 10px;
+  }
 }
 
 /* list-2 시작 */
 .list-2 .title {
-	position:relative;
-	
+  position: relative;
 }
 .list-2 .title::before {
-	content:'';
-	display:block;
-	width:100%;
-	height:8px;
-	background-color: black;
-	margin-top: 20px;
-	margin-bottom: 20px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 8px;
+  background-color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .list-2 .main-title {
-	font-size: 2rem;
-	font-weight:bold;
+  font-size: 2rem;
+  font-weight: bold;
 }
 .list-2 .sub-title {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .list-2 .read-more {
-	position:absolute;
-	right:0;
-	top: 40%;
-	border: 1px solid black;
-	padding: 10px 15px;
-	text-transform: uppercase;
-	font-size:0.8rem;
-	cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  border: 1px solid black;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 .list-2 .read-more:hover {
-	background-color: black;
-	color: white;
+  background-color: black;
+  color: white;
 }
 
 .list-2 .row > .cell {
-	width: 33.3333%;
-	padding: 0 10px;
-	box-sizing: border-box;
+  width: 33.3333%;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 .list-2 .row {
-	margin: 0 -10px;
+  margin: 0 -10px;
 }
 .list-2 .row::after {
-	content: '';
-	display: block;
-	clear: both;
-	margin: 0 10px;
-	border-bottom: 1px solid #dfdfdf;
-	padding: 30px 0;
+  content: "";
+  display: block;
+  clear: both;
+  margin: 0 10px;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 30px 0;
 }
-
 
 .list-2 > .row > .cell {
-	position:relative;
-	display:inline-block;
-	float:left;
+  position: relative;
+  display: inline-block;
+  float: left;
 }
 .list-2 > .row > .cell > .img-box > div {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 10px;
-	background-color: rgba(0,0,0,0.5);
-	color: rgba(255,255,255,0.5);
-	z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
 }
 .list-2 > .row > .cell > .img-box img {
-	width: 100%;
-	display:block;
+  width: 100%;
+  display: block;
 }
 .list-2 > .row > .cell > .img-box {
-	position:relative;
-	overflow:hidden;
-	float:left;
-	cursor:pointer;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  cursor: pointer;
 }
 .list-2 > .row > .cell > .img-box::before {
-	content:'';
-	position: absolute;
-	top:0;
-	left: 0;
-	display:block;
-	width: 100%;
-	height:100%;
-	background-color:black;
-	opacity: 0;
-	transition: opacity 0.3s;
-	z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
 }
 .list-2 > .row > .cell > .img-box:hover::before {
-	opacity:0.5;
+  opacity: 0.5;
 }
 .list-2 > .row > .cell > .img-box img {
-	transform: scale(1);
-	transition: transform 0.3s;
+  transform: scale(1);
+  transition: transform 0.3s;
 }
 .list-2 > .row > .cell > .img-box:hover img {
-	transform: scale(1.1);
+  transform: scale(1.1);
 }
 .list-2 > .row > .cell > .img-box .view {
-	text-transform: uppercase;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: white;
-	border: 1px solid white;
-	padding: 5px 10px;
-	border-radius: 5px;
-	z-index:2;
-	opacity:0;
-	transition: opacity 0.3s;
-	font-size:0.8rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
 }
 .list-2 > .row > .cell > .img-box:hover .view {
-	opacity: 1;
+  opacity: 1;
 }
 .list-2 .row > .cell > .txt-box {
-	height:auto;
-	background-color: white;
-	display: block;
-	margin-bottom: 20px;
+  height: auto;
+  background-color: white;
+  display: block;
+  margin-bottom: 20px;
 }
 .list-2 .row > .cell > .txt-box > .txt1 {
-	padding: 20px;
-	width: calc(100% - 10px);
-	display: inline-block;
+  padding: 20px;
+  width: calc(100% - 10px);
+  display: inline-block;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .head .name {
-	font-size: 1.1em;
-	margin-top: 0;
-	font-weight: 100;
-	margin-bottom: 0;
-	position:relative;
+  font-size: 1.1em;
+  margin-top: 0;
+  font-weight: 100;
+  margin-bottom: 0;
+  position: relative;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .head .name::after {
-	content: 'N';
-	font-size: 0.7em;
-	color:white;
-	position: absolute;
-	top:2px;
-	font-weight:bold;
-	display: inline-block;
-	padding: 0 3.5px;
-	margin-left: 15px;
-	border: 1px solid black;
-	border-radius: 50px;
-	background-color:black;
+  content: "N";
+  font-size: 0.7em;
+  color: white;
+  position: absolute;
+  top: 2px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 3.5px;
+  margin-left: 15px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: black;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .head .sub-name {
-	font-weight: 100;
-	font-size: 0.8em;
-	color: gray;
-	text-transform: uppercase;
-	margin-bottom: 20px;
+  font-weight: 100;
+  font-size: 0.8em;
+  color: gray;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .head .sub-name2 {
-	font-weight: 100;
-	font-size: 0.8em;
-	color: gray;
-	margin-bottom: 25px;
+  font-weight: 100;
+  font-size: 0.8em;
+  color: gray;
+  margin-bottom: 25px;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .head::after {
-	content:'';
-	display:block;
-	height: 3px;
-	background-color:black;
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: black;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .body .location,
 .list-2 .row > .cell > .txt-box > .txt1 > .body .kind-of,
 .list-2 .row > .cell > .txt-box > .txt1 > .body .price,
-.list-2 .row > .cell > .txt-box > .txt1 > .body .keyword
-{
-	color:#8f8f8f;
-	font-size:0.8em;
-	padding: 5px 0;
-	float:left;
-	width: calc(50% - 20px);
-	letter-spacing: -1px;
-	white-space: nowrap;
-	text-overflow:ellipsis;
-	overflow:hidden;
-	padding: 5px;
+.list-2 .row > .cell > .txt-box > .txt1 > .body .keyword {
+  color: #8f8f8f;
+  font-size: 0.8em;
+  padding: 5px 0;
+  float: left;
+  width: calc(50% - 20px);
+  letter-spacing: -1px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 5px;
 }
 
 .list-2 .row > .cell > .txt-box > .txt1 > .body .kind-of::before,
-.list-2 .row > .cell > .txt-box > .txt1 > .body .keyword::before{
-	content:'|';
-	padding-right: 5px;
-	display:inline-block;
-	color:#dfdfdf;
+.list-2 .row > .cell > .txt-box > .txt1 > .body .keyword::before {
+  content: "|";
+  padding-right: 5px;
+  display: inline-block;
+  color: #dfdfdf;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .body span {
-	padding-left: 5px;
-	text-transform:uppercase;
+  padding-left: 5px;
+  text-transform: uppercase;
 }
 .list-2 .row > .cell > .txt-box > .txt1 > .body > .first-line,
-.list-2 .row > .cell > .txt-box > .txt1 > .body > .second-line{
-	border-bottom: 1px solid #dfdfdf;
-	padding-bottom:30px;
+.list-2 .row > .cell > .txt-box > .txt1 > .body > .second-line {
+  border-bottom: 1px solid #dfdfdf;
+  /* padding-bottom: 30px; */
 }
 
 .con > .footer {
-	background-color:white;
-	padding: 5px;
-	position:relative;
+  background-color: white;
+  padding: 5px;
+  position: relative;
 }
 .con > .footer span::after {
-	content:'contact us';
-	display:block;
-	position: absolute;
-	text-align: center;
-	font-size: 1.1em;
-	text-transform: uppercase;
-	padding: 13px 30px 15px 30px;
-	color: white;
-	background-color: black;
-	top: 27%;
-	right:50px;
-	cursor: pointer;
+  content: "contact us";
+  display: block;
+  position: absolute;
+  text-align: center;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  padding: 13px 30px 15px 30px;
+  color: white;
+  background-color: black;
+  top: 27%;
+  right: 50px;
+  cursor: pointer;
 }
 .con > .footer .footer-box {
-	border: 1px solid #dfdfdf;
+  border: 1px solid #dfdfdf;
 }
 .con > .footer .footer-txt {
-	width: 70%;
-	margin:50px;
-	height:auto;
+  width: 70%;
+  margin: 50px;
+  height: auto;
 }
 .con > .footer h1 {
-	font-size: 1.2em;
-	font-weight: 400;
-	margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 .con > .footer span {
-	font-size: 0.8em;
-	margin:0;
+  font-size: 0.8em;
+  margin: 0;
 }
 
 .list-2::after {
-	content:'';
-	position:relative;
-	display:block;
-	clear:both;
-	width:100%;
-	height:50px;
-	background-color:inherit;
+  content: "";
+  position: relative;
+  display: block;
+  clear: both;
+  width: 100%;
+  height: 50px;
+  background-color: inherit;
 }
 
 /* 미디어쿼리 시작 */
-@media ( max-width:1920px ) {
-	
-	.list-2 .row > * {
-        width:50% !important;
-    }
-	
-    .list-2 .row > .cell > * {
-        width:100% !important;
-    }
-    
-    .list-2 .row > .cell > .txt-box {
-        height:auto;
-    }
-    
-    .list-2 .row > .cell > .txt-box > .txt1 .body {
-        height:auto;
-    }
-	
-	.list-2 > .row > .cell > .txt-box > .txt1 .body .des {
-		height: auto;
-	}
-	.con > .footer .footer-txt {
-		width: auto;
-		margin:50px;	
-	}
-	.con > .footer span::after {
-		position: relative;
-		margin: 0 50px;
-		width: calc(100% - 60px);
-		margin-top: 20px;
-	}
+@media (max-width: 1920px) {
+  .list-2 .row > * {
+    width: 50% !important;
+  }
+
+  .list-2 .row > .cell > * {
+    width: 100% !important;
+  }
+
+  .list-2 .row > .cell > .txt-box {
+    height: auto;
+  }
+
+  .list-2 .row > .cell > .txt-box > .txt1 .body {
+    height: auto;
+  }
+
+  .list-2 > .row > .cell > .txt-box > .txt1 .body .des {
+    height: auto;
+  }
+  .con > .footer .footer-txt {
+    width: auto;
+    margin: 50px;
+  }
+  .con > .footer span::after {
+    position: relative;
+    margin: 0 50px;
+    width: calc(100% - 60px);
+    margin-top: 20px;
+  }
 }
-@media ( max-width:900px ) {
-	
-	.list-2 .row > * {
-        width:100% !important;
-    }
-	
-    .list-2 .row > .cell > * {
-        width:100% !important;
-    }
-    
-    .list-2 .row > .cell > .txt-box {
-        height:auto;
-    }
-    
-    .list-2 .row > .cell > .txt-box > .txt1 .body {
-        height:auto;
-    }
-	
-	.list-2 > .row > .cell > .txt-box > .txt1 .body .des {
-		height: auto;
-	}
+@media (max-width: 900px) {
+  .list-2 .row > * {
+    width: 100% !important;
+  }
+
+  .list-2 .row > .cell > * {
+    width: 100% !important;
+  }
+
+  .list-2 .row > .cell > .txt-box {
+    height: auto;
+  }
+
+  .list-2 .row > .cell > .txt-box > .txt1 .body {
+    height: auto;
+  }
+
+  .list-2 > .row > .cell > .txt-box > .txt1 .body .des {
+    height: auto;
+  }
 }
-@media ( max-width:800px ) {
-	.list-2 .read-more {
-		position:relative;
-		margin: 10px 0;
-	}
+@media (max-width: 800px) {
+  .list-2 .read-more {
+    position: relative;
+    margin: 10px 0;
+  }
 }
 /* 미디어쿼리 끝 */
 /* list-2 끝 */
-.Footer_footer__VC1F3{
-    display: flex;
-	flex: 1;
-    height: 150px;
-    width: 2000px !important;
-    bottom : 0;
-    background-color : #dde0ea;
+.Footer_footer__VC1F3 {
+  display: flex;
+  flex: 1;
+  height: 150px;
+  width: 2000px !important;
+  bottom: 0;
+  background-color: #dde0ea;
 }
 
-.con list-2{
-	margin-top: 100px;
+.con list-2 {
+  margin-top: 100px;
 }
-.pickCon{
-	padding-bottom: 300px;
+.pickCon {
+  padding-bottom: 300px;
+}
+/* td {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+} */
+
+.des {
+  text-align: center !important;
+}
+.des_title {
+  text-align: end;
+}
+/* body {
+  text-align: center;
+} */
+
+.first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.hashContainer {
+  /* margin: 10px; */
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+.hashContainer > p {
+  margin-left: 15px;
+  margin-top: 15px;
 }
