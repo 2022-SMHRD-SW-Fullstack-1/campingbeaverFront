@@ -16,7 +16,7 @@ import Review from "../Reservation/Review";
 const StoreDetail = () => {
   const params = useParams();
   const [seq, setSeq] = useState(params.pkg_seq);
-  const [sumRating, setSumRating] = useState(0);
+  const [avgRating, setAvgRating] = useState(0);
 
   const [postshow, setPostshow] = useState(false);
   const [addr, setAddr] = useState("");
@@ -260,13 +260,13 @@ const StoreDetail = () => {
           className="thumbnail"
           alt="Product Thumbnail"
         />
-        <Review />
+        <Review setAvgRating={setAvgRating} />
       </section>
       <section className="infoSection">
         <div className="nameContainer">
           <h2 className="itemName">{items.pkg_name}</h2>
           <div>　　</div>
-          <h2>별점</h2>
+          <h2>★ {avgRating}</h2>
         </div>
         <hr />
         <table>

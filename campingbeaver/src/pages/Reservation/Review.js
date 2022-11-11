@@ -4,18 +4,22 @@ import { useParams } from "react-router-dom";
 import image1 from "../../components/img/image1.jpg";
 import image2 from "../../components/img/image2.png";
 import "./Review.scss";
-const Review = () => {
+const Review = (props) => {
   const params = useParams();
-
   const [pkg_seq, setPkg_seq] = useState(params.pkg_seq);
   const [reviewList, setReviewList] = useState([]);
-
   const getReviewList = () => {
     axios
       .get(`/beaver/storedetail/review/${pkg_seq}`)
       .then((res) => {
-        //   console.log("가져오는 데이터 : ", res.data);
-        console.log(res.data);
+        // console.log("가져오는 데이터 : ", res.data);
+        // console.log(res.data);
+        const rating = res.data.map((value) => value.rv_rating);
+        console.log(rating);
+        const result = rating.reduce(function add(sum, currValue) {
+          return sum + currValue;
+        }, 0);
+        props.setAvgRating((result / rating.length).toFixed(1));
         setReviewList((reviewList) => {
           return res.data;
         });
@@ -24,14 +28,9 @@ const Review = () => {
         console.log("err : ", err);
       });
   };
-
-  const getRatingAvg = () => {};
-
   useEffect(() => {
     getReviewList();
-    // console.log(reviewList);
   }, []);
-
   return (
     <div className="reviewContainer">
       <div className="titleContainer">
@@ -51,7 +50,6 @@ const Review = () => {
     </div>
   );
 };
-
 const ReviewBox = ({ rv_photo, rv_rating, rv_content }) => {
   return (
     <div className="contentContainer">

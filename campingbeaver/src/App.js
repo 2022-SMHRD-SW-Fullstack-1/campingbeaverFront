@@ -47,7 +47,7 @@ function App() {
           <Route path="/Store" element={<Store />} />
           <Route path="/Recommendation" element={<Recommendation />} />
           <Route path="/Recommendation:site_seq" element={<RecomDetail />} />
-          <Route path="/Store:surveyParams" element={<StoreSurvey />} />
+
           <Route path="/surveysecond" element={<SurveySecond />} />
           <Route path="/surveythird" element={<SurveyThird />} />
           <Route
@@ -69,6 +69,7 @@ function App() {
           </Route>
 
           <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
+          <Route path="/Store:surveyParams" element={<StoreSurvey />} />
         </Routes>
       </div>
 
