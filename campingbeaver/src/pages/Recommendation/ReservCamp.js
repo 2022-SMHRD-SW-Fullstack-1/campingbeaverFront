@@ -56,13 +56,11 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
             <div class="body">
               <div class="first-line">
                 <i class="fab fa-houzz" aria-hidden="true"></i>
-                <div>
-                  <span>
-                    <img src={hashtag} height="50px" />
-                  </span>
+                <div class="hashContainer">
+                  <img src={hashtag} height="50px" />
+                  <p>{recomList[i].site_hash}</p>
                 </div>
               </div>
-              <p>{recomList[i].site_hash}</p>
             </div>
           </div>
         </div>

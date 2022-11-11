@@ -449,7 +449,7 @@ body {
 .list-2 .row > .cell > .txt-box > .txt1 > .body > .first-line,
 .list-2 .row > .cell > .txt-box > .txt1 > .body > .second-line {
   border-bottom: 1px solid #dfdfdf;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 .con > .footer {
@@ -590,3 +590,22 @@ body {
 /* body {
   text-align: center;
 } */
+
+.first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.hashContainer {
+  /* margin: 10px; */
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+.hashContainer > p {
+  margin-left: 15px;
+  margin-top: 15px;
+}
