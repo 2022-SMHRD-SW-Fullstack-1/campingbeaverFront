@@ -13,7 +13,7 @@ import DaumPostcode from "react-daum-postcode";
 import { useParams } from "react-router-dom";
 import Review from "../Reservation/Review";
 
-const StoreDetail = (props) => {
+const StoreDetail = () => {
   const params = useParams();
   const [seq, setSeq] = useState(params.pkg_seq);
   const [avgRating, setAvgRating] = useState(0);
@@ -253,13 +253,13 @@ const StoreDetail = (props) => {
           className="thumbnail"
           alt="Product Thumbnail"
         />
-        <Review setAvgRating={setAvgRating} />
+        <Review setAvgRating={setAvgRating} avgRating={avgRating} />
       </section>
       <section className="infoSection">
         <div className="nameContainer">
           <h2 className="itemName">{items.pkg_name}</h2>
           <div>　　</div>
-          <h2>{avgRating}</h2>
+          <h2>★{avgRating}/5.0</h2>
         </div>
         <hr />
         <table>
