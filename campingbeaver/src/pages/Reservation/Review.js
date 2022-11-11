@@ -8,7 +8,6 @@ const Review = (props) => {
   const params = useParams();
   const [pkg_seq, setPkg_seq] = useState(params.pkg_seq);
   const [reviewList, setReviewList] = useState([]);
-  const [avg, SetAvg] = useState(0);
   const getReviewList = () => {
     axios
       .get(`/beaver/storedetail/review/${pkg_seq}`)
@@ -16,13 +15,11 @@ const Review = (props) => {
         // console.log("가져오는 데이터 : ", res.data);
         // console.log(res.data);
         const rating = res.data.map((value) => value.rv_rating);
-        console.log(rating);
         const result = rating.reduce(function add(sum, currValue) {
           return sum + currValue;
         }, 0);
 
-        SetAvg((result / rating.length).toFixed(1));
-
+        let avg = (result / rating.length).toFixed(1);
         {
           avg >= 0 ? props.setAvgRating(avg) : props.setAvgRating(0);
         }
@@ -43,7 +40,7 @@ const Review = (props) => {
       <div className="titleContainer">
         <h2>Review</h2>
         <div>　　</div>
-        <span>★{props.avgRating} / 5.0</span>
+        <div className="rating">★{props.avgRating} / 5.0</div>
       </div>
       {reviewList &&
         reviewList.map(({ rv_seq, rv_photo, rv_rating, rv_content }) => {

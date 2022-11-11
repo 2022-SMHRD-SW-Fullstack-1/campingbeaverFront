@@ -23,6 +23,7 @@ const StoreDetail = () => {
   const [items, setItems] = useState({});
   const [addrshow, setAddrshow] = useState("");
   const [postS, setPostS] = useState("");
+  const [user_id, setUser_id] = useState(localStorage.getItem("userId"));
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
@@ -123,7 +124,7 @@ const StoreDetail = () => {
   };
 
   const [inputValue, setInputValue] = useState({
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
     reserv_name: "",
     reserv_post: post,
@@ -136,7 +137,7 @@ const StoreDetail = () => {
   });
 
   let backdata = {
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
     reserv_name: inputValue.reserv_name,
     reserv_post: post,
@@ -149,7 +150,7 @@ const StoreDetail = () => {
   };
 
   const [cartlist, setCartlist] = useState({
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: items.pkg_seq,
   });
 

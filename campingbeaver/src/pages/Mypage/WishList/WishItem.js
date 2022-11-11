@@ -11,8 +11,7 @@ const WishItem = ({ wishName, wishPrice, wishPic, pkg_seq }) => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState(localStorage.userId);
   const [deleteItem, setDeleteItem] = useState({
-    // user_id : id,
-    user_id: "admin",
+    user_id: id,
     pkg_seq: parseInt(pkg_seq),
   });
 
