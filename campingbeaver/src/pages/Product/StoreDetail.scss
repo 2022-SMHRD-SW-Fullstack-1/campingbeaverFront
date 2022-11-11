@@ -29,16 +29,29 @@
     align-items: flex-start;
     flex-direction: column;
     margin-top: 50px;
+    height: 1000px;
 
     img {
       background-color: #eee;
       width: 30rem;
       height: 30rem;
     }
+    .contentContainer {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+      border-top: black solid 0.5px;
+      border-bottom: black solid 0.5px;
+    }
+
+    .contentBox {
+      padding-top: 20px;
+    }
 
     .reviewImg {
-      width: 400px;
-      height: 300px;
+      width: 200px;
+      height: 150px;
+      margin-right: 10px;
     }
   }
 

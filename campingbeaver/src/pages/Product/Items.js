@@ -14,8 +14,7 @@ const Items = ({ getItemData, id, listType, img, itemName, price }) => {
   const [user_id, setUser_id] = useState(localStorage.userId);
 
   const [wishItem, setWishItem] = useState({
-    // user_id : user_id,
-    user_id: "admin",
+    user_id: user_id,
     pkg_seq: parseInt(id),
   });
 

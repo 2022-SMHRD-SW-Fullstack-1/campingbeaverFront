@@ -22,6 +22,10 @@
   position: absolute;
   top: 2500px;
 }
+.searchpick {
+  position: absolute;
+  top: 1750px;
+}
 
 .reservcamp {
   top: 700px;
@@ -85,7 +89,8 @@
   width: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  // overflow-x: scroll;
   // align-items: center;
 }
 

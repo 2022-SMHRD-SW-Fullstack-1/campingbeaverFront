@@ -6,7 +6,7 @@ import Store from "./pages/Product/Store";
 import Layout from "./components/Layout/Layout";
 import Mypage from "./pages/MyPage/Mypage";
 import Reservation from "./pages/Reservation/Reservation";
-import ReviewForm from "../src/pages/ReviewUpload/ReviewForm";
+import ReviewForm from "./pages/Review/ReviewForm";
 import Cart from "../src/pages/Cart/Cart";
 import SurveySecond from "./components/Layout/SurveySecond";
 import SurveyThird from "./components/Layout/SurveyThird";
@@ -29,7 +29,6 @@ import StoreSurvey from "./pages/Product/StoreSurvey";
 
 function App() {
   const [auth, setAuth] = useState(false);
-
   return (
     <div className="App">
       <Header auth={auth} setAuth={setAuth} />
@@ -47,8 +46,6 @@ function App() {
           <Route path="/Store" element={<Store />} />
           <Route path="/Recommendation" element={<Recommendation />} />
           <Route path="/Recommendation:site_seq" element={<RecomDetail />} />
-          <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
-          <Route path="/Store:surveyParams" element={<StoreSurvey />} />
           <Route path="/surveysecond" element={<SurveySecond />} />
           <Route path="/surveythird" element={<SurveyThird />} />
           <Route
@@ -68,6 +65,9 @@ function App() {
             <Route index element={<ReviewList />} />
             <Route path=":reviewID" element={<ReviewPage />} />
           </Route>
+
+          <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
+          <Route path="/Store:surveyParams" element={<StoreSurvey />} />
         </Routes>
       </div>
       {window.location.pathname != "/recommendation" &&

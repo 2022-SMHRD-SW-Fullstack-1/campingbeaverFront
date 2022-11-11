@@ -10,23 +10,9 @@ import { useEffect } from "react";
 import sitelist from "../../data/sitelist.json";
 import Button from "react-bootstrap/Button";
 import Footer from "../../components/Layout/Footer";
+import hashtag from "./iconimg/hashtag.png";
 
 const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
-  let photo = [
-    {
-      name: "블라블라 캠핑장",
-      url: "https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_10_17_11_38_57_fad16366d0.png",
-    },
-    {
-      name: "어쩌구저쩌구 캠핑장",
-      url: "https://campingagains3.s3.ap-northeast-2.amazonaws.com/medium_2021_12_26_12_15_24_34875d31d7.png",
-    },
-    {
-      name: "캠핑탈트 붕괴왔음",
-      url: "http://cdnimage.ebn.co.kr/news/202006/news_1592895124_1439525_m_1.jpeg",
-    },
-  ];
-
   const [recomList, setRecomList] = useState([]);
   const [finalResult, setFinalResult] = useState([]);
   const [searchCheck, setSearchCheck] = useState(true);
@@ -71,7 +57,9 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
               <div class="first-line">
                 <i class="fab fa-houzz" aria-hidden="true"></i>
                 <div>
-                  <span>태그</span>
+                  <span>
+                    <img src={hashtag} height="50px" />
+                  </span>
                 </div>
               </div>
               <p>{recomList[i].site_hash}</p>
@@ -148,6 +136,10 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
     window.location.replace("/recommendation");
   };
 
+  const pickCheck = () => {
+    return searchCheck ? style.pick : style.searchpick;
+  };
+
   return (
     <div className={style.reserv}>
       {/* <button onClick={arrBtn} className={style.clickbutton}>배열찾기</button> */}
@@ -155,7 +147,7 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
         검색하기
       </Button>{" "}
       {/* <CampCard {...finalArr}></CampCard> */}
-      <div className={style.pick}>
+      <div className={pickCheck()}>
         <div className={style.reservtitle}>
           <div className="pickCon">
             <div>
@@ -169,12 +161,12 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
                     read more pick
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" className={style.searchRecom}>
                   {finalResult.map((value) => (
                     <CampCard value={value} />
                   ))}
-                  {searchCheck && recomViewList}
                 </div>
+                <div class="row">{searchCheck && recomViewList}</div>
               </div>
 
               <div class="con">
