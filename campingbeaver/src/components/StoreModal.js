@@ -16,7 +16,7 @@ const StoreModal = ({ items, closeModal }) => {
   const [postshow, setPostshow] = useState(false);
   const [addr, setAddr] = useState("");
   const [post, setPost] = useState("");
-
+  const [avgRating, setAvgRating] = useState(0);
   const [user_id, setUser_id] = useState(localStorage.getItem("userId"));
 
   const [addrshow, setAddrshow] = useState("");
@@ -249,10 +249,14 @@ const StoreModal = ({ items, closeModal }) => {
         />
         <section className="imgSection">
           <img src={img} className="thumbnail" alt="Product Thumbnail" />
-          <Review />
+          <Review setAvgRating={setAvgRating} avgRating={avgRating} />
         </section>
         <section className="infoSection">
-          <h2 className="itemName">{itemName}</h2>
+          <div className="nameContainer">
+            <h2 className="itemName">{itemName}</h2>
+            <div>　　</div>
+            <h2>★{avgRating}/5.0</h2>
+          </div>
           <hr />
           <table>
             <tr className="description">
