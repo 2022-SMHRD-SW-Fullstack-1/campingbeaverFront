@@ -20,10 +20,11 @@
     position: absolute;
     background-color: white;
     border: 1px solid black;
-    width: 100rem;
+    width: 80rem;
     height: 55rem;
     padding: 40px;
     overflow: scroll;
+    margin-left: -20px;
 
     button {
       // background-color: transparent;
@@ -51,12 +52,21 @@
     .imgSection {
       display: flex;
       align-items: flex-start;
+      flex-direction: column;
+      margin-top: 50px;
 
       img {
         background-color: #eee;
         width: 30rem;
         height: 30rem;
       }
+
+      .reviewImg {
+        width: 400px;
+        height: 300px;
+      }
+
+
     }
 
     .infoSection {

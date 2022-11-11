@@ -10,6 +10,7 @@ import '../pages/Reservation/Calendar.css'
 import moment from 'moment'
 import axios from 'axios'
 import DaumPostcode from 'react-daum-postcode';
+import Review from '../pages/Reservation/Review';
 
 const StoreModal = ({ items, closeModal }) => {
 
@@ -243,7 +244,7 @@ const StoreModal = ({ items, closeModal }) => {
   return (
     <div className="storeModal">
       <div className="modalBackground" />
-      <div className="modalComponent">
+       <div className="modalComponent">
         <AiFillCloseSquare
           onClick={() => {
             closeModal(false);
@@ -251,7 +252,8 @@ const StoreModal = ({ items, closeModal }) => {
           className="closeBtn"
         />
         <section className="imgSection">
-          <img src={img} alt="Product Thumbnail" />
+          <img src={img} className="thumbnail" alt="Product Thumbnail" />
+          <Review/>
         </section>
         <section className="infoSection">
           <h2 className="itemName">{itemName}</h2>
