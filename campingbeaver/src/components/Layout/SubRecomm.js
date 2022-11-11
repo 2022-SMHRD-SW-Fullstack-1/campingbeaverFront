@@ -3,6 +3,7 @@ import styles from './MainRecomm.module.scss'
 import left from '../img/back.png'
 import right from '../img/next.png'
 import sitelist from '../../data/sitelist.json'
+import { Link } from 'react-router-dom'
 
 const SubRecomm = () => {
   
@@ -50,6 +51,7 @@ const SubRecomm = () => {
       return (
         <RecommItem
           key={site_seq}
+          num={site_seq}
           name={site_name}
           img={imgsrcthird}
         />
@@ -62,10 +64,10 @@ const SubRecomm = () => {
     
 
 }
-const RecommItem = ({name, img}) => {
+const RecommItem = ({num,name,img}) => {
   return(
     <div className={styles.imgBox}>
-      <img src={img} alt="제품 사진"/>
+      <Link to={`/recommendation${num}`}><img src={img} alt="제품 사진"/></Link>
       <div className={styles.text}>
         <p className={styles.recommendItemName}>{name}</p>
       </div>
