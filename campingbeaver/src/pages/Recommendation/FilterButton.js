@@ -134,19 +134,8 @@ const dataCon = (e) => {
         <Button variant="outline-danger" onClick={clearBtn}>초기화</Button>{' '}
         {/* <Button variant="outline-success" onClick={arrBtn} type="button">검색하기</Button>{' '} */}
       </div>
-      <div>
-                    <div>
-                    {/* <h1>Recommendation</h1>
-                    <p>camping beaver가 추천하는 캠핑 레시피</p> */}
-                    </div>
-                    <div>
-                    <div>
-                    <ReservCamp tagHandler={tagHandler} setTagHandler={setTagHandler} {...inputText}/>
-                    </div>
-                    </div>
-                </div>
-
     </div>
+     <ReservCamp tagHandler={tagHandler} setTagHandler={setTagHandler} {...inputText}/>
     </>
   )
 }

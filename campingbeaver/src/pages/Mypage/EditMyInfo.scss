@@ -7,110 +7,110 @@
   display: flex;
   width: 100%;
 
-    .memberTitle {
-      width: 140px;
-    }
+  .memberTitle {
+    width: 140px;
   }
-  .inputLine {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 30px;
+}
+.inputLine {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 30px;
 
-    .inputTitle {
-      width: 140px;
-    }
+  .inputTitle {
+    width: 140px;
+  }
 
-    .userInput {
-      border: none;
-      border-bottom: 1px solid black;
+  .userInput {
+    border: none;
+    border-bottom: 1px solid black;
 
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .inputDescription {
-      margin-left: 10px;
-      font-size: 11px;
+    &:focus {
+      outline: none;
     }
   }
 
-  .addressLine {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 30px;
+  .inputDescription {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+}
 
-    .address {
-      width: 140px;
-    }
+.addressLine {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 30px;
 
-    .addressInput {
-      width: 300px;
-      border: none;
-      border-bottom: 1px solid black;
+  .address {
+    width: 140px;
+  }
 
-      &:focus {
-        outline: none;
-      }
-    }
+  .addressInput {
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid black;
 
-    .addressDescription {
-      margin-left: 10px;
-      font-size: 11px;
+    &:focus {
+      outline: none;
     }
   }
 
-  .phoneLine {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 30px;
+  .addressDescription {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+}
 
-    .phone {
-      width: 140px;
-    }
+.phoneLine {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 30px;
 
-    .phoneSelect {
-      width: 80px;
-      border: none;
+  .phone {
+    width: 140px;
+  }
 
-      &:focus {
-        outline: none;
-      }
-    }
+  .phoneSelect {
+    width: 80px;
+    border: none;
 
-    input {
-      width: 100px;
-      border: none;
-      border-bottom: 1px solid black;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .phoneDescription {
-      margin-left: 10px;
-      font-size: 11px;
+    &:focus {
+      outline: none;
     }
   }
 
+  input {
+    width: 100px;
+    border: none;
+    border-bottom: 1px solid black;
 
-  .editBtn {
-    width: 130px;
-    height: 40px;
-    margin: 20px;
-    color: black;
-    background-color: white;
-    cursor: pointer;
-
-    &:disabled {
-      color: white;
-      background-color: black;
-      transition: all 350ms ease-in-out;
-      cursor: default;
+    &:focus {
+      outline: none;
     }
   }
+
+  .phoneDescription {
+    margin-left: 10px;
+    font-size: 11px;
+  }
+}
+
+
+.editBtn {
+  width: 130px;
+  height: 40px;
+  margin: 20px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+
+  &:disabled {
+    color: white;
+    background-color: black;
+    transition: all 350ms ease-in-out;
+    cursor: default;
+  }
+}
 // }

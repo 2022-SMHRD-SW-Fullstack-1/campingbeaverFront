@@ -20,7 +20,6 @@ const Layout = () => {
           <Survey/>
           <MainRecomm/>
           <SubRecomm/>
-
     </div>
   )
 }

@@ -4,21 +4,38 @@ import { GrFacebook, GrInstagram, GrTwitter } from "react-icons/gr";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, { useState, useEffect } from "react";
-import "./StoreModal.scss";
+import "./StoreDetail.scss";
 import Calendar from "react-calendar";
-import "../pages/Reservation/Calendar.css";
+import "../../pages/Reservation/Calendar.css";
 import moment from "moment";
 import axios from "axios";
 import DaumPostcode from "react-daum-postcode";
-import Review from "../pages/Reservation/Review";
+import { useParams } from "react-router-dom";
+import Review from "../Reservation/Review";
 
-const StoreModal = ({ items, closeModal }) => {
+const StoreDetail = () => {
+  const params = useParams();
+  const [seq, setSeq] = useState(params.pkg_seq);
+  const [sumRating, setSumRating] = useState(0);
+
   const [postshow, setPostshow] = useState(false);
   const [addr, setAddr] = useState("");
   const [post, setPost] = useState("");
-
+  const [items, setItems] = useState({});
   const [addrshow, setAddrshow] = useState("");
   const [postS, setPostS] = useState("");
+
+  useEffect(() => {
+    axios.get("/beaver/pkglist").then((response) => {
+      setItems(response.data[seq - 1]);
+    });
+  }, []);
+
+  // const getAvgRating = () => {
+  //   const pkgRating = reviewList.map((list) => {
+  //     return;
+  //   });
+  // };
 
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -52,7 +69,7 @@ const StoreModal = ({ items, closeModal }) => {
   };
 
   const [count, setCount] = useState(1);
-  const { id, img, itemName, price } = items;
+  // const { id, price, img, itemName } = items;
 
   const currentCount = (e) => {
     const count = e.target;
@@ -71,8 +88,8 @@ const StoreModal = ({ items, closeModal }) => {
     }
   };
 
-  const priceToString = Number(price).toLocaleString("ko-KR");
-  const calculateTotalPrice = price * count;
+  const priceToString = Number(items.pkg_price).toLocaleString("ko-KR");
+  const calculateTotalPrice = items.pkg_price * count;
   const totalPriceToString = calculateTotalPrice.toLocaleString("ko-KR");
 
   const [value, onChange] = useState([
@@ -114,7 +131,7 @@ const StoreModal = ({ items, closeModal }) => {
 
   const [inputValue, setInputValue] = useState({
     user_id: "admin",
-    pkg_seq: id,
+    pkg_seq: items.pkg_seq,
     reserv_name: "",
     reserv_post: post,
     reserv_addr: addr,
@@ -127,7 +144,7 @@ const StoreModal = ({ items, closeModal }) => {
 
   let backdata = {
     user_id: "admin",
-    pkg_seq: id,
+    pkg_seq: items.pkg_seq,
     reserv_name: inputValue.reserv_name,
     reserv_post: post,
     reserv_addr: addr,
@@ -140,7 +157,7 @@ const StoreModal = ({ items, closeModal }) => {
 
   const [cartlist, setCartlist] = useState({
     user_id: "admin",
-    pkg_seq: id,
+    pkg_seq: items.pkg_seq,
   });
 
   const handleInput = (e) => {
@@ -200,7 +217,7 @@ const StoreModal = ({ items, closeModal }) => {
       pg: "html5_inicis", // PG사 (필수항목)
       pay_method: "card", // 결제수단 (필수항목)
       merchant_uid: `mid_${new Date().getTime()}`, // 결제금액 (필수항목)
-      name: itemName, // 주문명 (필수항목)
+      name: items.pkg_name, // 주문명 (필수항목)
       amount: calculateTotalPrice, // 금액 (필수항목)
       custom_data: { name: "부가정보", desc: "세부 부가정보" },
       buyer_name: "비버", // 구매자 이름
@@ -236,21 +253,22 @@ const StoreModal = ({ items, closeModal }) => {
   };
 
   return (
-    <div className="storeModal">
-      <div className="modalBackground" />
+    <>
       <div className="modalComponent">
-        <AiFillCloseSquare
-          onClick={() => {
-            closeModal(false);
-          }}
-          className="closeBtn"
-        />
         <section className="imgSection">
-          <img src={img} className="thumbnail" alt="Product Thumbnail" />
+          <img
+            src={items.pkg_photo}
+            className="thumbnail"
+            alt="Product Thumbnail"
+          />
           <Review />
         </section>
         <section className="infoSection">
-          <h2 className="itemName">{itemName}</h2>
+          <div className="nameContainer">
+            <h2 className="itemName">{items.pkg_name}</h2>
+            <div>　　</div>
+            <h2>별점</h2>
+          </div>
           <hr />
           <table>
             <tr className="description">
@@ -401,7 +419,7 @@ const StoreModal = ({ items, closeModal }) => {
             </div>
           </div>
           <div className="amountTab">
-            <span className="itemName">{itemName}</span>
+            <span className="itemName">{items.pkg_name}</span>
             <div className="inputAmount">
               <div
                 className="amountInput"
@@ -476,14 +494,6 @@ const StoreModal = ({ items, closeModal }) => {
 
               {postshow == true ? (
                 <Modal show={postshow}>
-                  <buttom
-                    align="right"
-                    onClick={() => {
-                      setPostshow(false);
-                    }}
-                  >
-                    ❌
-                  </buttom>
                   <DaumPostcode
                     className="postmodal"
                     onComplete={handleComplete}
@@ -554,11 +564,9 @@ const StoreModal = ({ items, closeModal }) => {
               </Modal.Footer>
             </Modal>
           </div>
-          <div></div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
-
-export default StoreModal;
+export default StoreDetail;

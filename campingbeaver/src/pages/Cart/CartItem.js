@@ -24,11 +24,6 @@ const CartItem = ({ basket_seq, CartName, CartPrice, CartPic, pkg_seq }) => {
         alert("장바구니에서 삭제완료!");
         window.location.replace("cart");
       });
-
-    // axios.post('/beaver/cartdelete', basket_seq)
-    // .then(
-    //   window.location.replace('cart')
-    // )
   };
 
   return (
