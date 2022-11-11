@@ -25,6 +25,7 @@ import Ordercom from "./pages/Cart/Ordercom";
 import EditMyInfo from "./pages/MyPage/EditMyInfo";
 import KakaoRedirectHandeler from "./pages/Login/KakaoRedirectHandeler";
 import StoreDetail from "./pages/Product/StoreDetail";
+import StoreSurvey from "./pages/Product/StoreSurvey";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -46,6 +47,8 @@ function App() {
           <Route path="/Store" element={<Store />} />
           <Route path="/Recommendation" element={<Recommendation />} />
           <Route path="/Recommendation:site_seq" element={<RecomDetail />} />
+          <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
+          <Route path="/Store:surveyParams" element={<StoreSurvey />} />
           <Route path="/surveysecond" element={<SurveySecond />} />
           <Route path="/surveythird" element={<SurveyThird />} />
           <Route
@@ -61,15 +64,18 @@ function App() {
           />
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
           <Route path="/editmyinfo" element={<EditMyInfo />} />
-          <Route path="/ReviewList/:id"></Route>
-          <Route index element={<ReviewList />} />
-          <Route path=":reviewID" element={<ReviewPage />} />
-
-          <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
+          <Route path="/ReviewList/:id">
+            <Route index element={<ReviewList />} />
+            <Route path=":reviewID" element={<ReviewPage />} />
+          </Route>
         </Routes>
       </div>
-
-      {window.location.pathname != "/recommendation" ? <Footer /> : <></>}
+      {window.location.pathname != "/recommendation" &&
+      window.location.pathname.substring("0", "12") != "/storedetail" ? (
+        <Footer />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

@@ -12,6 +12,7 @@ import axios from "axios";
 import DaumPostcode from "react-daum-postcode";
 import { useParams } from "react-router-dom";
 import Review from "../Reservation/Review";
+import Footer from "../../components/Layout/Footer";
 
 const StoreDetail = () => {
   const params = useParams();
@@ -254,317 +255,338 @@ const StoreDetail = () => {
 
   return (
     <>
-      <div className="modalComponent">
-        <section className="imgSection">
-          <img
-            src={items.pkg_photo}
-            className="thumbnail"
-            alt="Product Thumbnail"
-          />
-          <Review />
-        </section>
-        <section className="infoSection">
-          <div className="nameContainer">
-            <h2 className="itemName">{items.pkg_name}</h2>
-            <div>　　</div>
-            <h2>별점</h2>
-          </div>
-          <hr />
-          <table>
-            <tr className="description">
-              <th>상품 간략설명</th>
-              <td>패키지</td>
-            </tr>
-            <tr className="price">
-              <th>판매가</th>
-              <td>￦{priceToString}</td>
-            </tr>
-            <tr>
-              <th>배송 방법</th>
-              <td>택배</td>
-            </tr>
-            <tr>
-              <th>배송비</th>
-              <td>￦10,000 (￦100,000 이상 구매 시 무료)</td>
-            </tr>
-            <tr>
-              <th>SNS 상품홍보</th>
-              <td className="snsBtn">
-                <GrFacebook className="facebookBtn" />
-                <GrTwitter className="twitterBtn" />
-                <GrInstagram className="instagram" />
-              </td>
-            </tr>
-          </table>
-          <hr />
-          <div>
-            <div className="reservCalCon">
-              <div className="reservBtn">
-                {data.map((item, idx) => {
-                  return (
-                    <>
-                      <button
-                        value={idx}
-                        className={"btn" + (idx == btnActive ? " active" : "")}
-                        onClick={toggleActive}
-                      >
-                        {item}
-                      </button>
+      <div className="storeCom">
+        <div className="modalComponent">
+          <section className="imgSection">
+            <img
+              src={items.pkg_photo}
+              className="thumbnail"
+              alt="Product Thumbnail"
+            />
+            <Review />
+          </section>
+          <section className="infoSection">
+            <div className="nameContainer">
+              <h2 className="itemName">{items.pkg_name}</h2>
+              <div>　　</div>
+              <h2>별점</h2>
+            </div>
+            <hr />
+            <table>
+              <tr className="description">
+                <th>상품 간략설명</th>
+                <td>패키지</td>
+              </tr>
+              <tr className="price">
+                <th>판매가</th>
+                <td>￦{priceToString}</td>
+              </tr>
+              <tr>
+                <th>배송 방법</th>
+                <td>택배</td>
+              </tr>
+              <tr>
+                <th>배송비</th>
+                <td>￦10,000 (￦100,000 이상 구매 시 무료)</td>
+              </tr>
+              <tr>
+                <th>SNS 상품홍보</th>
+                <td className="snsBtn">
+                  <GrFacebook className="facebookBtn" />
+                  <GrTwitter className="twitterBtn" />
+                  <GrInstagram className="instagram" />
+                </td>
+              </tr>
+            </table>
+            <hr />
+            <div>
+              <div className="reservCalCon">
+                <div className="reservBtn">
+                  {data.map((item, idx) => {
+                    return (
+                      <>
+                        <button
+                          value={idx}
+                          className={
+                            "btn" + (idx == btnActive ? " active" : "")
+                          }
+                          onClick={toggleActive}
+                        >
+                          {item}
+                        </button>
+                        <br />
+                        <br />
+                      </>
+                    );
+                  })}
+                  {/* <button onClick={check}>체크버튼</button> */}
+                  <div className="reservDays">
+                    <div className="date-box">
+                      <span>배송예정일</span>
                       <br />
+                      <span className="text-gray-500 mt-4">
+                        {
+                          moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                            ? moment(new Date()).format("MM / DD (ddd)")
+                            : moment(value1 - 86400).format("MM / DD (ddd)")
+                          // (date==1&&moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
+                          //   moment(value1).format("MM / DD (ddd)") :
+                          //   moment(value - 86400).format("MM / DD (ddd)")
+                        }
+                      </span>
                       <br />
-                    </>
-                  );
-                })}
-                {/* <button onClick={check}>체크버튼</button> */}
-                <div className="reservDays">
-                  <div className="date-box">
-                    <span>배송예정일</span>
-                    <br />
-                    <span className="text-gray-500 mt-4">
-                      {
-                        moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                          ? moment(new Date()).format("MM / DD (ddd)")
-                          : moment(value1 - 86400).format("MM / DD (ddd)")
-                        // (date==1&&moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
-                        //   moment(value1).format("MM / DD (ddd)") :
-                        //   moment(value - 86400).format("MM / DD (ddd)")
-                      }
-                    </span>
-                    <br />
-                    <span>회수예정일</span>
-                    <br />
-                    <span className="text-gray-500 mt-4">
-                      {
-                        date == 0
-                          ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
-                          : date == 2
-                          ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
-                          : date == 3
-                          ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
-                          : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                          ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
-                          : moment(new Date(value1))
-                              .add(3, "day")
-                              .format("MM / DD (ddd)")
-                        //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
-                      }
-                    </span>
-                    <br />
+                      <span>회수예정일</span>
+                      <br />
+                      <span className="text-gray-500 mt-4">
+                        {
+                          date == 0
+                            ? moment(new Date() * 1.00014).format(
+                                "MM / DD (ddd)"
+                              )
+                            : date == 2
+                            ? moment(new Date() * 1.00024).format(
+                                "MM / DD (ddd)"
+                              )
+                            : date == 3
+                            ? moment(new Date() * 1.00028).format(
+                                "MM / DD (ddd)"
+                              )
+                            : moment(value1).format("YYYY-MM-DD") !=
+                              "2022-11-25"
+                            ? moment(new Date() * 1.0002).format(
+                                "MM / DD (ddd)"
+                              )
+                            : moment(new Date(value1))
+                                .add(3, "day")
+                                .format("MM / DD (ddd)")
+                          //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
+                        }
+                      </span>
+                      <br />
+                    </div>
                   </div>
                 </div>
+                <div className="Cal">
+                  {date == 0 ? (
+                    <Calendar
+                      onChange={onChange}
+                      value={value}
+                      defaultValue={date}
+                      minDate={
+                        new Date(2022, 10, moment(new Date()).format("D"))
+                      }
+                      next2Label={null}
+                      prev2Label={null}
+                      showNeighboringMonth={false}
+                      formatDay={(local, date) => moment(date).format("DD")}
+                      calendarType="US"
+                    />
+                  ) : date == 2 ? (
+                    <Calendar
+                      onChange={onChange3}
+                      value={value3}
+                      defaultValue={date}
+                      minDate={
+                        new Date(2022, 10, moment(new Date()).format("D"))
+                      }
+                      next2Label={null}
+                      prev2Label={null}
+                      showNeighboringMonth={false}
+                      formatDay={(local, date) => moment(date).format("DD")}
+                      calendarType="US"
+                    />
+                  ) : date == 3 ? (
+                    <Calendar
+                      onChange={onChange4}
+                      value={value4}
+                      defaultValue={date}
+                      minDate={
+                        new Date(2022, 10, moment(new Date()).format("D"))
+                      }
+                      next2Label={null}
+                      prev2Label={null}
+                      showNeighboringMonth={false}
+                      formatDay={(local, date) => moment(date).format("DD")}
+                      calendarType="US"
+                    />
+                  ) : moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? (
+                    <Calendar
+                      onChange={onChange1}
+                      value={value1}
+                      defaultValue={date}
+                      minDate={new Date()}
+                      next2Label={null}
+                      prev2Label={null}
+                      showNeighboringMonth={false}
+                      formatDay={(local, date) => moment(date).format("DD")}
+                      calendarType="US"
+                    />
+                  ) : (
+                    <Calendar
+                      onChange={onChange2}
+                      value={value2}
+                      defaultValue={date}
+                      minDate={new Date()}
+                      next2Label={null}
+                      prev2Label={null}
+                      showNeighboringMonth={false}
+                      formatDay={(local, date) => moment(date).format("DD")}
+                      calendarType="US"
+                    />
+                  )}
+                </div>
               </div>
-              <div className="Cal">
-                {date == 0 ? (
-                  <Calendar
-                    onChange={onChange}
-                    value={value}
-                    defaultValue={date}
-                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
-                    next2Label={null}
-                    prev2Label={null}
-                    showNeighboringMonth={false}
-                    formatDay={(local, date) => moment(date).format("DD")}
-                    calendarType="US"
+            </div>
+            <div className="amountTab">
+              <span className="itemName">{items.pkg_name}</span>
+              <div className="inputAmount">
+                <div
+                  className="amountInput"
+                  onChange={currentCount}
+                  type="number"
+                >
+                  <span>{count}</span>
+                </div>
+                <div className="amountHandler">
+                  <button onClick={increaseCount} className="up">
+                    <IoMdArrowDropup className="arrow" />
+                  </button>
+                  <button onClick={decreaseCount} className="down">
+                    <IoMdArrowDropdown className="arrow" />
+                  </button>
+                </div>
+              </div>
+              <span className="amountPrice">￦{totalPriceToString}</span>
+            </div>
+            <hr />
+            <div className="totalPrice">
+              총 상품금액 :<span> ￦{totalPriceToString} </span>({count}개)
+            </div>
+            <div>
+              <main className="signup">
+                <form className="inputLine">
+                  <div className="inputTitle">예약시작날짜</div>
+                  <input
+                    type="text"
+                    // value={reserv_s_date}
+                    value={
+                      moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                        ? moment(new Date()).add(1, "day").format("YYYY-MM-DD")
+                        : moment(value1).format("YYYY-MM-DD")
+                    }
+                    className="userInput"
+                    onChange={handleInput}
+                    name="reserv_s_date"
                   />
-                ) : date == 2 ? (
-                  <Calendar
-                    onChange={onChange3}
-                    value={value3}
-                    defaultValue={date}
-                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
-                    next2Label={null}
-                    prev2Label={null}
-                    showNeighboringMonth={false}
-                    formatDay={(local, date) => moment(date).format("DD")}
-                    calendarType="US"
+                  <div className="inputTitle">예약종료날짜</div>
+                  <input
+                    type="text"
+                    // value={reserv_e_date}
+                    value={
+                      date == 0
+                        ? moment(new Date() * 1.00014).format("YYYY-MM-DD")
+                        : date == 2
+                        ? moment(new Date() * 1.00024).format("YYYY-MM-DD")
+                        : date == 3
+                        ? moment(new Date() * 1.00028).format("YYYY-MM-DD")
+                        : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                        ? moment(new Date() * 1.0002).format("YYYY-MM-DD")
+                        : moment(new Date(value1))
+                            .add(3, "day")
+                            .format("YYYY-MM-DD")
+                    }
+                    className="userInput"
+                    onChange={handleInput}
+                    name="reserv_e_date"
                   />
-                ) : date == 3 ? (
-                  <Calendar
-                    onChange={onChange4}
-                    value={value4}
-                    defaultValue={date}
-                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
-                    next2Label={null}
-                    prev2Label={null}
-                    showNeighboringMonth={false}
-                    formatDay={(local, date) => moment(date).format("DD")}
-                    calendarType="US"
+                </form>
+
+                <form className="inputLine">
+                  <div className="inputTitle">예약자이름</div>
+                  <input
+                    type="text"
+                    className="userInput"
+                    onChange={handleInput}
+                    name="reserv_name"
                   />
-                ) : moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? (
-                  <Calendar
-                    onChange={onChange1}
-                    value={value1}
-                    defaultValue={date}
-                    minDate={new Date()}
-                    next2Label={null}
-                    prev2Label={null}
-                    showNeighboringMonth={false}
-                    formatDay={(local, date) => moment(date).format("DD")}
-                    calendarType="US"
-                  />
+                </form>
+
+                {postshow == true ? (
+                  <Modal show={postshow}>
+                    <DaumPostcode
+                      className="postmodal"
+                      onComplete={handleComplete}
+                      onSearch={handleSearch}
+                    />
+                  </Modal>
                 ) : (
-                  <Calendar
-                    onChange={onChange2}
-                    value={value2}
-                    defaultValue={date}
-                    minDate={new Date()}
-                    next2Label={null}
-                    prev2Label={null}
-                    showNeighboringMonth={false}
-                    formatDay={(local, date) => moment(date).format("DD")}
-                    calendarType="US"
-                  />
+                  <></>
                 )}
-              </div>
-            </div>
-          </div>
-          <div className="amountTab">
-            <span className="itemName">{items.pkg_name}</span>
-            <div className="inputAmount">
-              <div
-                className="amountInput"
-                onChange={currentCount}
-                type="number"
-              >
-                <span>{count}</span>
-              </div>
-              <div className="amountHandler">
-                <button onClick={increaseCount} className="up">
-                  <IoMdArrowDropup className="arrow" />
+                <button className="addrBtn" onClick={postmodal}>
+                  주소검색
                 </button>
-                <button onClick={decreaseCount} className="down">
-                  <IoMdArrowDropdown className="arrow" />
-                </button>
-              </div>
-            </div>
-            <span className="amountPrice">￦{totalPriceToString}</span>
-          </div>
-          <hr />
-          <div className="totalPrice">
-            총 상품금액 :<span> ￦{totalPriceToString} </span>({count}개)
-          </div>
-          <div>
-            <main className="signup">
-              <form className="inputLine">
-                <div className="inputTitle">예약시작날짜</div>
-                <input
-                  type="text"
-                  // value={reserv_s_date}
-                  value={
-                    moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                      ? moment(new Date()).format("YYYY-MM-DD")
-                      : moment(value1).format("YYYY-MM-DD")
-                  }
-                  className="userInput"
-                  onChange={handleInput}
-                  name="reserv_s_date"
-                />
-                <div className="inputTitle">예약종료날짜</div>
-                <input
-                  type="text"
-                  // value={reserv_e_date}
-                  value={
-                    date == 0
-                      ? moment(new Date() * 1.00014).format("YYYY-MM-DD")
-                      : date == 2
-                      ? moment(new Date() * 1.00024).format("YYYY-MM-DD")
-                      : date == 3
-                      ? moment(new Date() * 1.00028).format("YYYY-MM-DD")
-                      : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                      ? moment(new Date() * 1.0002).format("YYYY-MM-DD")
-                      : moment(new Date(value1))
-                          .add(3, "day")
-                          .format("YYYY-MM-DD")
-                  }
-                  className="userInput"
-                  onChange={handleInput}
-                  name="reserv_e_date"
-                />
-              </form>
-
-              <form className="inputLine">
-                <div className="inputTitle">예약자이름</div>
-                <input
-                  type="text"
-                  className="userInput"
-                  onChange={handleInput}
-                  name="reserv_name"
-                />
-              </form>
-
-              {postshow == true ? (
-                <Modal show={postshow}>
-                  <DaumPostcode
-                    className="postmodal"
-                    onComplete={handleComplete}
-                    onSearch={handleSearch}
+                <form className="addressLine1">
+                  <div className="address">예약자우편번호</div>
+                  <input
+                    type="text"
+                    value={postS}
+                    className="addressInput"
+                    onChange={handleInput}
+                    name="reserv_post"
                   />
-                </Modal>
-              ) : (
-                <></>
-              )}
-              <button onClick={postmodal}>주소검색</button>
-              <form className="addressLine1">
-                <div className="address">예약자우편번호</div>
-                <input
-                  type="text"
-                  value={postS}
-                  className="addressInput"
-                  onChange={handleInput}
-                  name="reserv_post"
-                />
-              </form>
+                </form>
 
-              <form className="addressLine2">
-                <div className="address">예약자주소</div>
-                <input
-                  type="text"
-                  value={addrshow}
-                  className="addressInput"
-                  onChange={handleInput}
-                  name="reserv_addr"
-                />
-              </form>
+                <form className="addressLine2">
+                  <div className="address">예약자주소</div>
+                  <input
+                    type="text"
+                    value={addrshow}
+                    className="addressInput"
+                    onChange={handleInput}
+                    name="reserv_addr"
+                  />
+                </form>
 
-              <form className="phoneLine">
-                <div className="phone">Mobile Phone</div>
-                <input
-                  type="text"
-                  className="phoneSecond"
-                  onChange={handleInput}
-                  name="reserv_phone"
-                />
-              </form>
-            </main>
-          </div>
-          <div className="totalBuyBtn">
-            <button className="buyBtn" onClick={onClickPayment}>
-              결제하기
-            </button>
-            <button onClick={handleShow} className="cartBtn">
-              CART
-            </button>
-            <Modal
-              show={show}
-              onHide={handleClose}
-              backdrop="static"
-              keyboard={false}
-            >
-              <Modal.Header closeButton>
-                <Modal.Title>장바구니</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>장바구니에 추가되었습니다.</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={cartpagebtn}>
-                  장바구니로 이동
-                </Button>
-              </Modal.Footer>
-            </Modal>
-          </div>
-        </section>
+                <form className="phoneLine">
+                  <div className="phone">Mobile Phone</div>
+                  <input
+                    type="text"
+                    className="phoneSecond"
+                    onChange={handleInput}
+                    name="reserv_phone"
+                  />
+                </form>
+              </main>
+            </div>
+            <div className="totalBuyBtn">
+              <button className="buyBtn" onClick={onClickPayment}>
+                결제하기
+              </button>
+              <button onClick={handleShow} className="cartBtn">
+                CART
+              </button>
+              <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>장바구니</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>장바구니에 추가되었습니다.</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={cartpagebtn}>
+                    장바구니로 이동
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </div>
+          </section>
+        </div>
       </div>
     </>
   );

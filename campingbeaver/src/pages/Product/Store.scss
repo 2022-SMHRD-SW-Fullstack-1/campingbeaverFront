@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .store {
   @include flexCenter;
@@ -123,13 +123,15 @@
         margin: 20px 0;
         height: 1px;
         border: 0;
-        background: linear-gradient(to right,
-            white,
-            #eee,
-            #eee,
-            #eee,
-            #eee,
-            white);
+        background: linear-gradient(
+          to right,
+          white,
+          #eee,
+          #eee,
+          #eee,
+          #eee,
+          white
+        );
       }
 
       .name {
@@ -167,13 +169,15 @@
         margin: 20px 0;
         height: 1px;
         border: 0;
-        background: linear-gradient(to right,
-            white,
-            #eee,
-            #eee,
-            #eee,
-            #eee,
-            white);
+        background: linear-gradient(
+          to right,
+          white,
+          #eee,
+          #eee,
+          #eee,
+          #eee,
+          white
+        );
       }
 
       .name {

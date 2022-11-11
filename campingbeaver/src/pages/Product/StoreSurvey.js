@@ -8,9 +8,8 @@ import Items from "./Items";
 import "./Store.scss";
 import axios from "axios";
 
-const Store = () => {
+const StoreSurvey = () => {
   const surveyParams = useParams();
-  console.log(surveyParams);
   const [items, setItems] = useState([]);
   const [listType, setListType] = useState("small");
   const [openModal, setOpenModal] = useState(false);
@@ -24,12 +23,28 @@ const Store = () => {
   const urlOffset = params.get("offset");
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
+  console.log(surveyParams.surveyParams);
+  const selectParams = () => {
+    switch (parseInt(surveyParams.surveyParams)) {
+      case 1:
+        return "감성";
+      case 2:
+        return "2인용";
+      case 3:
+        return "4인용";
+    }
+  };
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
-      console.log(response.data);
-
-      setItems(response.data);
+      console.log("selectparams", selectParams());
+      //   console.log(response.data)
+      // example = response.data.filter(value=>value.pkg_hash.includes(selectParams()))
+      // console.log(example)
+      setItems(
+        response.data.filter((value) => value.pkg_hash.includes(selectParams()))
+      );
+      console.log(items);
     });
   }, []);
 
@@ -133,7 +148,7 @@ const Store = () => {
       {openModal && <StoreModal items={itemData} closeModal={setOpenModal} />}
       <div className="store">
         <section>
-          <h2>전체상품</h2>
+          <h2>상품 검색 결과</h2>
           {urlCategory && (
             <div className="category">
               {CATEGORY[urlCategory].map(({ id, name }) => {
@@ -194,4 +209,4 @@ const Store = () => {
   );
 };
 
-export default Store;
+export default StoreSurvey;
