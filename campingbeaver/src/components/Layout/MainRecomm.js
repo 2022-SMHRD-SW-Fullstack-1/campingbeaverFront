@@ -4,6 +4,7 @@ import ITEM_CARD_DATA from '../../data/wishList.json'
 import left from '../img/back.png'
 import right from '../img/next.png'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const MainRecomm = () => {
@@ -62,6 +63,7 @@ const MainRecomm = () => {
           key={pkg_seq}
           name={pkg_name}
           img={pkg_photo}
+          seq={pkg_seq}
         />
       );
     })}
@@ -73,10 +75,13 @@ const MainRecomm = () => {
  
 
 }
-const RecommItem = ({img, name}) => {
+const RecommItem = ({img, name, seq}) => {
   return(
     <div className={styles.imgBox}>
+      
+      <Link to = {`/storedetail${seq}`}>
       <img src={img} alt="제품 사진"/>
+      </Link>
       <div className={styles.text}>
         <p className={styles.recommendItemName}>{name}</p>
       </div>
