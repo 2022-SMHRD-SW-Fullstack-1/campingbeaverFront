@@ -13,7 +13,7 @@ const ReviewList = () => {
   const params = useParams();
 
   const [reviewList, setReviewList] = useState([]);
-
+  const [user_id, setUser_id] = useState(localStorage.userId);
   // 검색용 Hook
   const [choiceVal, setChoiceVal] = useState("");
   const [searchVal, setSearchVal] = useState("");
@@ -30,15 +30,12 @@ const ReviewList = () => {
   // Link 용 (함수)
   let navigate = useNavigate();
 
-  // const user_id = params.id
-  const user_id = "admin";
-
   /* 게시글 목록 */
   const getReviewList = () => {
     axios
       .get(`/beaver/reviewlist/${user_id}`)
       .then((res) => {
-        //console.log('가져오는 리뷰리스트',res.data);
+        // console.log("가져오는 리뷰리스트", res.data);
 
         setReviewList((reviewList) => {
           return res.data;
@@ -175,14 +172,12 @@ const TableRow = (props) => {
   const [dlt, setDlt] = useState(false);
   const [id, setId] = useState(localStorage.userId);
   const [deleteItem, setDeleteItem] = useState({
-    // user_id : id,
-    user_id: "admin",
+    user_id: id,
     rv_seq: props.rv_seq,
   });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleUpdate = () => {};
 
   const handleClose2 = () => setDlt(false);
   const handleDlt = () => setDlt(true);
@@ -243,9 +238,7 @@ const TableRow = (props) => {
             <Button variant="secondary" onClick={handleClose}>
               아니오
             </Button>
-            <Button variant="success" onClick={handleUpdate}>
-              네
-            </Button>
+            <Button variant="success">네</Button>
           </Modal.Footer>
         </Modal>
 

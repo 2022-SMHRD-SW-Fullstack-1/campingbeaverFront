@@ -15,11 +15,15 @@ const Review = (props) => {
         // console.log("가져오는 데이터 : ", res.data);
         // console.log(res.data);
         const rating = res.data.map((value) => value.rv_rating);
-        console.log(rating);
         const result = rating.reduce(function add(sum, currValue) {
           return sum + currValue;
         }, 0);
-        props.setAvgRating((result / rating.length).toFixed(1));
+
+        let avg = (result / rating.length).toFixed(1);
+        {
+          avg >= 0 ? props.setAvgRating(avg) : props.setAvgRating(0);
+        }
+
         setReviewList((reviewList) => {
           return res.data;
         });
@@ -35,6 +39,8 @@ const Review = (props) => {
     <div className="reviewContainer">
       <div className="titleContainer">
         <h2>Review</h2>
+        <div>　　</div>
+        <div className="rating">★{props.avgRating} / 5.0</div>
       </div>
       {reviewList &&
         reviewList.map(({ rv_seq, rv_photo, rv_rating, rv_content }) => {
@@ -54,8 +60,8 @@ const ReviewBox = ({ rv_photo, rv_rating, rv_content }) => {
   return (
     <div className="contentContainer">
       <img src={rv_photo} className="reviewImg"></img>
-      <div>
-        <span>★{rv_rating}.0 / 5.0</span>
+      <div className="contentBox">
+        <span>★{rv_rating}.0</span>
         <br />
         <span>{rv_content}</span>
       </div>
