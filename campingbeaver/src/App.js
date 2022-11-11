@@ -62,9 +62,8 @@ function App() {
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
           <Route path="/editmyinfo" element={<EditMyInfo />} />
           <Route path="/ReviewList/:id"></Route>
-            <Route index element={<ReviewList />} />
-            <Route path=":reviewID" element={<ReviewPage />} />
-          </Route>
+          <Route index element={<ReviewList />} />
+          <Route path=":reviewID" element={<ReviewPage />} />
 
           <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
         </Routes>
