@@ -1,9 +1,9 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import CartEmpty from './CartEmpty';
-import CartNotEmpty from './CartNotEmpty'
-import axios from 'axios'
-import styles from '../MyPage/MyPage.module.scss'
+import CartEmpty from "./CartEmpty";
+import CartNotEmpty from "./CartNotEmpty";
+import axios from "axios";
+import styles from "../MyPage/MyPage.module.scss";
 
 function Cart() {
   if (localStorage.userName == null) {
@@ -12,56 +12,54 @@ function Cart() {
   }
   const [cartList, setCartList] = useState([]);
   useEffect(() => {
-    axios.get("/beaver/basketlist")
-    .then(response=>{
-      console.log(response.data)
-      
+    const user_id = localStorage.getItem("userId");
+    axios.get(`/beaver/basketlist${user_id}`).then((response) => {
+      // console.log(response.data);
+
       setCartList(response.data);
-    })
+    });
   }, []);
   return (
     <>
-      {
-        cartList.length == 0 ?
-          <div>
-            <CartEmpty />
-          </div>
-          :
-          <div>
+      {cartList.length == 0 ? (
+        <div>
+          <CartEmpty />
+        </div>
+      ) : (
+        <div>
+          <DimmedBackground />
+          <ContentDiv>
+            <CartPage>
+              <CartPageHeader>
+                <PageHeaderTitle>장바구니</PageHeaderTitle>
+                <PageHeaderSteps>
+                  <PageHeaderStepsLi className="active">
+                    <em>1.</em>
+                    <span>장바구니</span>
+                    <Icon className="fas fa-chevron-right"></Icon>
+                  </PageHeaderStepsLi>
 
-            <DimmedBackground />
-            <ContentDiv>
-              <CartPage>
-                <CartPageHeader>
-                  <PageHeaderTitle>장바구니</PageHeaderTitle>
-                  <PageHeaderSteps>
-                    <PageHeaderStepsLi className="active">
-                      <em>1.</em>
-                      <span>장바구니</span>
-                      <Icon className="fas fa-chevron-right"></Icon>
-                    </PageHeaderStepsLi>
+                  <PageHeaderStepsLi>
+                    <em>2.</em>
+                    <span>주문결제</span>
+                    <Icon className="fas fa-chevron-right"></Icon>
+                  </PageHeaderStepsLi>
 
-                    <PageHeaderStepsLi>
-                      <em>2.</em>
-                      <span>주문결제</span>
-                      <Icon className="fas fa-chevron-right"></Icon>
-                    </PageHeaderStepsLi>
-
-                    <PageHeaderStepsLi>
-                      <em>3.</em>
-                      <span>주문완료</span>
-                    </PageHeaderStepsLi>
-                  </PageHeaderSteps>
-                </CartPageHeader>
-                <div className={styles.ListContainer}>
+                  <PageHeaderStepsLi>
+                    <em>3.</em>
+                    <span>주문완료</span>
+                  </PageHeaderStepsLi>
+                </PageHeaderSteps>
+              </CartPageHeader>
+              <div className={styles.ListContainer}>
                 <CartNotEmpty cartList={cartList} />
-                </div>
-              </CartPage>
-            </ContentDiv>
-          </div>
-      }
+              </div>
+            </CartPage>
+          </ContentDiv>
+        </div>
+      )}
     </>
-  )
+  );
 }
 
 const Icon = styled.i`
@@ -128,4 +126,4 @@ const DimmedBackground = styled.div`
   z-index: 150;
 `;
 
-export default Cart
+export default Cart;

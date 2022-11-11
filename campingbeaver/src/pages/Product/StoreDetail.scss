@@ -4,6 +4,7 @@
   display: flex;
   position: absolute;
   background-color: white;
+  z-index: 1;
   margin-left: 18%;
   width: 80rem;
   height: 55rem;
@@ -484,4 +485,17 @@
   // position : fixed;
   top: 0;
   left: 0;
+}
+
+.addrBtn {
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-top: 1%;
+  margin-left: 1%;
+
+  &:hover {
+    background-color: #eee;
+    transition: 0.5s;
+  }
 }

@@ -440,7 +440,7 @@ const StoreModal = ({ items, closeModal }) => {
                   // value={reserv_s_date}
                   value={
                     moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                      ? moment(new Date()).format("YYYY-MM-DD")
+                      ? moment(new Date()).add(1, "day").format("YYYY-MM-DD")
                       : moment(value1).format("YYYY-MM-DD")
                   }
                   className="userInput"

@@ -1,54 +1,51 @@
-
-Footer{
-    height: 150px;
-    width: 2000px;
-    display: flex;
-    bottom : 0;
-
-    background-color : #dde0ea5e;
-    flex: 1;
-    margin-top: 200px;
-    padding-top: 10px;
-
-    
+Footer {
+  height: 150px;
+  width: 2000px;
+  display: flex;
+  bottom: 0;
+  position: relative;
+  background-color: #dde0ea5e;
+  flex: 1;
+  margin-top: 200px;
+  padding-top: 10px;
 }
 
-.contents{
-    width: 96%;
-    max-width: 1100px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    margin: 0 auto;
+.contents {
+  width: 96%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
-.title{
-    font-weight: 600;
-    font-size: 20px;
+.title {
+  font-weight: 600;
+  font-size: 20px;
 }
 
 div {
-    // border: black solid 1px;
+  // border: black solid 1px;
 }
 
 .footerp {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-.Footer_footer__\+0hxu{
-	flex: 1;
-    height: 150px;
-    width: 2000px;
-    margin-top: 200px;
-    display: flex;
-    bottom : 0;
-    background-color : #dde0ea;
+.Footer_footer__\+0hxu {
+  flex: 1;
+  height: 150px;
+  width: 2000px;
+  margin-top: 200px;
+  display: flex;
+  bottom: 0;
+  background-color: #dde0ea;
 }
 
-.con list-2{
-	margin-top: 100px;
+.con list-2 {
+  margin-top: 100px;
 }
-.pickCon{
-	padding-bottom: 300px;
+.pickCon {
+  padding-bottom: 300px;
 }
