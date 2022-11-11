@@ -20,13 +20,12 @@ const ReviewForm = () => {
     return navigate("/Mypage/0");
   };
 
-  // useEffect(() =>{
-  //   console.log(pkgSeq)
-  // },[])
+  // useEffect(() => {
+  //   console.log(numParams);
+  // }, []);
 
   const [reviewContent, setReviewContent] = useState({
-    // user_id: id,
-    user_id: "admin",
+    user_id: id,
     reserv_num: numParams,
     pkg_seq: parseInt(pkgSeq),
     rv_content: "",
@@ -74,7 +73,7 @@ const ReviewForm = () => {
     axios
       .post(`/beaver/rvwrite/${numParams}`, reviewContent)
       .then((res) => {
-        console.log(reviewContent);
+        console.log("등록정보 : ", reviewContent);
 
         navigateToMyPage();
       })

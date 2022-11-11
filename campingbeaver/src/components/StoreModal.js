@@ -1,26 +1,26 @@
-import { AiFillCloseSquare } from 'react-icons/ai';
-import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io';
-import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import React, { useState, useEffect } from 'react'
-import './StoreModal.scss';
-import Calendar from 'react-calendar'
-import '../pages/Reservation/Calendar.css'
-import moment from 'moment'
-import axios from 'axios'
-import DaumPostcode from 'react-daum-postcode';
-import Review from '../pages/Reservation/Review';
+import { AiFillCloseSquare } from "react-icons/ai";
+import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import { GrFacebook, GrInstagram, GrTwitter } from "react-icons/gr";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import React, { useState, useEffect } from "react";
+import "./StoreModal.scss";
+import Calendar from "react-calendar";
+import "../pages/Reservation/Calendar.css";
+import moment from "moment";
+import axios from "axios";
+import DaumPostcode from "react-daum-postcode";
+import Review from "../pages/Reservation/Review";
 
 const StoreModal = ({ items, closeModal }) => {
-
   const [postshow, setPostshow] = useState(false);
-  const [addr, setAddr] = useState('')
-  const [post, setPost] = useState('')
+  const [addr, setAddr] = useState("");
+  const [post, setPost] = useState("");
+  const [avgRating, setAvgRating] = useState(0);
+  const [user_id, setUser_id] = useState(localStorage.getItem("userId"));
 
-  const [addrshow, setAddrshow] = useState('')
-  const [postS, setPostS] = useState('')
-
+  const [addrshow, setAddrshow] = useState("");
+  const [postS, setPostS] = useState("");
 
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -37,12 +37,12 @@ const StoreModal = ({ items, closeModal }) => {
     }
 
     console.log(fullAddress);
-    setAddr(fullAddress)
-    setAddrshow(fullAddress)
+    setAddr(fullAddress);
+    setAddrshow(fullAddress);
     console.log(data.zonecode);
-    setPost(data.zonecode)
-    setPostS(data.zonecode)
-    setPostshow(false)
+    setPost(data.zonecode);
+    setPostS(data.zonecode);
+    setPostshow(false);
   };
 
   const handleSearch = (data) => {
@@ -50,13 +50,13 @@ const StoreModal = ({ items, closeModal }) => {
   };
 
   const postmodal = () => {
-    setPostshow(true)
-  }
+    setPostshow(true);
+  };
 
   const [count, setCount] = useState(1);
-  const { id, img, itemName, price, } = items;
+  const { id, img, itemName, price } = items;
 
-  const currentCount = e => {
+  const currentCount = (e) => {
     const count = e.target;
     setCount(count);
   };
@@ -68,49 +68,45 @@ const StoreModal = ({ items, closeModal }) => {
   const decreaseCount = () => {
     setCount(count - 1);
     if (count <= 1) {
-      alert('주문 수량은 1 이상이어야 합니다.');
+      alert("주문 수량은 1 이상이어야 합니다.");
       setCount(1);
     }
   };
 
-  const priceToString = Number(price).toLocaleString('ko-KR');
+  const priceToString = Number(price).toLocaleString("ko-KR");
   const calculateTotalPrice = price * count;
-  const totalPriceToString = calculateTotalPrice.toLocaleString('ko-KR');
+  const totalPriceToString = calculateTotalPrice.toLocaleString("ko-KR");
 
   const [value, onChange] = useState([
-    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
-    new Date(2022, 10, moment(new Date()).add(2, 'day').format("DD")),
-  ]
-  );
+    new Date(2022, 10, moment(new Date()).add(1, "day").format("DD")),
+    new Date(2022, 10, moment(new Date()).add(2, "day").format("DD")),
+  ]);
 
   const [value1, onChange1] = useState([
-    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
-    new Date(2022, 10, moment(new Date()).add(3, 'day').format("DD")),
-  ]
-  );
+    new Date(2022, 10, moment(new Date()).add(1, "day").format("DD")),
+    new Date(2022, 10, moment(new Date()).add(3, "day").format("DD")),
+  ]);
   const [value3, onChange3] = useState([
-    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
-    new Date(2022, 10, moment(new Date()).add(4, 'day').format("DD")),
-  ]
-  );
+    new Date(2022, 10, moment(new Date()).add(1, "day").format("DD")),
+    new Date(2022, 10, moment(new Date()).add(4, "day").format("DD")),
+  ]);
   const [value4, onChange4] = useState([
-    new Date(2022, 10, moment(new Date()).add(1, 'day').format("DD")),
-    new Date(2022, 10, moment(new Date()).add(5, 'day').format("DD")),
-  ]
-  );
+    new Date(2022, 10, moment(new Date()).add(1, "day").format("DD")),
+    new Date(2022, 10, moment(new Date()).add(5, "day").format("DD")),
+  ]);
 
   const [value2, onChange2] = useState([
     new Date(2022, 10, 25),
     new Date(2022, 10, 27),
   ]);
 
-  const [reserv_s_date, setReserv_s_date] = useState('2022-11-25')
-  const [reserv_e_date, setReserv_e_date] = useState('2022-11-27')
+  const [reserv_s_date, setReserv_s_date] = useState("2022-11-25");
+  const [reserv_e_date, setReserv_e_date] = useState("2022-11-27");
 
   const [date, setDate] = useState(0);
 
-  let data = ['1박 2일', '2박 3일', '3박 4일', '4박 5일'];
-  let [btnActive, setBtnActive] = useState('');
+  let data = ["1박 2일", "2박 3일", "3박 4일", "4박 5일"];
+  let [btnActive, setBtnActive] = useState("");
   const toggleActive = (e) => {
     setBtnActive(() => {
       setDate(e.target.value);
@@ -119,37 +115,37 @@ const StoreModal = ({ items, closeModal }) => {
   };
 
   const [inputValue, setInputValue] = useState({
-    user_id: 'admin',
+    user_id: user_id,
     pkg_seq: id,
-    reserv_name: '',
+    reserv_name: "",
     reserv_post: post,
     reserv_addr: addr,
-    reserv_phone: '',
+    reserv_phone: "",
     reserv_price: calculateTotalPrice,
-    reserv_pay: 'Y',
+    reserv_pay: "Y",
     reserv_s_date: reserv_s_date,
     reserv_e_date: reserv_e_date,
   });
 
-  let backdata = ({
-    user_id: 'admin',
+  let backdata = {
+    user_id: user_id,
     pkg_seq: id,
     reserv_name: inputValue.reserv_name,
     reserv_post: post,
     reserv_addr: addr,
     reserv_phone: inputValue.reserv_phone,
     reserv_price: calculateTotalPrice,
-    reserv_pay: 'Y',
+    reserv_pay: "Y",
     reserv_s_date: reserv_s_date,
     reserv_e_date: reserv_e_date,
-  })
+  };
 
   const [cartlist, setCartlist] = useState({
-    user_id: 'admin',
+    user_id: user_id,
     pkg_seq: id,
-  })
+  });
 
-  const handleInput = e => {
+  const handleInput = (e) => {
     const { name, value } = e.target;
     setInputValue({
       ...inputValue,
@@ -166,12 +162,12 @@ const StoreModal = ({ items, closeModal }) => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-  }
+    });
+  };
 
   const cartpagebtn = () => {
-    window.location.replace('cart')
-  }
+    window.location.replace("cart");
+  };
 
   // const reserv = () => {
   //   // console.log(inputValue)
@@ -207,7 +203,7 @@ const StoreModal = ({ items, closeModal }) => {
       pay_method: "card", // 결제수단 (필수항목)
       merchant_uid: `mid_${new Date().getTime()}`, // 결제금액 (필수항목)
       name: itemName, // 주문명 (필수항목)
-      amount: calculateTotalPrice, // 금액 (필수항목) 
+      amount: calculateTotalPrice, // 금액 (필수항목)
       custom_data: { name: "부가정보", desc: "세부 부가정보" },
       buyer_name: "비버", // 구매자 이름
       buyer_tel: "01041832735", // 구매자 전화번호 (필수항목)
@@ -234,8 +230,8 @@ const StoreModal = ({ items, closeModal }) => {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      window.location.replace("/ordercom")
+      });
+      window.location.replace("/ordercom");
     } else {
       alert(`결제 실패 : ${error_msg}`);
     }
@@ -244,7 +240,7 @@ const StoreModal = ({ items, closeModal }) => {
   return (
     <div className="storeModal">
       <div className="modalBackground" />
-       <div className="modalComponent">
+      <div className="modalComponent">
         <AiFillCloseSquare
           onClick={() => {
             closeModal(false);
@@ -253,10 +249,14 @@ const StoreModal = ({ items, closeModal }) => {
         />
         <section className="imgSection">
           <img src={img} className="thumbnail" alt="Product Thumbnail" />
-          <Review/>
+          <Review setAvgRating={setAvgRating} avgRating={avgRating} />
         </section>
         <section className="infoSection">
-          <h2 className="itemName">{itemName}</h2>
+          <div className="nameContainer">
+            <h2 className="itemName">{itemName}</h2>
+            <div>　　</div>
+            <h2>★{avgRating}/5.0</h2>
+          </div>
           <hr />
           <table>
             <tr className="description">
@@ -287,7 +287,7 @@ const StoreModal = ({ items, closeModal }) => {
           <hr />
           <div>
             <div className="reservCalCon">
-              <div className='reservBtn'>
+              <div className="reservBtn">
                 {data.map((item, idx) => {
                   return (
                     <>
@@ -297,53 +297,116 @@ const StoreModal = ({ items, closeModal }) => {
                         onClick={toggleActive}
                       >
                         {item}
-                      </button><br /><br />
+                      </button>
+                      <br />
+                      <br />
                     </>
                   );
                 })}
                 {/* <button onClick={check}>체크버튼</button> */}
-                <div className='reservDays'>
+                <div className="reservDays">
                   <div className="date-box">
-                    <span>배송예정일</span><br />
+                    <span>배송예정일</span>
+                    <br />
                     <span className="text-gray-500 mt-4">
                       {
-                        moment(value1).format("YYYY-MM-DD") != "2022-11-25" ?
-                          moment(new Date()).format("MM / DD (ddd)") :
-                          moment(value1 - 86400).format("MM / DD (ddd)")
+                        moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                          ? moment(new Date()).format("MM / DD (ddd)")
+                          : moment(value1 - 86400).format("MM / DD (ddd)")
                         // (date==1&&moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
                         //   moment(value1).format("MM / DD (ddd)") :
                         //   moment(value - 86400).format("MM / DD (ddd)")
-
                       }
-                    </span><br />
-                    <span>회수예정일</span><br />
+                    </span>
+                    <br />
+                    <span>회수예정일</span>
+                    <br />
                     <span className="text-gray-500 mt-4">
                       {
-                        date == 0 ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
-                          : (date == 2 ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
-                            : (date == 3 ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
-                              : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
-                                : (moment(new Date(value1)).add(3, 'day').format("MM / DD (ddd)")))))
+                        date == 0
+                          ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
+                          : date == 2
+                          ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
+                          : date == 3
+                          ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
+                          : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                          ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
+                          : moment(new Date(value1))
+                              .add(3, "day")
+                              .format("MM / DD (ddd)")
                         //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
                       }
-                    </span><br />
+                    </span>
+                    <br />
                   </div>
                 </div>
               </div>
-              <div className='Cal'>
-                {
-                  date == 0 ?
-                    <Calendar onChange={onChange} value={value} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                    : (date == 2 ? <Calendar onChange={onChange3} value={value3} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                      : (date == 3 ? <Calendar onChange={onChange4} value={value4} defaultValue={date} minDate={new Date(2022, 10, moment(new Date()).format("D"))} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                        : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? <Calendar onChange={onChange1} value={value1} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />
-                          : <Calendar onChange={onChange2} value={value2} defaultValue={date} minDate={new Date()} next2Label={null} prev2Label={null} showNeighboringMonth={false} formatDay={(local, date) => moment(date).format("DD")} calendarType="US" />)))
-                }
+              <div className="Cal">
+                {date == 0 ? (
+                  <Calendar
+                    onChange={onChange}
+                    value={value}
+                    defaultValue={date}
+                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
+                    next2Label={null}
+                    prev2Label={null}
+                    showNeighboringMonth={false}
+                    formatDay={(local, date) => moment(date).format("DD")}
+                    calendarType="US"
+                  />
+                ) : date == 2 ? (
+                  <Calendar
+                    onChange={onChange3}
+                    value={value3}
+                    defaultValue={date}
+                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
+                    next2Label={null}
+                    prev2Label={null}
+                    showNeighboringMonth={false}
+                    formatDay={(local, date) => moment(date).format("DD")}
+                    calendarType="US"
+                  />
+                ) : date == 3 ? (
+                  <Calendar
+                    onChange={onChange4}
+                    value={value4}
+                    defaultValue={date}
+                    minDate={new Date(2022, 10, moment(new Date()).format("D"))}
+                    next2Label={null}
+                    prev2Label={null}
+                    showNeighboringMonth={false}
+                    formatDay={(local, date) => moment(date).format("DD")}
+                    calendarType="US"
+                  />
+                ) : moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? (
+                  <Calendar
+                    onChange={onChange1}
+                    value={value1}
+                    defaultValue={date}
+                    minDate={new Date()}
+                    next2Label={null}
+                    prev2Label={null}
+                    showNeighboringMonth={false}
+                    formatDay={(local, date) => moment(date).format("DD")}
+                    calendarType="US"
+                  />
+                ) : (
+                  <Calendar
+                    onChange={onChange2}
+                    value={value2}
+                    defaultValue={date}
+                    minDate={new Date()}
+                    next2Label={null}
+                    prev2Label={null}
+                    showNeighboringMonth={false}
+                    formatDay={(local, date) => moment(date).format("DD")}
+                    calendarType="US"
+                  />
+                )}
               </div>
             </div>
           </div>
           <div className="amountTab">
-
             <span className="itemName">{itemName}</span>
             <div className="inputAmount">
               <div
@@ -375,9 +438,11 @@ const StoreModal = ({ items, closeModal }) => {
                 <input
                   type="text"
                   // value={reserv_s_date}
-                  value={moment(value1).format("YYYY-MM-DD") != "2022-11-25" ?
-                    moment(new Date()).format("YYYY-MM-DD") :
-                    moment(value1).format("YYYY-MM-DD")}
+                  value={
+                    moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                      ? moment(new Date()).format("YYYY-MM-DD")
+                      : moment(value1).format("YYYY-MM-DD")
+                  }
                   className="userInput"
                   onChange={handleInput}
                   name="reserv_s_date"
@@ -387,11 +452,18 @@ const StoreModal = ({ items, closeModal }) => {
                   type="text"
                   // value={reserv_e_date}
                   value={
-                    date == 0 ? moment(new Date() * 1.00014).format("YYYY-MM-DD")
-                      : (date == 2 ? moment(new Date() * 1.00024).format("YYYY-MM-DD")
-                        : (date == 3 ? moment(new Date() * 1.00028).format("YYYY-MM-DD")
-                          : (moment(value1).format("YYYY-MM-DD") != "2022-11-25" ? moment(new Date() * 1.00020).format("YYYY-MM-DD")
-                            : moment(new Date(value1)).add(3, 'day').format("YYYY-MM-DD"))))}
+                    date == 0
+                      ? moment(new Date() * 1.00014).format("YYYY-MM-DD")
+                      : date == 2
+                      ? moment(new Date() * 1.00024).format("YYYY-MM-DD")
+                      : date == 3
+                      ? moment(new Date() * 1.00028).format("YYYY-MM-DD")
+                      : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                      ? moment(new Date() * 1.0002).format("YYYY-MM-DD")
+                      : moment(new Date(value1))
+                          .add(3, "day")
+                          .format("YYYY-MM-DD")
+                  }
                   className="userInput"
                   onChange={handleInput}
                   name="reserv_e_date"
@@ -408,18 +480,17 @@ const StoreModal = ({ items, closeModal }) => {
                 />
               </form>
 
-              {
-                postshow == true ?
-                  <Modal
-                    show={postshow}
-                  >
-                    <DaumPostcode
-                      className='postmodal'
-                      onComplete={handleComplete}
-                      onSearch={handleSearch}
-                    /></Modal>
-                  : <></>
-              }
+              {postshow == true ? (
+                <Modal show={postshow}>
+                  <DaumPostcode
+                    className="postmodal"
+                    onComplete={handleComplete}
+                    onSearch={handleSearch}
+                  />
+                </Modal>
+              ) : (
+                <></>
+              )}
               <button onClick={postmodal}>주소검색</button>
               <form className="addressLine1">
                 <div className="address">예약자우편번호</div>
@@ -455,7 +526,9 @@ const StoreModal = ({ items, closeModal }) => {
             </main>
           </div>
           <div className="totalBuyBtn">
-            <button className="buyBtn" onClick={onClickPayment}>결제하기</button>
+            <button className="buyBtn" onClick={onClickPayment}>
+              결제하기
+            </button>
             <button onClick={handleShow} className="cartBtn">
               CART
             </button>
@@ -468,21 +541,19 @@ const StoreModal = ({ items, closeModal }) => {
               <Modal.Header closeButton>
                 <Modal.Title>장바구니</Modal.Title>
               </Modal.Header>
-              <Modal.Body>
-                장바구니에 추가되었습니다.
-              </Modal.Body>
+              <Modal.Body>장바구니에 추가되었습니다.</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={cartpagebtn}>장바구니로 이동</Button>
+                <Button variant="primary" onClick={cartpagebtn}>
+                  장바구니로 이동
+                </Button>
               </Modal.Footer>
             </Modal>
           </div>
-          <div>
-          </div>
+          <div></div>
         </section>
-
       </div>
     </div>
   );
