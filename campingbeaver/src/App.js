@@ -70,8 +70,12 @@ function App() {
           <Route path="/Store:surveyParams" element={<StoreSurvey />} />
         </Routes>
       </div>
-
-      {window.location.pathname != "/recommendation" ? <Footer /> : <></>}
+      {window.location.pathname != "/recommendation" &&
+      window.location.pathname.substring("0", "12") != "/storedetail" ? (
+        <Footer />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

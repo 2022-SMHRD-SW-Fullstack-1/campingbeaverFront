@@ -1,41 +1,39 @@
-import { CgViewSplit } from 'react-icons/cg';
-import { MdCalendarViewMonth } from 'react-icons/md';
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import StoreModal from '../../components/StoreModal';
-import PageList from './PageList.js';
-import Items from './Items';
-import './Store.scss';
-import axios from 'axios';
-
+import { CgViewSplit } from "react-icons/cg";
+import { MdCalendarViewMonth } from "react-icons/md";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
+import StoreModal from "../../components/StoreModal";
+import PageList from "./PageList.js";
+import Items from "./Items";
+import "./Store.scss";
+import axios from "axios";
 
 const Store = () => {
   const surveyParams = useParams();
-  console.log(surveyParams)
+  console.log(surveyParams);
   const [items, setItems] = useState([]);
-  const [listType, setListType] = useState('small');
+  const [listType, setListType] = useState("small");
   const [openModal, setOpenModal] = useState(false);
   const [itemData, setItemData] = useState({});
   const [totalCounts, setTotalCounts] = useState();
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const urlCategory = params.get('category');
-  const urlMaterial = params.get('material');
-  const urlOffset = params.get('offset');
+  const urlCategory = params.get("category");
+  const urlMaterial = params.get("material");
+  const urlOffset = params.get("offset");
   const categoryString = `category=${urlCategory}`;
   const materialString = `material=${urlMaterial}`;
 
   useEffect(() => {
-    axios.get("/beaver/pkglist")
-    .then(response=>{
-      console.log(response.data)
-      
+    axios.get("/beaver/pkglist").then((response) => {
+      console.log(response.data);
+
       setItems(response.data);
-    })
+    });
   }, []);
 
-  const handleURL = name => {
+  const handleURL = (name) => {
     if (urlMaterial) {
       navigate(`?${categoryString}&${materialString}&${name}`);
     }
@@ -49,42 +47,42 @@ const Store = () => {
 
   const pageLimit = 8;
 
-  const goToPage = btnIndex => {
+  const goToPage = (btnIndex) => {
     // console.log('btnIndex', btnIndex);
     const offset = btnIndex * pageLimit;
     const pageString = `offset=${offset}&limit=${pageLimit}`;
     handleURL(pageString);
   };
 
-  const goToMaterial = e => {
+  const goToMaterial = (e) => {
     navigate(`?${categoryString}&material=${e.target.innerHTML}`);
   };
 
   const sortNewest = () => {
-    const newestString = 'sort_method=-the_newest';
+    const newestString = "sort_method=-the_newest";
     handleURL(newestString);
   };
 
   const sortName = () => {
-    const nameString = 'sort_method=name';
+    const nameString = "sort_method=name";
     handleURL(nameString);
   };
 
   const sortHighPrice = () => {
-    const highPriceString = 'sort_method=price';
+    const highPriceString = "sort_method=price";
     handleURL(highPriceString);
   };
 
   const sortLowPrice = () => {
-    const lowPriceString = 'sort_method=-price';
+    const lowPriceString = "sort_method=-price";
     handleURL(lowPriceString);
   };
 
   const firstPage = () => {
-    const firstPageString = 'offset=0&limit=8';
+    const firstPageString = "offset=0&limit=8";
     Number(urlOffset) > 0
       ? handleURL(firstPageString)
-      : alert('이미 첫번째 페이지 입니다.');
+      : alert("이미 첫번째 페이지 입니다.");
     handleURL(firstPageString);
   };
 
@@ -97,7 +95,7 @@ const Store = () => {
     }
   };
 
-  const nextPage = calculateBtn => {
+  const nextPage = (calculateBtn) => {
     const calculateOffset = Number(urlOffset) + Number(pageLimit);
     const pageChangerString = `offset=${calculateOffset}&limit=8`;
     handleURL(pageChangerString);
@@ -106,31 +104,29 @@ const Store = () => {
     }
   };
 
-  const lastPage = calculateBtn => {
+  const lastPage = (calculateBtn) => {
     const calculateLast = (calculateBtn - 1) * pageLimit;
     const lastPageString = `offset=${calculateLast}&limit=8`;
     Number(urlOffset) === Number(calculateLast)
-      ? alert('이미 마지막 페이지 입니다.')
+      ? alert("이미 마지막 페이지 입니다.")
       : handleURL(lastPageString);
     handleURL(lastPageString);
   };
 
   const changeBigList = () => {
-    setListType('big');
+    setListType("big");
   };
 
   const changeSmallList = () => {
-    setListType('small');
+    setListType("small");
   };
 
-  const getItemData = ItemData => {
+  const getItemData = (ItemData) => {
     setOpenModal(true);
     setItemData(ItemData);
   };
 
-  const CATEGORY = {
-    
-  };
+  const CATEGORY = {};
 
   return (
     <>
@@ -168,8 +164,7 @@ const Store = () => {
             </div>
           </div>
           <div className="itemList">
-          
-            {items.map(({ pkg_seq, pkg_photo, pkg_name, pkg_price}) => {
+            {items.map(({ pkg_seq, pkg_photo, pkg_name, pkg_price }) => {
               return (
                 <Items
                   getItemData={getItemData}
@@ -198,7 +193,5 @@ const Store = () => {
     </>
   );
 };
-
-
 
 export default Store;
