@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import "../MyPage/MyPage.module.scss";
 import "./page.css";
 
@@ -14,29 +13,24 @@ const ReviewList = () => {
 
   const [reviewList, setReviewList] = useState([]);
   const [user_id, setUser_id] = useState(localStorage.userId);
-  // 검색용 Hook
+
   const [choiceVal, setChoiceVal] = useState("");
   const [searchVal, setSearchVal] = useState("");
 
-  // Paging
-  const [page, setPage] = useState(1); // 현재 페이지
-  const [totalCnt, setTotalCnt] = useState(0); // 아이템 총 개수
-  const [postPerPage] = useState(5); // 페이지당 아이템 개수
+  const [page, setPage] = useState(1);
+  const [totalCnt, setTotalCnt] = useState(0);
+  const [postPerPage] = useState(5);
 
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState(0);
 
-  // Link 용 (함수)
   let navigate = useNavigate();
 
-  /* 게시글 목록 */
   const getReviewList = () => {
     axios
       .get(`/beaver/reviewlist/${user_id}`)
       .then((res) => {
-        // console.log("가져오는 리뷰리스트", res.data);
-
         setReviewList((reviewList) => {
           return res.data;
         });
@@ -44,13 +38,8 @@ const ReviewList = () => {
         setCurrentPosts(reviewList.slice(indexOfFirstPost, indexOfLastPost));
         setIndexOfLastPost(page * postPerPage);
         setIndexOfFirstPost(indexOfLastPost - postPerPage);
-
-        // setTotalCnt(res.data.pageCnt);
       })
-      .catch((err) => {
-        console.log("[BbsList.js] useEffect() error :<");
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   useEffect(() => {
@@ -64,25 +53,16 @@ const ReviewList = () => {
     setSearchVal(event.target.value);
   };
   const search = () => {
-    console.log(
-      "[BbsList.js searchBtn()] choiceVal=" +
-        choiceVal +
-        ", searchVal=" +
-        searchVal
-    );
-
     navigate("/ReviewList");
     getReviewList(choiceVal, searchVal, 1);
   };
 
   const changePage = (page) => {
     setPage(page);
-    console.log("페이지 : ", page);
   };
 
   return (
     <div className="ListContainer">
-      {/* 검색 */}
       <table className="search">
         <tbody>
           <tr>
@@ -166,7 +146,6 @@ const ReviewList = () => {
   );
 };
 
-/* 글 목록 테이블 행 컴포넌트 */
 const TableRow = (props) => {
   const [show, setShow] = useState(false);
   const [dlt, setDlt] = useState(false);
@@ -182,14 +161,12 @@ const TableRow = (props) => {
   const handleClose2 = () => setDlt(false);
   const handleDlt = () => setDlt(true);
   const handleDelete = () => {
-    console.log(deleteItem);
-
     axios
       .post(`/beaver/reviewlist/delete`, deleteItem)
       .then((res) => {
         window.location.replace("/Mypage/2");
       })
-      .catch((error) => console.log("Network Error: ", error));
+      .catch((error) => alert("Network Error: ", error));
 
     setShow(false);
   };
@@ -202,7 +179,7 @@ const TableRow = (props) => {
         {props.rv_photo != "" ? (
           <img
             src={props.rv_photo}
-            alt="review photo"
+            alt="review thumbnail"
             width="120px"
             height="100px"
           ></img>
@@ -211,13 +188,7 @@ const TableRow = (props) => {
         )}
       </td>
       <td>
-        {/* <Arrow depth={bbs.depth}></Arrow> &nbsp;  */}
-        {/* 답글 화살표 */}
-        {/* 게시글 상세 링크 */}
-        {/* <Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}>  */}
         <span className="underline bbs-title">{props.rv_content} </span>{" "}
-        {/* 게시글 제목 */}
-        {/* </Link> */}
       </td>
       <td>★{props.rv_rating}.0</td>
       <td>{props.user_id}</td>
@@ -267,25 +238,4 @@ const TableRow = (props) => {
     </tr>
   );
 };
-
-const tap = "\u00A0\u00A0\u00A0\u00A0";
-function Arrow(props) {
-  const depth = props.depth;
-
-  if (depth === 0) {
-    return null;
-  }
-
-  const taps = [];
-  for (let i = 0; i < depth; i++) {
-    taps.push(tap);
-  }
-
-  return (
-    <>
-      {taps} <i className="fas fa-long-arrow-alt-right"></i>
-    </>
-  );
-}
-
 export default ReviewList;

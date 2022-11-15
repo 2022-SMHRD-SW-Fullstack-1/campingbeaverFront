@@ -19,11 +19,7 @@ const ReservItem = ({
 
   const navigate = useNavigate();
   const navigateToReview = () => {
-    return (
-      //console.log(pkg_seq)
-
-      navigate(`/ReviewForm:${reserv_num}?pkg_seq=${pkg_seq}`)
-    );
+    return navigate(`/ReviewForm:${reserv_num}?pkg_seq=${pkg_seq}`);
   };
 
   const [show, setShow] = useState(false);
@@ -47,9 +43,6 @@ const ReservItem = ({
   return (
     <tr className="cartItem">
       <td>{reserv_num}</td>
-      {/* <td>
-        <img className="productImg" src={img} alt='iteminfo' />
-      </td> */}
       <td>{reserv_date}</td>
       <td>
         <Link to={`/storedetail${pkg_seq}`}>{reserv_name}</Link>

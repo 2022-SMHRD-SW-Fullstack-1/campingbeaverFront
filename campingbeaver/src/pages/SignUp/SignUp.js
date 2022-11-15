@@ -1,31 +1,31 @@
-import './Signup.scss';
-import Agreement from './Agreement';
-import AGREE_LIST from './agreeData';
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import "./Signup.scss";
+import Agreement from "./Agreement";
+import AGREE_LIST from "./agreeData";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
   const [checkedList, setCheckedLists] = useState([]);
   const [inputValue, setInputValue] = useState({
-    id: '',
-    pw1: '',
-    pw2: '',
-    name: '',
-    address: '',
-    address2: '',
-    phone: '',
-    email: '',
-    birthday: '',
+    id: "",
+    pw1: "",
+    pw2: "",
+    name: "",
+    address: "",
+    address2: "",
+    phone: "",
+    email: "",
+    birthday: "",
     checked: true,
   });
 
   const [idAlertSentence, setIdAlertSentence] = useState(
-    '아이디를 입력해 주세요(영문소문자/숫자,4~16자)'
+    "아이디를 입력해 주세요(영문소문자/숫자,4~16자)"
   );
-  const [pwAlertSentence, setPwAlertSentence] = useState('');
-  const [emailAlertSentence, setEmailAlertSentence] = useState('');
-  const [phoneAlertSentence, setPhoneAlertSentence] = useState('');
+  const [pwAlertSentence, setPwAlertSentence] = useState("");
+  const [emailAlertSentence, setEmailAlertSentence] = useState("");
+  const [phoneAlertSentence, setPhoneAlertSentence] = useState("");
   const {
     id,
     pw1,
@@ -39,7 +39,7 @@ const Signup = () => {
     checked,
   } = inputValue;
 
-  const handleInput = e => {
+  const handleInput = (e) => {
     const { name, value } = e.target;
     setInputValue({
       ...inputValue,
@@ -50,31 +50,29 @@ const Signup = () => {
   const goToMain = () => {
     const time = new Date();
     let now = time.toTimeString();
-    fetch('/beaver/sign', {
-      method: 'POST',
+    fetch("/beaver/sign", {
+      method: "POST",
       body: JSON.stringify({
         user_id: id,
         user_pw: pw2,
         user_name: name,
-        user_phone: '010' + phone,
+        user_phone: "010" + phone,
         user_addr: address + address2,
-        user_type: 'N',
+        user_type: "N",
         user_joindate: now,
         user_email: email,
-        //birth_date: birthday,
-        //optional_agreement: checked,
       }),
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           response.json();
         } else {
-          alert('입력창을 확인해 주세요');
+          alert("입력창을 확인해 주세요");
         }
       })
 
-      .then(result => {
-        navigate('../login');
+      .then((result) => {
+        navigate("../login");
       });
   };
 
@@ -82,47 +80,47 @@ const Signup = () => {
     setCheckedLists(AGREE_LIST);
   }, []);
 
-  const handleCheck = e => {
-    const allChecked = checkedList.map(item => {
+  const handleCheck = (e) => {
+    const allChecked = checkedList.map((item) => {
       item.isChecked = !item.isChecked;
       return item;
     });
     setCheckedLists(allChecked);
   };
 
-  const idCheck = id => {
+  const idCheck = (id) => {
     let regId = /[a-z0-9]{4,16}$/;
     if (regId.test(id)) {
-      setIdAlertSentence('사용가능한 아이디입니다');
+      setIdAlertSentence("사용가능한 아이디입니다");
     } else {
-      setIdAlertSentence('올바르지 않은 아이디입니다');
+      setIdAlertSentence("올바르지 않은 아이디입니다");
     }
   };
 
-  const pwCheck = pw2 => {
+  const pwCheck = (pw2) => {
     if (pw1 === pw2 && 3 < pw2.length && pw2.length < 17) {
-      setPwAlertSentence('사용가능한 비밀번호입니다.');
+      setPwAlertSentence("사용가능한 비밀번호입니다.");
     } else if (pw1 !== pw2) {
-      setPwAlertSentence('비밀번호가 일치하지 않습니다.');
+      setPwAlertSentence("비밀번호가 일치하지 않습니다.");
     } else {
-      setPwAlertSentence('다시입력해 주세요');
+      setPwAlertSentence("다시입력해 주세요");
     }
   };
 
-  const emailCheck = email => {
+  const emailCheck = (email) => {
     let regEmail = /[a-zA-Z0-9_-]+@[a-z]+.[a-z]+$/;
     if (!regEmail.test(email)) {
-      setEmailAlertSentence('유효한 이메일을 입력해 주세요.');
+      setEmailAlertSentence("유효한 이메일을 입력해 주세요.");
     } else {
-      setEmailAlertSentence('');
+      setEmailAlertSentence("");
     }
   };
 
-  const phoneCheck = phone => {
+  const phoneCheck = (phone) => {
     if (phone.length !== 8) {
-      setPhoneAlertSentence('숫자 8개만 입력해주세요');
+      setPhoneAlertSentence("숫자 8개만 입력해주세요");
     } else {
-      setPhoneAlertSentence('');
+      setPhoneAlertSentence("");
     }
   };
 
@@ -291,9 +289,10 @@ const Signup = () => {
             <input
               type="checkbox"
               checked={
-                checkedList.filter(item => item?.isChecked !== true).length < 1
+                checkedList.filter((item) => item?.isChecked !== true).length <
+                1
               }
-              onChange={e => {
+              onChange={(e) => {
                 handleCheck(e.target.checked);
               }}
             />

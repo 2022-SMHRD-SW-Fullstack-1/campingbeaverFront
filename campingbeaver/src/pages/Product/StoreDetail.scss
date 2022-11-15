@@ -2,7 +2,6 @@
 
 .storeDetail {
   display: flex;
-  // justify-content: center;
   flex-direction: column;
 }
 
@@ -19,10 +18,7 @@
   margin-top: 150px;
 
   button {
-    // background-color: transparent;
-    // border: 0;
     padding: 1;
-    // cursor: pointer;
   }
 
   hr {
@@ -41,8 +37,8 @@
 
     img {
       background-color: #eee;
-      width: 30rem;
-      height: 30rem;
+      width: 150px;
+      height: 100px;
     }
     .contentContainer {
       display: flex;
@@ -490,7 +486,6 @@
 
 .postmodal {
   background: rgba(0, 0, 0, 0.25);
-  // position : fixed;
   top: 0;
   left: 0;
 }

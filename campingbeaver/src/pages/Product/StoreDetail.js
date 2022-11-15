@@ -43,18 +43,11 @@ const StoreDetail = () => {
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
-
-    console.log(fullAddress);
     setAddr(fullAddress);
     setAddrshow(fullAddress);
-    console.log(data.zonecode);
     setPost(data.zonecode);
     setPostS(data.zonecode);
     setPostshow(false);
-  };
-
-  const handleSearch = (data) => {
-    console.log(data);
   };
 
   const postmodal = () => {
@@ -197,7 +190,7 @@ const StoreDetail = () => {
       pay_method: "card", // 결제수단 (필수항목)
       merchant_uid: `mid_${new Date().getTime()}`, // 결제금액 (필수항목)
       name: items.pkg_name, // 주문명 (필수항목)
-      amount: "178000", // 금액 (필수항목)
+      amount: totalPriceToString, // 금액 (필수항목)
       custom_data: { name: "부가정보", desc: "세부 부가정보" },
       buyer_name: "비버", // 구매자 이름
       buyer_tel: "01041832735", // 구매자 전화번호 (필수항목)
@@ -248,7 +241,7 @@ const StoreDetail = () => {
             </tr>
             <tr className="price">
               <th>판매가</th>
-              <td>￦89,000</td>
+              <td>￦{priceToString}</td>
             </tr>
             <tr>
               <th>배송 방법</th>
@@ -399,32 +392,11 @@ const StoreDetail = () => {
                 </button>
               </div>
             </div>
-            <span className="amountPrice">
-              ￦
-              {date == 0
-                ? "89,000"
-                : date == 1
-                ? "178,000"
-                : date == 2
-                ? "267,000"
-                : "356,000"}
-            </span>
+            <span className="amountPrice">￦{totalPriceToString}</span>
           </div>
           <hr />
           <div className="totalPrice">
-            총 상품금액 :
-            <span>
-              {" "}
-              ￦
-              {date == 0
-                ? "89,000"
-                : date == 1
-                ? "178,000"
-                : date == 2
-                ? "267,000"
-                : "356,000"}{" "}
-            </span>
-            ({count}개)
+            총 상품금액 :<span>￦{totalPriceToString}</span>({count}개)
           </div>
           <div>
             <main className="signup">
@@ -478,7 +450,6 @@ const StoreDetail = () => {
                   <DaumPostcode
                     className="postmodal"
                     onComplete={handleComplete}
-                    onSearch={handleSearch}
                   />
                 </Modal>
               ) : (

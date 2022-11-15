@@ -10,17 +10,14 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* 노말라이즈 끝 */
 body > h1 {
   text-align: center;
   color: gray;
 }
-/* 커스텀 시작 */
 body {
   overflow-x: hidden;
 }
-/* 커스텀 끝 */
-/* 라이브러리 시작 */
+
 .con {
   max-width: 1000px;
   margin: 0 auto;
@@ -180,14 +177,12 @@ body {
   margin-bottom: 15px;
 }
 .list-1 > .row > .cell > .txt-box > .txt1 .body .des {
-  /* 한 줄 자르기 */
   font-size: 0.9rem;
   color: gray;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 
-  /* 여러 줄 자르기 추가 스타일 */
   white-space: normal;
   line-height: 1.2;
   height: 13.2em;
@@ -249,7 +244,6 @@ body {
   }
 }
 
-/* list-2 시작 */
 .list-2 .title {
   position: relative;
 }
@@ -449,7 +443,6 @@ body {
 .list-2 .row > .cell > .txt-box > .txt1 > .body > .first-line,
 .list-2 .row > .cell > .txt-box > .txt1 > .body > .second-line {
   border-bottom: 1px solid #dfdfdf;
-  padding-bottom: 30px;
 }
 
 .con > .footer {
@@ -499,7 +492,6 @@ body {
   background-color: inherit;
 }
 
-/* 미디어쿼리 시작 */
 @media (max-width: 1920px) {
   .list-2 .row > * {
     width: 50% !important;
@@ -558,8 +550,7 @@ body {
     margin: 10px 0;
   }
 }
-/* 미디어쿼리 끝 */
-/* list-2 끝 */
+
 .Footer_footer__VC1F3 {
   display: flex;
   flex: 1;
@@ -575,11 +566,6 @@ body {
 .pickCon {
   padding-bottom: 300px;
 }
-/* td {
-  display: flex;
-  justify-content: center;
-  flex-direction: column-reverse;
-} */
 
 .des {
   text-align: center !important;
@@ -587,6 +573,21 @@ body {
 .des_title {
   text-align: end;
 }
-body {
-  text-align: center;
+
+.first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.hashContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 15px;
+}
+.hashContainer > p {
+  margin-left: 15px;
+  margin-top: 15px;
 }

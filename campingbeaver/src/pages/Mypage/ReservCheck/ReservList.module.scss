@@ -9,10 +9,8 @@
 }
 
 .ListContainer {
-  //margin-top: 80px;
   width: 80rem;
   margin-top: 3rem;
-  // margin-bottom: 3rem;
   margin-left: 10rem;
   font-size: 15px;
   animation-name: fadeIn;
@@ -37,26 +35,9 @@ table {
 
 button {
   border: none;
-  background-color: rgba(182, 182, 182, 0.548);
+  background-color: rgba(255, 255, 255, 0.548);
+  border: solid 1px;
   border-radius: 8px;
   padding: 3px;
   color: rgb(119, 119, 119);
 }
-
-// .top {
-//     width: 800px;
-//     margin: auto;
-//     padding: 20px;
-//     justify-content: center;
-// }
-
-// .contact {
-//     width: fit-content;
-//     margin: auto;
-// }
-
-// .contact1 {
-//     width: fit-content;
-//     margin: auto;
-//     display: block;
-// }

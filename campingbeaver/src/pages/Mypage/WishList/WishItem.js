@@ -18,13 +18,9 @@ const WishItem = ({ wishName, wishPrice, wishPic, pkg_seq }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDelete = () => {
-    console.log(deleteItem);
-
     axios
       .post(`/beaver/wishlist/delete`, deleteItem)
-      .then((res) => {
-        console.log(deleteItem);
-      })
+      .then((res) => {})
       .catch((error) => console.log("Network Error: ", error));
 
     setShow(false);

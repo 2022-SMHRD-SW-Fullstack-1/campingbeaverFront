@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import clouds from "./weatherimg/clouds.png";
 import drizzle from "./weatherimg/drizzle.png";
 import mist from "./weatherimg/mist.png";
@@ -6,12 +6,9 @@ import raining from "./weatherimg/raining.png";
 import snow from "./weatherimg/snow.png";
 import sunny from "./weatherimg/sunny.png";
 import thunderstorm from "./weatherimg/thunderstorm.png";
-import style from "./Reservation.module.scss";
+import "./Reservation.module.scss";
 
 const WeatherCard = ({ value }) => {
-  // const [iconId, setIconId] = useState(0)
-  // setIconId(value.weather[0].id === 800 ? 0 : (parseInt(value.weather[0].id) / 100).toFixed(0));
-
   const selectIcon = () => {
     switch (
       value.weather[0].id === 800
@@ -40,8 +37,6 @@ const WeatherCard = ({ value }) => {
         <td text-align="center">
           {value.dt_txt}
           {selectIcon()}
-          {/* <p>{value.weather[0].id}</p> */}
-          {/* <p>{(parseInt(value.weather[0].id) / 100).toFixed(0)}</p> */}
           {value.main.temp}도
         </td>
       ) : (

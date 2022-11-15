@@ -21,10 +21,6 @@ a:hover {
   display: flex;
 }
 
-/* #routeDiv {
-  height: 3800px;
-} */
-
 @keyframes fadeIn {
   0% {
     opacity: 0;

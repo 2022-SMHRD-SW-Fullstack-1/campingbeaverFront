@@ -37,14 +37,9 @@ const StoreSurvey = () => {
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
-      console.log("selectparams", selectParams());
-      //   console.log(response.data)
-      // example = response.data.filter(value=>value.pkg_hash.includes(selectParams()))
-      // console.log(example)
       setItems(
         response.data.filter((value) => value.pkg_hash.includes(selectParams()))
       );
-      console.log(items);
     });
   }, []);
 
@@ -63,7 +58,6 @@ const StoreSurvey = () => {
   const pageLimit = 8;
 
   const goToPage = (btnIndex) => {
-    // console.log('btnIndex', btnIndex);
     const offset = btnIndex * pageLimit;
     const pageString = `offset=${offset}&limit=${pageLimit}`;
     handleURL(pageString);

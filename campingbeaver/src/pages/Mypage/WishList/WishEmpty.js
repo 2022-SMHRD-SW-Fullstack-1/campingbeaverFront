@@ -1,19 +1,17 @@
-import React from 'react'
+import React from "react";
 
 const WishEmpty = () => {
   return (
     <div>
-        <>
-        <table>
+      <table>
         <thead>
           <tr>
             <th className="noItem">No Items</th>
           </tr>
         </thead>
-        </table>
-    </>
+      </table>
     </div>
-  )
-}
+  );
+};
 
-export default WishEmpty
+export default WishEmpty;

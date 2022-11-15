@@ -27,8 +27,6 @@ const Store = () => {
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
-      console.log(response.data);
-
       setItems(response.data);
     });
   }, []);

@@ -26,19 +26,13 @@ const Items = ({ getItemData, id, listType, img, itemName, price }) => {
 
       axios
         .post(`/beaver/wishlist/add`, wishItem)
-        .then((res) => {
-          console.log(wishItem);
-        })
+        .then((res) => {})
         .catch((error) => console.log("Network Error: ", error));
     } else {
       setUserwishbtn("x");
-      console.log(wishItem);
-
       axios
         .post(`/beaver/wishlist/delete`, wishItem)
-        .then((res) => {
-          console.log(wishItem);
-        })
+        .then((res) => {})
         .catch((error) => console.log("Network Error: ", error));
     }
   };
