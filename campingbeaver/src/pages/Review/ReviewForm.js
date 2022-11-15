@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import Header from "../../components/Layout/Header";
 import styles from "./ReviewForm.module.scss";
 import { GiRoundStar } from "react-icons/gi";
 import styled from "styled-components";
@@ -20,10 +19,6 @@ const ReviewForm = () => {
     return navigate("/Mypage/0");
   };
 
-  // useEffect(() => {
-  //   console.log(numParams);
-  // }, []);
-
   const [reviewContent, setReviewContent] = useState({
     user_id: id,
     reserv_num: numParams,
@@ -38,8 +33,6 @@ const ReviewForm = () => {
   const [clicked, setClicked] = useState([false, false, false, false, false]);
 
   const starArray = [0, 1, 2, 3, 4];
-  // 클릭한 별 el값을 이 함수로 보내서 클릭된 별만큼 true로 바뀌도록
-  // for문이 el만큼 돌면서 false -> true 변경
   const handleStarClick = (index) => {
     let clickStates = [...clicked];
     for (let i = 0; i < 5; i++) {
@@ -47,7 +40,7 @@ const ReviewForm = () => {
     }
     setClicked(clickStates);
   };
-  // filter로 true값만 뽑아서 length를 이용해 개수 확인 후 별점 값 내보냄
+
   const sendReview = () => {
     let score = clicked.filter(Boolean).length;
     setReviewContent({
@@ -63,7 +56,6 @@ const ReviewForm = () => {
       ...reviewContent,
       [name]: value,
     });
-    //console.log(reviewContent);
   };
 
   const submitHandle = (e) => {
@@ -73,8 +65,6 @@ const ReviewForm = () => {
     axios
       .post(`/beaver/rvwrite/${numParams}`, reviewContent)
       .then((res) => {
-        console.log("등록정보 : ", reviewContent);
-
         navigateToMyPage();
       })
       .catch((error) => console.log("Network Error: ", error, reviewContent));
@@ -88,7 +78,6 @@ const ReviewForm = () => {
       ...reviewContent,
       rv_photo: e.target.value,
     });
-    console.log(reviewContent);
   };
 
   useEffect(() => {
@@ -97,8 +86,6 @@ const ReviewForm = () => {
 
   return (
     <div className={styles.postForm}>
-      {/* <Header/> */}
-
       <div className={styles.title}>
         <h1>Review</h1>
         <p>리뷰 작성</p>
@@ -161,13 +148,6 @@ const ReviewForm = () => {
                 </div>
               </td>
             </tr>
-
-            {/* <tr>
-                <th>비밀번호</th>
-                <td>
-                  <input type="password" name="password"></input>
-                </td>
-              </tr> */}
           </tbody>
         </table>
         <section className={styles.btns}>
