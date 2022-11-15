@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const ReservEmpty = () => {
   return (
-    <>
-        <table>
-        <thead>
-          <tr>
-            <th className="noItem">No Items</th>
-          </tr>
-        </thead>
-        </table>
-    </>
-  )
-}
+    <table>
+      <thead>
+        <tr>
+          <th className="noItem">No Items</th>
+        </tr>
+      </thead>
+    </table>
+  );
+};
 
-export default ReservEmpty
+export default ReservEmpty;
