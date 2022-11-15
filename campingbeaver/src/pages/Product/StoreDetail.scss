@@ -1,5 +1,10 @@
 @import "../../styles/variables.scss";
 
+.storeDetail {
+  display: flex;
+  flex-direction: column;
+}
+
 .modalComponent {
   display: flex;
   position: absolute;
@@ -9,12 +14,11 @@
   width: 80rem;
   height: 55rem;
   padding: 40px;
+  height: 2000px;
+  margin-top: 150px;
 
   button {
-    // background-color: transparent;
-    // border: 0;
     padding: 1;
-    // cursor: pointer;
   }
 
   hr {
@@ -482,7 +486,6 @@
 
 .postmodal {
   background: rgba(0, 0, 0, 0.25);
-  // position : fixed;
   top: 0;
   left: 0;
 }
@@ -497,5 +500,11 @@
   &:hover {
     background-color: #eee;
     transition: 0.5s;
+  }
+}
+
+.app {
+  .storeDetail {
+    height: max-content;
   }
 }

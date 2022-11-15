@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Agreement = ({ item, checkedList, i, setCheckedLists }) => {
-  const checkItems = id => {
-    const newCheckedList = checkedList.map(item => {
+  const checkItems = (id) => {
+    const newCheckedList = checkedList.map((item) => {
       if (item.id === id) {
         item.isChecked = !item.isChecked;
         return item;

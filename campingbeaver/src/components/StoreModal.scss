@@ -1,4 +1,4 @@
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
 .storeModal {
   @include flexCenter;
@@ -27,10 +27,7 @@
     margin-left: -20px;
 
     button {
-      // background-color: transparent;
-      // border: 0;
       padding: 1;
-      // cursor: pointer;
     }
 
     hr {
@@ -65,8 +62,6 @@
         width: 400px;
         height: 300px;
       }
-
-
     }
 
     .infoSection {
@@ -241,18 +236,17 @@
     }
   }
 }
-.reservBtn{
+.reservBtn {
   flex-direction: column;
   align-items: flex-start;
   width: 8em;
 }
-.reservCalCon{
-  display: flex;  
+.reservCalCon {
+  display: flex;
 }
-.Cal{
-  
+.Cal {
 }
-.reservDays{
+.reservDays {
   border: solid 1px gray;
   text-align: center;
 }
@@ -489,10 +483,8 @@
   }
 }
 
-.postmodal{
-  background : rgba(0,0,0,0.25);
-  // position : fixed;
+.postmodal {
+  background: rgba(0, 0, 0, 0.25);
   top: 0;
   left: 0;
-  
 }

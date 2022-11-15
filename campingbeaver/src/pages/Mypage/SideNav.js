@@ -65,7 +65,6 @@ const SideNav = () => {
           variant="tabs"
           defaultActiveKey="link-0"
         >
-          {/* <Nav.Link href="/home">Active</Nav.Link> */}
           <Nav.Link className={styles.head} eventKey="disabled" disabled>
             My Page
           </Nav.Link>

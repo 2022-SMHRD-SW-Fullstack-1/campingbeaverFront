@@ -1,19 +1,14 @@
 /* global kakao */
-import React, { useEffect, useState } from "react";
-import RecomDetail from "./RecomDetail";
-import WeatherView from "./WeatherView";
+import React, { useEffect } from "react";
 
 const Map = ({ latitude, longitude, siteName }) => {
   const lat = { latitude };
   const lng = { longitude };
-  //처음 지도 그리기
   useEffect(() => {
-    console.log(lat.latitude);
     const mapContainer = document.getElementById("map");
     let mapOption = {
-      //지도 생성시 필요한 기본 옵션
       center: new kakao.maps.LatLng(lat.latitude, lng.longitude),
-      level: 4, //지도의 레벨(확대, 축소 정도)
+      level: 4,
     };
     const map = new kakao.maps.Map(mapContainer, mapOption);
 

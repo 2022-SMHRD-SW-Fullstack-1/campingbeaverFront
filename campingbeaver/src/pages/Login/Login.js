@@ -36,9 +36,6 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("=============");
-        console.log("백엔드 응답 메세지 :", response);
-
         if (response.user_id.length > 0) {
           localStorage.setItem("userName", response.user_name);
           localStorage.setItem("userEmail", response.user_email);

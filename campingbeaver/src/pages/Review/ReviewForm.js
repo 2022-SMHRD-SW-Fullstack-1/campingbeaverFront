@@ -47,7 +47,6 @@ const ReviewForm = () => {
       ...reviewContent,
       rv_rating: score,
     });
-    console.log(score);
   };
 
   const getValue = (e) => {

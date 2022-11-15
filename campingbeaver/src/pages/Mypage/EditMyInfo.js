@@ -65,7 +65,6 @@ const EditMyInfo = () => {
           alert("입력창을 확인해 주세요");
         }
       })
-
       .then((result) => {
         navigate("/");
       });
@@ -74,7 +73,6 @@ const EditMyInfo = () => {
   const handleDeleteProfile = () => {
     const time = new Date();
     let now = time.toTimeString();
-    console.log(userId);
 
     if (window.confirm("확인을 누르면 회원 정보가 삭제됩니다.")) {
       fetch("/beaver/userdelete", {

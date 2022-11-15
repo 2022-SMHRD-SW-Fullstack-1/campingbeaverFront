@@ -169,19 +169,6 @@ const StoreModal = ({ items, closeModal }) => {
     window.location.replace("cart");
   };
 
-  // const reserv = () => {
-  //   // console.log(inputValue)
-  //   axios.post("/beaver/reserv", JSON.stringify(inputValue), {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  // }
-
-  // const check = () => {
-  //   console.log(reserv_s_date)
-  // }
-
   useEffect(() => {
     const jquery = document.createElement("script");
     jquery.src = "https://code.jquery.com/jquery-1.12.4.min.js";
@@ -215,15 +202,7 @@ const StoreModal = ({ items, closeModal }) => {
   };
 
   const callback = (response) => {
-    const {
-      success,
-      error_msg,
-      imp_uid,
-      merchant_uid,
-      pay_method,
-      paid_amount,
-      status,
-    } = response;
+    const { success, error_msg } = response;
     if (success) {
       alert("결제 성공");
       axios.post("/beaver/reserv", JSON.stringify(backdata), {
@@ -303,39 +282,30 @@ const StoreModal = ({ items, closeModal }) => {
                     </>
                   );
                 })}
-                {/* <button onClick={check}>체크버튼</button> */}
                 <div className="reservDays">
                   <div className="date-box">
                     <span>배송예정일</span>
                     <br />
                     <span className="text-gray-500 mt-4">
-                      {
-                        moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                          ? moment(new Date()).format("MM / DD (ddd)")
-                          : moment(value1 - 86400).format("MM / DD (ddd)")
-                        // (date==1&&moment(value1).format("YYYY-MM-DD") !="2022-11-25" ?
-                        //   moment(value1).format("MM / DD (ddd)") :
-                        //   moment(value - 86400).format("MM / DD (ddd)")
-                      }
+                      {moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                        ? moment(new Date()).format("MM / DD (ddd)")
+                        : moment(value1 - 86400).format("MM / DD (ddd)")}
                     </span>
                     <br />
                     <span>회수예정일</span>
                     <br />
                     <span className="text-gray-500 mt-4">
-                      {
-                        date == 0
-                          ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
-                          : date == 2
-                          ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
-                          : date == 3
-                          ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
-                          : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
-                          ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
-                          : moment(new Date(value1))
-                              .add(3, "day")
-                              .format("MM / DD (ddd)")
-                        //:date == 3 ? moment(value * 1.00027).format("MM / DD (ddd)") : (date == 2 ? moment(value * 1.00021).format("MM / DD (ddd)") : (date == 1 ? moment(value * 1.00018).format("MM / DD (ddd)") : moment(value * 1.00013).format("MM / DD (ddd)"))))
-                      }
+                      {date == 0
+                        ? moment(new Date() * 1.00014).format("MM / DD (ddd)")
+                        : date == 2
+                        ? moment(new Date() * 1.00024).format("MM / DD (ddd)")
+                        : date == 3
+                        ? moment(new Date() * 1.00028).format("MM / DD (ddd)")
+                        : moment(value1).format("YYYY-MM-DD") != "2022-11-25"
+                        ? moment(new Date() * 1.0002).format("MM / DD (ddd)")
+                        : moment(new Date(value1))
+                            .add(3, "day")
+                            .format("MM / DD (ddd)")}
                     </span>
                     <br />
                   </div>
@@ -437,7 +407,6 @@ const StoreModal = ({ items, closeModal }) => {
                 <div className="inputTitle">예약시작날짜</div>
                 <input
                   type="text"
-                  // value={reserv_s_date}
                   value={
                     moment(value1).format("YYYY-MM-DD") != "2022-11-25"
                       ? moment(new Date()).add(1, "day").format("YYYY-MM-DD")
@@ -450,7 +419,6 @@ const StoreModal = ({ items, closeModal }) => {
                 <div className="inputTitle">예약종료날짜</div>
                 <input
                   type="text"
-                  // value={reserv_e_date}
                   value={
                     date == 0
                       ? moment(new Date() * 1.00014).format("YYYY-MM-DD")

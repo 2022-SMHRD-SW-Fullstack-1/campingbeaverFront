@@ -3,7 +3,6 @@ import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import tent from "../img/tentcamping.jpg";
 import forest from "../img/forestcamp.jpg";
-import styles from "../Layout/Layout.module.scss";
 
 const Content = () => {
   return (

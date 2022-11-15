@@ -1,9 +1,8 @@
 import React from "react";
 import CampCard from "./CampCard";
 import style from "./Reservation.module.scss";
-import surveyimg from "./campimg/surveyimg.jpg";
-import stylesheet from "./RecomDetail.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import "./RecomDetail.css";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -19,21 +18,14 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
   useEffect(() => {
     Axios.get("/beaver/hash").then((response) => {
       setRecomList(response.data);
-      // console.log(recomList[0].site_seq)
-      // console.log(recomList);
       if (response.data) {
-        // setRecommendation(response.data);
-        // console.log(recommendation);
       } else {
         alert("failed");
       }
     });
   }, []);
-
-  // console.log(params)
   let recomViewList = [];
   for (let i = 0; i < recomList.length; i++) {
-    // console.log(recomList[i].site_seq)
     recomViewList.push(
       <div class="cell" key={recomList[i].site_seq}>
         <div class="img-box">
@@ -72,18 +64,11 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
   for (let i = 0; i < recomList.length; i++) {
     hashList.push(recomList[i].site_hash);
   }
-  console.log("hashList:", hashList);
 
   let checkfilter = false;
-  console.log("props:", props);
   const arr = new Map();
   let finalArr = [];
   let reArr = [];
-
-  // for문이 실행되는데 랜더링 될 때 실행됨.
-  // 처음에 값이 아무것도 없으니까 안나옴.
-  // 버튼 선택할 시점에는 이미 실행되었으니까 실행 안 됨
-  // 함수에 담아서 onClick이벤트나 useEffect에서 값이 바뀔때마다 실행되도록 하면 됨
 
   const seq = recomList.site_seq;
   const siteList = sitelist.campsite.filter((word) => word.site_seq == seq);
@@ -93,42 +78,28 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
     for (let i = 0; i < hashList.length; i++) {
       for (let j = 0; j < Object.keys(props).length; j++) {
         checkfilter = hashList[i].includes(props[j]);
-        // console.log("useeffect 안")
         if (checkfilter) {
-          console.log("true");
           arr.set(i * 7 + j * 17 - j - i + j * i + j * i - j + i * i, i); //site_seq와 일치시킴
           setTagHandler(tagHandler);
         } else {
-          console.log("false");
         }
       }
     }
-    console.log(arr);
     let resultArr = Array.from(arr.values());
-    console.log(resultArr);
     const result = {};
     resultArr.forEach((x) => {
       result[x] = (result[x] || 0) + 1;
     });
-    // console.log(result)
-    // console.log(resultArr.length)
-
-    // console.log(result[1])
-    // console.log(Object.keys(props).length)
     for (let k = 0; k < resultArr.length; k++) {
       if (result[k] == Object.keys(props).length) {
         finalArr.push(k);
       }
     }
-    console.log("finalArr:", finalArr);
 
     for (let m = 0; m < finalArr.length; m++) {
-      // console.log(recomList[finalArr[m]].site_name)
       reArr.push(recomList[finalArr[m]].site_name);
     }
-    console.log("reArr:", reArr);
     setFinalResult((finalResult) => [...finalArr]);
-    console.log("final", finalResult);
   };
   const readMorePick = () => {
     window.location.replace("/recommendation");
@@ -140,11 +111,9 @@ const Reservcamp = ({ tagHandler, setTagHandler, ...props }) => {
 
   return (
     <div className={style.reserv}>
-      {/* <button onClick={arrBtn} className={style.clickbutton}>배열찾기</button> */}
       <Button variant="outline-success" onClick={arrBtn} type="button">
         검색하기
       </Button>{" "}
-      {/* <CampCard {...finalArr}></CampCard> */}
       <div className={pickCheck()}>
         <div className={style.reservtitle}>
           <div className="pickCon">

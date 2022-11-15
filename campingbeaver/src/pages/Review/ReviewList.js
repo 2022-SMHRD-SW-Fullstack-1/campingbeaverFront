@@ -13,23 +13,20 @@ const ReviewList = () => {
 
   const [reviewList, setReviewList] = useState([]);
   const [user_id, setUser_id] = useState(localStorage.userId);
-  // 검색용 Hook
+
   const [choiceVal, setChoiceVal] = useState("");
   const [searchVal, setSearchVal] = useState("");
 
-  // Paging
-  const [page, setPage] = useState(1); // 현재 페이지
-  const [totalCnt, setTotalCnt] = useState(0); // 아이템 총 개수
-  const [postPerPage] = useState(5); // 페이지당 아이템 개수
+  const [page, setPage] = useState(1);
+  const [totalCnt, setTotalCnt] = useState(0);
+  const [postPerPage] = useState(5);
 
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState(0);
 
-  // Link 용 (함수)
   let navigate = useNavigate();
 
-  /* 게시글 목록 */
   const getReviewList = () => {
     axios
       .get(`/beaver/reviewlist/${user_id}`)
@@ -42,10 +39,7 @@ const ReviewList = () => {
         setIndexOfLastPost(page * postPerPage);
         setIndexOfFirstPost(indexOfLastPost - postPerPage);
       })
-      .catch((err) => {
-        console.log("[BbsList.js] useEffect() error :<");
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   useEffect(() => {
@@ -59,25 +53,16 @@ const ReviewList = () => {
     setSearchVal(event.target.value);
   };
   const search = () => {
-    console.log(
-      "[BbsList.js searchBtn()] choiceVal=" +
-        choiceVal +
-        ", searchVal=" +
-        searchVal
-    );
-
     navigate("/ReviewList");
     getReviewList(choiceVal, searchVal, 1);
   };
 
   const changePage = (page) => {
     setPage(page);
-    console.log("페이지 : ", page);
   };
 
   return (
     <div className="ListContainer">
-      {/* 검색 */}
       <table className="search">
         <tbody>
           <tr>
@@ -161,7 +146,6 @@ const ReviewList = () => {
   );
 };
 
-/* 글 목록 테이블 행 컴포넌트 */
 const TableRow = (props) => {
   const [show, setShow] = useState(false);
   const [dlt, setDlt] = useState(false);
@@ -177,14 +161,12 @@ const TableRow = (props) => {
   const handleClose2 = () => setDlt(false);
   const handleDlt = () => setDlt(true);
   const handleDelete = () => {
-    console.log(deleteItem);
-
     axios
       .post(`/beaver/reviewlist/delete`, deleteItem)
       .then((res) => {
         window.location.replace("/Mypage/2");
       })
-      .catch((error) => console.log("Network Error: ", error));
+      .catch((error) => alert("Network Error: ", error));
 
     setShow(false);
   };

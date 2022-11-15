@@ -27,8 +27,6 @@ const Store = () => {
 
   useEffect(() => {
     axios.get("/beaver/pkglist").then((response) => {
-      console.log(response.data);
-
       setItems(response.data);
     });
   }, []);
@@ -48,7 +46,6 @@ const Store = () => {
   const pageLimit = 8;
 
   const goToPage = (btnIndex) => {
-    // console.log('btnIndex', btnIndex);
     const offset = btnIndex * pageLimit;
     const pageString = `offset=${offset}&limit=${pageLimit}`;
     handleURL(pageString);

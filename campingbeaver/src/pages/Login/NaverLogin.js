@@ -52,7 +52,6 @@ const NaverLogin = () => {
 
   const getToken = () => {
     const token = location.hash.split("=")[1].split("&")[0];
-    console.log("토큰값 : ", token);
     localStorage.setItem("access_token", token);
   };
 
@@ -78,7 +77,6 @@ const NaverLogin = () => {
         <span className="naverSpan">네이버 로그인 </span>
         <span></span>
       </div>
-      {/* 태그에 id="naverIdLogin"를 해주지 않으면 오류발생 */}
       <div id="naverIdLogin" style={{ display: "none" }}></div>
     </>
   );

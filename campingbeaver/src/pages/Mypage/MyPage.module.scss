@@ -1,97 +1,75 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .top {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 30px;
-    
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
 }
-.MyPage {  
-    margin-top: 100px;
-    color:darkolivegreen;
-    font-size: 50px;
-    
+.MyPage {
+  margin-top: 100px;
+  color: darkolivegreen;
+  font-size: 50px;
 }
 
 .MyInfo {
-    
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
 }
 .contact {
-    width: fit-content;
-    margin: auto;
+  width: fit-content;
+  margin: auto;
 }
 .contact1 {
-    width: fit-content;
-    margin: auto;
-    display: block;
+  width: fit-content;
+  margin: auto;
+  display: block;
 }
 
+ul {
+  display: flex;
+  list-style: none;
+  margin: 30px;
+  flex-wrap: wrap;
+  text-align: left;
 
-ul{
-    display: flex;
-    list-style: none;
-    margin: 30px;
-    flex-wrap: wrap;
-    text-align: left;
-    
-li + li{
+  li + li {
     margin-left: 100px;
-}
+  }
 }
 
-// .container {
-//     text-align: left;
-// }
-
-.wish  {
-    border: 0;
-    outline: 0;
-    background-color: transparent;
+.wish {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
 }
-    
-.buttonContainer{
-    display: flex;
-    justify-content: space-between;
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
 }
 .ListContainer {
-    display: flex;
-    width:1200px;
-    flex-wrap: wrap;
-    margin-left: 7%;
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+  margin-left: 7%;
 
-    animation-name: fadeIn;
-	animation-duration: 1s;
-	// animation-timing-function: linear;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
-// #top {
-//     width: 800px;
-//     margin: auto;
-//     padding: 20px;
-//     justify-content: center;
-// }
-
-.reservation{
-    position: absolute;
-    top : 0;
-    right : 0;
+.reservation {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-  
-    100% {
-      opacity: 1;
-    }
+  0% {
+    opacity: 0;
   }
-// .myInfoContainer {
-//     align-items: center;
-//     width: 1000px;
-//     border-bottom: 3px solid #000;
-// }
+
+  100% {
+    opacity: 1;
+  }
+}

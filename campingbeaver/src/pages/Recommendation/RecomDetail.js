@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Map from "./Map";
 import Axios from "axios";
-import stylesheet from "./RecomDetail.css";
 import { Carousel } from "react-bootstrap";
 import sitelist from "../../data/sitelist.json";
 import { useParams } from "react-router-dom";
@@ -19,9 +18,8 @@ const RecomDetail = () => {
   const [siteName, setSiteName] = useState("");
   let { site_seq } = useParams();
 
-  console.log("useparams : ", site_seq);
   const imgSeq = site_seq - 2;
-  console.log(imgSeq);
+
   useEffect(() => {
     Axios.get("/beaver/recomdetail", {
       params: {
@@ -32,15 +30,11 @@ const RecomDetail = () => {
       setWeatherAddr(recommendation.site_addr.split(" "));
 
       if (response.data) {
-        // setRecommendation(response.data);
-        // console.log(recommendation);
       } else {
         alert("failed");
       }
     });
   }, [recommendation.site_addr]);
-  console.log(recommendation);
-  console.log(weatherAddr);
   useEffect(() => {
     setLatitude(recommendation.site_lat);
     setLongitude(recommendation.site_lng);
@@ -55,10 +49,8 @@ const RecomDetail = () => {
 
   const seq = site_seq;
   const siteList = sitelist.campsite.filter((word) => word.site_seq == seq);
-  // console.log(siteList[site_seq].imgsrcfirst)
 
   useEffect(() => {
-    // 카카오톡 sdk 추가
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
     script.async = true;
@@ -67,12 +59,9 @@ const RecomDetail = () => {
   }, [seq]);
 
   const shareToKatalk = () => {
-    // kakao sdk script 부른 후 window.Kakao로 접근
     if (window.Kakao) {
       const kakao = window.Kakao;
 
-      // 중복 initialization 방지
-      // 카카오에서 제공하는 javascript key를 이용하여 initialize
       if (!kakao.isInitialized()) {
         kakao.init("fc4721f013e6b878b7b516e4e662b043");
       }
@@ -135,12 +124,10 @@ const RecomDetail = () => {
               <div class="date">
                 HOT<span> NEW</span>
               </div>
-              {/* <img src={siteList[0].imgsrcfirst}/> */}
             </div>
             <div class="txt-box">
               <div class="txt1">
                 <div class="head">
-                  {/* <h1 class="name">Information</h1> */}
                   <div class="sub-name">입실</div>
                   <div class="location">
                     {sitelist.campsite[site_seq].intime}

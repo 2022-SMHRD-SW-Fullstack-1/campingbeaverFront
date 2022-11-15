@@ -14,7 +14,6 @@ const MyPage = () => {
         <p className={styles.MyPage}>{userName}님 반가워요!</p>
         <p>{userEmail}</p>
       </div>
-
       <SideNav userId={userId} />
     </div>
   );
