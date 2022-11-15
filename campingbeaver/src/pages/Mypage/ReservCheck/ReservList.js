@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReservEmpty from "./ReservEmpty";
 import ReservNotEmpty from "./ReservNotEmpty";
 import styles from "./ReservList.module.scss";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ReservList = (props) => {
@@ -17,7 +16,6 @@ const ReservList = (props) => {
         },
       })
       .then((res) => {
-        // console.log(res.data)
         setReservList(res.data);
       })
       .catch((error) => console.log("Network Error: ", error));

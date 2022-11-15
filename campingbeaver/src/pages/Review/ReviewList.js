@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import "../MyPage/MyPage.module.scss";
 import "./page.css";
 
@@ -35,8 +34,6 @@ const ReviewList = () => {
     axios
       .get(`/beaver/reviewlist/${user_id}`)
       .then((res) => {
-        // console.log("가져오는 리뷰리스트", res.data);
-
         setReviewList((reviewList) => {
           return res.data;
         });
@@ -44,8 +41,6 @@ const ReviewList = () => {
         setCurrentPosts(reviewList.slice(indexOfFirstPost, indexOfLastPost));
         setIndexOfLastPost(page * postPerPage);
         setIndexOfFirstPost(indexOfLastPost - postPerPage);
-
-        // setTotalCnt(res.data.pageCnt);
       })
       .catch((err) => {
         console.log("[BbsList.js] useEffect() error :<");
@@ -202,7 +197,7 @@ const TableRow = (props) => {
         {props.rv_photo != "" ? (
           <img
             src={props.rv_photo}
-            alt="review photo"
+            alt="review thumbnail"
             width="120px"
             height="100px"
           ></img>
@@ -211,13 +206,7 @@ const TableRow = (props) => {
         )}
       </td>
       <td>
-        {/* <Arrow depth={bbs.depth}></Arrow> &nbsp;  */}
-        {/* 답글 화살표 */}
-        {/* 게시글 상세 링크 */}
-        {/* <Link to={{ pathname: `/bbsdetail/${bbs.seq}` }}>  */}
         <span className="underline bbs-title">{props.rv_content} </span>{" "}
-        {/* 게시글 제목 */}
-        {/* </Link> */}
       </td>
       <td>★{props.rv_rating}.0</td>
       <td>{props.user_id}</td>
@@ -267,25 +256,4 @@ const TableRow = (props) => {
     </tr>
   );
 };
-
-const tap = "\u00A0\u00A0\u00A0\u00A0";
-function Arrow(props) {
-  const depth = props.depth;
-
-  if (depth === 0) {
-    return null;
-  }
-
-  const taps = [];
-  for (let i = 0; i < depth; i++) {
-    taps.push(tap);
-  }
-
-  return (
-    <>
-      {taps} <i className="fas fa-long-arrow-alt-right"></i>
-    </>
-  );
-}
-
 export default ReviewList;
