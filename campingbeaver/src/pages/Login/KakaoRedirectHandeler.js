@@ -25,10 +25,6 @@ const KakaoRedirectHandler = ({ auth, setAuth }) => {
       })
       .then((res) => {
         console.log("token success");
-
-        console.log(res);
-        console.log("로그인떴냐?");
-        console.log(res.data.access_token);
         localStorage.setItem("token", res.data.access_token);
         setToken(res.data.access_token);
       })
@@ -44,7 +40,6 @@ const KakaoRedirectHandler = ({ auth, setAuth }) => {
       .get(`https://kapi.kakao.com/v2/user/me`, {
         //
         headers: {
-          //헤더에 token을 담아서 전달
           Authorization: `Bearer ${token}`,
         },
       })
@@ -61,12 +56,7 @@ const KakaoRedirectHandler = ({ auth, setAuth }) => {
         localStorage.setItem("userEmail", res.data.kakao_account.email);
         localStorage.setItem("userId", res.data.id);
 
-        setUser(
-          // user_id = res.data.id,
-          // user_email = res.data.kakao_account.email,
-          // user_name = res.data.kakao_account.nickname,
-          res.data
-        );
+        setUser(res.data);
         setAuth(true);
 
         console.log(user);
