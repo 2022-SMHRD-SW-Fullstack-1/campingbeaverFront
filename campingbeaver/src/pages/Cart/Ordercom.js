@@ -1,160 +1,135 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from 'axios';
-import moment from 'moment';
-import './Ordercom.css'
+import axios from "axios";
+import moment from "moment";
+import "./Ordercom.css";
 
 const Ordercom = () => {
+  const [resdata, setResdata] = useState([]);
 
-    const [resdata, setResdata] = useState([]);
+  useEffect(() => {
+    axios.get("/beaver/ordercom").then((response) => {
+      setResdata(response.data);
+    });
+  }, []);
 
-    useEffect(() => {
-        axios.get("/beaver/ordercom")
-            .then(response => {
-                setResdata(response.data)
-            })
-    }, []);
+  return (
+    <>
+      {resdata.length == 0 ? (
+        <div></div>
+      ) : (
+        <div>
+          <DimmedBackground />
+          <ContentDiv>
+            <CartPage>
+              <CartPageHeader>
+                <PageHeaderTitle>주문완료</PageHeaderTitle>
+                <PageHeaderSteps>
+                  <PageHeaderStepsLi>
+                    <em>1.</em>
+                    <span>장바구니</span>
+                    <Icon className="fas fa-chevron-right"></Icon>
+                  </PageHeaderStepsLi>
 
-    return (
-        <>
-            {
-                resdata.length == 0 ?
-                    <div>
-                    </div>
-                    :
-                    <div>
-                        <DimmedBackground />
-                        <ContentDiv>
-                            <CartPage>
-                                <CartPageHeader>
-                                    <PageHeaderTitle>주문완료</PageHeaderTitle>
-                                    <PageHeaderSteps>
-                                        <PageHeaderStepsLi>
-                                            <em>1.</em>
-                                            <span>장바구니</span>
-                                            <Icon className="fas fa-chevron-right"></Icon>
-                                        </PageHeaderStepsLi>
+                  <PageHeaderStepsLi>
+                    <em>2.</em>
+                    <span>주문결제</span>
+                    <Icon className="fas fa-chevron-right"></Icon>
+                  </PageHeaderStepsLi>
 
-                                        <PageHeaderStepsLi>
-                                            <em>2.</em>
-                                            <span>주문결제</span>
-                                            <Icon className="fas fa-chevron-right"></Icon>
-                                        </PageHeaderStepsLi>
-
-                                        <PageHeaderStepsLi className="active">
-                                            <em>3.</em>
-                                            <span>주문완료</span>
-                                        </PageHeaderStepsLi>
-                                    </PageHeaderSteps>
-                                </CartPageHeader>
-                            </CartPage>
-                            <p align='center'>주문이 완료되었습니다.</p>
-                            <div>
-                            <div className="ordercon">
-                                <div className="ordercon1">
-                                    <div>
-                                        주문번호
-                                    </div>
-                                    <div>
-                                        주문일시
-                                    </div>
-                                </div>
-                                <div className="ordercon2">
-                                    <div className='ordernum'>
-                                        {moment(resdata[0].reserv_date).add(9,'hour').format("YYYYMMDD")}{resdata[0].reserv_seq}
-                                    </div>
-                                    <div className='ordertime'>
-                                        {moment(resdata[0].reserv_date).add(9, 'hour').format("YYYY-MM-DD hh:mm:ss")}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='ordermenu' align='center'>
-                                주문자 정보
-                            </div>
-                            <div className="ordercon">
-                                <div className='ordercon1'>
-                                    <div>
-                                        예약자명
-                                    </div>
-                                    <div>
-                                        휴대폰 번호
-                                    </div>
-                                    <div>
-                                        시작날짜
-                                    </div>
-                                    <div>
-                                        종료날짜
-                                    </div>
-                                </div>
-                                <div className="ordercon2">
-                                    <div>
-                                        {resdata[0].reserv_name}
-                                    </div>
-                                    <div>
-                                        {resdata[0].reserv_phone}
-                                    </div>
-                                    <div>
-                                        {moment(resdata[0].reserv_s_date).add(9, 'hour').format("YYYY-MM-DD (ddd)")}
-                                    </div>
-                                    <div>
-                                        {moment(resdata[0].reserv_e_date).add(9, 'hour').format("YYYY-MM-DD (ddd)")}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='ordermenu' align='center'>
-                                배송지 정보
-                            </div>
-                            <div className="ordercon">
-                                <div className='ordercon1'>
-                                    <div>
-                                        우편번호
-                                    </div>
-                                    <div>
-                                        배송지주소
-                                    </div>
-                                </div>
-                                <div className="ordercon2">
-                                    <div>
-                                    {resdata[0].reserv_post}
-                                    </div>
-                                    <div>
-                                    {resdata[0].reserv_addr}
-                                    광주 광산구 월계로 117-22
-                                    예술길 스마트인재개발원
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ordercon">
-                                <div className='ordercon1'>
-                                    <div>
-                                        배송예정날짜
-                                    </div>
-                                    <div>
-                                        회수예정날짜
-                                    </div>
-                                    <div>
-                                        결제금액
-                                    </div>
-                                </div>
-                                <div className="ordercon2">
-                                    <div>
-                                    {moment(resdata[0].reserv_s_date).add(-15, 'hour').format("YYYY-MM-DD (ddd)")}
-                                    </div>
-                                    <div>
-                                    {moment(resdata[0].reserv_e_date).add(25, 'hour').format("YYYY-MM-DD (ddd)")}
-                                    </div>
-                                    <div>
-                                    {resdata[0].reserv_price}원
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </ContentDiv>
-                    </div>
-            }
-        </>
-    )
-}
+                  <PageHeaderStepsLi className="active">
+                    <em>3.</em>
+                    <span>주문완료</span>
+                  </PageHeaderStepsLi>
+                </PageHeaderSteps>
+              </CartPageHeader>
+            </CartPage>
+            <p align="center">주문이 완료되었습니다.</p>
+            <div>
+              <div className="ordercon">
+                <div className="ordercon1">
+                  <div>주문번호</div>
+                  <div>주문일시</div>
+                </div>
+                <div className="ordercon2">
+                  <div className="ordernum">
+                    {moment(resdata[0].reserv_date)
+                      .add(9, "hour")
+                      .format("YYYYMMDD")}
+                    {resdata[0].reserv_seq}
+                  </div>
+                  <div className="ordertime">
+                    {moment(resdata[0].reserv_date)
+                      .add(9, "hour")
+                      .format("YYYY-MM-DD hh:mm:ss")}
+                  </div>
+                </div>
+              </div>
+              <div className="ordermenu" align="center">
+                주문자 정보
+              </div>
+              <div className="ordercon">
+                <div className="ordercon1">
+                  <div>예약자명</div>
+                  <div>휴대폰 번호</div>
+                  <div>시작날짜</div>
+                  <div>종료날짜</div>
+                </div>
+                <div className="ordercon2">
+                  <div>{resdata[0].reserv_name}</div>
+                  <div>{resdata[0].reserv_phone}</div>
+                  <div>
+                    {moment(resdata[0].reserv_s_date)
+                      .add(9, "hour")
+                      .format("YYYY-MM-DD (ddd)")}
+                  </div>
+                  <div>
+                    {moment(resdata[0].reserv_e_date)
+                      .add(9, "hour")
+                      .format("YYYY-MM-DD (ddd)")}
+                  </div>
+                </div>
+              </div>
+              <div className="ordermenu" align="center">
+                배송지 정보
+              </div>
+              <div className="ordercon">
+                <div className="ordercon1">
+                  <div>우편번호</div>
+                  <div>배송지주소</div>
+                </div>
+                <div className="ordercon2">
+                  <div>{resdata[0].reserv_post}</div>
+                  <div>{resdata[0].reserv_addr}</div>
+                </div>
+              </div>
+              <div className="ordercon">
+                <div className="ordercon1">
+                  <div>배송예정날짜</div>
+                  <div>회수예정날짜</div>
+                  <div>결제금액</div>
+                </div>
+                <div className="ordercon2">
+                  <div>
+                    {moment(resdata[0].reserv_s_date)
+                      .add(-15, "hour")
+                      .format("YYYY-MM-DD (ddd)")}
+                  </div>
+                  <div>
+                    {moment(resdata[0].reserv_e_date)
+                      .add(25, "hour")
+                      .format("YYYY-MM-DD (ddd)")}
+                  </div>
+                  <div>{resdata[0].reserv_price}원</div>
+                </div>
+              </div>
+            </div>
+          </ContentDiv>
+        </div>
+      )}
+    </>
+  );
+};
 
 const Icon = styled.i`
   margin: 0 8px;
@@ -220,4 +195,4 @@ const DimmedBackground = styled.div`
   z-index: 150;
 `;
 
-export default Ordercom
+export default Ordercom;
