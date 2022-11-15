@@ -1,31 +1,34 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const CartEmpty = () => {
-  return (
-    <div>
-       <EmptyList>
-          <EmptyListLogo>
-            <LogoEmpty className="fa-solid fa-empty-set"></LogoEmpty>
-            <div>
-              <EmptyListText>
-                장바구니가 비었습니다.
-                <br />
-                다양한 상품을 담아보세요.
-              </EmptyListText>
-            </div>
-            <EmptyCartBtn
-              type="button"
-              onClick={() => window.location.replace("store")}
-            >
-              상품 구경하러 가기
-            </EmptyCartBtn>
-          </EmptyListLogo>
-        </EmptyList>
-    </div>
-  )
-}
+  const CartEmpty = {
+    marginTop: "150px",
+  };
 
+  return (
+    <div style={CartEmpty}>
+      <EmptyList>
+        <EmptyListLogo>
+          <LogoEmpty className="fa-solid fa-empty-set"></LogoEmpty>
+          <div>
+            <EmptyListText>
+              장바구니가 비었습니다.
+              <br />
+              다양한 상품을 담아보세요.
+            </EmptyListText>
+          </div>
+          <EmptyCartBtn
+            type="button"
+            onClick={() => window.location.replace("store")}
+          >
+            상품 구경하러 가기
+          </EmptyCartBtn>
+        </EmptyListLogo>
+      </EmptyList>
+    </div>
+  );
+};
 
 const EmptyCartBtn = styled.button`
   width: 246px;
@@ -69,9 +72,10 @@ const EmptyListLogo = styled.div`
 `;
 
 const EmptyList = styled.div`
+  margin-top: 50px;
   margin: 0 auto;
   padding: 50px 0;
   text-align: center;
 `;
 
-export default CartEmpty
+export default CartEmpty;

@@ -14,8 +14,6 @@ function Cart() {
   useEffect(() => {
     const user_id = localStorage.getItem("userId");
     axios.get(`/beaver/basketlist${user_id}`).then((response) => {
-      // console.log(response.data);
-
       setCartList(response.data);
     });
   }, []);

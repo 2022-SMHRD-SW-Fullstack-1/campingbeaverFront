@@ -1,25 +1,29 @@
 @font-face {
-  font-family: 'twayair';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+  font-family: "twayair";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: 'twayair' !important;
+  font-family: "twayair" !important;
   animation-name: fadeIn;
-	animation-duration: 1s;
+  animation-duration: 1s;
 }
 
-
-
-a:hover{
+a:hover {
   color: black !important;
   text-decoration: none;
 }
-.app{
+
+.app {
   display: flex;
 }
+
+/* #routeDiv {
+  height: 3800px;
+} */
 
 @keyframes fadeIn {
   0% {

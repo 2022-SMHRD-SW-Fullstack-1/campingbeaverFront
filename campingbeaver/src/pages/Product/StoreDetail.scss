@@ -1,5 +1,11 @@
 @import "../../styles/variables.scss";
 
+.storeDetail {
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+}
+
 .modalComponent {
   display: flex;
   position: absolute;
@@ -9,6 +15,8 @@
   width: 80rem;
   height: 55rem;
   padding: 40px;
+  height: 2000px;
+  margin-top: 150px;
 
   button {
     // background-color: transparent;
@@ -497,5 +505,11 @@
   &:hover {
     background-color: #eee;
     transition: 0.5s;
+  }
+}
+
+.app {
+  .storeDetail {
+    height: max-content;
   }
 }

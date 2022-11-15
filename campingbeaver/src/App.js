@@ -5,7 +5,6 @@ import SignUp from "./pages/SignUp/SignUp";
 import Store from "./pages/Product/Store";
 import Layout from "./components/Layout/Layout";
 import Mypage from "./pages/MyPage/Mypage";
-import Reservation from "./pages/Reservation/Reservation";
 import ReviewForm from "./pages/Review/ReviewForm";
 import Cart from "../src/pages/Cart/Cart";
 import SurveySecond from "./components/Layout/SurveySecond";
@@ -38,7 +37,6 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Mypage/:tab" element={<Mypage />} />
-          <Route path="/Reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/ordercom" element={<Ordercom />} />
           <Route path="/SignUp" element={<SignUp />} />
@@ -70,12 +68,7 @@ function App() {
           <Route path="/Store:surveyParams" element={<StoreSurvey />} />
         </Routes>
       </div>
-      {window.location.pathname != "/recommendation" &&
-      window.location.pathname.substring("0", "12") != "/storedetail" ? (
-        <Footer />
-      ) : (
-        <></>
-      )}
+      {window.location.pathname != "/recommendation" ? <Footer /> : <></>}
     </div>
   );
 }
