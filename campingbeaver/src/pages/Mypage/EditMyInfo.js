@@ -94,7 +94,7 @@ const EditMyInfo = () => {
       })
         .then(() => {
           localStorage.clear();
-          alert("그동안 이용해주셔서 감사합니다.");
+          alert("그동안 이용해주셔서 감사합니다!");
           navigate("/Logout");
         })
         .catch((err) => alert(err.response.data.message));
