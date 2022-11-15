@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useHref, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./MyPage.module.scss";
 import "./EditMyInfo.scss";
-import axios from "axios";
-import Logout from "../member/Logout";
 
 const EditMyInfo = () => {
   const userId = localStorage.getItem("userId");

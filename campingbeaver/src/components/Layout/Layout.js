@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Layout.module.scss";
 import Survey from "./Survey";
 import MainRecomm from "./MainRecomm";

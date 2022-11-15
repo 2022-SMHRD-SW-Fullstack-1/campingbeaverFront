@@ -12,9 +12,8 @@ import SurveySecond from "./components/Layout/SurveySecond";
 import SurveyThird from "./components/Layout/SurveyThird";
 import Recommendation from "./pages/Recommendation/Recommendation";
 import NaverLogin from "./pages/Login/NaverLogin";
-import Logout from "./pages/member/Logout";
+import Logout from "./pages/Login/Logout";
 import ReviewList from "./pages/Review/ReviewList";
-import ReviewPage from "./pages/Review/ReviewPage";
 import Header from "./components/Layout/Header";
 import WishList from "./pages/MyPage/WishList/WishList";
 import ReservList from "./pages/MyPage/ReservCheck/ReservList";
@@ -61,10 +60,7 @@ function App() {
           />
           <Route path="/ReviewForm:resnum" element={<ReviewForm />} />
           <Route path="/editmyinfo" element={<EditMyInfo />} />
-          <Route path="/ReviewList/:id">
-            <Route index element={<ReviewList />} />
-            <Route path=":reviewID" element={<ReviewPage />} />
-          </Route>
+          <Route path="/ReviewList/:id" element={<ReviewList />} />
 
           <Route path="/storedetail:pkg_seq" element={<StoreDetail />} />
           <Route path="/Store:surveyParams" element={<StoreSurvey />} />
