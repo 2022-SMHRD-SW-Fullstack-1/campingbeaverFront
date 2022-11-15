@@ -77,7 +77,7 @@ const EditMyInfo = () => {
     const time = new Date();
     let now = time.toTimeString();
     console.log(userId);
-    //e.preventDefault();
+
     if (window.confirm("확인을 누르면 회원 정보가 삭제됩니다.")) {
       fetch("/beaver/userdelete", {
         method: "POST",
@@ -92,14 +92,6 @@ const EditMyInfo = () => {
           user_email: email,
         }),
       })
-        // axios
-        //   .post(`/beaver/userdelete`,
-        //     {
-        //       headers: {
-        //         Authorization: 'Bearer ' + userId,
-        //       },
-        //     }
-        //   )
         .then(() => {
           localStorage.clear();
           alert("그동안 이용해주셔서 감사합니다.");
@@ -119,7 +111,6 @@ const EditMyInfo = () => {
       </div>
 
       <div>
-        {/* <main className="update"> */}
         <h1 className="title"></h1>
 
         <title className="information">
@@ -220,7 +211,6 @@ const EditMyInfo = () => {
         <button onClick={handleDeleteProfile} className="editBtn">
           회원 탈퇴하기
         </button>
-        {/* </main> */}
       </div>
     </div>
   );

@@ -35,7 +35,6 @@ const Login = () => {
       }),
     })
       .then((response) => response.json())
-      // .then((result) => console.log("결과: ", result))
       .then((response) => {
         console.log("=============");
         console.log("백엔드 응답 메세지 :", response);
@@ -44,21 +43,12 @@ const Login = () => {
           localStorage.setItem("userName", response.user_name);
           localStorage.setItem("userEmail", response.user_email);
           localStorage.setItem("userId", response.user_id);
-          //localStorage.setItem('userName', response.user_name);
+
           window.location.href = "/";
-          //this.props.history.push("/");
         } else {
           alert("아이디와 비밀번호를 확인해주세요");
         }
       });
-    // .then(result => {
-    //   if (result.access_token) {
-    //     localStorage.setItem('Authorization', result.access_token);
-    //     navigate('../');
-    //   } else {
-    //     alert('아이디와 비밀번호를 확인해주세요');
-    //   }
-    // });
   };
 
   const goToSignup = () => {
