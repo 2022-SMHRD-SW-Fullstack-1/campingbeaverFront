@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useHref, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./MyPage.module.scss";
 import "./EditMyInfo.scss";
-import axios from "axios";
-import Logout from "../member/Logout";
 
 const EditMyInfo = () => {
   const userId = localStorage.getItem("userId");
@@ -92,14 +90,6 @@ const EditMyInfo = () => {
           user_email: email,
         }),
       })
-        // axios
-        //   .post(`/beaver/userdelete`,
-        //     {
-        //       headers: {
-        //         Authorization: 'Bearer ' + userId,
-        //       },
-        //     }
-        //   )
         .then(() => {
           localStorage.clear();
           alert("그동안 이용해주셔서 감사합니다.");
@@ -119,7 +109,6 @@ const EditMyInfo = () => {
       </div>
 
       <div>
-        {/* <main className="update"> */}
         <h1 className="title"></h1>
 
         <title className="information">
@@ -220,7 +209,6 @@ const EditMyInfo = () => {
         <button onClick={handleDeleteProfile} className="editBtn">
           회원 탈퇴하기
         </button>
-        {/* </main> */}
       </div>
     </div>
   );
