@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import styles from "../MyPage/MyPage.module.scss";
+import styles from "../Mypage/MyPage.module.scss";
 import Fheart from "../../components/img/Fheart.png";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";

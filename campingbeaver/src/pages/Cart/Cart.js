@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CartEmpty from "./CartEmpty";
 import CartNotEmpty from "./CartNotEmpty";
 import axios from "axios";
-import styles from "../MyPage/MyPage.module.scss";
+import styles from "../Mypage/MyPage.module.scss";
 
 function Cart() {
   if (localStorage.userName == null) {

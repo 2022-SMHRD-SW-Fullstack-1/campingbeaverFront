@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import "../MyPage/MyPage.module.scss";
+import "../Mypage/MyPage.module.scss";
 import "./page.css";
 
 const ReviewList = () => {
